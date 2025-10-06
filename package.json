@@ -1,0 +1,32 @@
+{
+  "name": "caribbeanazure-site",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "playwright test --project=chromium"
+  },
+  "dependencies": {
+    "next": "14.2.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "framer-motion": "^11.0.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "tailwindcss": "^3.3.3",
+    "autoprefixer": "^10.4.15",
+    "postcss": "^8.4.24",
+    "@types/react": "18.2.21",
+    "@types/node": "20.6.2",
+    "eslint": "^8.49.0",
+    "eslint-config-next": "14.2.3",
+    "prettier": "^3.0.3",
+    "playwright": "^1.38.0",
+    "eslint-plugin-tailwindcss": "^3.11.0"
+  }
+}

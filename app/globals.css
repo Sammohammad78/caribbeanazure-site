@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom variables */
+:root {
+  --color-azure: #007FFF;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Accessible focus styles */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px dashed var(--color-azure);
+  outline-offset: 2px;
+}
