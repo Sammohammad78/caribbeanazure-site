@@ -3,128 +3,80 @@
     "home": "Home",
     "services": "Diensten",
     "cases": "Cases",
-    "about": "Over Ons",
-    "insights": "Inzichten",
+    "pricing": "Prijzen",
+    "about": "Over ons",
+    "blog": "Blog",
     "contact": "Contact"
   },
+  "cta": {
+    "primary": "Plan een gratis intake",
+    "secondary": "Bekijk cases"
+  },
   "hero": {
-    "title": "Slimme automatisering die wél oplevert",
-    "subtitle": "Wij ontwerpen, bouwen en integreren AI-workflows die tijd besparen en omzet verhogen — zonder gedoe.",
-    "cta": {
-      "primary": "WhatsApp ons",
-      "secondary": "Plan een kennismaking"
-    },
+    "h1": "Automatiseer je routine. Groei sneller.",
+    "sub": "Wij bouwen AI-gestuurde workflows die e-mail, WhatsApp en web omzetten in omzet—zonder gedoe.",
     "trustedBy": "Vertrouwd door"
+  },
+  "outcomes": {
+    "title": "Meetbare Impact",
+    "subtitle": "Resultaten die tellen",
+    "speed": {
+      "title": "Snellere responstijd",
+      "value": "−60%",
+      "description": "Van uren naar minuten met geautomatiseerde routing"
+    },
+    "deals": {
+      "title": "Meer deals",
+      "value": "+25–40%",
+      "description": "Betere follow-up = hogere conversie"
+    },
+    "work": {
+      "title": "Minder repetitief werk",
+      "value": "−30–50%",
+      "description": "Focus op wat echt waarde toevoegt"
+    }
   },
   "services": {
     "title": "Onze Diensten",
-    "subtitle": "We helpen bedrijven om slimmer te werken met maatwerk AI-oplossingen",
-    "automation": {
-      "title": "Automatisering",
-      "description": "Handmatige processen omzetten naar slimme workflows die uren besparen"
+    "subtitle": "Van inbox tot actie, van WhatsApp tot dashboard",
+    "email": {
+      "title": "E-mail-naar-Actie",
+      "description": "Gmail/Outlook automatisch koppelen aan ClickUp, Trello of To-Do. Nooit meer handmatig taken aanmaken."
     },
-    "integrations": {
-      "title": "Integraties",
-      "description": "Systemen naadloos verbinden voor gestroomlijnde bedrijfsvoering"
+    "whatsapp": {
+      "title": "WhatsApp-First Funnels",
+      "description": "Offertes, herinneringen en follow-ups via WhatsApp. Persoonlijk én geautomatiseerd."
     },
-    "chatbots": {
-      "title": "AI Chatbots",
-      "description": "Intelligente assistenten die 24/7 vragen beantwoorden en leads genereren"
+    "agents": {
+      "title": "AI-Agents & Chatbots",
+      "description": "24/7 support, intake en triage. Van eerste vraag tot gekwalificeerde lead."
     },
     "dashboards": {
-      "title": "Dashboards",
-      "description": "Real-time inzicht in uw belangrijkste bedrijfsdata"
+      "title": "Dashboards & Rapportage",
+      "description": "Power BI expertise. Real-time inzicht in je belangrijkste KPI's."
+    },
+    "web": {
+      "title": "Webdesign + Automations",
+      "description": "Framer of Carrd websites gekoppeld aan Zapier, n8n of Make. Mooi én slim."
     }
   },
-  "process": {
-    "title": "Onze Aanpak",
-    "subtitle": "Van idee tot impact in drie stappen",
-    "step1": {
-      "title": "Ontdekken",
-      "description": "We analyseren uw processen en identificeren kansen voor automatisering"
-    },
-    "step2": {
-      "title": "Ontwikkelen",
-      "description": "We bouwen maatwerk oplossingen die naadloos integreren"
-    },
-    "step3": {
-      "title": "Opleveren",
-      "description": "We zorgen voor een vlekkeloze implementatie en blijvende ondersteuning"
-    }
+  "cases": {
+    "title": "Cases",
+    "subtitle": "Echte problemen, concrete oplossingen",
+    "cta": "Bekijk case"
   },
   "pricing": {
     "title": "Transparante Prijzen",
-    "subtitle": "Kies het pakket dat bij u past",
-    "starter": {
-      "name": "Starter",
-      "price": "Vanaf €2.500",
-      "description": "Perfect voor kleine automatiseringsprojecten",
-      "features": [
-        "1 automatiseringsworkflow",
-        "Basisintegraties",
-        "Email ondersteuning",
-        "30 dagen garantie"
-      ]
-    },
-    "pro": {
-      "name": "Pro",
-      "price": "Vanaf €7.500",
-      "description": "Voor bedrijven die meerdere processen willen optimaliseren",
-      "features": [
-        "3-5 automatiseringsworkflows",
-        "Geavanceerde integraties",
-        "AI chatbot implementatie",
-        "Priority support",
-        "Maandelijkse optimalisatie",
-        "60 dagen garantie"
-      ],
-      "popular": true
-    },
-    "scale": {
-      "name": "Scale",
-      "price": "Op maat",
-      "description": "Enterprise oplossingen voor complexe vraagstukken",
-      "features": [
-        "Onbeperkte workflows",
-        "Custom AI ontwikkeling",
-        "Dedicated support",
-        "SLA garantie",
-        "Maandelijkse strategiesessies",
-        "White-glove onboarding"
-      ]
-    },
+    "subtitle": "Kies het pakket dat bij je past",
     "cta": "Start vandaag"
   },
   "faq": {
     "title": "Veelgestelde Vragen",
-    "subtitle": "Antwoorden op de belangrijkste vragen",
-    "questions": [
-      {
-        "q": "Hoe lang duurt een gemiddeld project?",
-        "a": "De meeste projecten worden binnen 2-6 weken opgeleverd, afhankelijk van de complexiteit. We werken in sprints van 2 weken voor maximale transparantie."
-      },
-      {
-        "q": "Welke systemen kunnen jullie integreren?",
-        "a": "We werken met alle gangbare platforms zoals Zapier, Make, Google Workspace, Microsoft 365, CRM-systemen, en custom APIs. Als het een API heeft, kunnen we het waarschijnlijk integreren."
-      },
-      {
-        "q": "Wat als ik na oplevering aanpassingen wil?",
-        "a": "Alle pakketten includeren een garantieperiode waarin aanpassingen gratis zijn. Daarna bieden we onderhoudscontracten vanaf €250/maand of kunnen we ad-hoc aanpassingen doen."
-      },
-      {
-        "q": "Hebben jullie ervaring in mijn branche?",
-        "a": "We hebben projecten gedaan in e-commerce, consultancy, finance, en healthcare. Onze aanpak is procesgedreven, dus branche-specifieke kennis bouwen we snel op."
-      },
-      {
-        "q": "Is mijn data veilig?",
-        "a": "Absoluut. We werken volgens GDPR-richtlijnen, gebruiken encrypted connections, en tekenen NDAs op verzoek. Data blijft altijd in uw eigen systemen."
-      }
-    ]
+    "subtitle": "Antwoorden op de belangrijkste vragen"
   },
-  "cta": {
-    "title": "Klaar om te beginnen?",
-    "subtitle": "Laten we kennismaken en kijken hoe we u kunnen helpen",
-    "button": "Plan een gratis kennismaking"
+  "contact": {
+    "title": "Neem Contact Op",
+    "subtitle": "We reageren binnen 24 uur"
   },
   "footer": {
     "tagline": "Slimme automatisering voor Nederlandse bedrijven",
@@ -135,18 +87,10 @@
     "builtBy": "Gebouwd door Caribbean Azure",
     "rights": "Alle rechten voorbehouden"
   },
-  "contact": {
-    "title": "Neem Contact Op",
-    "subtitle": "We reageren binnen 24 uur",
-    "form": {
-      "name": "Naam",
-      "email": "Email",
-      "phone": "Telefoon (optioneel)",
-      "message": "Bericht",
-      "submit": "Verstuur",
-      "sending": "Verzenden...",
-      "success": "Bedankt! We nemen spoedig contact op.",
-      "error": "Er ging iets mis. Probeer het opnieuw."
-    }
+  "cookie": {
+    "message": "We gebruiken cookies om uw ervaring te verbeteren. U kunt uw voorkeuren beheren.",
+    "accept": "Accepteren",
+    "reject": "Afwijzen",
+    "settings": "Instellingen"
   }
 }
