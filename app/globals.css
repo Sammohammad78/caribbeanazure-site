@@ -19,8 +19,8 @@
   --color-warning: #F59E0B;
 
   /* Typography */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, monospace;
 
   /* Spacing scale */
   --spacing-xs: 0.5rem;   /* 8px */
@@ -153,10 +153,11 @@ html {
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-background), 0 0 0 4px var(--color-brand-azure);
 }
 
 /* Selection */
 ::selection {
-  @apply bg-primary/20;
+  background-color: rgba(15, 95, 255, 0.2);
 }
