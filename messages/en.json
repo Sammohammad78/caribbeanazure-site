@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "cases": "Case Studies",
+    "about": "About",
+    "insights": "Insights",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Smart automation that actually delivers",
+    "subtitle": "We design, build, and integrate AI workflows that save time and increase revenue — without the hassle.",
+    "cta": {
+      "primary": "WhatsApp us",
+      "secondary": "Schedule a meeting"
+    },
+    "trustedBy": "Trusted by"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "We help businesses work smarter with custom AI solutions",
+    "automation": {
+      "title": "Automation",
+      "description": "Transform manual processes into smart workflows that save hours"
+    },
+    "integrations": {
+      "title": "Integrations",
+      "description": "Connect systems seamlessly for streamlined operations"
+    },
+    "chatbots": {
+      "title": "AI Chatbots",
+      "description": "Intelligent assistants that answer questions and generate leads 24/7"
+    },
+    "dashboards": {
+      "title": "Dashboards",
+      "description": "Real-time insights into your most important business data"
+    }
+  },
+  "process": {
+    "title": "Our Approach",
+    "subtitle": "From idea to impact in three steps",
+    "step1": {
+      "title": "Discover",
+      "description": "We analyze your processes and identify automation opportunities"
+    },
+    "step2": {
+      "title": "Develop",
+      "description": "We build custom solutions that integrate seamlessly"
+    },
+    "step3": {
+      "title": "Deliver",
+      "description": "We ensure flawless implementation and ongoing support"
+    }
+  },
+  "pricing": {
+    "title": "Transparent Pricing",
+    "subtitle": "Choose the package that fits your needs",
+    "starter": {
+      "name": "Starter",
+      "price": "From €2,500",
+      "description": "Perfect for small automation projects",
+      "features": [
+        "1 automation workflow",
+        "Basic integrations",
+        "Email support",
+        "30-day guarantee"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "From €7,500",
+      "description": "For businesses optimizing multiple processes",
+      "features": [
+        "3-5 automation workflows",
+        "Advanced integrations",
+        "AI chatbot implementation",
+        "Priority support",
+        "Monthly optimization",
+        "60-day guarantee"
+      ],
+      "popular": true
+    },
+    "scale": {
+      "name": "Scale",
+      "price": "Custom",
+      "description": "Enterprise solutions for complex challenges",
+      "features": [
+        "Unlimited workflows",
+        "Custom AI development",
+        "Dedicated support",
+        "SLA guarantee",
+        "Monthly strategy sessions",
+        "White-glove onboarding"
+      ]
+    },
+    "cta": "Get started today"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Answers to common questions",
+    "questions": [
+      {
+        "q": "How long does a typical project take?",
+        "a": "Most projects are delivered within 2-6 weeks, depending on complexity. We work in 2-week sprints for maximum transparency."
+      },
+      {
+        "q": "Which systems can you integrate?",
+        "a": "We work with all common platforms like Zapier, Make, Google Workspace, Microsoft 365, CRM systems, and custom APIs. If it has an API, we can probably integrate it."
+      },
+      {
+        "q": "What if I want changes after delivery?",
+        "a": "All packages include a guarantee period with free adjustments. After that, we offer maintenance contracts from €250/month or can make ad-hoc changes."
+      },
+      {
+        "q": "Do you have experience in my industry?",
+        "a": "We've completed projects in e-commerce, consultancy, finance, and healthcare. Our approach is process-driven, so we quickly build industry-specific knowledge."
+      },
+      {
+        "q": "Is my data secure?",
+        "a": "Absolutely. We follow GDPR guidelines, use encrypted connections, and sign NDAs upon request. Data always stays in your own systems."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to get started?",
+    "subtitle": "Let's meet and see how we can help you",
+    "button": "Schedule a free consultation"
+  },
+  "footer": {
+    "tagline": "Smart automation for Dutch businesses",
+    "company": "Company",
+    "services": "Services",
+    "resources": "Resources",
+    "legal": "Legal",
+    "builtBy": "Built by Caribbean Azure",
+    "rights": "All rights reserved"
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "We respond within 24 hours",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone (optional)",
+      "message": "Message",
+      "submit": "Send",
+      "sending": "Sending...",
+      "success": "Thank you! We'll be in touch soon.",
+      "error": "Something went wrong. Please try again."
+    }
+  }
+}

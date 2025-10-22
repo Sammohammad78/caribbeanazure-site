@@ -1,0 +1,152 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Diensten",
+    "cases": "Cases",
+    "about": "Over Ons",
+    "insights": "Inzichten",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Slimme automatisering die wél oplevert",
+    "subtitle": "Wij ontwerpen, bouwen en integreren AI-workflows die tijd besparen en omzet verhogen — zonder gedoe.",
+    "cta": {
+      "primary": "WhatsApp ons",
+      "secondary": "Plan een kennismaking"
+    },
+    "trustedBy": "Vertrouwd door"
+  },
+  "services": {
+    "title": "Onze Diensten",
+    "subtitle": "We helpen bedrijven om slimmer te werken met maatwerk AI-oplossingen",
+    "automation": {
+      "title": "Automatisering",
+      "description": "Handmatige processen omzetten naar slimme workflows die uren besparen"
+    },
+    "integrations": {
+      "title": "Integraties",
+      "description": "Systemen naadloos verbinden voor gestroomlijnde bedrijfsvoering"
+    },
+    "chatbots": {
+      "title": "AI Chatbots",
+      "description": "Intelligente assistenten die 24/7 vragen beantwoorden en leads genereren"
+    },
+    "dashboards": {
+      "title": "Dashboards",
+      "description": "Real-time inzicht in uw belangrijkste bedrijfsdata"
+    }
+  },
+  "process": {
+    "title": "Onze Aanpak",
+    "subtitle": "Van idee tot impact in drie stappen",
+    "step1": {
+      "title": "Ontdekken",
+      "description": "We analyseren uw processen en identificeren kansen voor automatisering"
+    },
+    "step2": {
+      "title": "Ontwikkelen",
+      "description": "We bouwen maatwerk oplossingen die naadloos integreren"
+    },
+    "step3": {
+      "title": "Opleveren",
+      "description": "We zorgen voor een vlekkeloze implementatie en blijvende ondersteuning"
+    }
+  },
+  "pricing": {
+    "title": "Transparante Prijzen",
+    "subtitle": "Kies het pakket dat bij u past",
+    "starter": {
+      "name": "Starter",
+      "price": "Vanaf €2.500",
+      "description": "Perfect voor kleine automatiseringsprojecten",
+      "features": [
+        "1 automatiseringsworkflow",
+        "Basisintegraties",
+        "Email ondersteuning",
+        "30 dagen garantie"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "Vanaf €7.500",
+      "description": "Voor bedrijven die meerdere processen willen optimaliseren",
+      "features": [
+        "3-5 automatiseringsworkflows",
+        "Geavanceerde integraties",
+        "AI chatbot implementatie",
+        "Priority support",
+        "Maandelijkse optimalisatie",
+        "60 dagen garantie"
+      ],
+      "popular": true
+    },
+    "scale": {
+      "name": "Scale",
+      "price": "Op maat",
+      "description": "Enterprise oplossingen voor complexe vraagstukken",
+      "features": [
+        "Onbeperkte workflows",
+        "Custom AI ontwikkeling",
+        "Dedicated support",
+        "SLA garantie",
+        "Maandelijkse strategiesessies",
+        "White-glove onboarding"
+      ]
+    },
+    "cta": "Start vandaag"
+  },
+  "faq": {
+    "title": "Veelgestelde Vragen",
+    "subtitle": "Antwoorden op de belangrijkste vragen",
+    "questions": [
+      {
+        "q": "Hoe lang duurt een gemiddeld project?",
+        "a": "De meeste projecten worden binnen 2-6 weken opgeleverd, afhankelijk van de complexiteit. We werken in sprints van 2 weken voor maximale transparantie."
+      },
+      {
+        "q": "Welke systemen kunnen jullie integreren?",
+        "a": "We werken met alle gangbare platforms zoals Zapier, Make, Google Workspace, Microsoft 365, CRM-systemen, en custom APIs. Als het een API heeft, kunnen we het waarschijnlijk integreren."
+      },
+      {
+        "q": "Wat als ik na oplevering aanpassingen wil?",
+        "a": "Alle pakketten includeren een garantieperiode waarin aanpassingen gratis zijn. Daarna bieden we onderhoudscontracten vanaf €250/maand of kunnen we ad-hoc aanpassingen doen."
+      },
+      {
+        "q": "Hebben jullie ervaring in mijn branche?",
+        "a": "We hebben projecten gedaan in e-commerce, consultancy, finance, en healthcare. Onze aanpak is procesgedreven, dus branche-specifieke kennis bouwen we snel op."
+      },
+      {
+        "q": "Is mijn data veilig?",
+        "a": "Absoluut. We werken volgens GDPR-richtlijnen, gebruiken encrypted connections, en tekenen NDAs op verzoek. Data blijft altijd in uw eigen systemen."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Klaar om te beginnen?",
+    "subtitle": "Laten we kennismaken en kijken hoe we u kunnen helpen",
+    "button": "Plan een gratis kennismaking"
+  },
+  "footer": {
+    "tagline": "Slimme automatisering voor Nederlandse bedrijven",
+    "company": "Bedrijf",
+    "services": "Diensten",
+    "resources": "Resources",
+    "legal": "Juridisch",
+    "builtBy": "Gebouwd door Caribbean Azure",
+    "rights": "Alle rechten voorbehouden"
+  },
+  "contact": {
+    "title": "Neem Contact Op",
+    "subtitle": "We reageren binnen 24 uur",
+    "form": {
+      "name": "Naam",
+      "email": "Email",
+      "phone": "Telefoon (optioneel)",
+      "message": "Bericht",
+      "submit": "Verstuur",
+      "sending": "Verzenden...",
+      "success": "Bedankt! We nemen spoedig contact op.",
+      "error": "Er ging iets mis. Probeer het opnieuw."
+    }
+  }
+}
