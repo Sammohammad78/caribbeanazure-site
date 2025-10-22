@@ -2,7 +2,7 @@
 
 import Hero3D from '@/components/3d/Hero3D'
 import { Button } from '@/components/ui/button'
-import { ArrowRight, PlayCircle } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -78,9 +78,9 @@ export function Hero() {
                 size="lg"
                 className="btn-outline w-full sm:w-auto"
               >
-                <Link href={`/${locale}/demo`}>
+                <Link href={`/${locale}/cases`}>
                   {t('cta.secondary')}
-                  <PlayCircle className="size-5" />
+                  <ArrowRight className="size-5" />
                 </Link>
               </Button>
             </motion.div>

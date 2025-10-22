@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
 import { Button } from '@/components/ui/button'
-import { Menu, X, Globe } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
 
@@ -13,31 +13,15 @@ export function Header() {
   const locale = useLocale()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const localizedSlugs = {
-    home: '',
-    services: locale === 'nl' ? 'diensten' : 'services',
-    cases: 'cases',
-    pricing: 'prijzen',
-    industries: locale === 'nl' ? 'sectoren' : 'industries',
-    integrations: locale === 'nl' ? 'integraties' : 'integrations',
-    security: 'security',
-    insights: 'insights',
-  }
-
+  // Simplified navigation (Dutch-only, 5 core pages per redesign)
   const buildHref = (slug: string) => (slug ? `/${locale}/${slug}` : `/${locale}`)
 
   const navItems = [
-    { href: buildHref(localizedSlugs.home), label: t('nav.home') },
-    { href: buildHref(localizedSlugs.services), label: t('nav.services') },
-    { href: buildHref(localizedSlugs.cases), label: t('nav.cases') },
-    { href: buildHref(localizedSlugs.pricing), label: t('nav.pricing') },
-    { href: buildHref(localizedSlugs.industries), label: t('nav.industries') },
-    { href: buildHref(localizedSlugs.integrations), label: t('nav.integrations') },
-    { href: buildHref(localizedSlugs.security), label: t('nav.security') },
-    { href: buildHref(localizedSlugs.insights), label: t('nav.insights') },
+    { href: buildHref(''), label: t('nav.home') },
+    { href: buildHref('diensten'), label: t('nav.services') },
+    { href: buildHref('cases'), label: t('nav.cases') },
+    { href: buildHref('over'), label: t('nav.about') },
   ]
-
-  const otherLocale = locale === 'nl' ? 'en' : 'nl'
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] bg-[color:color-mix(in_oklab,var(--bg)_82%,transparent)]/90 backdrop-blur-xl supports-[backdrop-filter]:bg-[color:color-mix(in_oklab,var(--bg)_75%,transparent)]/85">
@@ -66,16 +50,9 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA & Language Switcher */}
+          {/* CTA & Theme Toggle */}
           <div className="flex items-center gap-3">
             <ThemeToggle className="hidden md:inline-flex" />
-            <Link
-              href={`/${otherLocale}`}
-              className="lift-hover hidden items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] px-3 py-1.5 text-xs font-medium text-[color:var(--fg-muted)] transition-all duration-200 hover:border-[color:color-mix(in_oklab,var(--accent)_30%,transparent)] hover:text-[color:var(--fg)] sm:flex"
-            >
-              <Globe className="h-4 w-4" />
-              <span>{otherLocale.toUpperCase()}</span>
-            </Link>
 
             <Button asChild size="sm" className="hidden md:inline-flex">
               <Link href={`/${locale}/contact`}>{t('nav.contact')}</Link>
@@ -105,14 +82,7 @@ export function Header() {
         )}
       >
         <nav className="container-custom flex flex-col gap-4 py-6">
-          <div className="flex items-center justify-between">
-            <Link
-              href={`/${otherLocale}`}
-              className="lift-hover inline-flex items-center gap-2 rounded-full border border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] px-3 py-1.5 text-xs font-medium text-[color:var(--fg-muted)] transition-all duration-200 hover:border-[color:color-mix(in_oklab,var(--accent)_30%,transparent)] hover:text-[color:var(--fg)]"
-            >
-              <Globe className="h-4 w-4" />
-              <span>{otherLocale.toUpperCase()}</span>
-            </Link>
+          <div className="flex items-center justify-end">
             <ThemeToggle />
           </div>
 

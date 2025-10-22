@@ -4,7 +4,8 @@ import { Hero } from '@/components/sections/hero'
 import { OutcomesStrip } from '@/components/sections/outcomes-strip'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { ProcessSection } from '@/components/sections/process-section'
-import { PricingSection } from '@/components/sections/pricing-section'
+import { UseCasesSection } from '@/components/sections/use-cases-section'
+import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { FAQSection } from '@/components/sections/faq-section'
 import { CTASection } from '@/components/sections/cta-section'
 
@@ -15,9 +16,10 @@ export default function HomePage() {
       <main>
         <Hero />
         <OutcomesStrip />
-        <ServicesGrid />
         <ProcessSection />
-        <PricingSection />
+        <UseCasesSection />
+        <ServicesGrid />
+        <TestimonialsSection />
         <FAQSection />
         <CTASection />
       </main>
