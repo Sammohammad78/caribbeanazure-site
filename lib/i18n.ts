@@ -1,14 +1,14 @@
 import { getRequestConfig } from 'next-intl/server'
 import { notFound } from 'next/navigation'
 
-export const locales = ['nl', 'en'] as const
+// Dutch-only configuration (English removed per redesign requirements)
+export const locales = ['nl'] as const
 export type Locale = (typeof locales)[number]
 
 export const defaultLocale: Locale = 'nl'
 
 export const localeNames: Record<Locale, string> = {
   nl: 'Nederlands',
-  en: 'English',
 }
 
 export default getRequestConfig(async ({ requestLocale }) => {

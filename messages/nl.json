@@ -14,14 +14,14 @@
     "roi": "ROI-calculator"
   },
   "hero": {
-    "title": "Automatiseer je routine. Groei sneller.",
-    "qualifier": "Voor Nederlandse mkb's in diensten, retail en bouw.",
-    "subtitle": "Wij bouwen AI-gestuurde workflows die e-mail, WhatsApp en web omzetten in omzet—zonder extra handwerk.",
+    "title": "Automatisering die tijd wint en fouten voorkomt.",
+    "qualifier": "Voor Nederlandse mkb-bedrijven die groeien zonder groeiende chaos.",
+    "subtitle": "Wij bouwen AI-gedreven workflows die e-mails, offertes en taken automatisch laten doorstromen—van inbox tot actie. Prototype in 72 uur.",
     "cta": {
       "primary": "Plan een gratis intake",
-      "secondary": "Bekijk 90-sec demo"
+      "secondary": "Bekijk cases"
     },
-    "trustedBy": "Vertrouwd door"
+    "trustedBy": "Vertrouwd door 50+ MKB-bedrijven"
   },
   "outcomes": {
     "label": "Typische uitkomsten",
@@ -89,19 +89,47 @@
   },
   "process": {
     "title": "Hoe we werken",
-    "subtitle": "In drie sprints van intake naar live.",
+    "subtitle": "Van intake tot livegang in drie heldere stappen.",
     "step1": {
-      "title": "Analyse & blueprint",
-      "description": "Interviews + data-audit monden uit in een visuele flow met KPI's."
+      "title": "1. Intake & proces-scan",
+      "description": "30 minuten om je snelste winst te identificeren. We scannen je huidige processen en tools."
     },
     "step2": {
-      "title": "Bouwen & testen",
-      "description": "Sprints van twee weken leveren workflows, logging en dashboards."
+      "title": "2. Prototype in 72 uur",
+      "description": "Binnen 3 werkdagen een werkend prototype van je eerste workflow. Geen weken plannen, direct resultaat zien."
     },
     "step3": {
-      "title": "Live & optimaliseren",
-      "description": "Training, support en iteraties zodat je team zelfstandig kan draaien."
+      "title": "3. Livegang & monitoring",
+      "description": "Training voor je team + live dashboards met real-time SLA's. Je houdt altijd zicht op doorlooptijd en bottlenecks."
     }
+  },
+  "useCases": {
+    "title": "Concrete use-cases",
+    "subtitle": "Drie scenario's die direct waarde leveren.",
+    "items": [
+      {
+        "title": "Inbox-to-Action Automatisering",
+        "problem": "E-mails verdwijnen in de inbox. Follow-ups sneuvelen. Offerteaanvragen duren dagen.",
+        "solution": "Inkomende e-mails worden automatisch naar ClickUp, Teams of WhatsApp gestuurd met urgentie en categorie.",
+        "example": "Alle mails met 'offerte' in onderwerp → task met prio high + tag Sales binnen 30 seconden.",
+        "outcome": "30-60% minder doorlooptijd van e-mail tot actie."
+      },
+      {
+        "title": "Offerte-Generator met Goedkeuringsflow",
+        "problem": "Salesteam verliest tijd met handmatig offertes kopieren, plakken en mailen.",
+        "solution": "Template-based offertes met klantgegevens uit CRM + automatische goedkeuringsflow voor directeur.",
+        "example": "Salesteam vult simpel formulier → PDF offerte binnen 5 min in klant inbox.",
+        "outcome": "85%+ foutreductie, 4x sneller van aanvraag naar verzending."
+      },
+      {
+        "title": "Website-Chat → CRM-Lead met Validatie",
+        "problem": "Website bezoekers stellen vragen, maar leads verdwijnen in inbox of worden niet gekwalificeerd.",
+        "solution": "AI-chatbot beantwoordt FAQ's + kwalificeert leads + maakt automatisch CRM-record aan met hot/warm/cold label.",
+        "example": "Bezoeker vraagt 'Werkt dit met Exact?' → Bot antwoordt + maakt hot lead aan + stuurt kalenderlink.",
+        "outcome": "62% van vragen direct beantwoord, 18% meer gekwalificeerde leads in CRM."
+      }
+    ],
+    "cta": "Plan een intake—ontdek je snelste winst"
   },
   "cases": {
     "title": "Bewijs, geen beloftes",
@@ -442,6 +470,30 @@
       {
         "q": "Wat als we al een intern team hebben?",
         "a": "We werken vaak samen met interne teams. Onze blueprint en flows zijn opgezet zodat jullie ze zelf kunnen beheren of uitbreiden."
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "Wat klanten zeggen",
+    "subtitle": "Concrete resultaten van bedrijven die al live zijn.",
+    "items": [
+      {
+        "quote": "Recruiters hebben eindelijk zicht op welke kandidaten klaar zijn voor een call. Alles staat al in het ATS met de juiste context.",
+        "author": "Teamlead Recruitment",
+        "company": "Randstad Inhouse",
+        "result": "Van 3 dagen intake naar 3 uur"
+      },
+      {
+        "quote": "Elke ochtend starten we met een geprioriteerde lijst. Het team ziet exact waarom deals scoren, zonder spreadsheets.",
+        "author": "Investment Manager",
+        "company": "ABN AMRO Ventures",
+        "result": "280 uur Excel-werk → 40 uur/kwartaal"
+      },
+      {
+        "quote": "Klanten krijgen direct antwoord en agents krijgen context, transcript en oplossing. Ons team focust op uitzonderingen.",
+        "author": "Head of Support",
+        "company": "CM.com",
+        "result": "62% tickets opgelost zonder mens"
       }
     ]
   },

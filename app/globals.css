@@ -13,39 +13,67 @@
 :root {
   color-scheme: light;
 
+  /* Premium Brand Colors (Azure/Navy Spectrum) */
+  --brand-900: #0A2A43;
+  --brand-900-rgb: 10, 42, 67;
+  --brand-600: #0F5E9C;
+  --brand-600-rgb: 15, 94, 156;
+  --brand-400: #4BA3F7;
+  --brand-400-rgb: 75, 163, 247;
+  --brand-100: #E3F2FD;
+  --brand-100-rgb: 227, 242, 253;
+
+  /* Neutral Palette (Sand/Ink) */
+  --sand-050: #F7F7F5;
+  --sand-100: #EEEDE9;
+  --sand-200: #E0DED7;
+  --ink-900: #0E0F14;
+  --ink-700: #3A3D4A;
+  --ink-500: #6B7280;
+  --ink-400: #9CA3AF;
+
+  /* Accent Colors */
+  --accent-amber: #FFB703;
+  --accent-amber-light: #FFF8E6;
+  --success-green: #10B981;
+  --error-red: #EF4444;
+  --warning-orange: #F59E0B;
+
   /* Surfaces */
-  --bg: var(--slate-1);
-  --bg-elev: var(--slate-2);
-  --panel: var(--slate-3);
-  --muted: var(--slate-6);
-  --border: var(--slate-7);
+  --bg: var(--sand-050);
+  --bg-elev: #FFFFFF;
+  --panel: #FFFFFF;
+  --muted: var(--sand-200);
+  --border: var(--sand-200);
 
   /* Text */
-  --fg: var(--slate-12);
-  --fg-muted: var(--slate-11);
-  --fg-subtle: var(--slate-10);
+  --fg: var(--ink-900);
+  --fg-muted: var(--ink-500);
+  --fg-subtle: var(--ink-400);
 
-  /* Brand + accent */
-  --brand-soft: var(--cyan-4);
-  --brand: var(--cyan-9);
-  --brand-strong: var(--cyan-11);
+  /* Brand Semantic (mapped to new azure palette) */
+  --brand-soft: var(--brand-100);
+  --brand: var(--brand-600);
+  --brand-strong: var(--brand-900);
 
-  --accent-soft: var(--iris-4);
-  --accent: var(--iris-9);
-  --accent-strong: var(--iris-11);
+  /* Accent Semantic */
+  --accent-soft: var(--accent-amber-light);
+  --accent: var(--accent-amber);
+  --accent-strong: #E5A503;
 
   /* State */
-  --ok: var(--jade-9);
-  --warn: var(--amber-9);
-  --err: var(--ruby-9);
+  --ok: var(--success-green);
+  --warn: var(--warning-orange);
+  --err: var(--error-red);
 
   /* FX */
-  --shadow: 0 8px 40px rgb(0 0 0 / 14%);
-  --shadow-strong: 0 10px 50px rgb(0 0 0 / 20%);
-  --ring: 0 0 0 3px color-mix(in oklab, var(--accent) 30%, transparent);
+  --shadow: 0 8px 40px rgba(10, 42, 67, 0.14);
+  --shadow-strong: 0 10px 50px rgba(10, 42, 67, 0.20);
+  --ring: 0 0 0 3px rgba(75, 163, 247, 0.25);
   --hover-bg: color-mix(in oklab, var(--panel) 85%, transparent);
-  --hover-border: color-mix(in oklab, var(--accent) 28%, transparent);
-  --hover-ring: 0 0 0 3px color-mix(in oklab, var(--brand) 28%, transparent);
+  --hover-border: rgba(75, 163, 247, 0.28);
+  --hover-ring: 0 0 0 3px rgba(75, 163, 247, 0.28);
+  --glow-brand: 0 0 16px rgba(75, 163, 247, 0.4);
   --transition-fast: 180ms ease-out;
   --transition-base: 220ms ease-out;
 }
@@ -53,29 +81,36 @@
 :root.dark {
   color-scheme: dark;
 
-  --bg: var(--slate-dark-2);
-  --bg-elev: color-mix(in oklab, var(--slate-dark-3) 70%, transparent);
-  --panel: var(--slate-dark-4);
-  --muted: var(--slate-dark-7);
-  --border: var(--slate-dark-6);
+  /* Dark mode surfaces */
+  --bg: #0D1117;
+  --bg-elev: #161B22;
+  --panel: #1C2128;
+  --muted: #3A4451;
+  --border: #2D333B;
 
-  --fg: var(--slate-dark-12);
-  --fg-muted: var(--slate-dark-11);
-  --fg-subtle: var(--slate-dark-10);
+  /* Dark mode text */
+  --fg: #F0F1F3;
+  --fg-muted: #9CA3AF;
+  --fg-subtle: #6B7280;
 
-  --brand-soft: var(--cyan-dark-4);
-  --brand: var(--cyan-dark-9);
-  --brand-strong: var(--cyan-dark-11);
+  /* Dark mode brand (brighter for contrast) */
+  --brand-soft: #1A4D7A;
+  --brand: var(--brand-400);
+  --brand-strong: #7BBEFF;
 
-  --accent-soft: var(--iris-dark-4);
-  --accent: var(--iris-dark-9);
-  --accent-strong: var(--iris-dark-11);
+  /* Dark mode accent */
+  --accent-soft: rgba(255, 183, 3, 0.15);
+  --accent: var(--accent-amber);
+  --accent-strong: #FFC933;
 
-  --shadow: 0 10px 50px rgb(0 0 0 / 35%);
-  --ring: 0 0 0 3px color-mix(in oklab, var(--accent) 30%, transparent);
+  /* Dark mode shadows */
+  --shadow: 0 10px 50px rgba(0, 0, 0, 0.35);
+  --shadow-strong: 0 20px 60px rgba(0, 0, 0, 0.50);
+  --ring: 0 0 0 3px rgba(75, 163, 247, 0.30);
   --hover-bg: color-mix(in oklab, var(--panel) 80%, transparent);
-  --hover-border: color-mix(in oklab, var(--accent) 34%, transparent);
-  --hover-ring: 0 0 0 3px color-mix(in oklab, var(--accent) 35%, transparent);
+  --hover-border: rgba(75, 163, 247, 0.34);
+  --hover-ring: 0 0 0 3px rgba(75, 163, 247, 0.35);
+  --glow-brand: 0 0 20px rgba(75, 163, 247, 0.5);
   --transition-fast: 180ms ease-out;
   --transition-base: 220ms ease-out;
 }
@@ -251,7 +286,7 @@ a {
   height: 3px;
   width: 48px;
   border-radius: 999px;
-  background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--brand-600) 0%, var(--brand-400) 100%);
 }
 
 .card:hover {
@@ -266,12 +301,12 @@ a {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+  background: linear-gradient(135deg, var(--brand-600) 0%, var(--brand-400) 100%);
   color: rgb(255 255 255);
   border-radius: 12px;
   border: 0;
-  box-shadow: 0 6px 18px color-mix(in oklab, var(--brand) 40%, transparent);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  box-shadow: 0 6px 18px rgba(15, 94, 156, 0.4);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), scale var(--transition-fast);
 }
 
 .btn-primary:focus-visible {
@@ -280,8 +315,8 @@ a {
 }
 
 .btn-primary:hover {
-  box-shadow: 0 8px 24px color-mix(in oklab, var(--accent) 35%, transparent);
-  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(75, 163, 247, 0.45), var(--glow-brand);
+  transform: translateY(-1px) scale(1.02);
 }
 
 .btn-outline {
