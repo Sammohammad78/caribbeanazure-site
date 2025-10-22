@@ -6,16 +6,17 @@
     "pricing": "Prijzen",
     "about": "Over ons",
     "blog": "Blog",
-    "contact": "Contact"
-  },
-  "cta": {
-    "primary": "Plan een gratis intake",
-    "secondary": "Bekijk cases"
+    "contact": "Contact",
+    "insights": "Inzichten"
   },
   "hero": {
-    "h1": "Automatiseer je routine. Groei sneller.",
-    "sub": "Wij bouwen AI-gestuurde workflows die e-mail, WhatsApp en web omzetten in omzet—zonder gedoe.",
-    "trustedBy": "Vertrouwd door"
+    "title": "Automatiseer je routine. Groei sneller.",
+    "subtitle": "Wij bouwen AI-gestuurde workflows die e-mail, WhatsApp en web omzetten in omzet—zonder gedoe.",
+    "trustedBy": "Vertrouwd door",
+    "cta": {
+      "primary": "Plan een gratis intake",
+      "secondary": "Bekijk cases"
+    }
   },
   "outcomes": {
     "title": "Meetbare Impact",
@@ -39,15 +40,15 @@
   "services": {
     "title": "Onze Diensten",
     "subtitle": "Van inbox tot actie, van WhatsApp tot dashboard",
-    "email": {
+    "automation": {
       "title": "E-mail-naar-Actie",
       "description": "Gmail/Outlook automatisch koppelen aan ClickUp, Trello of To-Do. Nooit meer handmatig taken aanmaken."
     },
-    "whatsapp": {
+    "integrations": {
       "title": "WhatsApp-First Funnels",
       "description": "Offertes, herinneringen en follow-ups via WhatsApp. Persoonlijk én geautomatiseerd."
     },
-    "agents": {
+    "chatbots": {
       "title": "AI-Agents & Chatbots",
       "description": "24/7 support, intake en triage. Van eerste vraag tot gekwalificeerde lead."
     },
@@ -60,6 +61,27 @@
       "description": "Framer of Carrd websites gekoppeld aan Zapier, n8n of Make. Mooi én slim."
     }
   },
+  "process": {
+    "title": "Hoe We Werken",
+    "subtitle": "Van intake tot lancering in 3 stappen",
+    "step1": {
+      "title": "Ontdekken",
+      "description": "We starten met een gratis intake waarin we je uitdagingen en doelen in kaart brengen."
+    },
+    "step2": {
+      "title": "Bouwen",
+      "description": "We bouwen je oplossing in sprints van 2 weken, met regelmatige check-ins en updates."
+    },
+    "step3": {
+      "title": "Lanceren",
+      "description": "We leveren op met training en ondersteuning, zodat je team direct aan de slag kan."
+    }
+  },
+  "cta": {
+    "title": "Klaar om te starten?",
+    "subtitle": "Plan een gratis intake en ontdek hoe AI-automatisering jouw bedrijf kan transformeren.",
+    "button": "Plan een gratis intake"
+  },
   "cases": {
     "title": "Cases",
     "subtitle": "Echte problemen, concrete oplossingen",
@@ -68,11 +90,71 @@
   "pricing": {
     "title": "Transparante Prijzen",
     "subtitle": "Kies het pakket dat bij je past",
+    "starter": {
+      "name": "Starter",
+      "price": "Vanaf €2.500",
+      "description": "Perfect voor kleine automatiseringsprojecten",
+      "features": [
+        "1 automatiseringsworkflow",
+        "Basisintegraties",
+        "Email ondersteuning",
+        "30 dagen garantie"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "Vanaf €7.500",
+      "description": "Voor bedrijven die meerdere processen willen optimaliseren",
+      "features": [
+        "3-5 automatiseringsworkflows",
+        "Geavanceerde integraties",
+        "AI chatbot implementatie",
+        "Priority support",
+        "Maandelijkse optimalisatie",
+        "60 dagen garantie"
+      ],
+      "popular": true
+    },
+    "scale": {
+      "name": "Scale",
+      "price": "Op maat",
+      "description": "Enterprise oplossingen voor complexe vraagstukken",
+      "features": [
+        "Onbeperkte workflows",
+        "Custom AI ontwikkeling",
+        "Dedicated support",
+        "SLA garantie",
+        "Maandelijkse strategiesessies",
+        "White-glove onboarding"
+      ]
+    },
     "cta": "Start vandaag"
   },
   "faq": {
     "title": "Veelgestelde Vragen",
-    "subtitle": "Antwoorden op de belangrijkste vragen"
+    "subtitle": "Antwoorden op de belangrijkste vragen",
+    "questions": [
+      {
+        "q": "Hoe lang duurt een gemiddeld project?",
+        "a": "De meeste projecten worden binnen 2-6 weken opgeleverd, afhankelijk van de complexiteit. We werken in sprints van 2 weken voor maximale transparantie."
+      },
+      {
+        "q": "Welke systemen kunnen jullie integreren?",
+        "a": "We werken met alle gangbare platforms zoals Zapier, Make, Google Workspace, Microsoft 365, CRM-systemen, en custom APIs. Als het een API heeft, kunnen we het waarschijnlijk integreren."
+      },
+      {
+        "q": "Wat als ik na oplevering aanpassingen wil?",
+        "a": "Alle pakketten includeren een garantieperiode waarin aanpassingen gratis zijn. Daarna bieden we onderhoudscontracten vanaf €250/maand of kunnen we ad-hoc aanpassingen doen."
+      },
+      {
+        "q": "Hebben jullie ervaring in mijn branche?",
+        "a": "We hebben projecten gedaan in e-commerce, consultancy, finance, en healthcare. Onze aanpak is procesgedreven, dus branche-specifieke kennis bouwen we snel op."
+      },
+      {
+        "q": "Is mijn data veilig?",
+        "a": "Absoluut. We werken volgens GDPR-richtlijnen, gebruiken encrypted connections, en tekenen NDAs op verzoek. Data blijft altijd in uw eigen systemen."
+      }
+    ]
   },
   "contact": {
     "title": "Neem Contact Op",

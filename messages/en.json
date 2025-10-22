@@ -6,16 +6,17 @@
     "pricing": "Pricing",
     "about": "About",
     "blog": "Blog",
-    "contact": "Contact"
-  },
-  "cta": {
-    "primary": "Book a free intake",
-    "secondary": "View cases"
+    "contact": "Contact",
+    "insights": "Insights"
   },
   "hero": {
-    "h1": "Automate the routine. Grow faster.",
-    "sub": "We build AI-driven workflows that turn email, WhatsApp and web into revenue—minus the friction.",
-    "trustedBy": "Trusted by"
+    "title": "Automate the routine. Grow faster.",
+    "subtitle": "We build AI-driven workflows that turn email, WhatsApp and web into revenue—minus the friction.",
+    "trustedBy": "Trusted by",
+    "cta": {
+      "primary": "Book a free intake",
+      "secondary": "View cases"
+    }
   },
   "outcomes": {
     "title": "Measurable Impact",
@@ -39,15 +40,15 @@
   "services": {
     "title": "Our Services",
     "subtitle": "From inbox to action, WhatsApp to dashboard",
-    "email": {
+    "automation": {
       "title": "Email-to-Action",
       "description": "Automatically connect Gmail/Outlook to ClickUp, Trello or To-Do. Never create tasks manually again."
     },
-    "whatsapp": {
+    "integrations": {
       "title": "WhatsApp-First Funnels",
       "description": "Quotes, reminders and follow-ups via WhatsApp. Personal and automated."
     },
-    "agents": {
+    "chatbots": {
       "title": "AI Agents & Chatbots",
       "description": "24/7 support, intake and triage. From first question to qualified lead."
     },
@@ -60,6 +61,27 @@
       "description": "Framer or Carrd websites connected to Zapier, n8n or Make. Beautiful and smart."
     }
   },
+  "process": {
+    "title": "How We Work",
+    "subtitle": "From intake to launch in 3 steps",
+    "step1": {
+      "title": "Discover",
+      "description": "We start with a free intake where we map out your challenges and goals."
+    },
+    "step2": {
+      "title": "Build",
+      "description": "We build your solution in 2-week sprints, with regular check-ins and updates."
+    },
+    "step3": {
+      "title": "Launch",
+      "description": "We deliver with training and support, so your team can get started right away."
+    }
+  },
+  "cta": {
+    "title": "Ready to get started?",
+    "subtitle": "Book a free intake and discover how AI automation can transform your business.",
+    "button": "Book a free intake"
+  },
   "cases": {
     "title": "Case Studies",
     "subtitle": "Real problems, concrete solutions",
@@ -68,11 +90,71 @@
   "pricing": {
     "title": "Transparent Pricing",
     "subtitle": "Choose the package that fits you",
+    "starter": {
+      "name": "Starter",
+      "price": "From €2,500",
+      "description": "Perfect for small automation projects",
+      "features": [
+        "1 automation workflow",
+        "Basic integrations",
+        "Email support",
+        "30-day guarantee"
+      ]
+    },
+    "pro": {
+      "name": "Pro",
+      "price": "From €7,500",
+      "description": "For businesses optimizing multiple processes",
+      "features": [
+        "3-5 automation workflows",
+        "Advanced integrations",
+        "AI chatbot implementation",
+        "Priority support",
+        "Monthly optimization",
+        "60-day guarantee"
+      ],
+      "popular": true
+    },
+    "scale": {
+      "name": "Scale",
+      "price": "Custom",
+      "description": "Enterprise solutions for complex challenges",
+      "features": [
+        "Unlimited workflows",
+        "Custom AI development",
+        "Dedicated support",
+        "SLA guarantee",
+        "Monthly strategy sessions",
+        "White-glove onboarding"
+      ]
+    },
     "cta": "Get started today"
   },
   "faq": {
     "title": "Frequently Asked Questions",
-    "subtitle": "Answers to common questions"
+    "subtitle": "Answers to common questions",
+    "questions": [
+      {
+        "q": "How long does a typical project take?",
+        "a": "Most projects are delivered within 2-6 weeks, depending on complexity. We work in 2-week sprints for maximum transparency."
+      },
+      {
+        "q": "Which systems can you integrate?",
+        "a": "We work with all common platforms like Zapier, Make, Google Workspace, Microsoft 365, CRM systems, and custom APIs. If it has an API, we can probably integrate it."
+      },
+      {
+        "q": "What if I want changes after delivery?",
+        "a": "All packages include a guarantee period with free adjustments. After that, we offer maintenance contracts from €250/month or can make ad-hoc changes."
+      },
+      {
+        "q": "Do you have experience in my industry?",
+        "a": "We've completed projects in e-commerce, consultancy, finance, and healthcare. Our approach is process-driven, so we quickly build industry-specific knowledge."
+      },
+      {
+        "q": "Is my data secure?",
+        "a": "Absolutely. We follow GDPR guidelines, use encrypted connections, and sign NDAs upon request. Data always stays in your own systems."
+      }
+    ]
   },
   "contact": {
     "title": "Get In Touch",
