@@ -6,115 +6,94 @@ export function Footer() {
   const locale = useLocale()
   const currentYear = new Date().getFullYear()
 
+  const localizedSlugs = {
+    services: locale === 'nl' ? 'diensten' : 'services',
+    industries: locale === 'nl' ? 'sectoren' : 'industries',
+    integrations: locale === 'nl' ? 'integraties' : 'integrations',
+    security: 'security',
+    insights: 'insights',
+    blueprint: 'blueprint',
+    roi: 'roi',
+    cases: 'cases',
+    pricing: 'prijzen',
+    about: locale === 'nl' ? 'over-ons' : 'about',
+    contact: 'contact',
+  }
+
   const footerLinks = {
     company: [
-      { href: `/${locale}/over-ons`, label: t('nav.about') },
-      { href: `/${locale}/cases`, label: t('nav.cases') },
-      { href: `/${locale}/contact`, label: t('nav.contact') },
+      { href: `/${locale}/${localizedSlugs.about}`, label: t('nav.about') },
+      { href: `/${locale}/${localizedSlugs.cases}`, label: t('nav.cases') },
+      { href: `/${locale}/${localizedSlugs.contact}`, label: t('nav.contact') },
     ],
     services: [
-      { href: `/${locale}/diensten/automatisering`, label: t('services.automation.title') },
-      { href: `/${locale}/diensten/integraties`, label: t('services.integrations.title') },
-      { href: `/${locale}/diensten/ai-chatbots`, label: t('services.chatbots.title') },
-      { href: `/${locale}/diensten/dashboards`, label: t('services.dashboards.title') },
+      { href: `/${locale}/${localizedSlugs.services}`, label: t('nav.services') },
+      { href: `/${locale}/${localizedSlugs.industries}`, label: t('nav.industries') },
+      { href: `/${locale}/${localizedSlugs.integrations}`, label: t('nav.integrations') },
+      { href: `/${locale}/${localizedSlugs.security}`, label: t('nav.security') },
     ],
     resources: [
-      { href: `/${locale}/inzichten`, label: t('nav.insights') },
+      { href: `/${locale}/${localizedSlugs.insights}`, label: t('nav.insights') },
+      { href: `/${locale}/${localizedSlugs.blueprint}`, label: t('nav.blueprint') },
+      { href: `/${locale}/${localizedSlugs.roi}`, label: t('nav.roi') },
     ],
     legal: [
-      { href: `/${locale}/privacybeleid`, label: 'Privacy' },
-      { href: `/${locale}/voorwaarden`, label: 'Terms' },
+      { href: `/${locale}/privacy`, label: t('footer.privacy') },
+      { href: `/${locale}/terms`, label: t('footer.terms') },
     ],
   }
 
   return (
-    <footer className="border-t bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Company */}
-          <div>
-            <h3 className="font-semibold text-sm mb-4">{t('footer.company')}</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="font-semibold text-sm mb-4">{t('footer.services')}</h3>
-            <ul className="space-y-3">
-              {footerLinks.services.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Resources */}
-          <div>
-            <h3 className="font-semibold text-sm mb-4">{t('footer.resources')}</h3>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="font-semibold text-sm mb-4">{t('footer.legal')}</h3>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+    <footer className="border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] bg-[color:color-mix(in_oklab,var(--bg)_92%,transparent)]/90 backdrop-blur-xl">
+      <div className="container-custom py-16">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
+          <FooterColumn label={t('footer.company')} links={footerLinks.company} />
+          <FooterColumn label={t('footer.services')} links={footerLinks.services} />
+          <FooterColumn label={t('footer.resources')} links={footerLinks.resources} />
+          <FooterColumn label={t('footer.legal')} links={footerLinks.legal} />
         </div>
 
-        {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-          <div className="flex items-center space-x-2">
-            <div className="flex h-6 w-6 items-center justify-center rounded bg-primary text-primary-foreground font-bold text-xs">
+        <div className="mt-14 flex flex-col items-start gap-6 border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-3 text-sm text-[color:var(--fg-subtle)]">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[color:var(--brand)] text-white font-semibold shadow-[0_12px_32px_color-mix(in_oklab,var(--brand)_35%,transparent)]">
               CA
             </div>
-            <p className="text-sm text-muted-foreground">
-              © {currentYear} Caribbean Azure. {t('footer.rights')}.
+            <p>
+              (c) {currentYear} Caribbean Azure. {t('footer.rights')}.
             </p>
           </div>
-          <p className="text-sm text-muted-foreground">
-            {t('footer.tagline')}
-          </p>
+          <p className="text-sm text-[color:var(--fg-muted)]">{t('footer.tagline')}</p>
         </div>
       </div>
     </footer>
+  )
+}
+
+function FooterColumn({
+  label,
+  links,
+}: {
+  label: string
+  links: { href: string; label: string }[]
+}) {
+  return (
+    <div className="space-y-4">
+      <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">
+        {label}
+      </h3>
+      <ul className="space-y-3">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className="lift-hover inline-flex items-center gap-2 text-sm font-medium text-[color:var(--fg-subtle)] transition-all duration-200 hover:text-[color:var(--fg)]"
+            >
+              <span className="h-1 w-1 rounded-full bg-[color:var(--accent)]" />
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
   )
 }

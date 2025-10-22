@@ -10,24 +10,22 @@ export function CTASection() {
   const locale = useLocale()
 
   return (
-    <section className="py-20 md:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary/80 px-8 py-16 md:px-16 md:py-24 shadow-strong">
-          {/* Decorative elements */}
-          <div className="absolute top-0 right-0 -mt-16 -mr-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
-          <div className="absolute bottom-0 left-0 -mb-16 -ml-16 h-64 w-64 rounded-full bg-white/10 blur-3xl" />
+    <section className="section-padding-y">
+      <div className="container-custom">
+        <div className="relative overflow-hidden rounded-[32px] border border-[color:color-mix(in_oklab,var(--accent)_35%,transparent)] bg-[linear-gradient(135deg,color-mix(in_oklab,var(--brand)_80%,transparent)0%,color-mix(in_oklab,var(--accent)_82%,transparent)100%)] px-8 py-16 shadow-[0_40px_120px_rgb(45_43_99/28%)] md:px-16 md:py-24">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.2),transparent_55%)] opacity-80 mix-blend-screen" />
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width%3D%22160%22 height%3D%22160%22 viewBox%3D%220%200%20160%20160%22 fill%3D%22none%22 xmlns%3D%22http://www.w3.org/2000/svg%22%3E%3Cpath d%3D%22M0 159.5H159.5V0H0v159.5Zm21.5-21.5h116.5V21.5H21.5v116.5Z%22 fill%3D%22rgba(255,255,255,0.08)%22/%3E%3C/svg%3E')] opacity-30" />
 
-          {/* Content */}
-          <div className="relative max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground">
+          <div className="relative mx-auto max-w-3xl text-center space-y-8 text-white">
+            <h2 className="text-4xl md:text-5xl font-bold">
               {t('title')}
             </h2>
-            <p className="text-xl text-primary-foreground/90">
+            <p className="text-xl text-white/85">
               {t('subtitle')}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-              <Button asChild size="lg" variant="secondary" className="w-full sm:w-auto">
+              <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link href={`/${locale}/contact`}>
                   <Calendar className="mr-2 h-5 w-5" />
                   {t('button')}

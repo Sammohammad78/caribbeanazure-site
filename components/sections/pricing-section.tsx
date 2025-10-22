@@ -18,84 +18,70 @@ export function PricingSection() {
   )
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
-  const tiers = [
-    {
-      name: t('starter.name'),
-      price: t('starter.price'),
-      description: t('starter.description'),
-      features: t.raw('starter.features') as string[],
-      popular: false,
-    },
-    {
-      name: t('pro.name'),
-      price: t('pro.price'),
-      description: t('pro.description'),
-      features: t.raw('pro.features') as string[],
-      popular: true,
-    },
-    {
-      name: t('scale.name'),
-      price: t('scale.price'),
-      description: t('scale.description'),
-      features: t.raw('scale.features') as string[],
-      popular: false,
-    },
-  ]
+  const tiers = t.raw('tiers') as Array<{
+    name: string
+    tagline: string
+    price: string
+    features: string[]
+  }>
 
   return (
-    <section className="py-20 md:py-32">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            {t('title')}
-          </h2>
-          <p className="text-xl text-muted-foreground">
-            {t('subtitle')}
-          </p>
+    <section className="section-padding-y">
+      <div className="container-custom">
+        <div className="mx-auto max-w-[720px] text-center">
+          <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl">{t('title')}</h2>
+          <p className="copy-20 text-[color:var(--fg-subtle)]">{t('subtitle')}</p>
         </div>
 
-        {/* Pricing cards */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="mx-auto mt-16 grid max-w-6xl gap-8 md:grid-cols-3">
           {tiers.map((tier, index) => (
             <Card
-              key={index}
+              key={tier.name}
               className={cn(
-                'relative flex flex-col',
-                tier.popular && 'border-primary shadow-strong scale-105'
+                'card-gradient-stripe relative flex h-full flex-col overflow-hidden rounded-3xl p-8',
+                index === 1
+                  ? 'border-[color:color-mix(in_oklab,var(--accent)_38%,transparent)] shadow-[0_24px_80px_rgb(45_43_99/30%)]'
+                  : 'border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)]'
               )}
             >
-              {tier.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground shadow-medium">
-                    Populair
-                  </span>
+              {index === 1 && (
+                <div className="absolute -left-2 top-10 h-24 w-24 rotate-45 bg-[linear-gradient(135deg,var(--brand)_0%,var(--accent)_100%)] opacity-40 blur-xl" />
+              )}
+
+              {index === 1 && (
+                <div className="absolute right-8 top-8 inline-flex items-center rounded-full bg-[linear-gradient(135deg,var(--brand)_0%,var(--accent)_100%)] px-4 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-white shadow-[0_10px_28px_color-mix(in_oklab,var(--accent)_45%,transparent)]">
+                  Populair
                 </div>
               )}
 
-              <CardHeader className="pb-8">
-                <CardTitle className="text-2xl">{tier.name}</CardTitle>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold">{tier.price}</span>
+              <CardHeader className="pb-6">
+                <CardTitle className="text-2xl font-semibold text-body">{tier.name}</CardTitle>
+                <div className="mt-5 flex items-baseline gap-2">
+                  <span className="text-4xl font-bold text-body">{tier.price}</span>
+                  <span className="text-xs uppercase tracking-[0.28em] text-[color:var(--fg-muted)]">
+                    ex btw
+                  </span>
                 </div>
-                <CardDescription className="mt-2 leading-relaxed">
-                  {tier.description}
+                <CardDescription className="mt-3 text-sm text-[color:var(--fg-subtle)]">
+                  {tier.tagline}
                 </CardDescription>
               </CardHeader>
 
               <CardContent className="flex-1 space-y-4">
                 <ul className="space-y-3">
-                  {tier.features.map((feature, featureIndex) => (
-                    <li key={featureIndex} className="flex items-start">
-                      <Check className="mr-3 h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-muted-foreground">{feature}</span>
+                  {tier.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-3 text-left">
+                      <span className="mt-1 flex h-6 w-6 items-center justify-center rounded-full bg-[color:color-mix(in_oklab,var(--brand-soft)_70%,transparent)] text-[color:var(--brand)]">
+                        <Check className="h-3.5 w-3.5" />
+                      </span>
+                      <span className="text-sm text-[color:var(--fg-subtle)]">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </CardContent>
 
-              <CardFooter>
-                <Button asChild className="w-full" variant={tier.popular ? 'default' : 'outline'}>
+              <CardFooter className="mt-6">
+                <Button asChild className="w-full" variant={index === 1 ? 'default' : 'outline'}>
                   <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
                     <MessageCircle className="mr-2 h-4 w-4" />
                     {t('cta')}

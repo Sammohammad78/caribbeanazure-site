@@ -12,48 +12,46 @@ export function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
-    <section className="py-20 md:py-32 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
+    <section className="section-padding-y bg-[color:color-mix(in_oklab,var(--bg)_92%,transparent)]">
+      <div className="container-custom">
+        <div className="mx-auto max-w-[660px] text-center">
+          <h2 className="mb-6 text-4xl font-bold tracking-tight md:text-5xl">
             {t('title')}
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="copy-20 text-[color:var(--fg-subtle)]">
             {t('subtitle')}
           </p>
         </div>
 
-        {/* FAQ Accordion */}
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="mx-auto mt-12 max-w-3xl space-y-4">
           {questions.map((item, index) => {
             const isOpen = openIndex === index
 
             return (
               <div
                 key={index}
-                className="rounded-xl border bg-card overflow-hidden shadow-soft"
+                className="card overflow-hidden rounded-2xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_75%,transparent)] shadow-[0_12px_44px_rgb(15_23_42/12%)]"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-muted/50 transition-colors"
+                  className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-colors duration-200 hover:bg-[color:color-mix(in_oklab,var(--brand-soft)_22%,transparent)]"
                 >
-                  <span className="font-semibold pr-8">{item.q}</span>
+                  <span className="pr-8 text-base font-semibold text-body">{item.q}</span>
                   <ChevronDown
                     className={cn(
-                      'h-5 w-5 flex-shrink-0 text-muted-foreground transition-transform duration-300',
-                      isOpen && 'transform rotate-180'
+                      'h-5 w-5 flex-shrink-0 text-[color:var(--fg-muted)] transition-transform duration-300',
+                      isOpen && 'rotate-180'
                     )}
                   />
                 </button>
 
                 <div
                   className={cn(
-                    'overflow-hidden transition-all duration-300',
+                    'overflow-hidden transition-all duration-300 ease-in-out',
                     isOpen ? 'max-h-96' : 'max-h-0'
                   )}
                 >
-                  <div className="px-6 pb-5 text-muted-foreground leading-relaxed">
+                  <div className="px-6 pb-6 text-sm leading-relaxed text-[color:var(--fg-subtle)]">
                     {item.a}
                   </div>
                 </div>

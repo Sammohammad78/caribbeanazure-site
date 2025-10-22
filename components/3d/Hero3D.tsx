@@ -1,44 +1,88 @@
 'use client'
 
-import { Suspense, useRef, useMemo } from 'react'
+import { Suspense, useMemo, useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Sphere, MeshDistortMaterial, Float } from '@react-three/drei'
+import {
+  Float,
+  MeshDistortMaterial,
+  OrbitControls,
+  Sphere,
+  Environment,
+  ContactShadows,
+} from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
-/**
- * Automation Orb - Main 3D element for hero section
- * Represents interconnected nodes in an AI automation system
- */
-function AutomationOrb() {
+type RGB = `#${string}`
+
+function getCssColor(variable: string, fallback: RGB): RGB {
+  if (typeof window === 'undefined') {
+    return fallback
+  }
+  const resolved = getComputedStyle(document.documentElement)
+    .getPropertyValue(variable)
+    .trim()
+  if (!resolved) return fallback
+  return resolved as RGB
+}
+
+function useThemeColors() {
+  const [colors, setColors] = useState(() => ({
+    brand: getCssColor('--brand', '#0891b2'),
+    accent: getCssColor('--accent', '#7c3aed'),
+    brandSoft: getCssColor('--brand-soft', '#22d3ee'),
+  }))
+
+  useEffect(() => {
+    const update = () =>
+      setColors({
+        brand: getCssColor('--brand', '#0891b2'),
+        accent: getCssColor('--accent', '#7c3aed'),
+        brandSoft: getCssColor('--brand-soft', '#22d3ee'),
+      })
+
+    update()
+
+    const observer = new MutationObserver(update)
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['class'],
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
+  return colors
+}
+
+function AutomationOrb({ colors }: { colors: ReturnType<typeof useThemeColors> }) {
   const mainOrbRef = useRef<THREE.Mesh>(null)
   const nodesRef = useRef<THREE.Group>(null)
 
-  // Animate rotation
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
 
     if (mainOrbRef.current) {
-      mainOrbRef.current.rotation.x = Math.sin(t * 0.2) * 0.1
-      mainOrbRef.current.rotation.y = t * 0.1
+      mainOrbRef.current.rotation.x = Math.sin(t * 0.2) * 0.12
+      mainOrbRef.current.rotation.y = t * 0.12
     }
 
     if (nodesRef.current) {
-      nodesRef.current.rotation.y = -t * 0.15
+      nodesRef.current.rotation.y = -t * 0.2
     }
   })
 
-  // Generate node positions in a circle
   const nodePositions = useMemo(() => {
     const positions: [number, number, number][] = []
-    const count = 8
-    const radius = 2.5
+    const count = 12
+    const radius = 2.7
 
     for (let i = 0; i < count; i++) {
-      const angle = (Math.PI * 2 / count) * i
+      const angle = ((Math.PI * 2) / count) * i
       const x = Math.cos(angle) * radius
+      const y = Math.sin(angle * 0.5) * 0.6
       const z = Math.sin(angle) * radius
-      positions.push([x, 0, z])
+      positions.push([x, y, z])
     }
 
     return positions
@@ -46,69 +90,58 @@ function AutomationOrb() {
 
   return (
     <group>
-      {/* Main Orb */}
-      <Float
-        speed={2}
-        rotationIntensity={0.2}
-        floatIntensity={0.5}
-      >
-        <Sphere ref={mainOrbRef} args={[1.2, 64, 64]} position={[0, 0, 0]}>
+      <Float speed={2} rotationIntensity={0.28} floatIntensity={0.65}>
+        <Sphere ref={mainOrbRef} args={[1.4, 96, 96]}>
           <MeshDistortMaterial
-            color="#0F5FFF"
+            color={colors.brand}
             attach="material"
-            distort={0.4}
-            speed={2}
-            roughness={0.2}
-            metalness={0.8}
-            emissive="#0F5FFF"
-            emissiveIntensity={0.5}
+            distort={0.35}
+            speed={2.2}
+            roughness={0.18}
+            metalness={0.85}
+            emissive={colors.accent}
+            emissiveIntensity={0.4}
           />
         </Sphere>
       </Float>
 
-      {/* Satellite Nodes */}
       <group ref={nodesRef}>
         {nodePositions.map((position, i) => (
           <Float
-            key={i}
-            speed={3}
-            rotationIntensity={0.1}
-            floatIntensity={0.3}
-            floatingRange={[position[1] - 0.2, position[1] + 0.2]}
+            key={`node-${i}`}
+            speed={2.8}
+            rotationIntensity={0.12}
+            floatIntensity={0.42}
+            floatingRange={[position[1] - 0.25, position[1] + 0.25]}
           >
-            <Sphere args={[0.15, 32, 32]} position={position}>
+            <Sphere args={[0.16 + (i % 3) * 0.04, 32, 32]} position={position}>
               <meshStandardMaterial
-                color="#4080FF"
-                emissive="#4080FF"
-                emissiveIntensity={0.8}
-                roughness={0.3}
-                metalness={0.7}
+                color={i % 2 === 0 ? colors.brandSoft : colors.accent}
+                emissive={colors.brandSoft}
+                emissiveIntensity={0.75}
+                roughness={0.28}
+                metalness={0.72}
               />
             </Sphere>
 
-            {/* Connection lines to main orb */}
-            <ConnectionLine
-              start={[0, 0, 0]}
-              end={position}
-              color="#0F5FFF"
-              opacity={0.3}
-            />
+            <ConnectionLine start={[0, 0, 0]} end={position} color={colors.brand} opacity={0.24} />
           </Float>
         ))}
       </group>
 
-      {/* Lighting */}
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} intensity={1} />
-      <pointLight position={[-10, -10, -10]} intensity={0.5} color="#4080FF" />
+      <ambientLight intensity={0.6} />
+      <pointLight position={[8, 9, 6]} intensity={1.2} color={colors.brand} />
+      <pointLight position={[-6, -8, -4]} intensity={0.7} color={colors.accent} />
     </group>
   )
 }
 
-/**
- * Simple line component for connections
- */
-function ConnectionLine({ start, end, color = '#ffffff', opacity = 1 }: {
+function ConnectionLine({
+  start,
+  end,
+  color = '#ffffff',
+  opacity = 1,
+}: {
   start: [number, number, number]
   end: [number, number, number]
   color?: string
@@ -121,52 +154,44 @@ function ConnectionLine({ start, end, color = '#ffffff', opacity = 1 }: {
     return geom
   }, [start, end])
 
-  return (
-    <primitive object={new THREE.Line(
-      geometry,
-      new THREE.LineBasicMaterial({ color, transparent: true, opacity })
-    )} />
+  const material = useMemo(
+    () => new THREE.LineBasicMaterial({ color, transparent: true, opacity }),
+    [color, opacity]
   )
+
+  return <primitive object={new THREE.Line(geometry, material)} />
 }
 
-/**
- * Loading fallback component
- */
 function LoadingFallback() {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
-      <div className="h-32 w-32 rounded-full bg-primary/10 animate-pulse" />
+      <div className="h-32 w-32 rounded-full bg-[color:color-mix(in_oklab,var(--brand)_26%,transparent)] blur-xl" />
     </div>
   )
 }
 
-/**
- * Static poster image for reduced-motion preference
- */
 function StaticPoster() {
   return (
     <div className="absolute inset-0 flex items-center justify-center">
       <div
-        className="h-64 w-64 rounded-full bg-gradient-to-br from-primary/20 via-primary/10 to-transparent blur-3xl"
+        className="h-64 w-64 rounded-full"
         style={{
-          boxShadow: '0 0 80px rgba(15, 95, 255, 0.3)',
+          background:
+            'radial-gradient(circle at 30% 20%, color-mix(in oklab, var(--brand) 32%, transparent) 0%, transparent 60%), radial-gradient(circle at 70% 70%, color-mix(in oklab, var(--accent) 28%, transparent) 0%, transparent 65%)',
+          boxShadow: '0 0 120px color-mix(in oklab, var(--accent) 40%, transparent)',
         }}
       />
     </div>
   )
 }
 
-/**
- * Hero3D Component
- * Renders the automation orb with performance optimizations and fallbacks
- */
 export function Hero3D({ className }: { className?: string }) {
-  // Check for reduced motion preference
+  const colors = useThemeColors()
+
   const prefersReducedMotion =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
-  // Show static poster if reduced motion is preferred
   if (prefersReducedMotion) {
     return (
       <div className={className}>
@@ -179,39 +204,44 @@ export function Hero3D({ className }: { className?: string }) {
     <div className={className}>
       <Suspense fallback={<LoadingFallback />}>
         <Canvas
-          camera={{ position: [0, 0, 6], fov: 50 }}
-          dpr={[1, 1.5]} // Cap DPR for performance
+          camera={{ position: [0, 0, 6.5], fov: 50 }}
+          dpr={[1, 1.25]}
           gl={{
             antialias: true,
             alpha: true,
             powerPreference: 'high-performance',
           }}
-          style={{
-            width: '100%',
-            height: '100%',
-            background: 'transparent',
-          }}
+          style={{ width: '100%', height: '100%', background: 'transparent' }}
         >
+          <color attach="background" args={['transparent']} />
           <Suspense fallback={null}>
-            <AutomationOrb />
-
-            {/* Post-processing effects */}
-            <EffectComposer>
-              <Bloom
-                luminanceThreshold={0.6}
-                luminanceSmoothing={0.9}
-                height={300}
-                intensity={0.5}
+            <group rotation={[0, Math.PI / 3, 0]}>
+              <Environment
+                files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/studio_small_08_2k.hdr"
+                blur={0.2}
               />
+            </group>
+            <AutomationOrb colors={colors} />
+
+            <EffectComposer>
+              <Bloom luminanceThreshold={0.55} luminanceSmoothing={0.92} height={320} intensity={0.65} />
             </EffectComposer>
 
-            {/* Optional: Allow gentle camera movement */}
+            <ContactShadows
+              rotation={[Math.PI / 2, 0, 0]}
+              position={[0, -1.8, 0]}
+              opacity={0.4}
+              scale={12}
+              blur={2.5}
+            />
+
             <OrbitControls
               enableZoom={false}
               enablePan={false}
-              enableRotate={true}
-              autoRotate={false}
-              rotateSpeed={0.5}
+              enableRotate
+              autoRotate
+              autoRotateSpeed={0.4}
+              rotateSpeed={0.45}
               maxPolarAngle={Math.PI / 2}
               minPolarAngle={Math.PI / 2}
             />

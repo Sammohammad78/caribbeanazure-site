@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { Hero } from '@/components/sections/hero'
+import { OutcomesStrip } from '@/components/sections/outcomes-strip'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { ProcessSection } from '@/components/sections/process-section'
 import { PricingSection } from '@/components/sections/pricing-section'
@@ -13,6 +14,7 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <OutcomesStrip />
         <ServicesGrid />
         <ProcessSection />
         <PricingSection />
