@@ -14,11 +14,11 @@
     "roi": "ROI-calculator"
   },
   "hero": {
-    "title": "Automatisering die tijd wint en fouten voorkomt.",
-    "qualifier": "Voor Nederlandse mkb-bedrijven die groeien zonder groeiende chaos.",
-    "subtitle": "Wij bouwen AI-gedreven workflows die e-mails, offertes en taken automatisch laten doorstromen—van inbox tot actie. Prototype in 72 uur.",
+    "title": "Slimmer werken. Minder gedoe. Meer resultaat.",
+    "qualifier": "",
+    "subtitle": "Caribbean Azure helpt kleine en middelgrote bedrijven om tijd te winnen met slimme automatiseringen, AI-oplossingen en duidelijke dashboards. Wij vertalen technologie naar rust, overzicht en groei.",
     "cta": {
-      "primary": "Plan een gratis intake",
+      "primary": "Ontdek wat we voor jou kunnen doen",
       "secondary": "Bekijk cases"
     },
     "trustedBy": "Vertrouwd door 50+ MKB-bedrijven"
@@ -42,50 +42,30 @@
     }
   },
   "services": {
-    "title": "Wat we voor je bouwen",
-    "subtitle": "Flows en agents die vanaf dag één omzet leveren.",
-    "automation": {
-      "title": "E-mail-naar-actie",
-      "description": "Zet binnenkomende e-mails direct om in taken en opvolging."
-    },
-    "integrations": {
-      "title": "WhatsApp-first funnels",
-      "description": "Laat WhatsApp het zware werk doen: offertes, herinneringen, status."
-    },
-    "chatbots": {
-      "title": "AI-agents & chatbots",
-      "description": "AI-agents die eerstelijnsvragen afhandelen en slim doorzetten."
-    },
-    "dashboards": {
-      "title": "Dashboards & rapportage",
-      "description": "Krijg wekelijks inzicht in bottlenecks, pijplijn en SLA's."
-    },
-    "web": {
-      "title": "Webdesign + automations",
-      "description": "Sites die al je tools koppelen en leads automatisch kwalificeren."
-    },
+    "title": "Diensten",
+    "subtitle": "Wat we voor je doen",
     "items": [
       {
-        "title": "E-mail-naar-actie",
-        "description": "Zet binnenkomende e-mails direct om in taken en opvolging."
+        "title": "Workflow-automatisering",
+        "description": "We nemen terugkerende taken uit handen. E-mails, boekhouding, klantopvolging — het loopt gewoon. Jij focust op het werk dat telt."
       },
       {
-        "title": "WhatsApp-first funnels",
-        "description": "Laat WhatsApp het zware werk doen: offertes, herinneringen, status."
-      },
-      {
-        "title": "AI-agents & chatbots",
-        "description": "AI-agents die eerstelijnsvragen afhandelen en slim doorzetten."
+        "title": "AI-assistenten & chatbots",
+        "description": "We bouwen bots die klanten verder helpen, afspraken plannen of offertes voorbereiden. Via je website of WhatsApp, klaar voor productie."
       },
       {
         "title": "Dashboards & rapportage",
-        "description": "Krijg wekelijks inzicht in bottlenecks, pijplijn en SLA's."
+        "description": "Inzicht zonder ruis. Je ziet wat er goed gaat, waar tijd weglekt en waar je het beste kunt bijsturen."
       },
       {
-        "title": "Webdesign + automations",
-        "description": "Sites die al je tools koppelen en leads automatisch kwalificeren."
+        "title": "Webdesign met impact",
+        "description": "Snel, helder en prettig in gebruik. Je site is mooi, maar vooral effectief — gekoppeld aan je automatisering en klaar om te groeien."
       }
     ]
+  },
+  "whyUs": {
+    "title": "Waarom wij",
+    "description": "We houden het menselijk. Geen vakjargon. Geen omwegen. We luisteren, bouwen en verbeteren tot het echt werkt in jouw praktijk."
   },
   "process": {
     "title": "Hoe we werken",
@@ -503,26 +483,19 @@
     "button": "Plan een intake"
   },
   "contact": {
-    "title": "Neem contact op",
-    "subtitle": "We reageren binnen 24 uur. Kies je favoriete kanaal.",
-    "channels": {
-      "whatsapp": {
-        "title": "WhatsApp",
-        "tagline": "Snelste reactie (08:30-19:00)",
-        "body": "Stuur direct een bericht. Binnen 10 minuten delen we een intake of stellen we verdiepende vragen."
-      },
-      "email": {
-        "title": "E-mail",
-        "tagline": "Voor uitgebreide vragen",
-        "body": "Stuur documentatie, use-cases of NDA-verzoeken naar ons team."
-      },
-      "call": {
-        "title": "Plan een gesprek",
-        "tagline": "30 minuten via Google Meet",
-        "body": "Kies een moment dat past voor een deep dive in processen en systemen."
-      }
-    },
-    "formIntro": "Deel je doel, huidige tools en gewenste timing. We sturen je binnen 24 uur een voorstel."
+    "title": "Klaar om slimmer te werken?",
+    "subtitle": "Mail ons op info@caribbeanazure.com of bel +31 6 87879092.",
+    "formTitle": "Stuur ons een bericht",
+    "formIntro": "Deel je vraag en we nemen snel contact op.",
+    "form": {
+      "name": "Naam",
+      "email": "E-mailadres",
+      "phone": "Telefoonnummer (optioneel)",
+      "message": "Bericht",
+      "submit": "Verstuur",
+      "success": "Bedankt! We nemen snel contact op.",
+      "error": "Er ging iets mis. Probeer het opnieuw of mail ons direct."
+    }
   },
   "footer": {
     "tagline": "Slimme automatisering voor Nederlandse mkb's.",

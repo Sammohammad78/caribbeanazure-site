@@ -1,11 +1,10 @@
 'use client'
 
 import { Suspense, useMemo, useRef, useState, useEffect } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
+import { Canvas, useFrame, useThree } from '@react-three/fiber'
 import {
   Float,
   MeshDistortMaterial,
-  OrbitControls,
   Sphere,
   Environment,
   ContactShadows,
@@ -55,9 +54,38 @@ function useThemeColors() {
   return colors
 }
 
-function AutomationOrb({ colors }: { colors: ReturnType<typeof useThemeColors> }) {
+interface MousePosition {
+  x: number // normalized -0.5 to 0.5
+  y: number // normalized -0.5 to 0.5
+}
+
+function CameraController({ mousePosition }: { mousePosition: MousePosition }) {
+  const { camera } = useThree()
+  const targetRotation = useRef({ x: 0, y: 0 })
+
+  useFrame(() => {
+    // Smooth damping to prevent jitter (lerp factor 0.05 = ~20 frames to reach target)
+    targetRotation.current.x += (mousePosition.y * 0.3 - targetRotation.current.x) * 0.05
+    targetRotation.current.y += (mousePosition.x * 0.3 - targetRotation.current.y) * 0.05
+
+    camera.position.x = targetRotation.current.y * 2
+    camera.position.y = -targetRotation.current.x * 1.5
+    camera.lookAt(0, 0, 0)
+  })
+
+  return null
+}
+
+function AutomationOrb({
+  colors,
+  mousePosition
+}: {
+  colors: ReturnType<typeof useThemeColors>
+  mousePosition: MousePosition
+}) {
   const mainOrbRef = useRef<THREE.Mesh>(null)
   const nodesRef = useRef<THREE.Group>(null)
+  const groupRef = useRef<THREE.Group>(null)
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
@@ -69,6 +97,12 @@ function AutomationOrb({ colors }: { colors: ReturnType<typeof useThemeColors> }
 
     if (nodesRef.current) {
       nodesRef.current.rotation.y = -t * 0.2
+    }
+
+    // Add subtle rotation based on mouse position (inverse for depth effect)
+    if (groupRef.current) {
+      groupRef.current.rotation.y = Math.PI / 3 - mousePosition.x * 0.2
+      groupRef.current.rotation.x = -mousePosition.y * 0.15
     }
   })
 
@@ -89,7 +123,7 @@ function AutomationOrb({ colors }: { colors: ReturnType<typeof useThemeColors> }
   }, [])
 
   return (
-    <group>
+    <group ref={groupRef}>
       <Float speed={2} rotationIntensity={0.28} floatIntensity={0.65}>
         <Sphere ref={mainOrbRef} args={[1.4, 96, 96]}>
           <MeshDistortMaterial
@@ -185,7 +219,13 @@ function StaticPoster() {
   )
 }
 
-export function Hero3D({ className }: { className?: string }) {
+export function Hero3D({
+  className,
+  mousePosition = { x: 0, y: 0 }
+}: {
+  className?: string
+  mousePosition?: MousePosition
+}) {
   const colors = useThemeColors()
 
   const prefersReducedMotion =
@@ -215,13 +255,15 @@ export function Hero3D({ className }: { className?: string }) {
         >
           <color attach="background" args={['transparent']} />
           <Suspense fallback={null}>
-            <group rotation={[0, Math.PI / 3, 0]}>
+            <CameraController mousePosition={mousePosition} />
+
+            <group rotation={[0, 0, 0]}>
               <Environment
                 files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/studio_small_08_2k.hdr"
                 blur={0.2}
               />
             </group>
-            <AutomationOrb colors={colors} />
+            <AutomationOrb colors={colors} mousePosition={mousePosition} />
 
             <EffectComposer>
               <Bloom luminanceThreshold={0.55} luminanceSmoothing={0.92} height={320} intensity={0.65} />
@@ -233,17 +275,6 @@ export function Hero3D({ className }: { className?: string }) {
               opacity={0.4}
               scale={12}
               blur={2.5}
-            />
-
-            <OrbitControls
-              enableZoom={false}
-              enablePan={false}
-              enableRotate
-              autoRotate
-              autoRotateSpeed={0.4}
-              rotateSpeed={0.45}
-              maxPolarAngle={Math.PI / 2}
-              minPolarAngle={Math.PI / 2}
             />
           </Suspense>
         </Canvas>

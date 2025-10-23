@@ -1,16 +1,24 @@
 # Caribbean Azure — Premium AI Automation Agency Website
 
-A world-class, conversion-focused website built with Next.js 14+, TypeScript, Tailwind CSS, and next-intl for internationalization.
+A premium, human-centered website for Caribbean Azure automation agency. Built with Next.js 16, TypeScript, Tailwind CSS v4, React Three Fiber, and Framer Motion.
+
+**Contact:**
+- 📧 info@caribbeanazure.com
+- 📞 +31 6 87879092
+- 🌐 https://www.caribbeanazure.com
 
 ## 🚀 Features
 
-- **Bilingual Support**: Dutch (primary) and English with `next-intl`
-- **Modern Stack**: Next.js App Router, TypeScript, Tailwind CSS v4
-- **Design System**: Comprehensive token system with Scandinavian minimalism
-- **Conversion-Optimized**: WhatsApp-first CTA strategy, contact forms, booking integration
-- **Responsive**: Mobile-first design with smooth animations
+- **Dutch-Only**: Focused on Dutch market (English support removed for clarity)
+- **Light-by-Default**: Clean, accessible light theme with optional dark mode toggle
+- **Modern Stack**: Next.js 16 App Router, React 19, TypeScript, Tailwind CSS v4
+- **Premium Design**: Azure navy color palette, subtle 3D backgrounds, micro-interactions
+- **Human-Centered Copy**: Warm, approachable Dutch language ("Slimmer werken. Minder gedoe.")
+- **Conversion-Optimized**: Single primary CTA, clear value proposition, social proof
+- **3D Hero**: Interactive React Three Fiber background with cursor parallax
+- **Responsive**: Mobile-first design with Framer Motion animations
 - **SEO-Ready**: Sitemap, robots.txt, meta tags, schema.org markup
-- **Accessible**: WCAG 2.2 AA compliant with keyboard navigation and screen reader support
+- **Accessible**: WCAG 2.1 AA compliant with keyboard navigation
 - **Performance**: Optimized for Lighthouse score ≥95
 
 ## 📁 Project Structure
@@ -52,11 +60,15 @@ websitetest/
 
 ## 🛠️ Tech Stack
 
-- **Framework**: [Next.js 14+](https://nextjs.org/) with App Router
-- **Language**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) (customized)
-- **Internationalization**: [next-intl](https://next-intl-docs.vercel.app/)
+- **Framework**: [Next.js 16](https://nextjs.org/) with App Router
+- **React**: [React 19.2.0](https://react.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/) (strict mode)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) with PostCSS
+- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) (Radix UI primitives)
+- **3D Graphics**: [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) + Three.js
+- **Animation**: [Framer Motion](https://www.framer.com/motion/)
+- **Theme**: [next-themes](https://github.com/pacocoursey/next-themes) (light-by-default)
+- **i18n**: [next-intl](https://next-intl-docs.vercel.app/) (Dutch-only)
 - **Form Validation**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/)
 - **Icons**: [Lucide React](https://lucide.dev/)
 
@@ -80,9 +92,12 @@ npm run build
 
 # Start production server
 npm start
+
+# Lint code
+npm run lint
 ```
 
-Visit [http://localhost:3000/nl](http://localhost:3000/nl) (Dutch) or [http://localhost:3000/en](http://localhost:3000/en) (English).
+Visit [http://localhost:3000](http://localhost:3000) (Dutch-only, automatically routed to /nl).
 
 ## 🌐 Configuration
 
@@ -105,11 +120,9 @@ export const siteConfig = {
 
 ### 2. WhatsApp Integration
 
-Replace the placeholder WhatsApp number (`31612345678`) in:
-- `components/sections/hero.tsx`
-- `components/sections/pricing-section.tsx`
-- `app/[locale]/contact/page.tsx`
-- `config/site.ts`
+WhatsApp number is already configured (`+31 6 87879092`) in:
+- `config/site.ts` (centralized configuration)
+- Links automatically use `https://wa.me/31687879092`
 
 ### 3. Email Service (Contact Form)
 
@@ -150,18 +163,21 @@ Edit `messages/nl.json` and `messages/en.json` to update copy.
 
 ## 🎨 Design System
 
-See `docs/design-system.md` for complete documentation.
+See `BRAND_TOKENS.md` for complete documentation.
 
 **Quick Reference:**
-- Primary color: `#0F5FFF` (Caribbean Azure Blue)
-- Accent color: `#10B981` (Success Green)
-- Typography: System font stack for performance
-- Spacing: 8px base unit
-- Border radius: 16px default for cards
+- **Primary brand**: `#0F5E9C` (Azure navy - primary), `#4BA3F7` (Light azure - hover/glow)
+- **Deep navy**: `#0A2A43` (Headers, dark backgrounds)
+- **Accent**: `#FFB703` (Amber - highlights, use sparingly)
+- **Neutrals**: `#F7F7F5` (Sand - backgrounds), `#0E0F14` (Ink - text)
+- **Typography**: Geist (headings), Inter (body)
+- **Spacing**: 4px Polaris grid
+- **Border radius**: `rounded-2xl` (24px) for cards, `rounded-xl` (16px) for buttons
 
 Tokens are defined in:
-- `config/tokens.ts` (JavaScript constants)
-- `app/globals.css` (CSS variables)
+- `BRAND_TOKENS.md` (Complete design system documentation)
+- `app/globals.css` (CSS custom properties)
+- `app/tokens.css` (Typography, spacing, animation tokens)
 
 ## 🚀 Deployment
 
@@ -259,21 +275,43 @@ brand: {
 
 ## 📚 Documentation
 
-- [Design Inspiration & Research](./docs/inspiration.md)
-- [Design System Guide](./docs/design-system.md)
-- [Deployment & Handover](./docs/handover.md)
+- **[DESIGN_STRATEGY.md](./DESIGN_STRATEGY.md)** - Positioning, IA, brand strategy, tone of voice
+- **[BRAND_TOKENS.md](./BRAND_TOKENS.md)** - Complete design token system
+- **[AUDIT_FINDINGS.md](./AUDIT_FINDINGS.md)** - Comprehensive audit with 30+ findings
+- **[QA.md](./QA.md)** - Quality assurance checklist and testing
+- **[HANDOVER.md](./HANDOVER.md)** - Content editing and maintenance guide
+- **[CHANGELOG.md](./CHANGELOG.md)** - Version history and release notes
 
-## TODO Before Launch
+## ✅ Launch Checklist
 
-- [ ] Replace placeholder WhatsApp number
-- [ ] Configure email service for contact form
+### Phase 1: Foundation (Complete)
+- [x] Premium brand colors (azure navy palette)
+- [x] Dutch-only routing and copy
+- [x] Light-by-default theme
+- [x] Human-centered copy ("Slimmer werken. Minder gedoe.")
+- [x] Real contact details (info@caribbeanazure.com, +31 6 87879092)
+- [x] Use-cases section (3 scenarios)
+- [x] Testimonials section (3 client quotes)
+- [x] Simplified navigation (4 core pages)
+
+### Phase 2: Enhancement (In Progress)
+- [ ] Configure Resend for contact form email delivery
 - [ ] Add real client logos to homepage
-- [ ] Set up analytics (Plausible/GA4)
-- [ ] Update domain in `config/site.ts` and `app/sitemap.ts`
-- [ ] Add favicon and OG images
-- [ ] Test on real mobile devices
-- [ ] Run Lighthouse audit (target: 95+)
-- [ ] Set up error tracking (Sentry/LogRocket)
+- [ ] Optimize Hero3D for 60fps (cursor parallax, performance)
+- [ ] Add Schema.org structured data (Organization + Service)
+- [ ] Generate OpenGraph images per route
+- [ ] Consolidate IA (merge /prijzen into /diensten)
+- [ ] Archive deprecated routes
+
+### Phase 3: Pre-Launch (Pending)
+- [ ] Set up analytics (Plausible/Umami recommended)
+- [ ] Run Lighthouse audit (target: Performance/A11y/SEO ≥95)
+- [ ] Test on real mobile devices (iOS Safari, Chrome Android)
+- [ ] Keyboard navigation test (full site)
+- [ ] Screen reader test (NVDA/JAWS)
+- [ ] Error tracking setup (Sentry optional)
+- [ ] Update OG image with branded design
+- [ ] Favicon set (16x16, 32x32, 180x180, 192x192, 512x512)
 
 ## 📄 License
 
