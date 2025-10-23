@@ -6,15 +6,36 @@ import { ArrowRight } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 export function Hero() {
   const t = useTranslations('hero')
   const locale = useLocale()
 
+  // Cursor tracking for 3D parallax (normalized to -0.5 to 0.5)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      // Normalize cursor position to -0.5 to 0.5 range
+      const x = (e.clientX / window.innerWidth) - 0.5
+      const y = (e.clientY / window.innerHeight) - 0.5
+      setMousePosition({ x, y })
+    }
+
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   return (
-    <section className="hero-glow relative overflow-hidden">
+    <section className="hero-glow relative min-h-[85vh] overflow-hidden">
+      {/* Full-viewport 3D background (behind all content) */}
+      <div className="pointer-events-none fixed inset-0 z-0 opacity-40">
+        <Hero3D className="h-full w-full" mousePosition={mousePosition} />
+      </div>
+
       <div className="hero-glow__background" />
-      <div className="container-custom relative">
+      <div className="container-custom relative z-10">
         <div className="grid items-center gap-16 py-20 md:py-24 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:py-28">
           <motion.div
             className="flex flex-col gap-8"
@@ -128,7 +149,8 @@ export function Hero() {
             transition={{ duration: 0.6, delay: 0.3, ease: 'easeOut' }}
           >
             <div className="hero-glow__orb absolute inset-0" />
-            <Hero3D className="relative z-10 h-full w-full" />
+            {/* Secondary 3D instance for right column - more visible */}
+            <Hero3D className="relative z-10 h-full w-full" mousePosition={mousePosition} />
           </motion.div>
         </div>
       </div>
