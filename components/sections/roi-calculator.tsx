@@ -311,6 +311,14 @@ export function ROICalculator() {
           </motion.div>
 
         </div>
+
+        {/* Disclaimer */}
+        <div className="mx-auto mt-8 max-w-3xl text-center">
+          <p className="text-sm text-[color:var(--fg-muted)]">
+            <strong>Let op:</strong> De berekening is een voorbeeld en geen garantie.
+            Werkelijke resultaten variëren per proces en organisatie.
+          </p>
+        </div>
       </div>
     </section>
   )
