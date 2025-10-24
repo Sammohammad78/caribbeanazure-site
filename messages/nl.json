@@ -1,9 +1,10 @@
 {
   "nav": {
     "home": "Home",
+    "solutions": "Oplossingen",
     "services": "Diensten",
     "cases": "Cases",
-    "pricing": "Prijzen",
+    "pricing": "Tarieven",
     "about": "Over ons",
     "industries": "Sectoren",
     "integrations": "Integraties",

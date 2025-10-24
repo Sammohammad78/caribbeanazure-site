@@ -15,15 +15,15 @@ export function Header() {
   const locale = useLocale()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  // Simplified navigation (Dutch-only, 5 core pages per redesign)
+  // NL-first navigation with normalized routes
   const buildHref = (slug: string) => (slug ? `/${locale}/${slug}` : `/${locale}`)
 
   const navItems = [
     { href: buildHref(''), label: t('nav.home') },
-    { href: buildHref('diensten'), label: t('nav.services') },
-    { href: buildHref('prijzen'), label: 'Prijzen' },
+    { href: buildHref('oplossingen'), label: t('nav.solutions') },
+    { href: buildHref('tarieven'), label: t('nav.pricing') },
     { href: buildHref('cases'), label: t('nav.cases') },
-    { href: buildHref('over'), label: t('nav.about') },
+    { href: buildHref('over-ons'), label: t('nav.about') },
   ]
 
   return (
