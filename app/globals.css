@@ -76,6 +76,21 @@
   --glow-brand: 0 0 16px rgba(75, 163, 247, 0.4);
   --transition-fast: 180ms ease-out;
   --transition-base: 220ms ease-out;
+
+  /* Liquid Glass Effects (Apple-like) */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 8px 32px rgba(10, 42, 67, 0.12),
+                  0 2px 8px rgba(10, 42, 67, 0.08),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  --glass-highlight: linear-gradient(135deg,
+                     rgba(255, 255, 255, 0.4) 0%,
+                     rgba(255, 255, 255, 0) 50%);
+  --glass-focus-ring: 0 0 0 3px rgba(75, 163, 247, 0.15),
+                      0 0 0 1px rgba(75, 163, 247, 0.5),
+                      0 4px 12px rgba(75, 163, 247, 0.25);
+  --glass-hover-bg: rgba(255, 255, 255, 0.85);
+  --glass-active-bg: rgba(255, 255, 255, 0.95);
 }
 
 :root.dark {
@@ -112,6 +127,21 @@
   --hover-ring: 0 0 0 3px rgba(75, 163, 247, 0.35);
   --glow-brand: 0 0 20px rgba(75, 163, 247, 0.5);
   --transition-fast: 180ms ease-out;
+
+  /* Dark mode glass effects */
+  --glass-bg: rgba(28, 33, 40, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.32),
+                  0 2px 8px rgba(0, 0, 0, 0.16),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --glass-highlight: linear-gradient(135deg,
+                     rgba(255, 255, 255, 0.08) 0%,
+                     rgba(255, 255, 255, 0) 50%);
+  --glass-focus-ring: 0 0 0 3px rgba(123, 190, 255, 0.2),
+                      0 0 0 1px rgba(123, 190, 255, 0.6),
+                      0 4px 12px rgba(123, 190, 255, 0.3);
+  --glass-hover-bg: rgba(28, 33, 40, 0.85);
+  --glass-active-bg: rgba(28, 33, 40, 0.95);
   --transition-base: 220ms ease-out;
 }
 
@@ -358,9 +388,11 @@ a {
   }
 }
 
+/* Liquid Glass Focus States (Apple-like) - WCAG AA compliant */
 *:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--brand);
+  box-shadow: var(--glass-focus-ring);
+  transition: box-shadow 0.2s ease-out;
 }
 
 ::selection {
@@ -532,4 +564,139 @@ a {
     var(--brand-600) 50%,
     var(--brand-900) 100%
   );
+}
+
+/* Liquid Glass Utility Classes */
+.glass-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  box-shadow: var(--glass-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--glass-highlight);
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.glass-card:hover {
+  background: var(--glass-hover-bg);
+  border-color: rgba(75, 163, 247, 0.3);
+  box-shadow: var(--glass-shadow), 0 0 20px rgba(75, 163, 247, 0.15);
+}
+
+.glass-card:active {
+  background: var(--glass-active-bg);
+}
+
+.glass-button {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  transition: all 0.2s ease-out;
+}
+
+.glass-button:hover {
+  background: var(--glass-hover-bg);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(75, 163, 247, 0.2);
+}
+
+.glass-button:focus-visible {
+  box-shadow: var(--glass-focus-ring);
+}
+
+/* Fluid Typography - Responsive Headlines */
+.text-fluid-h1 {
+  font-size: clamp(2rem, 5vw + 1rem, 4.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-fluid-h2 {
+  font-size: clamp(1.75rem, 3vw + 1rem, 3.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+
+.text-fluid-h3 {
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.text-fluid-body {
+  font-size: clamp(1rem, 0.5vw + 0.875rem, 1.125rem);
+  line-height: 1.6;
+}
+
+/* Line Clamp Utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Remove blue outlines and borders */
+input:focus,
+textarea:focus,
+select:focus,
+button:focus {
+  outline: none;
+  border-color: rgba(75, 163, 247, 0.4);
+}
+
+/* Enhanced Link Hover with Glass Effect */
+a:hover:not(.no-glass) {
+  text-decoration: none;
+}
+
+a:focus-visible {
+  box-shadow: var(--glass-focus-ring);
+  border-radius: 4px;
+}
+
+/* Smooth text rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Prevent text overflow in rounded containers */
+.rounded-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rounded-container * {
+  max-width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }

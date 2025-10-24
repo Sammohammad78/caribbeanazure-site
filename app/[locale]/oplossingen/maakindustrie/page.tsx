@@ -79,10 +79,10 @@ export default async function ManufacturingPage({ params }: { params: { locale: 
                   <Sparkles className="h-4 w-4" />
                   {locale === 'nl' ? 'Tier 2 · Aanbevolen voor maakbedrijven' : 'Tier 2 · Recommended for manufacturing'}
                 </div>
-                <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+                <h1 className="text-balance text-fluid-h1 font-bold">
                   {t('title')}
                 </h1>
-                <p className="mx-auto mt-6 max-w-2xl text-lg text-[color:var(--fg-subtle)]">
+                <p className="mx-auto mt-6 max-w-2xl text-fluid-body text-[color:var(--fg-subtle)]">
                   {t('subtitle')}
                 </p>
 

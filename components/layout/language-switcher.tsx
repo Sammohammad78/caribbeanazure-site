@@ -25,6 +25,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
       : `/en${pathWithoutLocale}`
 
     router.push(newPath)
+    router.refresh() // Force refresh to load new locale content
   }
 
   return (

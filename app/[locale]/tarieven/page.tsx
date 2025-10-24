@@ -112,10 +112,10 @@ export default async function TarievenPage({ params }: { params: { locale: strin
           {/* Hero Section */}
           <section className="section-padding-y hero-glow">
             <div className="container-custom text-center">
-              <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+              <h1 className="text-balance text-fluid-h1 font-bold">
                 {t('title')}
               </h1>
-              <p className="mx-auto mt-6 max-w-2xl text-lg text-[color:var(--fg-subtle)]">
+              <p className="mx-auto mt-6 max-w-2xl text-fluid-body text-[color:var(--fg-subtle)]">
                 {t('subtitle')}
               </p>
             </div>
@@ -211,10 +211,10 @@ export default async function TarievenPage({ params }: { params: { locale: strin
           <section className="section-padding-y bg-[color:color-mix(in_oklab,var(--panel)_30%,transparent)]">
             <div className="container-custom">
               <div className="mx-auto max-w-4xl text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+                <h2 className="text-fluid-h2 font-bold">
                   {locale === 'nl' ? 'Bereken jouw ROI' : 'Calculate your ROI'}
                 </h2>
-                <p className="mt-4 text-lg text-[color:var(--fg-subtle)]">
+                <p className="mt-4 text-fluid-body text-[color:var(--fg-subtle)]">
                   {locale === 'nl'
                     ? 'Ontdek hoeveel je kunt besparen met automatisering'
                     : 'Discover how much you can save with automation'}
@@ -261,10 +261,10 @@ export default async function TarievenPage({ params }: { params: { locale: strin
           <section className="section-padding-y">
             <div className="container-custom">
               <div className="rounded-3xl bg-gradient-to-br from-[color:var(--brand-600)] to-[color:var(--brand-400)] p-12 text-center text-white">
-                <h2 className="text-3xl font-bold md:text-4xl">
+                <h2 className="text-fluid-h2 font-bold">
                   {locale === 'nl' ? 'Klaar om te starten?' : 'Ready to get started?'}
                 </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-lg opacity-90">
+                <p className="mx-auto mt-4 max-w-2xl text-fluid-body opacity-90">
                   {locale === 'nl'
                     ? 'Plan een gratis intake en ontdek welke oplossing het beste past bij jouw organisatie.'
                     : 'Book a free intake and discover which solution fits your organization best.'}

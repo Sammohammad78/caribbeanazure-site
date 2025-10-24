@@ -86,10 +86,10 @@ export default async function ConfiguratorsPage({ params }: { params: { locale: 
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 px-4 py-2 text-sm font-medium text-[color:var(--brand)]">
                   {locale === 'nl' ? 'Tier 3 · Maatwerk' : 'Tier 3 · Custom'}
                 </div>
-                <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
+                <h1 className="text-balance text-fluid-h1 font-bold">
                   {t('title')}
                 </h1>
-                <p className="mx-auto mt-6 max-w-2xl text-lg text-[color:var(--fg-subtle)]">
+                <p className="mx-auto mt-6 max-w-2xl text-fluid-body text-[color:var(--fg-subtle)]">
                   {t('subtitle')}
                 </p>
 
