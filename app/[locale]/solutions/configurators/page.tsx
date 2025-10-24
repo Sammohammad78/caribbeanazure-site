@@ -1,1 +1,1 @@
-export { default, generateMetadata } from '../../../oplossingen/configurators/page'
+export { default, generateMetadata } from '../../oplossingen/configurators/page'

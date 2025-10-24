@@ -1,1 +1,1 @@
-export { default, generateMetadata } from '../../../oplossingen/maakindustrie/page'
+export { default, generateMetadata } from '../../oplossingen/maakindustrie/page'
