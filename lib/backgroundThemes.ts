@@ -166,6 +166,87 @@ export const backgroundThemes: Record<string, BackgroundTheme> = {
     },
   },
 
+  pricing: {
+    name: 'Pricing - Clear & Transparent',
+    mood: 'Structured, organized, trustworthy',
+    effect: 'depth-field',
+    colors: {
+      primary: '#2563EB', // Azure
+      secondary: '#0A2A43', // Navy
+      accent: '#06B6D4', // Cyan
+      gradientStart: '#2563EB',
+      gradientEnd: '#0A2A43',
+    },
+    motion: {
+      speed: 0.6,
+      parallaxIntensity: 0.1,
+      flowDirection: 'vertical',
+    },
+    particles: {
+      count: 1800,
+      size: 1.8,
+      opacity: 0.5,
+    },
+    performance: {
+      dpr: [1, 1.5],
+      antialias: false,
+    },
+  },
+
+  roi: {
+    name: 'ROI - Data-Driven & Analytical',
+    mood: 'Precise, mathematical, trustworthy',
+    effect: 'neural-grid',
+    colors: {
+      primary: '#06B6D4', // Cyan (analytical)
+      secondary: '#2563EB', // Azure
+      accent: '#F59E0B', // Amber (highlights)
+      gradientStart: '#06B6D4',
+      gradientEnd: '#2563EB',
+    },
+    motion: {
+      speed: 0.9, // Moderate motion
+      parallaxIntensity: 0.12,
+      flowDirection: 'horizontal',
+    },
+    particles: {
+      count: 2500, // Grid density
+      size: 1.5,
+      opacity: 0.6,
+    },
+    performance: {
+      dpr: [1, 1.5],
+      antialias: true,
+    },
+  },
+
+  legal: {
+    name: 'Legal - Professional & Trustworthy',
+    mood: 'Calm, authoritative, minimal',
+    effect: 'minimal-float',
+    colors: {
+      primary: '#0A2A43', // Navy (professional)
+      secondary: '#2563EB', // Azure
+      accent: '#06B6D4', // Cyan
+      gradientStart: '#0A2A43',
+      gradientEnd: '#2563EB',
+    },
+    motion: {
+      speed: 0.4, // Very slow, calm
+      parallaxIntensity: 0,
+      flowDirection: 'vertical',
+    },
+    particles: {
+      count: 600, // Minimal
+      size: 2.2,
+      opacity: 0.3,
+    },
+    performance: {
+      dpr: [1, 1.25],
+      antialias: true,
+    },
+  },
+
   // Fallback default theme
   default: {
     name: 'Default - Minimal Fallback',
