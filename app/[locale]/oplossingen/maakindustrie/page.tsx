@@ -7,6 +7,8 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Check, ArrowRight, Factory } from 'lucide-react'
 import Link from 'next/link'
+import { Hreflang } from '@/components/seo/hreflang'
+import { ProductSchema } from '@/components/seo/json-ld'
 
 export default async function MaakindustriePage({ params }: { params: { locale: string } }) {
   const locale = params.locale as 'nl' | 'en'
@@ -42,6 +44,12 @@ export default async function MaakindustriePage({ params }: { params: { locale: 
 
   return (
     <>
+      {/* SEO: Hreflang for multi-language */}
+      <Hreflang />
+
+      {/* SEO: Product Schema for Tier 2 (Manufacturing) */}
+      <ProductSchema tier="manufacturing" locale={locale} basePrice={tier2.basePrice!} />
+
       <div className="relative">
         <div className="fixed inset-0 -z-10">
           <BackgroundEngine theme={backgroundThemes.services} />

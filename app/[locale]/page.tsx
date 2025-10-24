@@ -9,23 +9,22 @@ import { UseCasesSection } from '@/components/sections/use-cases-section'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { FAQSection } from '@/components/sections/faq-section'
 import { CTASection } from '@/components/sections/cta-section'
-import {
-  OrganizationSchema,
-  ServiceSchema,
-  LocalBusinessSchema,
-  WebsiteSchema,
-} from '@/components/seo/structured-data'
+import { OrganizationSchema } from '@/components/seo/json-ld'
+import { Hreflang } from '@/components/seo/hreflang'
+import { TrustStrip } from '@/components/ui/trust-strip'
 import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
 import { backgroundThemes } from '@/lib/backgroundThemes'
 
-export default function HomePage() {
+export default async function HomePage({ params }: { params: { locale: string } }) {
+  const locale = params.locale as 'nl' | 'en'
+
   return (
     <>
-      {/* Schema.org structured data for SEO */}
-      <OrganizationSchema />
-      <ServiceSchema />
-      <LocalBusinessSchema />
-      <WebsiteSchema />
+      {/* SEO: Hreflang for multi-language */}
+      <Hreflang />
+
+      {/* SEO: Organization Schema */}
+      <OrganizationSchema locale={locale} />
 
       <div className="relative">
         {/* 3D Background */}
@@ -36,6 +35,14 @@ export default function HomePage() {
         <Header />
         <main id="main-content">
           <HeroEnhanced />
+
+          {/* Trust Strip */}
+          <section className="border-y border-[color:color-mix(in_oklab,var(--fg)_8%,transparent)] bg-[color:color-mix(in_oklab,var(--bg)_95%,transparent)] py-6">
+            <div className="container-custom">
+              <TrustStrip />
+            </div>
+          </section>
+
           <ROICalculator />
           <OutcomesStrip />
           <ProcessSection />

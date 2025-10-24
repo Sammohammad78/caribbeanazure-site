@@ -7,6 +7,7 @@ import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Check, ArrowRight, Settings, Sparkles } from 'lucide-react'
 import Link from 'next/link'
+import { Hreflang } from '@/components/seo/hreflang'
 
 export default async function ConfiguratorsPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as 'nl' | 'en'
@@ -70,6 +71,10 @@ export default async function ConfiguratorsPage({ params }: { params: { locale: 
 
   return (
     <>
+      {/* SEO: Hreflang for multi-language */}
+      {/* NOTE: NO Product Schema for Tier 3 per specification */}
+      <Hreflang />
+
       <div className="relative">
         <div className="fixed inset-0 -z-10">
           <BackgroundEngine theme={backgroundThemes.services} />

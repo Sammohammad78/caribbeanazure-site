@@ -8,6 +8,8 @@ import { Button } from '@/components/ui/button'
 import { Check, ArrowRight, Zap } from 'lucide-react'
 import Link from 'next/link'
 import { ROICalculator } from '@/components/sections/roi-calculator'
+import { Hreflang } from '@/components/seo/hreflang'
+import { ProductSchema } from '@/components/seo/json-ld'
 
 export default async function LightAutomationsPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as 'nl' | 'en'
@@ -75,6 +77,12 @@ export default async function LightAutomationsPage({ params }: { params: { local
 
   return (
     <>
+      {/* SEO: Hreflang for multi-language */}
+      <Hreflang />
+
+      {/* SEO: Product Schema for Tier 1 (Light Automations) */}
+      <ProductSchema tier="light" locale={locale} basePrice={tier1.basePrice!} />
+
       <div className="relative">
         <div className="fixed inset-0 -z-10">
           <BackgroundEngine theme={backgroundThemes.services} />
