@@ -10,6 +10,7 @@ import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
 import { backgroundThemes } from '@/lib/backgroundThemes'
 import { RoiCalculator } from '@/components/roi/RoiCalculator'
 import { TrustStrip } from '@/components/sections/trust-strip'
+import { PricingSchema } from '@/components/seo/structured-data'
 import { formatCurrency, getPriceOnRequest } from '@/lib/format'
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
@@ -100,6 +101,9 @@ export default async function TarievenPage({ params }: { params: { locale: strin
 
   return (
     <>
+      {/* Schema.org structured data for pricing */}
+      <PricingSchema locale={locale} />
+
       <div className="relative">
         {/* 3D Background */}
         <div className="fixed inset-0 -z-10">

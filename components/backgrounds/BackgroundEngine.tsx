@@ -151,18 +151,41 @@ export function BackgroundEngine({
   className?: string
 }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const rafIdRef = useRef<number | null>(null)
+  const lastUpdateRef = useRef<number>(0)
 
   useEffect(() => {
+    let ticking = false
+
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) - 0.5,
-        y: (e.clientY / window.innerHeight) - 0.5,
-      })
+      const now = Date.now()
+
+      // Throttle to max 60fps (16.67ms between updates)
+      if (now - lastUpdateRef.current < 16) {
+        return
+      }
+
+      if (!ticking) {
+        rafIdRef.current = requestAnimationFrame(() => {
+          setMousePosition({
+            x: (e.clientX / window.innerWidth) - 0.5,
+            y: (e.clientY / window.innerHeight) - 0.5,
+          })
+          lastUpdateRef.current = Date.now()
+          ticking = false
+        })
+        ticking = true
+      }
     }
 
     if (theme.motion.parallaxIntensity > 0) {
-      window.addEventListener('mousemove', handleMouseMove)
-      return () => window.removeEventListener('mousemove', handleMouseMove)
+      window.addEventListener('mousemove', handleMouseMove, { passive: true })
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove)
+        if (rafIdRef.current) {
+          cancelAnimationFrame(rafIdRef.current)
+        }
+      }
     }
   }, [theme.motion.parallaxIntensity])
 

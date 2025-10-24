@@ -1,6 +1,7 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { HeroEnhanced } from '@/components/sections/hero-enhanced'
+import { TrustStrip } from '@/components/sections/trust-strip'
 import { ROICalculator } from '@/components/sections/roi-calculator'
 import { OutcomesStrip } from '@/components/sections/outcomes-strip'
 import { ServicesGrid } from '@/components/sections/services-grid'
@@ -36,6 +37,7 @@ export default function HomePage() {
         <Header />
         <main id="main-content">
           <HeroEnhanced />
+          <TrustStrip variant="default" className="py-12" />
           <ROICalculator />
           <OutcomesStrip />
           <ProcessSection />

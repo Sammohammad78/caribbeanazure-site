@@ -174,3 +174,69 @@ export function WebsiteSchema() {
     />
   )
 }
+
+export function PricingSchema({ locale = 'nl' }: { locale?: 'nl' | 'en' }) {
+  const offers = [
+    {
+      '@type': 'Offer',
+      '@id': `${siteConfig.url}/oplossingen/light`,
+      name: locale === 'nl' ? 'Light Automations' : 'Light Automations',
+      description: locale === 'nl'
+        ? 'Eenvoudige automatiseringen voor dagelijkse taken zoals e-mail, agenda, notificaties en documenten.'
+        : 'Simple automations for daily tasks like email, calendar, notifications, and documents.',
+      url: `${siteConfig.url}/${locale === 'en' ? 'en/' : ''}oplossingen/light`,
+      price: '999',
+      priceCurrency: 'EUR',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: '999',
+        priceCurrency: 'EUR',
+        valueAddedTaxIncluded: false,
+      },
+      availability: 'https://schema.org/InStock',
+      seller: {
+        '@type': 'Organization',
+        name: 'Caribbean Azure',
+      },
+    },
+    {
+      '@type': 'Offer',
+      '@id': `${siteConfig.url}/oplossingen/maakindustrie`,
+      name: locale === 'nl' ? 'Maakindustrie Oplossingen' : 'Manufacturing Solutions',
+      description: locale === 'nl'
+        ? 'Geavanceerde automatiseringen voor maakbedrijven: Sales→BOM Bridge, Drawing Pack Generator, ERP-koppelingen.'
+        : 'Advanced automations for manufacturing: Sales→BOM Bridge, Drawing Pack Generator, ERP connectors.',
+      url: `${siteConfig.url}/${locale === 'en' ? 'en/' : ''}oplossingen/maakindustrie`,
+      price: '1999',
+      priceCurrency: 'EUR',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        price: '1999',
+        priceCurrency: 'EUR',
+        valueAddedTaxIncluded: false,
+      },
+      availability: 'https://schema.org/InStock',
+      seller: {
+        '@type': 'Organization',
+        name: 'Caribbean Azure',
+      },
+    },
+  ]
+
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: offers.map((offer, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: offer,
+    })),
+  }
+
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  )
+}
