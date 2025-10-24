@@ -1,17 +1,18 @@
 import { getMessages, setRequestLocale } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
-import { locales } from '@/lib/i18n'
+import { locales, type Locale } from '@/lib/i18n'
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
 }
 
-export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const { locale } = params
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const normalizedLocale = locale as Locale
 
   // Validate locale
-  if (!locales.includes(locale as any)) {
+  if (!locales.includes(normalizedLocale)) {
     return {
       title: 'Page Not Found',
     }
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 
   return {
     alternates: {
-      canonical: locale === 'nl' ? baseUrl : `${baseUrl}/${locale}`,
+      canonical: normalizedLocale === 'nl' ? baseUrl : `${baseUrl}/${normalizedLocale}`,
       languages: alternateLanguages,
     },
   }
@@ -47,22 +48,23 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }) {
-  const { locale } = params
+  const { locale } = await params
+  const normalizedLocale = locale as Locale
 
   // Validate locale
-  if (!locales.includes(locale as any)) {
+  if (!locales.includes(normalizedLocale)) {
     notFound()
   }
 
-  setRequestLocale(locale as any)
+  setRequestLocale(normalizedLocale)
 
   // Get messages for the locale
-  const messages = await getMessages({ locale })
+  const messages = await getMessages({ locale: normalizedLocale })
 
   return (
-    <NextIntlClientProvider messages={messages} locale={locale}>
+    <NextIntlClientProvider messages={messages} locale={normalizedLocale}>
       {children}
     </NextIntlClientProvider>
   )
