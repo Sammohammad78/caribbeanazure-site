@@ -1,7 +1,7 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { HeroEnhanced } from '@/components/sections/hero-enhanced'
-import { ROICalculator } from '@/components/sections/roi-calculator'
+import { RoiCalculator } from '@/components/roi/RoiCalculator'
 import { OutcomesStrip } from '@/components/sections/outcomes-strip'
 import { ServicesGrid } from '@/components/sections/services-grid'
 import { ProcessSection } from '@/components/sections/process-section'
@@ -36,7 +36,7 @@ export default function HomePage() {
         <Header />
         <main id="main-content">
           <HeroEnhanced />
-          <ROICalculator />
+          <RoiCalculator variant="inline" showExport enableUrlSync />
           <OutcomesStrip />
           <ProcessSection />
           <UseCasesSection />

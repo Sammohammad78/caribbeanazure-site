@@ -18,6 +18,7 @@ import {
 import Link from 'next/link'
 import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
 import { backgroundThemes } from '@/lib/backgroundThemes'
+import { RoiCalculator } from '@/components/roi/RoiCalculator'
 
 type ServiceBlock = {
   icon: any
@@ -157,6 +158,15 @@ export default function ServicesPage() {
                   </CardContent>
                 </Card>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ROI Calculator Section */}
+        <section className="section-padding-y">
+          <div className="container-custom">
+            <div className="mx-auto max-w-4xl">
+              <RoiCalculator variant="card" showExport enableUrlSync />
             </div>
           </div>
         </section>
