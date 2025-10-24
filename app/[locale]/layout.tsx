@@ -1,4 +1,4 @@
-import { getMessages, unstable_setRequestLocale } from 'next-intl/server'
+import { getMessages, setRequestLocale } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
 import { locales } from '@/lib/i18n'
@@ -56,7 +56,7 @@ export default async function LocaleLayout({
     notFound()
   }
 
-  unstable_setRequestLocale(locale as any)
+  setRequestLocale(locale as any)
 
   // Get messages for the locale
   const messages = await getMessages({ locale })
