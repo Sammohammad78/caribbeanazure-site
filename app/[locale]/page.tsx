@@ -14,6 +14,19 @@ import { Hreflang } from '@/components/seo/hreflang'
 import { TrustStrip } from '@/components/ui/trust-strip'
 import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
 import { backgroundThemes } from '@/lib/backgroundThemes'
+import { generatePageMetadata, homeMetadata } from '@/lib/metadata'
+
+export async function generateMetadata({ params }: { params: { locale: string } }) {
+  const locale = params.locale as 'nl' | 'en'
+  const meta = homeMetadata[locale]
+
+  return generatePageMetadata({
+    locale,
+    title: meta.title,
+    description: meta.description,
+    path: '/',
+  })
+}
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const locale = params.locale as 'nl' | 'en'

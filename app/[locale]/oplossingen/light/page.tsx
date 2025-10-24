@@ -10,6 +10,20 @@ import Link from 'next/link'
 import { ROICalculator } from '@/components/sections/roi-calculator'
 import { Hreflang } from '@/components/seo/hreflang'
 import { ProductSchema } from '@/components/seo/json-ld'
+import { generatePageMetadata, solutionsMetadata } from '@/lib/metadata'
+
+export async function generateMetadata({ params }: { params: { locale: string } }) {
+  const locale = params.locale as 'nl' | 'en'
+  const meta = solutionsMetadata.light[locale]
+
+  return generatePageMetadata({
+    locale,
+    title: meta.title,
+    description: meta.description,
+    path: '/oplossingen/light',
+    type: 'product',
+  })
+}
 
 export default async function LightAutomationsPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as 'nl' | 'en'
