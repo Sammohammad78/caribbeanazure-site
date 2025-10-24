@@ -426,7 +426,48 @@
       "Kies de processen die we automatiseren",
       "Zie direct besparing en extra omzetpotentieel"
     ],
-    "cta": "Start de calculator"
+    "cta": "Start de calculator",
+    "calculator": {
+      "badge": "ROI Calculator",
+      "heading": "Wat levert automatisering jou op?",
+      "description": "Bereken in 60 seconden hoeveel tijd en geld je bespaart met automation",
+      "presets": {
+        "title": "Kies een scenario",
+        "light": "Light Automations",
+        "manufacturing": "Maakindustrie (BOM & Tekeningen)",
+        "c2p": "Configurators (CPQ/C2P)"
+      },
+      "inputs": {
+        "title": "Je situatie",
+        "description": "Pas de schuifjes aan naar je huidige situatie",
+        "teamSize": "Teamgrootte",
+        "teamSizeMin": "1 persoon",
+        "teamSizeMax": "50+ mensen",
+        "hoursPerWeek": "Uren handmatig werk per week",
+        "hoursPerWeekMin": "5 uur/week",
+        "hoursPerWeekMax": "40 uur/week",
+        "hourlyRate": "Gemiddeld uurtarief",
+        "hourlyRateMin": "€25/uur",
+        "hourlyRateMax": "€150/uur"
+      },
+      "results": {
+        "yearlySavings": "Jaarlijkse besparing",
+        "roi": "ROI (eerste jaar)",
+        "payback": "Terugverdiend in",
+        "paybackMonths": "maanden",
+        "investment": "Investering",
+        "graphTitle": "Cumulatieve besparing (24 maanden)",
+        "graphXAxis": "Maanden",
+        "graphMonth": "Maand",
+        "breakeven": "Breakeven punt na",
+        "totalSavings": "Totale besparing na 2 jaar"
+      },
+      "cta": {
+        "button": "Ontvang je persoonlijke blueprint",
+        "subtext": "Vrijblijvend gesprek · Reactie binnen 24 uur"
+      },
+      "disclaimer": "De berekening is een voorbeeld en geen garantie. Werkelijke resultaten variëren per proces en organisatie."
+    }
   },
   "faq": {
     "title": "Veelgestelde vragen",

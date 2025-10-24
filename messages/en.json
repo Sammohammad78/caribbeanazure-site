@@ -418,7 +418,48 @@
       "Pick the processes we automate",
       "See projected savings and revenue lift instantly"
     ],
-    "cta": "Start the calculator"
+    "cta": "Start the calculator",
+    "calculator": {
+      "badge": "ROI Calculator",
+      "heading": "What does automation deliver for you?",
+      "description": "Calculate how much time and money you save with automation in 60 seconds",
+      "presets": {
+        "title": "Choose a scenario",
+        "light": "Light Automations",
+        "manufacturing": "Manufacturing (BOM & Drawings)",
+        "c2p": "Configurators (CPQ/C2P)"
+      },
+      "inputs": {
+        "title": "Your situation",
+        "description": "Adjust the sliders to match your current situation",
+        "teamSize": "Team size",
+        "teamSizeMin": "1 person",
+        "teamSizeMax": "50+ people",
+        "hoursPerWeek": "Hours of manual work per week",
+        "hoursPerWeekMin": "5 hrs/week",
+        "hoursPerWeekMax": "40 hrs/week",
+        "hourlyRate": "Average hourly rate",
+        "hourlyRateMin": "€25/hr",
+        "hourlyRateMax": "€150/hr"
+      },
+      "results": {
+        "yearlySavings": "Annual savings",
+        "roi": "ROI (first year)",
+        "payback": "Payback in",
+        "paybackMonths": "months",
+        "investment": "Investment",
+        "graphTitle": "Cumulative savings (24 months)",
+        "graphXAxis": "Months",
+        "graphMonth": "Month",
+        "breakeven": "Breakeven point after",
+        "totalSavings": "Total savings after 2 years"
+      },
+      "cta": {
+        "button": "Get your personalized blueprint",
+        "subtext": "No-obligation call · Response within 24 hours"
+      },
+      "disclaimer": "This calculation is an estimate and not a guarantee. Actual results vary per process and organization."
+    }
   },
   "faq": {
     "title": "Frequently asked questions",

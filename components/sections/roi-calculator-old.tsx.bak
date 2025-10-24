@@ -1,156 +1,47 @@
 'use client'
 
-import { useState, useMemo, useEffect, useCallback, useRef } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { CardPremium, CardPremiumHeader, CardPremiumTitle, CardPremiumDescription, CardPremiumContent } from '@/components/ui/card-premium'
 import { MagneticButton } from '@/components/ui/button-magnetic'
 import { Calculator, TrendingUp, Clock, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import { useLocale, useTranslations } from 'next-intl'
+import { useLocale } from 'next-intl'
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
-import { formatEUR } from '@/lib/pricing'
 
-// Preset configurations for different tiers
-type PresetType = 'light' | 'manufacturing' | 'c2p' | 'custom'
+export function ROICalculator() {
+  const locale = useLocale()
+  const [teamSize, setTeamSize] = useState(10)
+  const [hoursPerWeek, setHoursPerWeek] = useState(20)
+  const [hourlyRate, setHourlyRate] = useState(50)
 
-interface PresetConfig {
-  teamSize: number
-  hoursPerWeek: number
-  hourlyRate: number
-  savingsMultiplier: number // Different tiers have different efficiency gains
-  implementationBase: number
-}
+  // Calculations
+  const yearlyWaste = teamSize * hoursPerWeek * hourlyRate * 48 // 48 work weeks
+  const automationSavings = yearlyWaste * 0.6 // 60% reduction
+  const implementationCost = 5000 + (teamSize * 200)
+  const roi = ((automationSavings - implementationCost) / implementationCost) * 100
+  const paybackMonths = Math.ceil((implementationCost / (automationSavings / 12)))
+  const monthlySavings = automationSavings / 12
 
-const PRESETS: Record<Exclude<PresetType, 'custom'>, PresetConfig> = {
-  light: {
-    teamSize: 5,
-    hoursPerWeek: 15,
-    hourlyRate: 50,
-    savingsMultiplier: 0.6, // 60% reduction in manual work
-    implementationBase: 999,
-  },
-  manufacturing: {
-    teamSize: 12,
-    hoursPerWeek: 25,
-    hourlyRate: 65,
-    savingsMultiplier: 0.75, // 75% reduction (higher for BOM/drawings automation)
-    implementationBase: 1999,
-  },
-  c2p: {
-    teamSize: 20,
-    hoursPerWeek: 35,
-    hourlyRate: 80,
-    savingsMultiplier: 0.85, // 85% reduction (highest for configurators)
-    implementationBase: 5000,
-  },
-}
+  // Graph data (24 months)
+  const graphData = Array.from({ length: 24 }, (_, month) => ({
+    month: month + 1,
+    cumulative: Math.min((monthlySavings * (month + 1)) - implementationCost, automationSavings * 2),
+    investment: month === 0 ? -implementationCost : 0
+  }))
 
-interface ROICalculatorProps {
-  preset?: PresetType
-  showPresets?: boolean
-}
-
-export function ROICalculator({ preset = 'light', showPresets = true }: ROICalculatorProps) {
-  const locale = useLocale() as 'nl' | 'en'
-  const t = useTranslations('roi.calculator')
-
-  // Initialize with valid preset config
-  const initialConfig = preset !== 'custom' ? PRESETS[preset] : PRESETS.light
-
-  const [selectedPreset, setSelectedPreset] = useState<PresetType>(preset)
-  const [teamSize, setTeamSize] = useState(initialConfig.teamSize)
-  const [hoursPerWeek, setHoursPerWeek] = useState(initialConfig.hoursPerWeek)
-  const [hourlyRate, setHourlyRate] = useState(initialConfig.hourlyRate)
-  const hasTrackedOpen = useRef(false)
-
-  // Track roi_open event (only once per mount)
-  useEffect(() => {
-    if (!hasTrackedOpen.current && typeof window !== 'undefined') {
-      trackEvent('roi_open', { preset: selectedPreset })
-      hasTrackedOpen.current = true
-    }
-  }, [selectedPreset])
-
-  // Handle preset change
-  const applyPreset = useCallback((presetType: Exclude<PresetType, 'custom'>) => {
-    const config = PRESETS[presetType]
-    setSelectedPreset(presetType)
-    setTeamSize(config.teamSize)
-    setHoursPerWeek(config.hoursPerWeek)
-    setHourlyRate(config.hourlyRate)
-    trackEvent('roi_preset_change', { preset: presetType })
-  }, [])
-
-  // Throttled adjustment tracking (RAF-based)
-  const adjustmentTimeoutRef = useRef<number | null>(null)
-  const trackAdjustment = useCallback((field: string, value: number) => {
-    if (adjustmentTimeoutRef.current) {
-      cancelAnimationFrame(adjustmentTimeoutRef.current)
-    }
-    adjustmentTimeoutRef.current = requestAnimationFrame(() => {
-      trackEvent('roi_adjust', { field, value, preset: selectedPreset })
-    })
-  }, [selectedPreset])
-
-  // Memoized calculations
-  const result = useMemo(() => {
-    const config = selectedPreset !== 'custom' ? PRESETS[selectedPreset] : {
-      savingsMultiplier: 0.6,
-      implementationBase: 5000,
-    }
-
-    const yearlyWaste = teamSize * hoursPerWeek * hourlyRate * 48 // 48 work weeks
-    const automationSavings = yearlyWaste * config.savingsMultiplier
-    const implementationCost = config.implementationBase + (teamSize * 200)
-    const roi = ((automationSavings - implementationCost) / implementationCost) * 100
-    const paybackMonths = Math.ceil((implementationCost / (automationSavings / 12)))
-    const monthlySavings = automationSavings / 12
-
-    // Graph data (24 months)
-    const graphData = Array.from({ length: 24 }, (_, month) => ({
-      month: month + 1,
-      cumulative: Math.min((monthlySavings * (month + 1)) - implementationCost, automationSavings * 2),
-      investment: month === 0 ? -implementationCost : 0,
-    }))
-
-    return {
-      yearlyWaste,
-      automationSavings,
-      implementationCost,
-      roi,
-      paybackMonths,
-      monthlySavings,
-      graphData,
-    }
-  }, [teamSize, hoursPerWeek, hourlyRate, selectedPreset])
-
-  const formatCurrency = useCallback((value: number) => {
-    return formatEUR(value, locale)
-  }, [locale])
-
-  const formatNumber = useCallback((value: number) => {
-    return new Intl.NumberFormat(locale === 'nl' ? 'nl-NL' : 'en-US', {
-      maximumFractionDigits: 0,
+  const formatCurrency = (value: number) => {
+    return new Intl.NumberFormat('nl-NL', {
+      style: 'currency',
+      currency: 'EUR',
+      maximumFractionDigits: 0
     }).format(value)
-  }, [locale])
-
-  const handleSliderChange = (field: 'teamSize' | 'hoursPerWeek' | 'hourlyRate', value: number) => {
-    setSelectedPreset('custom')
-    if (field === 'teamSize') setTeamSize(value)
-    if (field === 'hoursPerWeek') setHoursPerWeek(value)
-    if (field === 'hourlyRate') setHourlyRate(value)
-    trackAdjustment(field, value)
   }
 
-  const handleCTAClick = () => {
-    trackEvent('roi_submit', {
-      teamSize,
-      hoursPerWeek,
-      hourlyRate,
-      annualSavings: Math.round(result.automationSavings),
-      roi: Math.round(result.roi),
-      preset: selectedPreset,
-    })
+  const formatNumber = (value: number) => {
+    return new Intl.NumberFormat('nl-NL', {
+      maximumFractionDigits: 0
+    }).format(value)
   }
 
   return (
@@ -165,7 +56,7 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
             transition={{ duration: 0.4 }}
           >
             <Calculator className="size-4" />
-            {t('badge')}
+            ROI Calculator
           </motion.div>
 
           <motion.h2
@@ -175,7 +66,7 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            {t('heading')}
+            Wat levert automatisering jou op?
           </motion.h2>
 
           <motion.p
@@ -185,38 +76,12 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {t('description')}
+            Bereken in 60 seconden hoeveel tijd en geld je bespaart met automation
           </motion.p>
         </div>
 
-        {/* Preset Selector */}
-        {showPresets && (
-          <motion.div
-            className="mb-8 flex justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.25 }}
-          >
-            <div className="inline-flex gap-3 rounded-2xl border border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-2">
-              {(['light', 'manufacturing', 'c2p'] as const).map((presetType) => (
-                <button
-                  key={presetType}
-                  onClick={() => applyPreset(presetType)}
-                  className={`rounded-xl px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                    selectedPreset === presetType
-                      ? 'bg-[color:var(--brand)] text-white shadow-lg'
-                      : 'text-[color:var(--fg-muted)] hover:text-[color:var(--fg)]'
-                  }`}
-                >
-                  {t(`presets.${presetType}`)}
-                </button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-
         <div className="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+
           {/* Left: Input Form */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -226,56 +91,70 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
           >
             <CardPremium glow>
               <CardPremiumHeader>
-                <CardPremiumTitle>{t('inputs.title')}</CardPremiumTitle>
-                <CardPremiumDescription>{t('inputs.description')}</CardPremiumDescription>
+                <CardPremiumTitle>Je situatie</CardPremiumTitle>
+                <CardPremiumDescription>
+                  Pas de schuifjes aan naar je huidige situatie
+                </CardPremiumDescription>
               </CardPremiumHeader>
 
               <CardPremiumContent className="space-y-8">
                 {/* Team Size */}
                 <div>
                   <div className="mb-3 flex items-center justify-between">
-                    <label className="text-sm font-semibold text-body">{t('inputs.teamSize')}</label>
-                    <span className="text-2xl font-bold text-[color:var(--brand)]">{teamSize}</span>
+                    <label className="text-sm font-semibold text-body">
+                      Teamgrootte
+                    </label>
+                    <span className="text-2xl font-bold text-[color:var(--brand)]">
+                      {teamSize}
+                    </span>
                   </div>
                   <input
                     type="range"
                     min="1"
                     max="50"
                     value={teamSize}
-                    onChange={(e) => handleSliderChange('teamSize', Number(e.target.value))}
+                    onChange={(e) => setTeamSize(Number(e.target.value))}
                     className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[color:var(--brand)] [&::-webkit-slider-thumb]:shadow-[0_4px_16px_color-mix(in_oklab,var(--brand)_40%,transparent)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-110"
                   />
                   <div className="mt-2 flex justify-between text-xs text-[color:var(--fg-muted)]">
-                    <span>{t('inputs.teamSizeMin')}</span>
-                    <span>{t('inputs.teamSizeMax')}</span>
+                    <span>1 persoon</span>
+                    <span>50+ mensen</span>
                   </div>
                 </div>
 
                 {/* Hours per Week */}
                 <div>
                   <div className="mb-3 flex items-center justify-between">
-                    <label className="text-sm font-semibold text-body">{t('inputs.hoursPerWeek')}</label>
-                    <span className="text-2xl font-bold text-[color:var(--brand)]">{hoursPerWeek}h</span>
+                    <label className="text-sm font-semibold text-body">
+                      Uren handmatig werk per week
+                    </label>
+                    <span className="text-2xl font-bold text-[color:var(--brand)]">
+                      {hoursPerWeek}h
+                    </span>
                   </div>
                   <input
                     type="range"
                     min="5"
                     max="40"
                     value={hoursPerWeek}
-                    onChange={(e) => handleSliderChange('hoursPerWeek', Number(e.target.value))}
+                    onChange={(e) => setHoursPerWeek(Number(e.target.value))}
                     className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[color:var(--brand)] [&::-webkit-slider-thumb]:shadow-[0_4px_16px_color-mix(in_oklab,var(--brand)_40%,transparent)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-110"
                   />
                   <div className="mt-2 flex justify-between text-xs text-[color:var(--fg-muted)]">
-                    <span>{t('inputs.hoursPerWeekMin')}</span>
-                    <span>{t('inputs.hoursPerWeekMax')}</span>
+                    <span>5 uur/week</span>
+                    <span>40 uur/week</span>
                   </div>
                 </div>
 
                 {/* Hourly Rate */}
                 <div>
                   <div className="mb-3 flex items-center justify-between">
-                    <label className="text-sm font-semibold text-body">{t('inputs.hourlyRate')}</label>
-                    <span className="text-2xl font-bold text-[color:var(--brand)]">€{hourlyRate}</span>
+                    <label className="text-sm font-semibold text-body">
+                      Gemiddeld uurtarief
+                    </label>
+                    <span className="text-2xl font-bold text-[color:var(--brand)]">
+                      €{hourlyRate}
+                    </span>
                   </div>
                   <input
                     type="range"
@@ -283,12 +162,12 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
                     max="150"
                     step="5"
                     value={hourlyRate}
-                    onChange={(e) => handleSliderChange('hourlyRate', Number(e.target.value))}
+                    onChange={(e) => setHourlyRate(Number(e.target.value))}
                     className="h-2 w-full cursor-pointer appearance-none rounded-full bg-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-[color:var(--brand)] [&::-webkit-slider-thumb]:shadow-[0_4px_16px_color-mix(in_oklab,var(--brand)_40%,transparent)] [&::-webkit-slider-thumb]:transition-transform [&::-webkit-slider-thumb]:hover:scale-110"
                   />
                   <div className="mt-2 flex justify-between text-xs text-[color:var(--fg-muted)]">
-                    <span>{t('inputs.hourlyRateMin')}</span>
-                    <span>{t('inputs.hourlyRateMax')}</span>
+                    <span>€25/uur</span>
+                    <span>€150/uur</span>
                   </div>
                 </div>
               </CardPremiumContent>
@@ -312,9 +191,11 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--fg-muted)]">
-                      {t('results.yearlySavings')}
+                      Jaarlijkse besparing
                     </p>
-                    <p className="mt-2 text-3xl font-bold text-body">{formatCurrency(result.automationSavings)}</p>
+                    <p className="mt-2 text-3xl font-bold text-body">
+                      {formatCurrency(automationSavings)}
+                    </p>
                   </div>
                 </div>
               </CardPremium>
@@ -326,9 +207,11 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--fg-muted)]">
-                      {t('results.roi')}
+                      ROI (eerste jaar)
                     </p>
-                    <p className="mt-2 text-3xl font-bold text-body">{formatNumber(result.roi)}%</p>
+                    <p className="mt-2 text-3xl font-bold text-body">
+                      {formatNumber(roi)}%
+                    </p>
                   </div>
                 </div>
               </CardPremium>
@@ -340,10 +223,10 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--fg-muted)]">
-                      {t('results.payback')}
+                      Terugverdiend in
                     </p>
                     <p className="mt-2 text-3xl font-bold text-body">
-                      {result.paybackMonths} {t('results.paybackMonths')}
+                      {paybackMonths} maanden
                     </p>
                   </div>
                 </div>
@@ -356,9 +239,11 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
                   </div>
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--fg-muted)]">
-                      {t('results.investment')}
+                      Investering
                     </p>
-                    <p className="mt-2 text-3xl font-bold text-body">{formatCurrency(result.implementationCost)}</p>
+                    <p className="mt-2 text-3xl font-bold text-body">
+                      {formatCurrency(implementationCost)}
+                    </p>
                   </div>
                 </div>
               </CardPremium>
@@ -366,14 +251,16 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
 
             {/* Graph */}
             <CardPremium className="p-6">
-              <h3 className="mb-4 text-lg font-semibold text-body">{t('results.graphTitle')}</h3>
+              <h3 className="mb-4 text-lg font-semibold text-body">
+                Cumulatieve besparing (24 maanden)
+              </h3>
               <div className="h-[240px]">
                 <ResponsiveContainer width="100%" height="100%">
-                  <LineChart data={result.graphData}>
+                  <LineChart data={graphData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="color-mix(in oklab, var(--fg) 8%, transparent)" />
                     <XAxis
                       dataKey="month"
-                      label={{ value: t('results.graphXAxis'), position: 'insideBottom', offset: -5 }}
+                      label={{ value: 'Maanden', position: 'insideBottom', offset: -5 }}
                       stroke="var(--fg-muted)"
                       tick={{ fill: 'var(--fg-subtle)', fontSize: 12 }}
                     />
@@ -384,12 +271,12 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
                     />
                     <Tooltip
                       formatter={(value: number) => formatCurrency(value)}
-                      labelFormatter={(label) => `${t('results.graphMonth')} ${label}`}
+                      labelFormatter={(label) => `Maand ${label}`}
                       contentStyle={{
                         backgroundColor: 'var(--panel)',
                         border: '1px solid color-mix(in oklab, var(--fg) 12%, transparent)',
                         borderRadius: '12px',
-                        padding: '12px',
+                        padding: '12px'
                       }}
                     />
                     <Line
@@ -404,47 +291,35 @@ export function ROICalculator({ preset = 'light', showPresets = true }: ROICalcu
                 </ResponsiveContainer>
               </div>
               <p className="mt-4 text-sm text-[color:var(--fg-subtle)]">
-                {t('results.breakeven')} <span className="font-semibold text-[color:var(--brand)]">{result.paybackMonths} {t('results.paybackMonths')}</span>.{' '}
-                {t('results.totalSavings')}: <span className="font-semibold text-[color:var(--brand)]">{formatCurrency(result.automationSavings * 2)}</span>
+                Breakeven punt na <span className="font-semibold text-[color:var(--brand)]">{paybackMonths} maanden</span>.
+                Totale besparing na 2 jaar: <span className="font-semibold text-[color:var(--brand)]">{formatCurrency(automationSavings * 2)}</span>
               </p>
             </CardPremium>
 
             {/* CTA */}
             <div className="text-center">
-              <Link
-                href={`/${locale}/contact?roi=${Math.round(result.roi)}&savings=${Math.round(result.automationSavings)}&preset=${selectedPreset}`}
-                onClick={handleCTAClick}
-              >
+              <Link href={`/${locale}/contact?roi=${Math.round(roi)}&savings=${Math.round(automationSavings)}`}>
                 <MagneticButton className="w-full min-w-[280px]">
-                  {t('cta.button')}
+                  Ontvang je persoonlijke blueprint
                   <ArrowRight className="size-5" />
                 </MagneticButton>
               </Link>
-              <p className="mt-3 text-sm text-[color:var(--fg-muted)]">{t('cta.subtext')}</p>
+              <p className="mt-3 text-sm text-[color:var(--fg-muted)]">
+                Vrijblijvend gesprek · Reactie binnen 24 uur
+              </p>
             </div>
           </motion.div>
+
         </div>
 
         {/* Disclaimer */}
         <div className="mx-auto mt-8 max-w-3xl text-center">
           <p className="text-sm text-[color:var(--fg-muted)]">
-            <strong>{locale === 'nl' ? 'Let op:' : 'Note:'}</strong> {t('disclaimer')}
+            <strong>Let op:</strong> De berekening is een voorbeeld en geen garantie.
+            Werkelijke resultaten variëren per proces en organisatie.
           </p>
         </div>
       </div>
     </section>
   )
-}
-
-// Analytics helper
-function trackEvent(eventName: string, props?: Record<string, any>) {
-  if (typeof window !== 'undefined') {
-    // Support both Plausible and Umami
-    if ((window as any).plausible) {
-      ;(window as any).plausible(eventName, { props })
-    }
-    if ((window as any).umami) {
-      ;(window as any).umami.track(eventName, props)
-    }
-  }
 }
