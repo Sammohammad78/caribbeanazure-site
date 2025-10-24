@@ -8,6 +8,7 @@ import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
 import { Logo, LogoMark } from '@/components/brand/logo'
+import { LanguageSwitcher } from './language-switcher'
 
 export function Header() {
   const t = useTranslations()
@@ -50,6 +51,7 @@ export function Header() {
 
           {/* CTA & Theme Toggle */}
           <div className="flex items-center gap-3">
+            <LanguageSwitcher />
             <ThemeToggle className="hidden md:inline-flex" />
 
             <Button asChild size="sm" className="hidden md:inline-flex">
@@ -80,7 +82,8 @@ export function Header() {
         )}
       >
         <nav className="container-custom flex flex-col gap-4 py-6">
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end gap-2">
+            <LanguageSwitcher />
             <ThemeToggle />
           </div>
 

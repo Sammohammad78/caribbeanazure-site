@@ -1,11 +1,11 @@
 import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from './lib/i18n';
 
-// Dutch-only configuration (no /en routes)
+// NL-first: / for NL, /en for EN
 export default createMiddleware({
   locales,
   defaultLocale,
-  localePrefix: 'as-needed', // Dutch at / (no prefix)
+  localePrefix: 'as-needed', // NL at / (no prefix), EN at /en
 });
 
 export const config = {
