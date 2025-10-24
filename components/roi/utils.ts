@@ -4,6 +4,7 @@
  */
 
 import type { RoiInputs, RoiResult } from './types'
+import { formatCurrency as formatCurrencyUtil } from '@/lib/format'
 
 /**
  * Calculate ROI metrics from inputs
@@ -27,37 +28,34 @@ export function calculateRoi(inputs: RoiInputs): RoiResult {
 
 /**
  * Validate ROI inputs
+ * Returns error key for translation instead of hardcoded message
  */
 export function validateInputs(inputs: Partial<RoiInputs>): string | null {
   if (!inputs.teamSize || inputs.teamSize < 1 || inputs.teamSize > 1000) {
-    return 'Teamgrootte moet tussen 1 en 1000 zijn'
+    return 'validation.teamSize'
   }
   if (!inputs.hourlyRate || inputs.hourlyRate < 10 || inputs.hourlyRate > 500) {
-    return 'Uurtarief moet tussen €10 en €500 zijn'
+    return 'validation.hourlyRate'
   }
   if (
     inputs.hoursSavedPerWeek === undefined ||
     inputs.hoursSavedPerWeek < 0.5 ||
     inputs.hoursSavedPerWeek > 40
   ) {
-    return 'Bespaarde uren moet tussen 0,5 en 40 zijn'
+    return 'validation.hoursSavedPerWeek'
   }
   if (!inputs.adoption || inputs.adoption < 0.1 || inputs.adoption > 1) {
-    return 'Adoptie moet tussen 10% en 100% zijn'
+    return 'validation.adoption'
   }
   return null
 }
 
 /**
- * Format EUR currency
+ * Format EUR currency with locale support
+ * @deprecated Use formatCurrencyUtil from @/lib/format instead
  */
-export function formatCurrency(value: number): string {
-  return new Intl.NumberFormat('nl-NL', {
-    style: 'currency',
-    currency: 'EUR',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(value)
+export function formatCurrency(value: number, locale: 'nl' | 'en' = 'nl'): string {
+  return formatCurrencyUtil(value, locale)
 }
 
 /**
@@ -68,24 +66,71 @@ export function formatPercent(value: number): string {
 }
 
 /**
- * Export ROI data as CSV
+ * Export ROI data as CSV with locale support
  */
-export function exportToCsv(inputs: RoiInputs, result: RoiResult): void {
+export function exportToCsv(
+  inputs: RoiInputs,
+  result: RoiResult,
+  locale: 'nl' | 'en' = 'nl',
+  translations?: {
+    title: string
+    date: string
+    inputs: Record<string, string>
+    outputs: Record<string, string>
+  }
+): void {
+  const defaultLabels = {
+    nl: {
+      title: 'Caribbean Azure ROI Calculator',
+      date: 'Datum',
+      inputs: {
+        teamSize: 'Teamgrootte',
+        hourlyRate: 'Uurtarief (EUR)',
+        hoursSavedPerWeek: 'Uren bespaard per week',
+        adoption: 'Adoptiepercentage',
+      },
+      outputs: {
+        weeklySavings: 'Besparing per week',
+        monthlySavings: 'Besparing per maand',
+        annualSavings: 'Besparing per jaar',
+        hoursSavedAnnually: 'Uren bespaard per jaar',
+      },
+    },
+    en: {
+      title: 'Caribbean Azure ROI Calculator',
+      date: 'Date',
+      inputs: {
+        teamSize: 'Team size',
+        hourlyRate: 'Hourly rate (EUR)',
+        hoursSavedPerWeek: 'Hours saved per week',
+        adoption: 'Adoption rate',
+      },
+      outputs: {
+        weeklySavings: 'Weekly savings',
+        monthlySavings: 'Monthly savings',
+        annualSavings: 'Annual savings',
+        hoursSavedAnnually: 'Hours saved annually',
+      },
+    },
+  }
+
+  const labels = translations || defaultLabels[locale]
+
   const rows = [
-    ['Caribbean Azure ROI Calculator', ''],
-    ['Datum', new Date().toLocaleDateString('nl-NL')],
+    [labels.title, ''],
+    [labels.date, new Date().toLocaleDateString(locale === 'nl' ? 'nl-NL' : 'en-US')],
     ['', ''],
     ['INPUT', ''],
-    ['Teamgrootte', inputs.teamSize.toString()],
-    ['Uurtarief (EUR)', inputs.hourlyRate.toString()],
-    ['Uren bespaard per week', inputs.hoursSavedPerWeek.toString()],
-    ['Adoptiepercentage', formatPercent(inputs.adoption)],
+    [labels.inputs.teamSize, inputs.teamSize.toString()],
+    [labels.inputs.hourlyRate, inputs.hourlyRate.toString()],
+    [labels.inputs.hoursSavedPerWeek, inputs.hoursSavedPerWeek.toString()],
+    [labels.inputs.adoption, formatPercent(inputs.adoption)],
     ['', ''],
-    ['RESULTAAT', ''],
-    ['Besparing per week', formatCurrency(result.weeklySavings)],
-    ['Besparing per maand', formatCurrency(result.monthlySavings)],
-    ['Besparing per jaar', formatCurrency(result.annualSavings)],
-    ['Uren bespaard per jaar', result.hoursSavedAnnually.toString()],
+    ['RESULT', ''],
+    [labels.outputs.weeklySavings, formatCurrency(result.weeklySavings, locale)],
+    [labels.outputs.monthlySavings, formatCurrency(result.monthlySavings, locale)],
+    [labels.outputs.annualSavings, formatCurrency(result.annualSavings, locale)],
+    [labels.outputs.hoursSavedAnnually, result.hoursSavedAnnually.toString()],
   ]
 
   const csv = rows.map((row) => row.join(',')).join('\n')

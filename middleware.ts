@@ -1,11 +1,13 @@
 import createMiddleware from 'next-intl/middleware';
 import { locales, defaultLocale } from './lib/i18n';
 
-// Dutch-only configuration (no /en routes)
+// Bilingual configuration: NL at / (root), EN under /en
 export default createMiddleware({
   locales,
   defaultLocale,
-  localePrefix: 'as-needed', // Dutch at / (no prefix)
+  localePrefix: 'as-needed', // NL at /, EN at /en/*
+  alternateLinks: true, // Generate hreflang tags
+  localeDetection: false, // Don't auto-detect, explicit choice only
 });
 
 export const config = {

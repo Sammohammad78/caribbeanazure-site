@@ -1,6 +1,7 @@
 {
   "nav": {
     "home": "Home",
+    "solutions": "Solutions",
     "services": "Services",
     "cases": "Cases",
     "pricing": "Pricing",
@@ -11,17 +12,20 @@
     "insights": "Insights",
     "contact": "Contact",
     "blueprint": "Blueprint",
-    "roi": "ROI calculator"
+    "roi": "ROI calculator",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "terms": "Terms"
   },
   "hero": {
-    "title": "Automate the routine. Grow faster.",
-    "qualifier": "For Dutch SMEs in services, retail, and construction.",
-    "subtitle": "We build AI-driven workflows that turn email, WhatsApp, and web into revenue—minus the manual work.",
+    "title": "From request to production—automated for manufacturing SMEs",
+    "qualifier": "",
+    "subtitle": "Fast micro-automations (Tier 1), production-ready Sales→BOM & drawing packages (Tier 2), and configure-to-order configurators (Tier 3). GDPR-compliant, with n8n self-host option.",
     "cta": {
-      "primary": "Book a free intake",
-      "secondary": "Watch 90-sec demo"
+      "primary": "Book an intake",
+      "secondary": "Calculate your ROI"
     },
-    "trustedBy": "Trusted by"
+    "trustedBy": "Trusted by 50+ manufacturing SMEs"
   },
   "outcomes": {
     "label": "Typical outcomes",
@@ -261,44 +265,65 @@
     }
   },
   "pricing": {
-    "title": "Go live fast. Scale month by month.",
-    "subtitle": "No vendor lock-in. You keep the workflows.",
+    "title": "Transparent pricing for every scale",
+    "subtitle": "From fast micro-automations to complete configurators.",
     "tiers": [
       {
-        "name": "Start",
-        "tagline": "1 core flow live in 10 days",
-        "price": "From €3,500",
+        "id": "light",
+        "name": "Light Automations",
+        "tagline": "Fast micro-automations for immediate impact",
+        "price": "999",
+        "priceDisplay": "from €999",
+        "priceNote": "All prices excl. VAT. Exact price depends on scope and integrations.",
         "features": [
-          "Analysis + blueprint",
-          "1 core workflow live",
-          "Team training",
-          "30 days of optimisation"
-        ]
+          "Inbox-to-Action automation",
+          "Leads-to-Booking flow",
+          "WhatsApp Helpdesk",
+          "Invoice Robot",
+          "Setup + Training included",
+          "Support 30/60/90 days"
+        ],
+        "cta": "View Light solutions"
       },
       {
-        "name": "Pro",
-        "tagline": "3-5 flows + dashboard + SLA",
-        "price": "From €6,500",
+        "id": "manufacturing",
+        "name": "Sales→BOM & Drawing Packages",
+        "tagline": "Production-ready solutions for manufacturing",
+        "price": "1999",
+        "priceDisplay": "from €1,999",
+        "priceNote": "From-price, exact scope determined in intake.",
         "features": [
-          "Cross-team flows",
-          "AI agent or chatbot included",
-          "KPI dashboard and alerting",
-          "SLA and support within 24 hours"
-        ]
+          "Sales→BOM Bridge",
+          "Drawing Pack Generator",
+          "ERP connectors (Exact, SAP, Odoo)",
+          "Configuration validation",
+          "Production-ready output",
+          "Custom integrations"
+        ],
+        "cta": "View Manufacturing solutions",
+        "highlight": true
       },
       {
-        "name": "Scale",
-        "tagline": "Custom agents & integrations, monthly experiments",
-        "price": "Custom",
+        "id": "configurators",
+        "name": "CPQ & Configure-to-Production",
+        "tagline": "Full configurators for complex products",
+        "price": null,
+        "priceDisplay": "Price on request",
+        "priceNote": "Custom—price on request. Book an intake to assess your use case.",
         "features": [
-          "Dedicated automation squad",
-          "Monthly experiment backlog",
-          "Security & DPA guidance",
-          "Quarterly ROI reporting"
-        ]
+          "CPQ (Configure-Price-Quote) standard",
+          "C2P (Configure-to-Production) advanced",
+          "3D visualization",
+          "Rule engine for validation",
+          "Multi-level BOM output",
+          "Full ERP/PLM integration"
+        ],
+        "cta": "Book intake for Configurators"
       }
     ],
-    "cta": "Book an intake"
+    "disclaimer": "All prices are from-prices and exclude VAT. Final price depends on scope, number of integrations, and custom requirements.",
+    "cta": "Book an intake",
+    "ctaSecondary": "Calculate your ROI"
   },
   "industries": {
     "title": "Industries we serve every day",
@@ -501,5 +526,187 @@
     "accept": "Accept",
     "reject": "Reject",
     "settings": "Settings"
+  },
+  "trust": {
+    "title": "Secure and GDPR-compliant",
+    "items": [
+      "EU hosting",
+      "DPA available",
+      "n8n self-host option"
+    ]
+  },
+  "solutions": {
+    "title": "Solutions for every scale",
+    "subtitle": "From quick wins to full production integration",
+    "cta": "Not sure? Book an intake.",
+    "light": {
+      "title": "Light Automations",
+      "subtitle": "Fast micro-automations for immediate impact",
+      "description": "Small, focused automations that go live within days and deliver immediate results.",
+      "price": "999",
+      "useCases": [
+        {
+          "name": "Inbox-to-Action",
+          "description": "Emails automatically to tasks in ClickUp/Trello/Teams",
+          "example": "All emails with 'quote' → high priority task within 30 sec"
+        },
+        {
+          "name": "Leads-to-Booking",
+          "description": "Website leads directly to calendar + WhatsApp confirmation",
+          "example": "Form submission → calendar link + WhatsApp within 2 min"
+        },
+        {
+          "name": "WhatsApp Helpdesk",
+          "description": "FAQ bot + forward to team with context",
+          "example": "62% questions answered directly, rest with full context"
+        },
+        {
+          "name": "Invoice Robot",
+          "description": "Automatically process and book invoices",
+          "example": "PDF → data extraction → booking in Exact within 5 min"
+        }
+      ],
+      "includes": [
+        "Setup + configuration",
+        "Training (2 hours)",
+        "Support 30/60/90 days",
+        "Documentation + runbook"
+      ],
+      "cta": "View Light pricing"
+    },
+    "manufacturing": {
+      "title": "Sales→BOM & Drawing Packages",
+      "subtitle": "Production-ready solutions for manufacturing",
+      "description": "Translate sales configurations directly to production documents: BOMs, drawings, and ERP integrations.",
+      "price": "1999",
+      "useCases": [
+        {
+          "name": "Sales→BOM Bridge",
+          "description": "Configurator output → multi-level BOM for production",
+          "example": "Sales fills configurator → complete BOM in ERP within minutes"
+        },
+        {
+          "name": "Drawing Pack Generator",
+          "description": "Automatically generate technical drawings per order",
+          "example": "Order configuration → PDF drawing set + DXF/STEP files"
+        },
+        {
+          "name": "ERP connectors",
+          "description": "Integrations with Exact, SAP, Odoo, and more",
+          "example": "Order → items, BOMs, routing automatically in ERP"
+        }
+      ],
+      "features": [
+        "Multi-level BOM structure",
+        "Validation rules engine",
+        "Template-based drawings",
+        "ERP/PLM integrations",
+        "Production-ready output",
+        "Version control"
+      ],
+      "kpis": {
+        "title": "Typical results",
+        "items": [
+          "85% fewer production errors",
+          "4x faster from order to production",
+          "60% engineering time savings"
+        ]
+      },
+      "cta": "Book intake"
+    },
+    "configurators": {
+      "title": "CPQ & Configure-to-Production",
+      "subtitle": "Full configurators for complex products",
+      "description": "Custom configurators that automate everything from sales to production. For products with complex rules and variants.",
+      "price": null,
+      "types": [
+        {
+          "name": "CPQ (Configure-Price-Quote)",
+          "description": "Standard configurator with pricing and quote generation",
+          "features": [
+            "Visual configurator interface",
+            "Rule engine for validation",
+            "Dynamic pricing",
+            "PDF quote generation",
+            "CRM integration",
+            "Approval workflows"
+          ]
+        },
+        {
+          "name": "C2P (Configure-to-Production)",
+          "description": "Advanced: from configuration to complete production documents",
+          "features": [
+            "All CPQ features +",
+            "Multi-level BOM output",
+            "Technical drawings",
+            "CNC/CAM files",
+            "Material calculation",
+            "Full ERP/PLM/MES integration"
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "industry": "Machinery",
+          "challenge": "Complex machines with 1000+ variants",
+          "solution": "C2P configurator: customer configures → complete BOM + drawings + CNC files"
+        },
+        {
+          "industry": "Furniture",
+          "challenge": "Custom cabinets with many options",
+          "solution": "CPQ with 3D preview → quote + production instructions"
+        }
+      ],
+      "priceNote": "Custom—price on request. Book an intake to assess your use case.",
+      "cta": "Book intake for Configurators"
+    }
+  },
+  "roiCalculator": {
+    "title": "ROI Calculator",
+    "subtitle": "Calculate the impact of automation on your team",
+    "presets": {
+      "light": "Light Automation",
+      "manufacturing": "Manufacturing",
+      "c2p": "Configure-to-Production"
+    },
+    "inputs": {
+      "teamSize": "Team size (people)",
+      "hourlyRate": "Hourly rate (€)",
+      "hoursSavedPerWeek": "Hours saved per week",
+      "adoption": "Adoption (%)"
+    },
+    "outputs": {
+      "weeklySavings": "Weekly savings",
+      "monthlySavings": "Monthly savings",
+      "annualSavings": "Annual savings",
+      "hoursSavedAnnually": "Hours saved annually"
+    },
+    "cta": {
+      "primary": "Book an intake",
+      "secondary": "Export as CSV",
+      "email": "Email me my calculation"
+    },
+    "hints": {
+      "teamSize": "Number of people working with the process",
+      "hourlyRate": "Average hourly rate of the team",
+      "hoursSavedPerWeek": "How many hours per week you save per person",
+      "adoption": "What percentage of the team uses the solution"
+    },
+    "methodology": {
+      "title": "How do we calculate ROI?",
+      "description": "Our calculator uses a conservative formula based on 100+ projects.",
+      "formula": "Weekly savings = Team size × Hourly rate × Hours saved × Adoption"
+    },
+    "validation": {
+      "teamSize": "Team size must be between 1 and 1000",
+      "hourlyRate": "Hourly rate must be between €10 and €500",
+      "hoursSavedPerWeek": "Hours saved must be between 0.5 and 40",
+      "adoption": "Adoption must be between 10% and 100%"
+    },
+    "error": {
+      "submit": "Something went wrong. Please try again."
+    },
+    "privacy": "We don't share your data. See our privacy policy.",
+    "emailConsent": "I want to receive my calculation by email"
   }
 }

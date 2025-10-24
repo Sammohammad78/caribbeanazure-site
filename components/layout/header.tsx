@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
+import { LanguageSwitcher } from './language-switcher'
 import { Logo, LogoMark } from '@/components/brand/logo'
 
 export function Header() {
@@ -48,8 +49,9 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA & Theme Toggle */}
+          {/* Language Switcher, Theme Toggle & CTA */}
           <div className="flex items-center gap-3">
+            <LanguageSwitcher className="hidden md:flex" />
             <ThemeToggle className="hidden md:inline-flex" />
 
             <Button asChild size="sm" className="hidden md:inline-flex">
@@ -80,7 +82,8 @@ export function Header() {
         )}
       >
         <nav className="container-custom flex flex-col gap-4 py-6">
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end gap-3">
+            <LanguageSwitcher />
             <ThemeToggle />
           </div>
 
