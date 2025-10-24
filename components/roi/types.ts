@@ -27,11 +27,15 @@ export interface RoiResult {
 
 export type RoiVariant = 'inline' | 'card' | 'page'
 
+export type RoiPreset = 'light' | 'manufacturing' | 'c2p' | 'custom'
+
 export interface RoiCalculatorProps {
   /** Initial input values */
   initialInputs?: Partial<RoiInputs>
   /** Display variant */
   variant?: RoiVariant
+  /** Preset configuration (light, manufacturing, c2p) */
+  preset?: RoiPreset
   /** Show method explanation note */
   showMethodNote?: boolean
   /** Custom CTA label */
@@ -49,4 +53,29 @@ export const DEFAULT_INPUTS: RoiInputs = {
   hourlyRate: 65,
   hoursSavedPerWeek: 2,
   adoption: 0.7,
+}
+
+/**
+ * Preset configurations for different solution tiers
+ */
+export const PRESET_INPUTS: Record<RoiPreset, Partial<RoiInputs>> = {
+  light: {
+    teamSize: 3,
+    hourlyRate: 50,
+    hoursSavedPerWeek: 1.5,
+    adoption: 0.8,
+  },
+  manufacturing: {
+    teamSize: 8,
+    hourlyRate: 75,
+    hoursSavedPerWeek: 4,
+    adoption: 0.7,
+  },
+  c2p: {
+    teamSize: 12,
+    hourlyRate: 85,
+    hoursSavedPerWeek: 6,
+    adoption: 0.65,
+  },
+  custom: DEFAULT_INPUTS,
 }

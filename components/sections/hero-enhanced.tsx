@@ -62,7 +62,7 @@ export function HeroEnhanced() {
 
             {/* Heading */}
             <motion.h1
-              className="text-balance text-4xl font-bold tracking-tight md:text-5xl lg:text-7xl bg-[linear-gradient(135deg,var(--fg)_0%,var(--brand)_50%,var(--accent)_100%)] bg-clip-text text-transparent"
+              className="text-balance text-fluid-h1 font-bold bg-[linear-gradient(135deg,var(--fg)_0%,var(--brand)_50%,var(--accent)_100%)] bg-clip-text text-transparent"
               style={{
                 textShadow: '0 0 80px rgba(37, 99, 235, 0.15)',
               }}
@@ -75,7 +75,7 @@ export function HeroEnhanced() {
 
             {/* Subtitle */}
             <motion.p
-              className="copy-20 mx-auto max-w-2xl text-lg md:text-xl text-[color:var(--fg-subtle)] leading-relaxed"
+              className="copy-20 mx-auto max-w-2xl text-fluid-body text-[color:var(--fg-subtle)]"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}

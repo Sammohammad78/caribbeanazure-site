@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Script from 'next/script'
 import "./globals.css"
 import { ThemeProvider } from "@/components/providers/theme-provider"
 import { SkipToContent } from "@/components/layout/skip-to-content"
@@ -40,6 +41,15 @@ export default function RootLayout({
   }>) {
   return (
     <html lang="nl" suppressHydrationWarning>
+      <head>
+        {/* Plausible Analytics - EU-hosted, GDPR-compliant */}
+        <Script
+          defer
+          data-domain="caribbeanazure.com"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="bg-surface text-body antialiased">
         <SkipToContent />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>

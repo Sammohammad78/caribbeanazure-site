@@ -14,6 +14,7 @@ const contactSchema = z.object({
   name: z.string().min(2, 'Naam moet minimaal 2 karakters zijn'),
   email: z.string().email('Ongeldig emailadres'),
   phone: z.string().optional(),
+  useCase: z.string().optional(),
   message: z.string().min(10, 'Bericht moet minimaal 10 karakters zijn'),
 })
 
@@ -104,6 +105,25 @@ export function ContactForm() {
             placeholder="+31 6 1234 5678"
             disabled={status === 'loading'}
           />
+        </div>
+
+        {/* Use Case */}
+        <div className="space-y-2">
+          <label htmlFor="useCase" className="text-sm font-medium">
+            Interesse in (optioneel)
+          </label>
+          <select
+            id="useCase"
+            {...register('useCase')}
+            disabled={status === 'loading'}
+            className="flex h-11 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+          >
+            <option value="">Maak een keuze...</option>
+            <option value="light">Tier 1: Light Automations (vanaf €999)</option>
+            <option value="manufacturing">Tier 2: Maakindustrie / Sales→BOM (vanaf €1.999)</option>
+            <option value="configurators">Tier 3: CPQ & Configure-to-Produce (maatwerk)</option>
+            <option value="other">Overig / Algemene vraag</option>
+          </select>
         </div>
 
         {/* Message */}

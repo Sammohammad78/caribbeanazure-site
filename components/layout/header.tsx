@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
+import { LanguageSwitcher } from './language-switcher'
 import { Logo, LogoMark } from '@/components/brand/logo'
 
 export function Header() {
@@ -14,15 +15,15 @@ export function Header() {
   const locale = useLocale()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  // Simplified navigation (Dutch-only, 5 core pages per redesign)
+  // Updated navigation with new IA structure
   const buildHref = (slug: string) => (slug ? `/${locale}/${slug}` : `/${locale}`)
 
   const navItems = [
     { href: buildHref(''), label: t('nav.home') },
-    { href: buildHref('diensten'), label: t('nav.services') },
-    { href: buildHref('prijzen'), label: 'Prijzen' },
+    { href: buildHref('oplossingen'), label: t('nav.solutions') },
+    { href: buildHref('tarieven'), label: t('nav.pricing') },
     { href: buildHref('cases'), label: t('nav.cases') },
-    { href: buildHref('over'), label: t('nav.about') },
+    { href: buildHref('contact'), label: t('nav.contact') },
   ]
 
   return (
@@ -48,12 +49,15 @@ export function Header() {
             ))}
           </nav>
 
-          {/* CTA & Theme Toggle */}
+          {/* Language Switcher, Theme Toggle & CTA */}
           <div className="flex items-center gap-3">
+            <LanguageSwitcher className="hidden md:flex" />
             <ThemeToggle className="hidden md:inline-flex" />
 
             <Button asChild size="sm" className="hidden md:inline-flex">
-              <Link href={`/${locale}/contact`}>{t('nav.contact')}</Link>
+              <Link href={`/${locale}/contact`}>
+                {locale === 'nl' ? 'Plan een intake' : 'Book an intake'}
+              </Link>
             </Button>
 
             {/* Mobile menu button */}
@@ -80,7 +84,8 @@ export function Header() {
         )}
       >
         <nav className="container-custom flex flex-col gap-4 py-6">
-          <div className="flex items-center justify-end">
+          <div className="flex items-center justify-end gap-3">
+            <LanguageSwitcher />
             <ThemeToggle />
           </div>
 
@@ -94,11 +99,6 @@ export function Header() {
               {item.label}
             </Link>
           ))}
-          <Button asChild size="sm" className="w-full">
-            <Link href={`/${locale}/contact`} onClick={() => setMobileMenuOpen(false)}>
-              {t('nav.contact')}
-            </Link>
-          </Button>
         </nav>
       </div>
     </header>
