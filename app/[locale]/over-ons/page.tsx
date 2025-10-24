@@ -2,6 +2,8 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { Target, Heart, Zap, Sparkles } from 'lucide-react'
+import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
+import { backgroundThemes } from '@/lib/backgroundThemes'
 
 const values = [
   {
@@ -60,8 +62,14 @@ const differentiators = [
 export default function AboutPage() {
   return (
     <>
-      <Header />
-      <main>
+      <div className="relative">
+        {/* 3D Background */}
+        <div className="fixed inset-0 -z-10">
+          <BackgroundEngine theme={backgroundThemes.about} />
+        </div>
+
+        <Header />
+        <main>
         <section className="hero-glow section-padding-y">
           <div className="container-custom">
             <div className="mx-auto max-w-[760px] text-center">
@@ -181,6 +189,7 @@ export default function AboutPage() {
         </section>
       </main>
       <Footer />
+      </div>
     </>
   )
 }

@@ -17,6 +17,8 @@ import {
   CheckCircle2,
 } from 'lucide-react'
 import Link from 'next/link'
+import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
+import { backgroundThemes } from '@/lib/backgroundThemes'
 
 type ServiceBlock = {
   icon: any
@@ -97,8 +99,14 @@ const services: ServiceBlock[] = [
 export default function ServicesPage() {
   return (
     <>
-      <Header />
-      <main id="main-content">
+      <div className="relative">
+        {/* 3D Background */}
+        <div className="fixed inset-0 -z-10">
+          <BackgroundEngine theme={backgroundThemes.services} />
+        </div>
+
+        <Header />
+        <main id="main-content">
         {/* Hero Section */}
         <section className="hero-glow relative section-padding-y overflow-hidden">
           <div className="container-custom relative z-10">
@@ -258,6 +266,7 @@ export default function ServicesPage() {
         </section>
       </main>
       <Footer />
+      </div>
     </>
   )
 }

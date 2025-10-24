@@ -14,6 +14,8 @@ import {
   LocalBusinessSchema,
   WebsiteSchema,
 } from '@/components/seo/structured-data'
+import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
+import { backgroundThemes } from '@/lib/backgroundThemes'
 
 export default function HomePage() {
   return (
@@ -24,18 +26,25 @@ export default function HomePage() {
       <LocalBusinessSchema />
       <WebsiteSchema />
 
-      <Header />
-      <main id="main-content">
-        <Hero />
-        <OutcomesStrip />
-        <ProcessSection />
-        <UseCasesSection />
-        <ServicesGrid />
-        <TestimonialsSection />
-        <FAQSection />
-        <CTASection />
-      </main>
-      <Footer />
+      <div className="relative">
+        {/* 3D Background */}
+        <div className="fixed inset-0 -z-10">
+          <BackgroundEngine theme={backgroundThemes.home} />
+        </div>
+
+        <Header />
+        <main id="main-content">
+          <Hero />
+          <OutcomesStrip />
+          <ProcessSection />
+          <UseCasesSection />
+          <ServicesGrid />
+          <TestimonialsSection />
+          <FAQSection />
+          <CTASection />
+        </main>
+        <Footer />
+      </div>
     </>
   )
 }

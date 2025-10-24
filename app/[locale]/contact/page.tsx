@@ -6,12 +6,20 @@ import { MessageCircle, Mail, MapPin, Phone, Clock, Sparkles } from 'lucide-reac
 import { Button } from '@/components/ui/button'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
 import { siteConfig } from '@/config/site'
+import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
+import { backgroundThemes } from '@/lib/backgroundThemes'
 
 export default function ContactPage() {
   return (
     <>
-      <Header />
-      <main id="main-content">
+      <div className="relative">
+        {/* 3D Background */}
+        <div className="fixed inset-0 -z-10">
+          <BackgroundEngine theme={backgroundThemes.contact} />
+        </div>
+
+        <Header />
+        <main id="main-content">
         {/* Hero Section */}
         <section className="hero-glow section-padding-y">
           <div className="container-custom text-center">
@@ -151,6 +159,7 @@ export default function ContactPage() {
         </section>
       </main>
       <Footer />
+      </div>
     </>
   )
 }
