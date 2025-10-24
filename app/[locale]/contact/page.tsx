@@ -28,10 +28,10 @@ export default function ContactPage() {
               Neem contact op
             </div>
             <h1 className="mt-8 text-balance text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-              Klaar om slimmer te werken?
+              Laten we kennismaken
             </h1>
             <p className="mx-auto mt-6 max-w-[600px] text-lg text-[color:var(--fg-subtle)] md:text-xl">
-              Mail ons op {siteConfig.contact.email} of bel {siteConfig.contact.phone}. We reageren binnen 24 uur.
+              Mail, bel of app ons. We reageren binnen 24 uur.
             </p>
           </div>
         </section>
@@ -41,7 +41,7 @@ export default function ContactPage() {
           <div className="container-custom grid gap-10 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)]">
             {/* Contact Methods */}
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-body">Snelle manieren om te bereiken</h2>
+              <h2 className="text-2xl font-bold text-body">Hoe je ons bereikt</h2>
 
               {/* WhatsApp */}
               <ContactChannelCard
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 accent="accent"
                 title="E-mail"
                 tagline="Voor uitgebreide vragen"
-                body="Stuur ons een e-mail en we reageren binnen 1 werkdag met een gedetailleerd antwoord."
+                body="Stuur ons een e-mail en we reageren binnen 24 uur."
               >
                 <a
                   href={`mailto:${siteConfig.contact.email}`}

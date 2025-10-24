@@ -53,16 +53,24 @@ export function Footer() {
           <FooterColumn label={t('footer.legal')} links={footerLinks.legal} />
         </div>
 
-        <div className="mt-14 flex flex-col items-start gap-6 border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex items-center gap-3 text-sm text-[color:var(--fg-subtle)]">
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[color:var(--brand)] text-white font-semibold shadow-[0_12px_32px_color-mix(in_oklab,var(--brand)_35%,transparent)]">
-              CA
+        <div className="mt-14 border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] pt-8 space-y-6">
+          <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center gap-3 text-sm text-[color:var(--fg-subtle)]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[color:var(--brand)] text-white font-semibold shadow-[0_12px_32px_color-mix(in_oklab,var(--brand)_35%,transparent)]">
+                CA
+              </div>
+              <p>
+                (c) {currentYear} Caribbean Azure. {t('footer.rights')}.
+              </p>
             </div>
-            <p>
-              (c) {currentYear} Caribbean Azure. {t('footer.rights')}.
-            </p>
+            <p className="text-sm text-[color:var(--fg-muted)]">{t('footer.tagline')}</p>
           </div>
-          <p className="text-sm text-[color:var(--fg-muted)]">{t('footer.tagline')}</p>
+
+          <div className="text-xs text-[color:var(--fg-muted)] max-w-3xl">
+            {locale === 'nl'
+              ? 'Caribbean Azure werkt onafhankelijk en noemt geen klant- of werkgeversnamen. We communiceren alleen resultaten die we feitelijk kunnen aantonen.'
+              : 'Caribbean Azure operates independently and does not mention client or employer names. We only communicate results we can factually demonstrate.'}
+          </div>
         </div>
       </div>
     </footer>
