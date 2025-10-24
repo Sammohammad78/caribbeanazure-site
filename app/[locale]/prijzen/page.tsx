@@ -2,7 +2,10 @@ import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Check, Info, MessageCircle } from 'lucide-react'
+import { Check, Info, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
+import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
+import { backgroundThemes } from '@/lib/backgroundThemes'
 
 type Tier = {
   name: string
@@ -38,15 +41,15 @@ const nlTiers: Tier[] = [
     highlight: true,
   },
   {
-    name: 'Enterprise retainer',
+    name: 'Maandelijks retainer',
     price: 'op maat vanaf 4.500 EUR p/m',
-    description: 'Dedicated automation squad. Perfect voor scale-ups en corporates.',
+    description: 'Vaste capaciteit voor teams die continu willen automatiseren en verbeteren.',
     perks: [
-      'Roadmap co-creatie per kwartaal',
-      'Prioriteit op sprintcapaciteit',
-      'SLA en 24/7 incident response',
-      'Security reviews en NDA standaard',
-      'Maandelijkse enablement sessies',
+      'Kwartaal planning en prioritering samen',
+      'Vaste plek in onze planning',
+      'SLA met snelle reactietijd',
+      'Security checks en NDA standaard',
+      'Maandelijkse kennissessies',
     ],
   },
 ]
@@ -77,15 +80,15 @@ const enTiers: Tier[] = [
     highlight: true,
   },
   {
-    name: 'Enterprise retainer',
+    name: 'Monthly retainer',
     price: 'custom from 4,500 EUR p/m',
-    description: 'Dedicated automation squad. Ideal for scale-ups and enterprises.',
+    description: 'Fixed capacity for teams that want to continuously automate and improve.',
     perks: [
-      'Quarterly roadmap co-creation',
-      'Priority sprint capacity',
-      'SLA and 24/7 incident response',
-      'Security reviews and NDA by default',
-      'Monthly enablement sessions',
+      'Quarterly planning and prioritization together',
+      'Reserved capacity in our planning',
+      'SLA with fast response time',
+      'Security checks and NDA by default',
+      'Monthly knowledge sessions',
     ],
   },
 ]
@@ -94,17 +97,23 @@ export default function PricingPage({ params }: { params: { locale: string } }) 
   const tiers = params.locale === 'nl' ? nlTiers : enTiers
   const headline =
     params.locale === 'nl'
-      ? 'Pricing die meegroeit met je automatisering'
-      : 'Pricing designed to scale with automation'
+      ? 'Transparante prijzen voor automatisering'
+      : 'Transparent pricing for automation'
   const subline =
     params.locale === 'nl'
-      ? 'Je krijgt een duidelijke scope, sprintplanning en ROI-inschatting voordat we starten.'
-      : 'You receive a clear scope, sprint plan and ROI projection before we begin.'
+      ? 'Je krijgt vooraf een duidelijke scope, planning en inschatting. Geen verrassingen achteraf.'
+      : 'You receive a clear scope, timeline and estimate upfront. No surprises later.'
 
   return (
     <>
-      <Header />
-      <main>
+      <div className="relative">
+        {/* 3D Background */}
+        <div className="fixed inset-0 -z-10">
+          <BackgroundEngine theme={backgroundThemes.pricing} />
+        </div>
+
+        <Header />
+        <main id="main-content">
         <section className="section-padding-y hero-glow">
           <div className="container-custom text-center">
             <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">{headline}</h1>
@@ -148,10 +157,10 @@ export default function PricingPage({ params }: { params: { locale: string } }) 
                   </CardContent>
                   <CardFooter className="mt-6">
                     <Button asChild className="w-full" variant={tier.highlight ? 'default' : 'outline'}>
-                      <a href="https://wa.me/31612345678" target="_blank" rel="noopener noreferrer">
-                        <MessageCircle className="mr-2 h-4 w-4" />
+                      <Link href={`/${params.locale}/contact`}>
                         {params.locale === 'nl' ? 'Plan een intake' : 'Book an intake'}
-                      </a>
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
                     </Button>
                   </CardFooter>
                 </Card>
@@ -199,6 +208,7 @@ export default function PricingPage({ params }: { params: { locale: string } }) 
         </section>
       </main>
       <Footer />
+      </div>
     </>
   )
 }

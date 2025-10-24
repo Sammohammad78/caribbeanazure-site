@@ -20,6 +20,7 @@ export function Header() {
   const navItems = [
     { href: buildHref(''), label: t('nav.home') },
     { href: buildHref('diensten'), label: t('nav.services') },
+    { href: buildHref('prijzen'), label: 'Prijzen' },
     { href: buildHref('cases'), label: t('nav.cases') },
     { href: buildHref('over'), label: t('nav.about') },
   ]

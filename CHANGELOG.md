@@ -7,6 +7,92 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### 🔒 Compliance Refactoring - 2025-10-24
+
+Complete compliance overhaul to remove all client affiliations, rewrite content with benefits-first Dutch copy, and ensure truthful, measurable claims.
+
+#### Added
+- **New Over-ons page** (`/nl/over-ons`)
+  - Concise company description (98 words net content, ≤200 word requirement)
+  - 4-step "Hoe we werken" process: Intake, Proof-of-Value, Implementatie, Kennisoverdracht
+  - Compliance card: "Onafhankelijkheid & Compliance"
+- **CapabilitiesStrip component** (`components/ui/capabilities-strip.tsx`)
+  - Replaces TrustBar with 4 neutral capability badges
+  - Benefits: Snellere doorlooptijd, Minder repetitieve taken, Betere foutreductie, Altijd inzicht in status
+- **Footer compliance note**: Independence statement in Dutch and English
+  - "Caribbean Azure werkt onafhankelijk en noemt geen klant- of werkgeversnamen..."
+- **ROI Calculator disclaimer**: Clear notice that calculations are examples, not guarantees
+- **3D Background for pricing page**: Consistent BackgroundEngine integration
+
+#### Changed
+- **Hero section** (`components/sections/hero-enhanced.tsx`)
+  - ❌ Removed AnimatedHeadline with inflated metrics (60%, +25%, -50%)
+  - ✅ New heading: "Automatiseer je werk. Versnel je groei."
+  - ✅ Benefits-first subtitle: "Wij ontwerpen praktische automatiseringen voor teams die minder willen klikken..."
+  - Updated CTAs: "Plan een korte intake" + "Bekijk onze aanpak"
+  - Replaced TrustBar with CapabilitiesStrip
+  - Fixed typo: `handleMouseHandle` → `handleMouseMove`
+
+- **Diensten page** (`app/[locale]/diensten/page.tsx`)
+  - H1: "Diensten die omzet opleveren" → "Wat we voor je kunnen doen"
+  - ❌ Removed "350+ bewezen templates" → ✅ "Herbruikbare oplossingen waar het kan"
+  - Rewritten all 6 service descriptions to be benefits-first and less technical
+  - "Hoe we samen bouwen" → "Hoe we samenwerken"
+  - CTA: "Klaar voor een automation sprint?" → "Klaar om te starten?"
+
+- **Prijzen page** (`app/[locale]/prijzen/page.tsx`)
+  - H1: "Pricing die meegroeit..." → "Transparante prijzen voor automatisering"
+  - Subtitle: Added "Geen verrassingen achteraf"
+  - ❌ "Enterprise retainer" → ✅ "Maandelijks retainer"
+  - ❌ "Perfect voor scale-ups en corporates" → ✅ "Vaste capaciteit voor teams die continu willen automatiseren"
+  - Fixed WhatsApp placeholder link → Contact page link
+  - Added `id="main-content"` for accessibility
+
+- **Contact page** (`app/[locale]/contact/page.tsx`)
+  - H1: "Klaar om slimmer te werken?" → "Laten we kennismaken"
+  - Simplified subtitle: "Mail, bel of app ons. We reageren binnen 24 uur."
+  - "Snelle manieren om te bereiken" → "Hoe je ons bereikt"
+  - Consistent 24-hour response promise across all channels
+  - Email description: "binnen 1 werkdag" → "binnen 24 uur"
+
+#### Removed
+- **All client company references**:
+  - ❌ Randstad, ABN AMRO, CM.com, ING, Coolblue, Booking.com logos/names
+  - ❌ TrustBar component usage (file still exists but no longer imported)
+- **Inflated/unverifiable metrics**:
+  - ❌ "350+ bewezen templates"
+  - ❌ "60% sneller", "+25% meer deals", "-50% repetitief werk"
+  - ❌ AnimatedHeadline component usage
+- **Video modal code**: Removed unused video functionality from hero
+- **Enterprise name-dropping**: "scale-ups and corporates" → neutral language
+
+#### Technical
+- ✅ Build: 0 TypeScript errors
+- ✅ Build time: ~5.7s
+- ✅ Pages generated: 24/24
+- ✅ No asChild errors
+- ✅ No console warnings (except middleware deprecation notice)
+
+#### Compliance Checklist ✓
+- [x] Removed all client/company logos and names
+- [x] Created short Over-ons page (98 words net content)
+- [x] Rewrote all copy in Dutch with benefits-first messaging
+- [x] Added ROI calculator disclaimer
+- [x] Added compliance note to Over-ons page
+- [x] Added compliance note to footer
+- [x] Fixed asChild usage (verified during build)
+- [x] No inflated or unverifiable metrics
+- [x] Transparent pricing with "vanaf" values
+- [x] Zero build errors
+
+#### Git Commits
+```
+283c0be feat(content): rewrite all pages with benefits-first Dutch copy + add footer compliance
+1df72ea feat(content): add compliant Over-ons page + remove all client affiliations
+```
+
+---
+
 ## [2.0.0] - 2025-10-22
 
 ### 🎉 Major Release: Premium UX + Light-by-Default + Human-Centered Copy

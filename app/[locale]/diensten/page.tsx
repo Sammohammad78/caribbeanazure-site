@@ -5,13 +5,12 @@ import { Button } from '@/components/ui/button'
 import {
   ArrowRight,
   Sparkles,
-  Workflow,
+  Mail,
   MessageSquare,
-  Bot,
   BarChart3,
   Zap,
+  Bot,
   GraduationCap,
-  Mail,
   Clock,
   Shield,
   CheckCircle2,
@@ -32,66 +31,66 @@ const services: ServiceBlock[] = [
     icon: Mail,
     title: 'Workflow-automatisering',
     description:
-      'We nemen terugkerende taken uit handen. E-mails, boekhouding, klantopvolging — het loopt gewoon. Jij focust op het werk dat telt.',
+      'Terugkerende taken zoals e-mails sorteren, data invoeren of klanten opvolgen lopen vanzelf. Jij krijgt tijd terug voor belangrijk werk.',
     points: [
-      'Gmail/Outlook → ClickUp, Notion, HubSpot',
-      'Slimme parsers voor data-extractie',
-      'Automatische prioritering en toewijzing',
+      'Koppelingen tussen Gmail, Outlook, CRM en projecttools',
+      'Automatisch data ophalen uit e-mails en bijlagen',
+      'Slimme toewijzing van taken aan teamleden',
     ],
   },
   {
     icon: MessageSquare,
     title: 'AI-assistenten & chatbots',
     description:
-      'We bouwen bots die klanten verder helpen, afspraken plannen of offertes voorbereiden. Via je website of WhatsApp, klaar voor productie.',
+      'Een bot die veelgestelde vragen beantwoordt, afspraken plant of offertes voorbereidt. Beschikbaar via je website of WhatsApp.',
     points: [
-      'WhatsApp Business API integraties',
-      'AI-gesprekken met intentieherkenning',
-      'Automatische opvolging via CRM',
+      'Integratie met WhatsApp Business API',
+      'Herkenning van vraag-typen en juiste antwoorden',
+      'Koppeling naar je CRM voor opvolging',
     ],
   },
   {
     icon: BarChart3,
     title: 'Dashboards & rapportage',
     description:
-      'Inzicht zonder ruis. Je ziet wat er goed gaat, waar tijd weglekt en waar je het beste kunt bijsturen.',
+      'Overzicht van wat belangrijk is: waar gaat het goed, waar loopt het vast, en wat vraagt aandacht. Geen lange rapporten meer nodig.',
     points: [
-      'Power BI en Looker dashboards',
-      'Real-time KPI monitoring',
-      'Automatische alerts op afwijkingen',
+      'Dashboards in Power BI of Looker',
+      'Live inzicht in cijfers die ertoe doen',
+      'Meldingen wanneer iets afwijkt',
     ],
   },
   {
     icon: Zap,
     title: 'Webdesign met impact',
     description:
-      'Snel, helder en prettig in gebruik. Je site is mooi, maar vooral effectief — gekoppeld aan je automatisering en klaar om te groeien.',
+      'Een website die snel laadt, helder communiceert en prettig werkt op elk apparaat. Gekoppeld aan je automatisering waar nodig.',
     points: [
-      'Next.js performante websites',
-      'Gekoppeld aan je automation stack',
-      'SEO geoptimaliseerd en toegankelijk',
+      'Gebouwd met moderne technieken (Next.js)',
+      'Gekoppeld aan je CRM, planning of inschrijfsysteem',
+      'Goed vindbaar in Google en toegankelijk voor iedereen',
     ],
   },
   {
     icon: Bot,
-    title: 'Proces automatisering',
+    title: 'Procesautomatisering',
     description:
-      'We bouwen orchestraties met Zapier, Make of n8n plus maatwerk scripts waar nodig. Van facturatie tot onboarding.',
+      'Van facturatie tot nieuwe klanten onboarden: processen die je nu handmatig doet, kunnen vaak geautomatiseerd. Met Zapier, Make of maatwerk code.',
     points: [
-      'Bibliotheek met 350+ bewezen templates',
-      'Code waar nodig, low-code waar het kan',
-      'Monitoring en fallback alerts',
+      'Herbruikbare oplossingen waar het kan',
+      'Maatwerk code alleen als het echt nodig is',
+      'Waarschuwingen als er iets misgaat',
     ],
   },
   {
     icon: GraduationCap,
-    title: 'Training en enablement',
+    title: 'Training en kennisoverdracht',
     description:
-      'Workshops en enablement routes waardoor je team zelfstandig kan beheren, uitbreiden en optimaliseren.',
+      'Workshops en sessies waarna jouw team zelfstandig kan beheren, aanpassen en uitbreiden. Zodat je niet afhankelijk blijft.',
     points: [
-      'On-site of remote sessies',
-      'Nederlandse documentatie en playbooks',
-      'Support abonnementen vanaf 10 uur/maand',
+      'Sessies op locatie of online',
+      'Handleidingen in het Nederlands',
+      'Support-abonnementen vanaf 10 uur per maand',
     ],
   },
 ]
@@ -116,11 +115,10 @@ export default function ServicesPage() {
                 Onze diensten
               </div>
               <h1 className="mt-8 text-balance text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-                Diensten die omzet opleveren
+                Wat we voor je kunnen doen
               </h1>
               <p className="mt-6 text-lg text-[color:var(--fg-subtle)] md:text-xl">
-                We combineren no-code, AI en maatwerk zodat elk repetitief proces schaalbaar en
-                meetbaar wordt.
+                We combineren no-code, AI en maatwerk zodat repetitieve processen vanzelf lopen en je tijd terugkrijgt voor werk dat ertoe doet.
               </p>
             </div>
           </div>
@@ -170,10 +168,10 @@ export default function ServicesPage() {
               <Card className="rounded-3xl p-10">
                 <CardHeader className="space-y-4 pb-8">
                   <CardTitle className="text-3xl font-bold text-body">
-                    Hoe we samen bouwen
+                    Hoe we samenwerken
                   </CardTitle>
                   <CardDescription className="text-base text-[color:var(--fg-subtle)]">
-                    Elke implementatie volgt dezelfde flow: analyse, blueprint, bouwen, enablement.
+                    Elke implementatie volgt dezelfde stappen: van analyse tot kennisoverdracht.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -182,25 +180,25 @@ export default function ServicesPage() {
                       number: '01',
                       title: 'Analyse',
                       description:
-                        'Intake van huidige processen, data en tools. We toetsen haalbaarheid en impact in een scorecard.',
+                        'We brengen je huidige processen, data en tools in kaart. Je krijgt inzicht in wat kan en welke impact het heeft.',
                     },
                     {
                       number: '02',
                       title: 'Blueprint',
                       description:
-                        'Solution design met flows, systemen en verantwoordelijkheden. Je krijgt een visueel plan en planning.',
+                        'Een visueel plan met flows, systemen en wie wat doet. Je weet precies wat we gaan bouwen en wanneer.',
                     },
                     {
                       number: '03',
                       title: 'Bouwen en testen',
                       description:
-                        'We leveren in sprints van twee weken met testcases, logging en dashboards voor adoptie.',
+                        'We leveren in blokken van twee weken. Elke oplevering wordt getest en je ziet de voortgang in een dashboard.',
                     },
                     {
                       number: '04',
-                      title: 'Enablement',
+                      title: 'Kennisoverdracht',
                       description:
-                        'Training en documentatie zodat je team zelfstandig kan beheren en uitbreiden.',
+                        'Training en handleidingen zodat je team het zelf kan beheren en aanpassen. Je blijft niet afhankelijk van ons.',
                     },
                   ].map((step) => (
                     <div
@@ -227,18 +225,17 @@ export default function ServicesPage() {
               <Card className="flex h-full flex-col justify-between rounded-3xl border-[color:color-mix(in_oklab,var(--accent)_32%,transparent)] bg-[linear-gradient(135deg,color-mix(in_oklab,var(--brand-600)_85%,transparent)0%,color-mix(in_oklab,var(--brand-400)_80%,transparent)100%)] p-10 text-white">
                 <CardHeader className="space-y-6">
                   <CardTitle className="text-3xl font-bold">
-                    Klaar voor een automation sprint?
+                    Klaar om te starten?
                   </CardTitle>
                   <CardDescription className="text-base text-white/90">
-                    Plan een sessie van 45 minuten en ontvang een voorstel met roadmap, planning en
-                    investering.
+                    Plan een gesprek van 45 minuten. Je ontvangt een voorstel met aanpak, planning en investering.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div className="space-y-4 text-sm text-white/85">
                     <div className="flex items-center gap-3">
                       <Clock className="h-5 w-5" />
-                      <span>Respons binnen 24 uur</span>
+                      <span>Reactie binnen 24 uur</span>
                     </div>
                     <div className="flex items-center gap-3">
                       <Shield className="h-5 w-5" />
@@ -246,7 +243,7 @@ export default function ServicesPage() {
                     </div>
                     <div className="flex items-center gap-3">
                       <CheckCircle2 className="h-5 w-5" />
-                      <span>Geen verplichtingen</span>
+                      <span>Vrijblijvend en geen verplichtingen</span>
                     </div>
                   </div>
                   <Button
