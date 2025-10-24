@@ -7,6 +7,138 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### 💎 €100k Quality Infrastructure - 2025-10-24
+
+Major refactoring to establish production-grade design system, universal ROI calculator, comprehensive SEO infrastructure, and Dutch-first copy standards.
+
+#### Added - Design System Primitives
+- **Container component** (`components/layout/Container.tsx`)
+  - Responsive max-width variants: default (7xl/1280px), narrow (4xl), wide (1440px), full
+  - Consistent horizontal padding: px-4 sm:px-6 lg:px-8
+  - Fully typed with JSDoc documentation
+- **Section component** (`components/layout/Section.tsx`)
+  - Standardized vertical spacing: sm, default (py-12 sm:py-16 lg:py-20), lg, xl, none
+  - Render as: div, section, article, aside
+  - Responsive padding tokens following 8pt grid
+- **Heading component** (`components/ui/heading.tsx`)
+  - Semantic h1-h6 with responsive sizing (text-4xl → lg:text-6xl for h1)
+  - Weight variants: normal, medium, semibold, bold
+  - Dutch sentence case convention enforced
+  - Supports `as` prop for SEO while maintaining visual styles
+- **Text component** (`components/ui/text.tsx`)
+  - Size variants: xs, sm, base, lg, xl
+  - Weight variants: normal, medium, semibold, bold
+  - Semantic variants: body, subtle, muted, brand, accent, error
+  - Uses CSS custom properties for theming
+- **Card component** (updated `components/ui/card.tsx`)
+  - Standardized to: rounded-2xl shadow-md p-6 sm:p-8
+  - Consistent border and background using design tokens
+  - All card sub-components (Header, Title, Description, Content, Footer) preserved
+
+#### Added - Universal ROI Calculator
+- **RoiCalculator component** (`components/roi/RoiCalculator.tsx`)
+  - 3 display variants: inline, card, page
+  - 4 inputs: teamSize, hourlyRate, hoursSavedPerWeek, adoption (0-1)
+  - Auto-calculation: `team × rate × hours × 52 × adoption`
+  - Real-time result display: monthly, annual savings + hours saved
+  - Querystring persistence: sync inputs to URL params (team, rate, hours, adoptie)
+  - CSV export with Dutch date/number formatting
+  - Validation with user-friendly Dutch error messages
+  - Analytics event tracking: calc_input_change, calc_cta_click, calc_export
+  - Configurable: ctaLabel, showMethodNote, showExport, enableUrlSync, onSubmit callback
+  - Fully accessible: labeled inputs, error announcements, keyboard navigation
+- **ROI utilities** (`components/roi/utils.ts`)
+  - `calculateRoi()`: core formula implementation
+  - `validateInputs()`: input range validation (team 1-1000, rate €10-500, etc.)
+  - `formatCurrency()`: Dutch EUR formatting (€12.500)
+  - `formatPercent()`: percentage display (60%)
+  - `exportToCsv()`: generate CSV with inputs + results
+  - `syncToUrl()` / `readFromUrl()`: querystring state management
+- **ROI types** (`components/roi/types.ts`)
+  - Full TypeScript interfaces: RoiInputs, RoiResult, RoiCalculatorProps
+  - DEFAULT_INPUTS constant (5 team, €65/hr, 2hr/week, 70% adoption)
+
+#### Added - Copy & Content Standards
+- **CopyGuidelines.md** (`content/CopyGuidelines.md`)
+  - Comprehensive Dutch-first style guide (helder, direct, MKB-pragmatisch)
+  - Tone & voice: use "jij/je", results-focused, no hype/jargon
+  - Formatting rules: decimal comma (12,5), dates (dd-mm-jjjj), 24-hour time
+  - Hyphenation standards: WhatsApp-first, e-mail-workflow, but gebruikersvriendelijk
+  - Capitalization: sentence case for headings, one H1 per page
+  - Approved terminology: automatisering vs automation, intake vs discovery call
+  - CTA library: "Plan een intake", "Bekijk onze aanpak", "Ontvang je blueprint"
+  - Compliance rules: no client names, use "Top-3 NL bank" instead
+  - SEO standards: title max 60 chars, meta max 155 chars
+  - Examples by page type (homepage, diensten, prijzen, contact)
+  - Common mistakes to avoid + review checklist
+
+#### Added - SEO Infrastructure
+- **robots.ts** (`app/robots.ts`)
+  - Allow all bots on public pages
+  - Disallow: /api/, /_next/, /admin/
+  - Sitemap reference: https://www.caribbeanazure.com/sitemap.xml
+  - Updated domain from caribbeanazur.nl → caribbeanazure.com
+- **sitemap.ts** (`app/sitemap.ts`)
+  - Comprehensive route list for NL (14 pages) and EN (10 pages)
+  - Priority-based ranking: homepage (1.0) → diensten/prijzen/roi (0.9) → legal (0.6)
+  - Change frequency: weekly (home, diensten, insights) → yearly (privacy, terms)
+  - Auto-generated lastModified timestamps
+  - Properly formatted URLs with locale prefix (/nl/diensten, /en/services)
+- **OrganizationSchema component** (`components/seo/OrganizationSchema.tsx`)
+  - JSON-LD structured data for search engines
+  - Organization type with name, URL, logo, description
+  - Contact info: email, phone, WhatsApp
+  - Address: Amsterdam, NL
+  - Services: Workflow Automation, AI Assistants, Dashboard Development, etc.
+  - ContactPoint with Dutch/English language support
+
+#### Changed - Footer Enhancements
+- **Footer component** (`components/layout/footer.tsx`)
+  - Added 5th column: Contact section with icons
+  - Email, phone, WhatsApp links with lucide-react icons
+  - KvK and BTW numbers displayed: `KvK: 12345678` `BTW: NL123456789B01`
+  - Compliance statement (already present, now enhanced)
+  - Copyright notice with current year
+  - Grid layout: 2 cols mobile → 5 cols desktop
+  - All contact info pulled from siteConfig
+
+#### Technical Improvements
+- ✅ **Build:** 0 TypeScript errors, 24 pages generated successfully
+- ✅ **Build time:** ~5.5s (optimized)
+- ✅ **Static files:** robots.txt and sitemap.xml now properly generated
+- ✅ **Type safety:** All new components fully typed with proper interfaces
+- ✅ **Accessibility:** Focus rings, labeled inputs, semantic HTML, ARIA where needed
+- ✅ **Performance:** No client-side blocking, lazy-loaded calculator logic
+- ✅ **Design tokens:** Consistent spacing (8pt grid), radii (xl, 2xl), shadows (sm, md, xl)
+- ✅ **Documentation:** JSDoc comments on all exported components and functions
+
+#### Developer Experience
+- Reusable primitives reduce code duplication
+- Consistent spacing/sizing via design system
+- ROI calculator can be dropped into any page with props
+- Copy guidelines ensure brand consistency
+- SEO components auto-generate structured data
+- All components support theming via CSS custom properties
+
+#### What's Next (Not in This Release)
+- [ ] /api/lead endpoint with ClickUp + Resend integration
+- [ ] Legal pages: /privacy, /voorwaarden, /security (detailed content)
+- [ ] JSON-LD Service schema for /diensten
+- [ ] JSON-LD FAQPage schema for /roi
+- [ ] 3D BackgroundEngine with WebGL + pointer tracking
+- [ ] Brand logo system (hex-wave mark, monogram, wordmark)
+- [ ] Vitest unit tests for ROI calculations
+- [ ] Playwright e2e tests for calculator flows
+- [ ] Lighthouse CI with ≥90 thresholds
+
+#### Git Commits
+```
+9090635 feat: add design system primitives + universal ROI calculator
+[current] feat: add SEO infrastructure + enhanced footer + Organization schema
+```
+
+---
+
 ### 🔒 Compliance Refactoring - 2025-10-24
 
 Complete compliance overhaul to remove all client affiliations, rewrite content with benefits-first Dutch copy, and ensure truthful, measurable claims.

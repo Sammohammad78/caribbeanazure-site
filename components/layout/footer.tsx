@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
+import { Mail, Phone, MessageCircle } from 'lucide-react'
+import { siteConfig } from '@/config/site'
 
 export function Footer() {
   const t = useTranslations()
@@ -46,11 +48,43 @@ export function Footer() {
   return (
     <footer className="border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] bg-[color:color-mix(in_oklab,var(--bg)_92%,transparent)]/90 backdrop-blur-xl">
       <div className="container-custom py-16">
-        <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
           <FooterColumn label={t('footer.company')} links={footerLinks.company} />
           <FooterColumn label={t('footer.services')} links={footerLinks.services} />
           <FooterColumn label={t('footer.resources')} links={footerLinks.resources} />
           <FooterColumn label={t('footer.legal')} links={footerLinks.legal} />
+
+          {/* Contact Column */}
+          <div className="col-span-2 md:col-span-1 space-y-4">
+            <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">
+              Contact
+            </h3>
+            <div className="space-y-3 text-sm">
+              <a
+                href={`mailto:${siteConfig.contact.email}`}
+                className="flex items-center gap-2 text-[color:var(--fg-subtle)] hover:text-[color:var(--fg)] transition-colors"
+              >
+                <Mail className="h-4 w-4" />
+                {siteConfig.contact.email}
+              </a>
+              <a
+                href={`tel:${siteConfig.contact.phone}`}
+                className="flex items-center gap-2 text-[color:var(--fg-subtle)] hover:text-[color:var(--fg)] transition-colors"
+              >
+                <Phone className="h-4 w-4" />
+                {siteConfig.contact.phone}
+              </a>
+              <a
+                href={siteConfig.links.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-[color:var(--fg-subtle)] hover:text-[color:var(--fg)] transition-colors"
+              >
+                <MessageCircle className="h-4 w-4" />
+                WhatsApp
+              </a>
+            </div>
+          </div>
         </div>
 
         <div className="mt-14 border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] pt-8 space-y-6">
@@ -70,6 +104,13 @@ export function Footer() {
             {locale === 'nl'
               ? 'Caribbean Azure werkt onafhankelijk en noemt geen klant- of werkgeversnamen. We communiceren alleen resultaten die we feitelijk kunnen aantonen.'
               : 'Caribbean Azure operates independently and does not mention client or employer names. We only communicate results we can factually demonstrate.'}
+          </div>
+
+          {/* KvK and BTW */}
+          <div className="text-xs text-[color:var(--fg-muted)] flex flex-wrap gap-x-4 gap-y-2">
+            <span>KvK: 12345678</span>
+            <span>BTW: NL123456789B01</span>
+            <span>© {currentYear} Caribbean Azure</span>
           </div>
         </div>
       </div>
