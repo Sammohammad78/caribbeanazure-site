@@ -2,13 +2,7 @@
 
 import { Suspense, useMemo, useRef, useState, useEffect } from 'react'
 import { Canvas, useFrame, useThree } from '@react-three/fiber'
-import {
-  Float,
-  MeshDistortMaterial,
-  Sphere,
-  Environment,
-  ContactShadows,
-} from '@react-three/drei'
+import { Sphere, Environment } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import * as THREE from 'three'
 
@@ -27,17 +21,17 @@ function getCssColor(variable: string, fallback: RGB): RGB {
 
 function useThemeColors() {
   const [colors, setColors] = useState(() => ({
-    brand: getCssColor('--brand', '#0891b2'),
-    accent: getCssColor('--accent', '#7c3aed'),
-    brandSoft: getCssColor('--brand-soft', '#22d3ee'),
+    brand: getCssColor('--brand-600', '#0F5E9C'),
+    brandLight: getCssColor('--brand-400', '#4BA3F7'),
+    accent: getCssColor('--accent-amber', '#FFB703'),
   }))
 
   useEffect(() => {
     const update = () =>
       setColors({
-        brand: getCssColor('--brand', '#0891b2'),
-        accent: getCssColor('--accent', '#7c3aed'),
-        brandSoft: getCssColor('--brand-soft', '#22d3ee'),
+        brand: getCssColor('--brand-600', '#0F5E9C'),
+        brandLight: getCssColor('--brand-400', '#4BA3F7'),
+        accent: getCssColor('--accent-amber', '#FFB703'),
       })
 
     update()
@@ -76,124 +70,198 @@ function CameraController({ mousePosition }: { mousePosition: MousePosition }) {
   return null
 }
 
-function AutomationOrb({
+// Connection line component
+function ConnectionLine({
+  start,
+  end,
+  color,
+}: {
+  start?: [number, number, number]
+  end?: [number, number, number]
+  color: string
+}) {
+  const geometry = useMemo(() => {
+    if (!start || !end) return null
+    const points = [new THREE.Vector3(...start), new THREE.Vector3(...end)]
+    return new THREE.BufferGeometry().setFromPoints(points)
+  }, [start, end])
+
+  const material = useMemo(
+    () =>
+      new THREE.LineBasicMaterial({
+        color,
+        transparent: true,
+        opacity: 0.15,
+      }),
+    [color]
+  )
+
+  if (!geometry) return null
+
+  return <primitive object={new THREE.Line(geometry, material)} />
+}
+
+// Neural Network Particle System
+function AINetworkParticles({
   colors,
-  mousePosition
+  mousePosition,
 }: {
   colors: ReturnType<typeof useThemeColors>
   mousePosition: MousePosition
 }) {
-  const mainOrbRef = useRef<THREE.Mesh>(null)
-  const nodesRef = useRef<THREE.Group>(null)
   const groupRef = useRef<THREE.Group>(null)
+  const particlesRef = useRef<THREE.Points>(null)
+
+  // Create 3D grid of nodes (neural network style)
+  const { nodePositions, connections } = useMemo(() => {
+    const positions: [number, number, number][] = []
+    const links: [number, number][] = []
+
+    // Create 3D grid
+    const gridSize = 5
+    const spacing = 2.5
+    const offset = ((gridSize - 1) * spacing) / 2
+
+    for (let x = 0; x < gridSize; x++) {
+      for (let y = 0; y < gridSize; y++) {
+        for (let z = 0; z < gridSize; z++) {
+          // Add some randomness to make it organic
+          const jitterX = (Math.random() - 0.5) * 0.3
+          const jitterY = (Math.random() - 0.5) * 0.3
+          const jitterZ = (Math.random() - 0.5) * 0.3
+
+          positions.push([
+            x * spacing - offset + jitterX,
+            y * spacing - offset + jitterY,
+            z * spacing - offset + jitterZ,
+          ])
+
+          // Connect to nearby nodes
+          const currentIndex = positions.length - 1
+          if (x > 0) links.push([currentIndex, currentIndex - gridSize * gridSize])
+          if (y > 0) links.push([currentIndex, currentIndex - gridSize])
+          if (z > 0) links.push([currentIndex, currentIndex - 1])
+        }
+      }
+    }
+
+    return { nodePositions: positions, connections: links }
+  }, [])
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime()
 
-    if (mainOrbRef.current) {
-      mainOrbRef.current.rotation.x = Math.sin(t * 0.2) * 0.12
-      mainOrbRef.current.rotation.y = t * 0.12
-    }
-
-    if (nodesRef.current) {
-      nodesRef.current.rotation.y = -t * 0.2
-    }
-
-    // Add subtle rotation based on mouse position (inverse for depth effect)
     if (groupRef.current) {
-      groupRef.current.rotation.y = Math.PI / 3 - mousePosition.x * 0.2
-      groupRef.current.rotation.x = -mousePosition.y * 0.15
+      // Slow rotation
+      groupRef.current.rotation.y = t * 0.08
+      groupRef.current.rotation.x = Math.sin(t * 0.1) * 0.15
+
+      // Mouse influence
+      groupRef.current.rotation.y += mousePosition.x * 0.3
+      groupRef.current.rotation.x += -mousePosition.y * 0.2
     }
   })
 
-  const nodePositions = useMemo(() => {
-    const positions: [number, number, number][] = []
-    const count = 12
-    const radius = 2.7
-
-    for (let i = 0; i < count; i++) {
-      const angle = ((Math.PI * 2) / count) * i
-      const x = Math.cos(angle) * radius
-      const y = Math.sin(angle * 0.5) * 0.6
-      const z = Math.sin(angle) * radius
-      positions.push([x, y, z])
-    }
-
-    return positions
-  }, [])
-
   return (
     <group ref={groupRef}>
-      <Float speed={2} rotationIntensity={0.28} floatIntensity={0.65}>
-        <Sphere ref={mainOrbRef} args={[1.4, 96, 96]}>
-          <MeshDistortMaterial
-            color={colors.brand}
-            attach="material"
-            distort={0.35}
-            speed={2.2}
-            roughness={0.18}
-            metalness={0.85}
-            emissive={colors.accent}
-            emissiveIntensity={0.4}
+      {/* Neural nodes */}
+      {nodePositions.map((pos, i) => {
+        const delay = i * 0.02
+        return (
+          <Sphere key={`node-${i}`} args={[0.08, 16, 16]} position={pos}>
+            <meshStandardMaterial
+              color={i % 3 === 0 ? colors.accent : colors.brandLight}
+              emissive={i % 3 === 0 ? colors.accent : colors.brandLight}
+              emissiveIntensity={0.6 + Math.sin(delay) * 0.2}
+              roughness={0.2}
+              metalness={0.8}
+            />
+          </Sphere>
+        )
+      })}
+
+      {/* Connection lines between nodes */}
+      {connections.map(([startIdx, endIdx], i) => (
+        <ConnectionLine
+          key={`connection-${i}`}
+          start={nodePositions[startIdx]}
+          end={nodePositions[endIdx]}
+          color={colors.brand}
+        />
+      ))}
+
+      {/* Animated data particles traveling through the network */}
+      {[...Array(12)].map((_, i) => {
+        const pathIndex = Math.floor(Math.random() * connections.length)
+        const connection = connections[pathIndex]
+        if (!connection) return null
+
+        const start = nodePositions[connection[0]]
+        const end = nodePositions[connection[1]]
+        if (!start || !end) return null
+
+        return (
+          <AnimatedParticle
+            key={`particle-${i}`}
+            start={start}
+            end={end}
+            delay={i * 0.3}
+            color={i % 2 === 0 ? colors.brandLight : colors.accent}
           />
-        </Sphere>
-      </Float>
+        )
+      })}
 
-      <group ref={nodesRef}>
-        {nodePositions.map((position, i) => (
-          <Float
-            key={`node-${i}`}
-            speed={2.8}
-            rotationIntensity={0.12}
-            floatIntensity={0.42}
-            floatingRange={[position[1] - 0.25, position[1] + 0.25]}
-          >
-            <Sphere args={[0.16 + (i % 3) * 0.04, 32, 32]} position={position}>
-              <meshStandardMaterial
-                color={i % 2 === 0 ? colors.brandSoft : colors.accent}
-                emissive={colors.brandSoft}
-                emissiveIntensity={0.75}
-                roughness={0.28}
-                metalness={0.72}
-              />
-            </Sphere>
-
-            <ConnectionLine start={[0, 0, 0]} end={position} color={colors.brand} opacity={0.24} />
-          </Float>
-        ))}
-      </group>
-
-      <ambientLight intensity={0.6} />
-      <pointLight position={[8, 9, 6]} intensity={1.2} color={colors.brand} />
-      <pointLight position={[-6, -8, -4]} intensity={0.7} color={colors.accent} />
+      {/* Lighting */}
+      <pointLight position={[5, 5, 5]} intensity={0.8} color={colors.brandLight} />
+      <pointLight position={[-5, -5, -5]} intensity={0.5} color={colors.accent} />
+      <ambientLight intensity={0.3} />
     </group>
   )
 }
 
-function ConnectionLine({
+// Animated particle that travels along a path
+function AnimatedParticle({
   start,
   end,
-  color = '#ffffff',
-  opacity = 1,
+  delay,
+  color,
 }: {
   start: [number, number, number]
   end: [number, number, number]
-  color?: string
-  opacity?: number
+  delay: number
+  color: string
 }) {
-  const geometry = useMemo(() => {
-    const geom = new THREE.BufferGeometry()
-    const positions = new Float32Array([...start, ...end])
-    geom.setAttribute('position', new THREE.BufferAttribute(positions, 3))
-    return geom
-  }, [start, end])
+  const ref = useRef<THREE.Mesh>(null)
 
-  const material = useMemo(
-    () => new THREE.LineBasicMaterial({ color, transparent: true, opacity }),
-    [color, opacity]
+  useFrame((state) => {
+    if (!ref.current) return
+
+    const t = (state.clock.getElapsedTime() + delay) % 2 // 2 second loop
+    const progress = t / 2
+
+    // Interpolate between start and end
+    ref.current.position.x = start[0] + (end[0] - start[0]) * progress
+    ref.current.position.y = start[1] + (end[1] - start[1]) * progress
+    ref.current.position.z = start[2] + (end[2] - start[2]) * progress
+
+    // Fade in/out at edges
+    const opacity = Math.sin(progress * Math.PI) * 0.8
+    if (ref.current.material instanceof THREE.MeshStandardMaterial) {
+      ref.current.material.opacity = opacity
+    }
+  })
+
+  return (
+    <Sphere ref={ref} args={[0.12, 16, 16]}>
+      <meshStandardMaterial
+        color={color}
+        emissive={color}
+        emissiveIntensity={1.2}
+        transparent
+        opacity={0.8}
+      />
+    </Sphere>
   )
-
-  return <primitive object={new THREE.Line(geometry, material)} />
 }
 
 function LoadingFallback() {
@@ -221,7 +289,7 @@ function StaticPoster() {
 
 export function Hero3D({
   className,
-  mousePosition = { x: 0, y: 0 }
+  mousePosition = { x: 0, y: 0 },
 }: {
   className?: string
   mousePosition?: MousePosition
@@ -244,8 +312,8 @@ export function Hero3D({
     <div className={className}>
       <Suspense fallback={<LoadingFallback />}>
         <Canvas
-          camera={{ position: [0, 0, 6.5], fov: 50 }}
-          dpr={[1, 1.25]}
+          camera={{ position: [0, 0, 12], fov: 45 }}
+          dpr={[1, 1.5]}
           gl={{
             antialias: true,
             alpha: true,
@@ -257,25 +325,18 @@ export function Hero3D({
           <Suspense fallback={null}>
             <CameraController mousePosition={mousePosition} />
 
-            <group rotation={[0, 0, 0]}>
-              <Environment
-                files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/2k/studio_small_08_2k.hdr"
-                blur={0.2}
-              />
-            </group>
-            <AutomationOrb colors={colors} mousePosition={mousePosition} />
+            <Environment preset="city" />
+
+            <AINetworkParticles colors={colors} mousePosition={mousePosition} />
 
             <EffectComposer>
-              <Bloom luminanceThreshold={0.55} luminanceSmoothing={0.92} height={320} intensity={0.65} />
+              <Bloom
+                luminanceThreshold={0.4}
+                luminanceSmoothing={0.9}
+                height={300}
+                intensity={1.2}
+              />
             </EffectComposer>
-
-            <ContactShadows
-              rotation={[Math.PI / 2, 0, 0]}
-              position={[0, -1.8, 0]}
-              opacity={0.4}
-              scale={12}
-              blur={2.5}
-            />
           </Suspense>
         </Canvas>
       </Suspense>

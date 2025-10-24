@@ -5,6 +5,8 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import { ArrowUpRight, BarChart3, Clock3, Users } from 'lucide-react'
 import Link from 'next/link'
 import { getTranslations } from 'next-intl/server'
+import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
+import { backgroundThemes } from '@/lib/backgroundThemes'
 
 type CaseSummary = {
   slug: string
@@ -28,8 +30,14 @@ export default async function CasesPage({ params }: { params: { locale: string }
 
   return (
     <>
-      <Header />
-      <main>
+      <div className="relative">
+        {/* 3D Background */}
+        <div className="fixed inset-0 -z-10">
+          <BackgroundEngine theme={backgroundThemes.cases} />
+        </div>
+
+        <Header />
+        <main>
         <section className="section-padding-y hero-glow">
           <div className="container-custom">
             <div className="mx-auto max-w-[720px] text-center">
@@ -102,6 +110,7 @@ export default async function CasesPage({ params }: { params: { locale: string }
         </section>
       </main>
       <Footer />
+      </div>
     </>
   )
 }

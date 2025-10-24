@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { ThemeToggle } from './theme-toggle'
+import { Logo, LogoMark } from '@/components/brand/logo'
 
 export function Header() {
   const t = useTranslations()
@@ -28,13 +29,9 @@ export function Header() {
       <div className="container-custom">
         <div className="flex h-20 items-center justify-between gap-4">
           {/* Logo */}
-          <Link href={`/${locale}`} className="group flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[color:var(--brand)] text-white font-semibold text-sm shadow-[0_10px_30px_color-mix(in_oklab,var(--brand)_35%,transparent)] transition-transform duration-300 group-hover:scale-105">
-              CA
-            </div>
-            <span className="hidden text-lg font-semibold text-body sm:inline-block">
-              Caribbean Azure
-            </span>
+          <Link href={`/${locale}`} className="group flex items-center gap-3 transition-opacity duration-200 hover:opacity-80">
+            <Logo className="hidden h-8 w-auto sm:block" />
+            <LogoMark className="h-10 w-10 sm:hidden" />
           </Link>
 
           {/* Desktop Navigation */}
