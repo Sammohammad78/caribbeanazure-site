@@ -27,7 +27,7 @@ export interface RoiResult {
 
 export type RoiVariant = 'inline' | 'card' | 'page'
 
-export type RoiPreset = 'light' | 'manufacturing' | 'c2p' | 'custom'
+export type RoiPreset = 'light' | 'manufacturing' | 'c2p' | 'configurators' | 'custom'
 
 export interface RoiCalculatorProps {
   /** Initial input values */
@@ -76,6 +76,12 @@ export const PRESET_INPUTS: Record<RoiPreset, Partial<RoiInputs>> = {
     hourlyRate: 85,
     hoursSavedPerWeek: 6,
     adoption: 0.65,
+  },
+  configurators: {
+    teamSize: 10,
+    hourlyRate: 80,
+    hoursSavedPerWeek: 5,
+    adoption: 0.7,
   },
   custom: DEFAULT_INPUTS,
 }

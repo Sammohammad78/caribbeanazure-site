@@ -32,14 +32,13 @@ export function ContactForm() {
   const locale = useLocale() as Locale;
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const defaultValues: ContactFormData = {
+  const defaultValues: Partial<ContactFormData> = {
     name: "",
     company: "",
     email: "",
     phone: "",
     useCase: "other",
     message: "",
-    consent: false,
   };
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormData>({
