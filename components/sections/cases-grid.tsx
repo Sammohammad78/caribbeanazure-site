@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, Play, ArrowRight } from 'lucide-react'
+import { GlassCard } from '@/components/ui/GlassCard'
 import { trackEvent } from '@/lib/tracking'
 
 export interface CaseItem {
@@ -65,7 +66,7 @@ export function CasesGrid({
               key={item.id}
               type="button"
               onClick={() => toggleCase(item.id)}
-              className="group flex flex-col rounded-3xl border border-white/10 bg-white/10 p-6 text-left shadow-[0_18px_50px_rgba(15,23,42,0.14)] backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+              className="glass group flex flex-col p-6 text-left transition-all duration-300 hover:-translate-y-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
               aria-expanded={isActive}
             >
               <div className="flex items-center justify-between gap-4">
@@ -111,7 +112,7 @@ export function CasesGrid({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25 }}
-            className="rounded-3xl border border-white/10 bg-white/6 p-8 shadow-[0_24px_60px_rgba(15,23,42,0.14)] backdrop-blur-xl"
+            className="glass p-8"
           >
             <div className="flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
               <div>

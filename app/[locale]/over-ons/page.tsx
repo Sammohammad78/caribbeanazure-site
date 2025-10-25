@@ -2,7 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Link from "next/link";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { Card } from "@/components/ui/card";
+import { GlassCard } from "@/components/ui/GlassCard";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ArrowRight } from "lucide-react";
 import { BackgroundEngine } from "@/components/backgrounds/BackgroundEngine";
@@ -58,9 +58,9 @@ export default async function AboutPage({ params }: { params: { locale: string }
         <section className="section-padding-y">
           <div className="container-custom grid gap-6 lg:grid-cols-3">
             {pillars.map((pillar) => (
-              <Card
+              <GlassCard
                 key={pillar.title}
-                className="h-full space-y-3 rounded-3xl border border-white/10 bg-white/12 p-6 shadow-[0_22px_60px_rgba(15,23,42,0.14)] backdrop-blur"
+                className="h-full space-y-3"
               >
                 <div className="flex items-center gap-2 text-[color:var(--accent)]">
                   <CheckCircle2 className="h-5 w-5" />
@@ -69,7 +69,7 @@ export default async function AboutPage({ params }: { params: { locale: string }
                   </p>
                 </div>
                 <p className="text-sm text-[color:var(--fg-subtle)]">{pillar.body}</p>
-              </Card>
+              </GlassCard>
             ))}
           </div>
         </section>
@@ -81,15 +81,15 @@ export default async function AboutPage({ params }: { params: { locale: string }
             </h2>
             <div className="grid gap-4 md:grid-cols-3">
               {timeline.map((item) => (
-                <Card
+                <GlassCard
                   key={item.label}
-                  className="space-y-2 rounded-3xl border border-white/10 bg-white/8 p-6 text-left shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur"
+                  className="space-y-2 text-left"
                 >
                   <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[color:var(--accent)]">
                     {item.label}
                   </p>
                   <p className="text-sm text-[color:var(--fg-subtle)]">{item.detail}</p>
-                </Card>
+                </GlassCard>
               ))}
             </div>
           </div>

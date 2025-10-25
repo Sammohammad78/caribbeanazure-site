@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { GlassCard } from '@/components/ui/GlassCard'
 import { Button } from '@/components/ui/button'
 import {
   ArrowRight,
@@ -130,22 +130,23 @@ export default function ServicesPage() {
           <div className="container-custom">
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {services.map((service) => (
-                <Card
+                <GlassCard
                   key={service.title}
-                  className="card-gradient-stripe group h-full rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8 transition-transform duration-300 hover:scale-[1.02]"
+                  className="card-gradient-stripe group h-full transition-transform duration-300 hover:scale-[1.02]"
+                  interactive
                 >
-                  <CardHeader className="space-y-4 pb-6">
+                  <div className="space-y-4 pb-6">
                     <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)] shadow-[0_12px_32px_color-mix(in_oklab,var(--brand)_30%,transparent)] transition-all duration-300 group-hover:scale-110">
                       <service.icon className="h-6 w-6" />
                     </div>
-                    <CardTitle className="text-2xl font-bold text-body">
+                    <h3 className="text-2xl font-bold text-body">
                       {service.title}
-                    </CardTitle>
-                    <CardDescription className="text-sm leading-relaxed text-[color:var(--fg-subtle)]">
+                    </h3>
+                    <p className="text-sm leading-relaxed text-[color:var(--fg-subtle)]">
                       {service.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
+                    </p>
+                  </div>
+                  <div className="space-y-3">
                     {service.points.map((point) => (
                       <div
                         key={point}
@@ -155,8 +156,8 @@ export default function ServicesPage() {
                         <span>{point}</span>
                       </div>
                     ))}
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
               ))}
             </div>
           </div>
@@ -175,16 +176,16 @@ export default function ServicesPage() {
         <section className="section-padding-y bg-[color:color-mix(in_oklab,var(--bg)_90%,transparent)]">
           <div className="container-custom">
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,0.7fr)]">
-              <Card className="rounded-3xl p-10">
-                <CardHeader className="space-y-4 pb-8">
-                  <CardTitle className="text-3xl font-bold text-body">
+              <GlassCard size="lg">
+                <div className="space-y-4 pb-8">
+                  <h2 className="text-3xl font-bold text-body">
                     Hoe we samenwerken
-                  </CardTitle>
-                  <CardDescription className="text-base text-[color:var(--fg-subtle)]">
+                  </h2>
+                  <p className="text-base text-[color:var(--fg-subtle)]">
                     Elke implementatie volgt dezelfde stappen: van analyse tot kennisoverdracht.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
+                  </p>
+                </div>
+                <div className="space-y-6">
                   {[
                     {
                       number: '01',
@@ -213,7 +214,7 @@ export default function ServicesPage() {
                   ].map((step) => (
                     <div
                       key={step.number}
-                      className="group rounded-2xl border border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_75%,transparent)] p-6 transition-all duration-300 hover:border-[color:color-mix(in_oklab,var(--brand)_32%,transparent)]"
+                      className="glass group p-6 transition-all duration-300 hover:border-[color:color-mix(in_oklab,var(--brand)_32%,transparent)]"
                     >
                       <div className="flex items-start gap-4">
                         <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:var(--brand)] text-lg font-bold text-white">
@@ -228,20 +229,20 @@ export default function ServicesPage() {
                       </div>
                     </div>
                   ))}
-                </CardContent>
-              </Card>
+                </div>
+              </GlassCard>
 
               {/* CTA Card */}
-              <Card className="flex h-full flex-col justify-between rounded-3xl border-[color:color-mix(in_oklab,var(--accent)_32%,transparent)] bg-[linear-gradient(135deg,color-mix(in_oklab,var(--brand-600)_85%,transparent)0%,color-mix(in_oklab,var(--brand-400)_80%,transparent)100%)] p-10 text-white">
-                <CardHeader className="space-y-6">
-                  <CardTitle className="text-3xl font-bold">
+              <GlassCard gradient className="flex h-full flex-col justify-between text-white">
+                <div className="space-y-6">
+                  <h2 className="text-3xl font-bold">
                     Klaar om te starten?
-                  </CardTitle>
-                  <CardDescription className="text-base text-white/90">
+                  </h2>
+                  <p className="text-base text-white/90">
                     Plan een gesprek van 45 minuten. Je ontvangt een voorstel met aanpak, planning en investering.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-6">
+                  </p>
+                </div>
+                <div className="space-y-6">
                   <div className="space-y-4 text-sm text-white/85">
                     <div className="flex items-center gap-3">
                       <Clock className="h-5 w-5" />
@@ -266,8 +267,8 @@ export default function ServicesPage() {
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Link>
                   </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </GlassCard>
             </div>
           </div>
         </section>

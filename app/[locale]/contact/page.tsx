@@ -3,7 +3,8 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { ContactForm } from "@/components/sections/contact-form"
 import { Mail, MessageCircle, Phone } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import { GlassCard } from "@/components/ui/GlassCard"
+import { GlassBadge } from "@/components/ui/GlassBadge"
 import { siteConfig } from "@/config/site"
 import { BackgroundEngine } from "@/components/backgrounds/BackgroundEngine"
 import { backgroundThemes } from "@/lib/backgroundThemes"
@@ -60,9 +61,9 @@ export default async function ContactPage({ params }: { params: { locale: string
       <main id="main-content">
         <section className="section-padding-y">
           <div className="container-custom mx-auto max-w-3xl space-y-6 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[color:var(--accent)]">
+            <GlassBadge variant="accent" size="md">
               {contact("badge", { fallback: "Contact" })}
-            </p>
+            </GlassBadge>
             <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">
               {contact("title")}
             </h1>
@@ -77,9 +78,10 @@ export default async function ContactPage({ params }: { params: { locale: string
               {channels.map((channel) => {
                 const Icon = channel.icon
                 return (
-                  <Card
+                  <GlassCard
                     key={channel.label}
-                    className="flex items-start gap-4 rounded-3xl border border-white/10 bg-white/10 p-6 shadow-[0_18px_40px_rgba(15,23,42,0.14)] backdrop-blur-xl"
+                    className="flex items-start gap-4"
+                    interactive
                   >
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--accent)_20%,transparent)] text-[color:var(--accent)]">
                       <Icon className="h-5 w-5" aria-hidden="true" />
@@ -95,7 +97,7 @@ export default async function ContactPage({ params }: { params: { locale: string
                       </a>
                       <p className="text-sm text-[color:var(--fg-subtle)]">{channel.description}</p>
                     </div>
-                  </Card>
+                  </GlassCard>
                 )
               })}
             </div>

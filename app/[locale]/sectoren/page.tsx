@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { GlassCard } from '@/components/ui/GlassCard'
 import { Button } from '@/components/ui/button'
 import { getTranslations } from 'next-intl/server'
 
@@ -30,15 +30,15 @@ export default async function IndustriesPage({ params }: { params: { locale: str
         <section className="section-padding-y">
           <div className="container-custom grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {sectors.map((sector) => (
-              <Card
+              <GlassCard
                 key={sector.slug}
-                className="card flex h-full flex-col gap-4 rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8"
+                className="card flex h-full flex-col gap-4"
               >
-                <CardHeader className="space-y-3 pb-0">
+                <div className="space-y-3 pb-0">
                   <span className="text-xs uppercase tracking-[0.24em] text-[color:var(--fg-muted)]">{sector.name}</span>
-                  <CardTitle className="text-lg font-semibold text-body">{sector.problem}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 p-0 text-sm text-[color:var(--fg-subtle)]">
+                  <h3 className="text-lg font-semibold text-body">{sector.problem}</h3>
+                </div>
+                <div className="space-y-4 p-0 text-sm text-[color:var(--fg-subtle)]">
                   <div>
                     <p className="text-xs uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">Use-cases</p>
                     <ul className="mt-2 space-y-2">
@@ -54,8 +54,8 @@ export default async function IndustriesPage({ params }: { params: { locale: str
                     <p className="text-xs uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">KPI-impact</p>
                     <p className="mt-2 font-semibold text-body">{sector.kpi}</p>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </GlassCard>
             ))}
           </div>
         </section>
