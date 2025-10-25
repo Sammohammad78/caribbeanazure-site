@@ -1,0 +1,586 @@
+{
+  "nav": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "pricing": "Pricing",
+    "cases": "Cases",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "cta": {
+    "intake": "Book an intake",
+    "roi": "Calculate your ROI",
+    "watchDemo": "Watch demo",
+    "contact": "Get in touch"
+  },
+  "footer": {
+    "company": "Company",
+    "solutions": "Solutions",
+    "legal": "Legal",
+    "privacy": "Privacy policy",
+    "cookies": "Cookie policy",
+    "rights": "All rights reserved",
+    "tagline": "Automation without noise.",
+    "anonymised": "Cases are anonymised. KPI results are verified and traceable.",
+    "contact": "Contact"
+  },
+  "trust": {
+    "items": [
+      "EU hosting",
+      "DPA available",
+      "n8n self-host option"
+    ]
+  },
+  "meta": {
+    "home": {
+      "title": "Caribbean Azure | Automate from inquiry to production",
+      "description": "Premium automation for SMB manufacturers. Fast delivery, GDPR compliant and self-host options with n8n."
+    },
+    "solutions": {
+      "title": "Solutions | Caribbean Azure",
+      "description": "Three automation packages: Light, Manufacturing and Configurators. Clear deliverables every time."
+    },
+    "solutionsLight": {
+      "title": "Light Automations | Caribbean Azure",
+      "description": "Fast automations with immediate impact. Perfect to digitise processes without heavy projects."
+    },
+    "solutionsManufacturing": {
+      "title": "Manufacturing Automation | Caribbean Azure",
+      "description": "From quote to BOM without detours. Connect sales, engineering and production in one track."
+    },
+    "solutionsConfigurators": {
+      "title": "CPQ & C2P Configurators | Caribbean Azure",
+      "description": "Configure. Price. Produce. One flow from sales to production-ready output."
+    },
+    "pricing": {
+      "title": "Pricing | Caribbean Azure",
+      "description": "Transparent pricing for automation. From Micro-automation to complete configurator programmes."
+    },
+    "cases": {
+      "title": "Cases | Caribbean Azure",
+      "description": "Anonymous cases with provable KPIs. See how SMB manufacturers work faster, cleaner and at scale."
+    },
+    "about": {
+      "title": "About Caribbean Azure",
+      "description": "Dutch automation specialists streamlining processes. Small team, direct communication, measurable outcomes."
+    },
+    "contact": {
+      "title": "Contact | Caribbean Azure",
+      "description": "Book an intake or ask a question. Fast response and a concrete proposal."
+    },
+    "privacy": {
+      "title": "Privacy Policy | Caribbean Azure",
+      "description": "How Caribbean Azure processes and protects personal data."
+    },
+    "cookies": {
+      "title": "Cookie Policy | Caribbean Azure",
+      "description": "Which cookies we use, why and how you manage preferences."
+    },
+    "notFound": {
+      "title": "Page not found | Caribbean Azure",
+      "description": "The page you requested is unavailable. Navigate back to the main routes."
+    },
+    "serverError": {
+      "title": "Server error | Caribbean Azure",
+      "description": "Something went wrong. Our monitoring team is on it."
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Premium NL automation",
+      "title": "Automate from inquiry to production",
+      "subtitle": "Fast outcomes for SMBs. GDPR-safe. n8n self-host optional.",
+      "primaryCta": "cta.intake",
+      "secondaryCta": "cta.roi"
+    },
+    "tiers": {
+      "title": "Choose your pace",
+      "items": [
+        {
+          "id": "light",
+          "label": "Light",
+          "title": "Fast automations",
+          "description": "For teams that want to remove manual work immediately. Includes dashboard and handover.",
+          "cta": "Explore fast automations",
+          "routeKey": "solutionsLight"
+        },
+        {
+          "id": "manufacturing",
+          "label": "Manufacturing",
+          "title": "From quote to BOM",
+          "description": "From inquiry to BOM without double entry. Links sales, engineering and ERP.",
+          "cta": "From quote to BOM",
+          "routeKey": "solutionsManufacturing"
+        },
+        {
+          "id": "configurators",
+          "label": "Configurators",
+          "title": "CPQ & C2P options",
+          "description": "Configure, price and produce from one interface. Built to scale.",
+          "cta": "See CPQ & C2P options",
+          "routeKey": "solutionsConfigurators"
+        }
+      ]
+    },
+    "proof": {
+      "title": "Measured improvements",
+      "items": [
+        {
+          "label": "Quote lead time",
+          "value": "\u221268 %",
+          "detail": "From inquiry to proposal in hours."
+        },
+        {
+          "label": "BOM errors",
+          "value": "\u221240 %",
+          "detail": "Validation at every configuration."
+        },
+        {
+          "label": "ROI",
+          "value": "3.4x",
+          "detail": "On average after 9 months."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Less manual work. More output.",
+      "subtitle": "Book an intake and receive a scoped plan with timeline and indication within 48 hours.",
+      "button": "cta.intake"
+    },
+    "faq": {
+      "title": "Frequently asked questions",
+      "subtitle": "Clear answers to the most common intake questions.",
+      "items": [
+        {
+          "question": "How fast do we go live?",
+          "answer": "Within three working days after the intake we deliver a micro-automation. You experience impact without risking operations."
+        },
+        {
+          "question": "Does this work with our tools?",
+          "answer": "Yes. We integrate with ERP, CRM, CAD, SQL and custom systems via API or RPA when needed."
+        },
+        {
+          "question": "How do you ensure GDPR compliance?",
+          "answer": "Data stays in EU data centres. We provide a DPA, encrypt every connection and offer a self-hosted n8n option."
+        },
+        {
+          "question": "Can we start small?",
+          "answer": "Begin with Micro-automation or Light. Once the first flow delivers value we expand in controlled steps."
+        }
+      ]
+    }
+  },
+  "solutions": {
+    "overview": {
+      "title": "Three levels. Always a measurable delivery.",
+      "description": "Each package includes fixed deliverables, KPI reviews and adoption support. Pick the level that matches your team.",
+      "microLabel": "Entry level",
+      "cta": "cta.intake",
+      "microTitle": "Start small, scale smart",
+      "microDescription": "Begin with a micro-automation and move into Light or Manufacturing afterwards.",
+      "microCta": "Explore Light"
+    },
+    "light": {
+      "title": "Fast automations with immediate effect",
+      "subtitle": "For teams that digitise workflows without heavy projects.",
+      "priceLine": "From \u20ac 999 excl. VAT",
+      "benefits": [
+        "Less manual work.",
+        "Fewer errors.",
+        "More time for customers."
+      ],
+      "deliverables": [
+        "Up to three core flows live within four weeks",
+        "Dashboard with lead times and workload",
+        "Workshop and team handover",
+        "30 days of post go-live support"
+      ],
+      "cta": "cta.intake",
+      "deliverablesLabel": "Included",
+      "roiTitle": "Calculate your ROI",
+      "roiSubtitle": "See the Light savings instantly.",
+      "ctaTitle": "Get started fast",
+      "ctaSubtitle": "Book an intake and receive a scoped light plan within 48 hours.",
+      "seePricing": "View pricing"
+    },
+    "micro": {
+      "title": "Micro-automation",
+      "subtitle": "One flow. One integration. Delivered within three working days.",
+      "priceLine": "From \u20ac 799 excl. VAT",
+      "note": "Small step. Fast outcome."
+    },
+    "manufacturing": {
+      "title": "From quote to BOM without detours",
+      "subtitle": "Unite sales, engineering and production in one flow.",
+      "priceLine": "From \u20ac 1,999 excl. VAT",
+      "modules": [
+        "Sales\u2192BOM Bridge",
+        "Drawing Pack Generator",
+        "ERP connectors",
+        "Configuration validation",
+        "Production-ready output"
+      ],
+      "deliverables": [
+        "Digital intake with validations",
+        "Automatic BOMs and drawing packs",
+        "Sync with ERP and planning",
+        "Training for sales and operations"
+      ],
+      "cta": "cta.intake",
+      "deliverablesTitle": "Delivery package",
+      "roiTitle": "Calculate your ROI",
+      "roiSubtitle": "From sales intake to production in one chain.",
+      "ctaTitle": "Accelerate sales to production",
+      "ctaSubtitle": "Book an intake and receive a blueprint with modules and timing.",
+      "seePricing": "View pricing",
+      "seeConfigurators": "Explore configurators"
+    },
+    "configurators": {
+      "title": "Configure. Price. Produce.",
+      "subtitle": "For bespoke products with complex variants.",
+      "priceLine": "Price on request",
+      "services": [
+        {
+          "label": "CPQ (standard)",
+          "benefits": [
+            "Realtime pricing with cost drivers",
+            "Proposal output in your brand style",
+            "Scenarios for upsell and bundles"
+          ]
+        },
+        {
+          "label": "C2P (Configure-to-Production)",
+          "benefits": [
+            "Validated BOM per configuration",
+            "Automatic handover to production",
+            "Drawing packs generated automatically"
+          ]
+        }
+      ],
+      "cta": "cta.intake",
+      "roiTitle": "Calculate your ROI",
+      "roiSubtitle": "Compare scenarios for CPQ and C2P.",
+      "ctaTitle": "Go from configuration to production",
+      "ctaSubtitle": "We deliver the blueprint, governance and integration plan.",
+      "seeManufacturing": "Explore manufacturing"
+    }
+  },
+  "pricing": {
+    "title": "Transparent pricing",
+    "subtitle": "Choose the track that fits. All prices exclude VAT and are tied to clear deliverables.",
+    "finePrint": "Prices are \u201cfrom\u201d and exclude VAT. Scope and integrations determine the total investment.",
+    "tiers": [
+      {
+        "id": "micro",
+        "title": "Micro-automation",
+        "description": "Entry point with a single flow and fast impact.",
+        "priceKey": "micro",
+        "inclusions": [
+          "45-minute scoping call",
+          "Flow design and mapping",
+          "Implementation and testing",
+          "Handover video and documentation"
+        ],
+        "cta": "cta.intake"
+      },
+      {
+        "id": "light",
+        "title": "Light",
+        "description": "Fast automations with immediate effect.",
+        "priceKey": "tier1",
+        "inclusions": [
+          "Up to three automations live",
+          "Performance dashboard",
+          "Training for key users",
+          "30 days of support"
+        ],
+        "cta": "cta.intake"
+      },
+      {
+        "id": "manufacturing",
+        "title": "Manufacturing",
+        "description": "From sales to production without double entry.",
+        "priceKey": "tier2",
+        "inclusions": [
+          "Sales intake plus validations",
+          "Automatic BOM and drawing pack",
+          "ERP integration",
+          "90 days of hypercare"
+        ],
+        "cta": "cta.intake"
+      },
+      {
+        "id": "configurators",
+        "title": "Configurators",
+        "description": "CPQ & C2P programme tailored to your products.",
+        "priceKey": "tier3",
+        "inclusions": [
+          "Process blueprint",
+          "Proof-of-concept configurator",
+          "Integration plan with production",
+          "Adoption and governance plan"
+        ],
+        "cta": "cta.intake"
+      }
+    ],
+    "addOns": {
+      "light": [
+        "Additional flow",
+        "Additional integration",
+        "60/90 day support"
+      ],
+      "manufacturing": [
+        "Extra ERP connector",
+        "Drawing pack templates",
+        "90 day support",
+        "Process audit"
+      ],
+      "retainers": [
+        "S \u20ac 450 p/m",
+        "M \u20ac 850 p/m",
+        "L \u20ac 1,250 p/m"
+      ]
+    }
+  },
+  "cases": {
+    "title": "Proof with KPIs",
+    "subtitle": "Sector cases without names and with verifiable numbers.",
+    "items": [
+      {
+        "sector": "Metal door manufacturer",
+        "headline": "Quote lead time \u221268 %",
+        "kpis": [
+          "Before: 5 days",
+          "After: 1.6 day",
+          "Quote flow automated"
+        ],
+        "id": "metal-doors"
+      },
+      {
+        "sector": "Building supplier",
+        "headline": "BOM errors \u221240 %",
+        "kpis": [
+          "Before: 25 errors/month",
+          "After: 10 errors/month",
+          "Validation inside configurator"
+        ],
+        "id": "building-supplier"
+      },
+      {
+        "sector": "Prefab installer",
+        "headline": "Lead-to-order +32 %",
+        "kpis": [
+          "Before: 18% conversion",
+          "After: 50% conversion",
+          "Automatic calculations"
+        ],
+        "id": "prefab-installer"
+      },
+      {
+        "sector": "Precision woodworking",
+        "headline": "Production planning \u221245 %",
+        "kpis": [
+          "Before: 9 hours planning/week",
+          "After: 5 hours planning/week",
+          "ERP integration live"
+        ],
+        "id": "precision-wood"
+      },
+      {
+        "sector": "Modular construction",
+        "headline": "Project handover +2.8x",
+        "kpis": [
+          "Before: 6 week engineering",
+          "After: 2 week engineering",
+          "C2P workflow live"
+        ],
+        "id": "modular-construction"
+      },
+      {
+        "sector": "High-tech assembly",
+        "headline": "Rework \u221252 %",
+        "kpis": [
+          "Before: 14% rework",
+          "After: 6.7% rework",
+          "Realtime quality feedback"
+        ],
+        "id": "high-tech-assembly"
+      }
+    ],
+    "cta": "cta.intake",
+    "videoLabel": "Watch the 90s demo",
+    "ctaHeadline": "Ready for similar results?",
+    "ctaSubtitle": "Book an intake and receive a scoped action plan within 48 hours."
+  },
+  "contact": {
+    "title": "Book your intake",
+    "subtitle": "Clear scope, quick follow-up. We reply within one working day.",
+    "privacyNote": "We only use your data to contact you. No newsletters.",
+    "success": {
+      "title": "Thank you. Your intake is scheduled.",
+      "body": "We respond within one working day with the proposal. Calculate your ROI in the meantime.",
+      "cta": "cta.roi"
+    },
+    "badge": "Book an intake",
+    "formTitle": "Send us a message",
+    "formSubtitle": "Share your challenge briefly. We reply within one working day.",
+    "channel": {
+      "whatsapp": {
+        "label": "WhatsApp",
+        "description": "Fastest answer during office hours."
+      },
+      "email": {
+        "label": "Email",
+        "description": "We respond within one working day."
+      },
+      "phone": {
+        "label": "Phone",
+        "description": "Weekdays 09:00-17:00."
+      }
+    }
+  },
+  "form": {
+    "name": "Name",
+    "company": "Company",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "useCase": "Use case",
+    "useCases": {
+      "manufacturing": "Tier 2 Sales\u2192BOM",
+      "configurator": "Tier 3 CPQ/C2P",
+      "other": "Other"
+    },
+    "message": "Message",
+    "consent": "I agree that my details are processed for this intake.",
+    "submit": "Send",
+    "sendCalculation": "Send me this calculation",
+    "success": "Your message has been sent.",
+    "submitting": "Sending...",
+    "consentError": "Please allow us to process your details.",
+    "error": {
+      "generic": "Something went wrong. Please try again.",
+      "name": "Enter your name.",
+      "company": "Enter your company name.",
+      "email": "Check your email address.",
+      "message": "Share a short description.",
+      "useCase": "Select the use case that fits best."
+    }
+  },
+  "privacy": {
+    "intro": "We process only the personal data required for intake, project delivery and support.",
+    "sections": [
+      {
+        "title": "Data we handle",
+        "items": [
+          "Contact details for intake and project communication",
+          "Project data and KPIs stored in secure EU environments",
+          "Audit logs to uphold agreements"
+        ]
+      },
+      {
+        "title": "Processing",
+        "items": [
+          "EU data centres with ISO 27001 partners",
+          "DPA available on request",
+          "Retention: up to 24 months after the last project activity"
+        ]
+      },
+      {
+        "title": "Your rights",
+        "items": [
+          "Access, correction and deletion on request",
+          "Data portability for project files",
+          "Contact: privacy@caribbeanazure.com"
+        ]
+      }
+    ]
+  },
+  "cookies": {
+    "intro": "We only use essential cookies and optional analytics after consent.",
+    "categories": [
+      {
+        "title": "Essential",
+        "description": "Required for the site to function. Always active."
+      },
+      {
+        "title": "Analytics (optional)",
+        "description": "Plausible, hosted in the EU. Anonymous statistics without PII."
+      }
+    ],
+    "preferences": "Adjust your preferences in the cookie settings."
+  },
+  "errors": {
+    "notFound": {
+      "title": "Page not found",
+      "description": "The page no longer exists or moved.",
+      "cta": "Back to home"
+    },
+    "server": {
+      "title": "Something went wrong",
+      "description": "Our monitoring team has registered the incident.",
+      "cta": "Book an intake"
+    }
+  },
+  "roi": {
+    "section": {
+      "badge": "ROI calculator",
+      "title": "Return and payback in minutes",
+      "subtitle": "Enter four fields and instantly see monthly and annual savings.",
+      "disclaimerStrong": "Illustrative calculation.",
+      "disclaimer": "No guarantee. Calculations are based on your own assumptions."
+    },
+    "form": {
+      "teamSize": "Team size",
+      "manualHours": "Manual hours per week",
+      "hourlyRate": "Average hourly rate",
+      "adoption": "Adoption rate",
+      "calculate": "Calculate",
+      "reset": "Reset",
+      "submit": "Send calculation"
+    },
+    "result": {
+      "monthly": "Monthly savings",
+      "annual": "Annual savings",
+      "payback": "Payback (months)",
+      "roi": "ROI %"
+    },
+    "presets": {
+      "light": "Light preset",
+      "manufacturing": "Manufacturing preset",
+      "configurators": "Configurators preset"
+    }
+  },
+  "about": {
+    "title": "About Caribbean Azure",
+    "subtitle": "Compact team. Senior makers. No fluff. We ship automations that keep running.",
+    "pillars": [
+      {
+        "title": "Senior expertise",
+        "body": "Every intake, blueprint and delivery is handled by consultants with 10+ years in automation."
+      },
+      {
+        "title": "Measured outcomes",
+        "body": "Each delivery ties to a KPI. No slide deck, just dashboards."
+      },
+      {
+        "title": "Clear handover",
+        "body": "Documentation and playbooks are included. Your team stays in control."
+      }
+    ],
+    "timeline": [
+      {
+        "label": "Week 0",
+        "detail": "Intake and process scan. Scope locked."
+      },
+      {
+        "label": "Week 2",
+        "detail": "Prototype live with KPI baseline."
+      },
+      {
+        "label": "Week 6",
+        "detail": "Full rollout, training and handover."
+      }
+    ],
+    "cta": "cta.intake"
+  }
+}
