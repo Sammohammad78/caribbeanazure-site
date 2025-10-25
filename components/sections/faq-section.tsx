@@ -35,13 +35,13 @@ export function FAQSection() {
             return (
               <div
                 key={index}
-                className="card overflow-hidden rounded-2xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_75%,transparent)] shadow-[0_12px_44px_rgb(15_23_42/12%)]"
+                className="glass overflow-hidden"
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-colors duration-200 hover:bg-[color:color-mix(in_oklab,var(--brand-soft)_22%,transparent)]"
+                  className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-all duration-200 hover:bg-[color:var(--brand-soft)]/10"
                 >
-                  <span className="pr-8 text-base font-semibold text-body">{item.question}</span>
+                  <span className="pr-8 text-lg font-bold text-[color:var(--fg)]">{item.question}</span>
                   <ChevronDown
                     className={cn(
                       'h-5 w-5 flex-shrink-0 text-[color:var(--fg-muted)] transition-transform duration-300',
@@ -56,7 +56,7 @@ export function FAQSection() {
                     isOpen ? 'max-h-96' : 'max-h-0'
                   )}
                 >
-                  <div className="px-6 pb-6 text-sm leading-relaxed text-[color:var(--fg-subtle)]">
+                  <div className="px-6 pb-6 text-base leading-relaxed text-[color:var(--fg-subtle)]">
                     {item.answer}
                   </div>
                 </div>
