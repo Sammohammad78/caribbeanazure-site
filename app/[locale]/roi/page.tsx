@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { GlassCard } from '@/components/ui/GlassCard'
 import { RoiCalculator } from '@/components/roi/RoiCalculator'
 import { FaqSchema } from '@/components/seo/FaqSchema'
 import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
@@ -101,7 +101,7 @@ export default async function RoiPage({ params }: { params: { locale: string } }
                     description: 'Percentage van het team dat de workflow consequent gebruikt',
                   },
                 ].map((item) => (
-                  <Card
+                  <GlassCard
                     key={item.title}
                     className="card-gradient-stripe rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-6"
                   >
@@ -110,18 +110,18 @@ export default async function RoiPage({ params }: { params: { locale: string } }
                     </div>
                     <h3 className="mt-4 text-lg font-semibold text-body">{item.title}</h3>
                     <p className="mt-2 text-sm text-[color:var(--fg-subtle)]">{item.description}</p>
-                  </Card>
+                  </GlassCard>
                 ))}
               </div>
 
-              <Card className="mt-12 rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                <CardHeader>
-                  <CardTitle className="text-2xl">De formule</CardTitle>
-                  <CardDescription className="text-base">
+              <GlassCard className="mt-12 rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                <div>
+                  <h3 className="text-2xl">De formule</h3>
+                  <p className="text-base">
                     Jaarlijkse besparing = Teamgrootte × Uurtarief × Uren bespaard per week × 52 weken × Adoptiepercentage
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
+                  </p>
+                </div>
+                <div className="space-y-4">
                   <p className="text-sm text-[color:var(--fg-subtle)]">
                     <strong>Voorbeeld:</strong> Een team van 10 mensen bespaart 2 uur per week aan handmatig werk.
                     Bij een uurtarief van €75 en 60% adoptie: 10 × €75 × 2 × 52 × 0,6 = <strong className="text-[color:var(--brand)]">€46.800 per jaar</strong>
@@ -130,8 +130,8 @@ export default async function RoiPage({ params }: { params: { locale: string } }
                     De ROI berekenen we als: (Jaarlijkse besparing - Investering) / Investering × 100%.
                     Bij een investering van €7.500 geeft dit een ROI van <strong className="text-[color:var(--brand)]">524%</strong> in het eerste jaar.
                   </p>
-                </CardContent>
-              </Card>
+                </div>
+              </GlassCard>
             </div>
           </section>
 
@@ -150,13 +150,13 @@ export default async function RoiPage({ params }: { params: { locale: string } }
 
                 <div className="space-y-4">
                   {roiFaqs.map((faq, index) => (
-                    <Card
+                    <GlassCard
                       key={index}
                       className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8"
                     >
                       <h3 className="text-lg font-semibold text-body mb-3">{faq.question}</h3>
                       <p className="text-sm text-[color:var(--fg-subtle)] leading-relaxed">{faq.answer}</p>
-                    </Card>
+                    </GlassCard>
                   ))}
                 </div>
               </div>
