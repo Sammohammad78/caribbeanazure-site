@@ -76,28 +76,29 @@ const variantStyles = {
 }
 
 /**
- * Size preset mappings
+ * Size preset mappings - MATCHING REFERENCE IMAGE
+ * Reference shows: large icons (56px), bold titles (28-32px), generous padding
  */
 const sizePresets = {
   sm: {
-    containerClass: 'p-4 md:p-5 gap-3',
-    iconSize: 'w-10 h-10 text-lg',
-    titleClass: 'text-base md:text-lg font-semibold',
-    subtitleClass: 'text-sm md:text-base',
+    containerClass: 'p-6 md:p-7 gap-4',
+    iconSize: 'w-12 h-12 text-xl',
+    titleClass: 'text-lg md:text-xl font-bold',
+    subtitleClass: 'text-sm md:text-base text-[color:var(--fg-subtle)]',
     glassSize: 'glass--sm'
   },
   md: {
-    containerClass: 'p-6 md:p-8 gap-4',
-    iconSize: 'w-12 h-12 text-xl',
-    titleClass: 'text-lg md:text-xl font-semibold',
-    subtitleClass: 'text-base md:text-lg',
+    containerClass: 'p-8 md:p-10 gap-5',
+    iconSize: 'w-14 h-14 text-2xl',  // 56px like reference!
+    titleClass: 'text-2xl md:text-3xl font-bold',  // Larger, bolder like reference
+    subtitleClass: 'text-base md:text-lg text-[color:var(--fg-subtle)]',  // Better readability
     glassSize: ''
   },
   lg: {
-    containerClass: 'p-8 md:p-10 gap-5',
-    iconSize: 'w-14 h-14 text-2xl',
-    titleClass: 'text-xl md:text-2xl font-bold',
-    subtitleClass: 'text-lg md:text-xl',
+    containerClass: 'p-10 md:p-12 gap-6',
+    iconSize: 'w-16 h-16 text-3xl',  // Even larger for hero sections
+    titleClass: 'text-3xl md:text-4xl font-bold',
+    subtitleClass: 'text-lg md:text-xl text-[color:var(--fg-subtle)]',
     glassSize: 'glass--lg'
   }
 }

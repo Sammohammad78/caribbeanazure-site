@@ -11,7 +11,9 @@ const buttonVariants = cva(
         default: "btn-primary lift-hover text-base tracking-tight",
         destructive:
           "rounded-xl bg-[color:color-mix(in_oklab,var(--err)_82%,black_8%)] text-white shadow-sm hover:bg-[color:color-mix(in_oklab,var(--err)_90%,black_6%)]",
-        outline: "glass-button text-body lift-hover",
+        outline: "glass-btn text-[color:var(--fg)]",
+        glass: "glass-btn text-[color:var(--fg)]",
+        "glass-primary": "glass-btn--primary text-white",
         secondary:
           "rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-body shadow-sm hover:bg-[color:color-mix(in_oklab,var(--brand-soft)_80%,transparent)] backdrop-blur-sm hover:backdrop-blur-md",
         ghost: "hover:bg-[color:color-mix(in_oklab,var(--accent-soft)_60%,transparent)] hover:text-body hover:backdrop-blur-sm",
