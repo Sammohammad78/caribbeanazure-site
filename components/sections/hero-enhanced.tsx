@@ -4,6 +4,7 @@ import Hero3D from '@/components/3d/Hero3D'
 import { Button } from '@/components/ui/button'
 import { MagneticButton } from '@/components/ui/button-magnetic'
 import { CapabilitiesStrip } from '@/components/ui/capabilities-strip'
+import { GlassBadge } from '@/components/ui/GlassBadge'
 import { ArrowRight } from 'lucide-react'
 import { useLocale, useTranslations } from 'next-intl'
 import Link from 'next/link'
@@ -52,24 +53,31 @@ export function HeroEnhanced() {
         <div className="flex items-center justify-center py-24 md:py-32 lg:py-40">
           <div className="flex max-w-4xl flex-col gap-8 text-center">
             <motion.div
-              className="inline-flex max-w-max items-center gap-3 self-center rounded-full border border-[color:color-mix(in_oklab,var(--brand)_30%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_80%,transparent)] px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)] backdrop-blur-md shadow-[0_8px_32px_color-mix(in_oklab,var(--brand)_15%,transparent)]"
+              className="inline-flex self-center"
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
               whileHover={{ scale: 1.05 }}
             >
-              <motion.span
-                className="inline-flex h-2.5 w-2.5 rounded-full bg-[color:var(--brand)]"
-                animate={{
-                  boxShadow: [
-                    '0 0 12px rgba(37, 99, 235, 0.6)',
-                    '0 0 20px rgba(37, 99, 235, 0.8)',
-                    '0 0 12px rgba(37, 99, 235, 0.6)',
-                  ],
-                }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              {hero('badge')}
+              <GlassBadge
+                variant="accent"
+                size="md"
+                icon={
+                  <motion.span
+                    className="inline-flex h-2.5 w-2.5 rounded-full bg-[color:var(--brand)]"
+                    animate={{
+                      boxShadow: [
+                        '0 0 12px rgba(37, 99, 235, 0.6)',
+                        '0 0 20px rgba(37, 99, 235, 0.8)',
+                        '0 0 12px rgba(37, 99, 235, 0.6)',
+                      ],
+                    }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                }
+              >
+                {hero('badge')}
+              </GlassBadge>
             </motion.div>
 
             <motion.h1

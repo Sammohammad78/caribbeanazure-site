@@ -64,11 +64,11 @@ export function Footer() {
             />
           ))}
 
-          <div className="col-span-2 space-y-4 md:col-span-1">
+          <TextBox size="sm" variant="neutral" className="col-span-2 h-full md:col-span-1">
             <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">
               {t('footer.contact')}
             </h3>
-            <div className="space-y-3 text-sm">
+            <div className="mt-4 space-y-3 text-sm">
               <a
                 href={`mailto:${siteConfig.contact.email}`}
                 className="flex items-center gap-2 text-[color:var(--fg-subtle)] transition-colors hover:text-[color:var(--fg)]"
@@ -93,7 +93,7 @@ export function Footer() {
                 WhatsApp
               </a>
             </div>
-          </div>
+          </TextBox>
         </div>
 
         <div className="mt-14 space-y-6 border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] pt-8">
@@ -132,11 +132,11 @@ function FooterColumn({
   links: { href: string; label: string }[]
 }) {
   return (
-    <div className="space-y-4">
+    <TextBox size="sm" variant="neutral" className="h-full">
       <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">
         {label}
       </h3>
-      <ul className="space-y-3">
+      <ul className="mt-4 space-y-3">
         {links.map((link) => (
           <li key={link.href}>
             <Link
@@ -149,6 +149,6 @@ function FooterColumn({
           </li>
         ))}
       </ul>
-    </div>
+    </TextBox>
   )
 }
