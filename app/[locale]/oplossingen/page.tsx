@@ -6,6 +6,7 @@ import { TrustStrip } from "@/components/sections/trust-strip"
 import { TierLadder } from "@/components/sections/tier-ladder"
 import { ProofStrip } from "@/components/sections/proof-strip"
 import { Button } from "@/components/ui/button"
+import { GlassCard } from "@/components/ui/GlassCard"
 import { ArrowRight } from "lucide-react"
 import { buildLocalizedPath } from "@/lib/slugMap"
 import type { Locale } from "@/lib/i18n"
@@ -61,7 +62,7 @@ export default async function SolutionsOverviewPage({ params }: { params: { loca
 
         <section className="section-padding-y">
           <div className="container-custom">
-            <div className="mx-auto max-w-3xl rounded-3xl border border-white/10 bg-white/10 p-10 text-center shadow-[0_24px_60px_rgba(15,23,42,0.15)] backdrop-blur-xl">
+            <GlassCard size="lg" className="mx-auto max-w-3xl text-center">
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-[color:var(--accent)]">
                 {overview("microLabel")}
               </p>
@@ -85,7 +86,7 @@ export default async function SolutionsOverviewPage({ params }: { params: { loca
                   </Link>
                 </Button>
               </div>
-            </div>
+            </GlassCard>
           </div>
         </section>
       </main>

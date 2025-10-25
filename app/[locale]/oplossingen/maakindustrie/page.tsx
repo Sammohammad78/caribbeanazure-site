@@ -4,6 +4,8 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { TrustStrip } from "@/components/sections/trust-strip"
 import { Button } from "@/components/ui/button"
+import { GlassCard } from "@/components/ui/GlassCard"
+import { GlassBadge } from "@/components/ui/GlassBadge"
 import { Check, ArrowRight } from "lucide-react"
 import { BackgroundEngine } from "@/components/backgrounds/BackgroundEngine"
 import { backgroundThemes } from "@/lib/backgroundThemes"
@@ -40,17 +42,17 @@ export default async function ManufacturingPage({ params }: { params: { locale: 
         <section className="section-padding-y">
           <div className="container-custom">
             <div className="mx-auto max-w-3xl space-y-6 text-center">
-              <span className="inline-flex items-center justify-center rounded-full bg-[color:color-mix(in_oklab,var(--brand)_18%,transparent)] px-4 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-[color:var(--brand)]">
+              <GlassBadge variant="info" size="md">
                 Tier 2
-              </span>
+              </GlassBadge>
               <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">
                 {manufacturing("title")}
               </h1>
               <p className="text-lg text-[color:var(--fg-subtle)]">
                 {manufacturing("subtitle")}
               </p>
-              <div className="inline-flex flex-col items-center gap-2 rounded-2xl border border-[color:color-mix(in_oklab,var(--brand)_30%,transparent)] bg-white/10 px-8 py-6 text-[color:var(--brand)] shadow-[0_18px_50px_rgba(15,23,42,0.16)] backdrop-blur-xl">
-                <span className="text-3xl font-semibold">{getPriceLabel("tier2", locale)}</span>
+              <GlassCard className="inline-flex flex-col items-center gap-2">
+                <span className="text-3xl font-semibold text-[color:var(--brand)]">{getPriceLabel("tier2", locale)}</span>
                 <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Button asChild size="lg">
                     <Link href={buildLocalizedPath("contact", locale)}>
@@ -65,7 +67,7 @@ export default async function ManufacturingPage({ params }: { params: { locale: 
                     </Link>
                   </Button>
                 </div>
-              </div>
+              </GlassCard>
             </div>
           </div>
         </section>
@@ -87,11 +89,11 @@ export default async function ManufacturingPage({ params }: { params: { locale: 
                 ))}
               </ul>
             </div>
-            <div className="space-y-4 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-[0_18px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
+            <GlassCard>
               <h3 className="text-lg font-semibold text-[color:var(--fg)]">
                 {manufacturing("deliverablesTitle", { fallback: "Deliverables" })}
               </h3>
-              <ul className="space-y-3 text-sm text-[color:var(--fg-subtle)]">
+              <ul className="mt-4 space-y-3 text-sm text-[color:var(--fg-subtle)]">
                 {deliverables.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="mt-1 h-2 w-2 rounded-full bg-[color:var(--accent)]" />
@@ -99,7 +101,7 @@ export default async function ManufacturingPage({ params }: { params: { locale: 
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
           </div>
         </section>
 

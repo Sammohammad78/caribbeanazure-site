@@ -4,6 +4,9 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { TrustStrip } from "@/components/sections/trust-strip"
 import { Button } from "@/components/ui/button"
+import { GlassCard } from "@/components/ui/GlassCard"
+import { GlassBadge } from "@/components/ui/GlassBadge"
+import { TextBox } from "@/components/ui/TextBox"
 import { Check, ArrowRight } from "lucide-react"
 import { BackgroundEngine } from "@/components/backgrounds/BackgroundEngine"
 import { backgroundThemes } from "@/lib/backgroundThemes"
@@ -42,24 +45,24 @@ export default async function LightAutomationsPage({ params }: { params: { local
         <section className="section-padding-y">
           <div className="container-custom">
             <div className="mx-auto max-w-3xl space-y-6 text-center">
-              <span className="inline-flex items-center justify-center rounded-full bg-[color:color-mix(in_oklab,var(--accent)_15%,transparent)] px-4 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-[color:var(--accent)]">
+              <GlassBadge variant="accent" size="md">
                 Tier 1
-              </span>
+              </GlassBadge>
               <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">
                 {light("title")}
               </h1>
               <p className="text-lg text-[color:var(--fg-subtle)]">
                 {light("subtitle")}
               </p>
-              <div className="inline-flex flex-col items-center gap-2 rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_35%,transparent)] bg-white/10 px-8 py-6 text-[color:var(--brand)] shadow-[0_18px_50px_rgba(15,23,42,0.16)] backdrop-blur-xl">
-                <span className="text-3xl font-semibold">{getPriceLabel("tier1", locale)}</span>
+              <GlassCard className="inline-flex flex-col items-center gap-2">
+                <span className="text-3xl font-semibold text-[color:var(--brand)]">{getPriceLabel("tier1", locale)}</span>
                 <Button asChild size="lg" className="mt-4">
                   <Link href={buildLocalizedPath("contact", locale)}>
                     {ctaLabel}
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
-              </div>
+              </GlassCard>
             </div>
           </div>
         </section>
@@ -81,11 +84,11 @@ export default async function LightAutomationsPage({ params }: { params: { local
                 ))}
               </ul>
             </div>
-            <div className="space-y-4 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-[0_18px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
+            <GlassCard>
               <h3 className="text-lg font-semibold text-[color:var(--fg)]">
                 {light("deliverablesLabel", { fallback: "Deliverables" })}
               </h3>
-              <ul className="space-y-3 text-sm text-[color:var(--fg-subtle)]">
+              <ul className="mt-4 space-y-3 text-sm text-[color:var(--fg-subtle)]">
                 {deliverables.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <span className="mt-1 h-2 w-2 rounded-full bg-[color:var(--brand)]" />
@@ -93,13 +96,13 @@ export default async function LightAutomationsPage({ params }: { params: { local
                   </li>
                 ))}
               </ul>
-            </div>
+            </GlassCard>
           </div>
         </section>
 
         <section className="section-padding-y">
           <div className="container-custom">
-            <div className="rounded-3xl border border-[color:color-mix(in_oklab,var(--accent)_25%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_75%,transparent)] p-10 shadow-[0_24px_60px_rgba(15,23,42,0.15)]">
+            <GlassCard size="lg" gradient>
               <div className="flex flex-col gap-4 text-center md:flex-row md:items-center md:justify-between md:text-left">
                 <div>
                   <h3 className="text-xl font-semibold text-[color:var(--fg)]">{micro("title")}</h3>
@@ -119,7 +122,7 @@ export default async function LightAutomationsPage({ params }: { params: { local
                   <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>
-            </div>
+            </GlassCard>
           </div>
         </section>
 
