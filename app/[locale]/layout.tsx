@@ -1,7 +1,7 @@
-import { getMessages } from 'next-intl/server'
+import { getMessages, setRequestLocale } from 'next-intl/server'
 import { NextIntlClientProvider } from 'next-intl'
 import { notFound } from 'next/navigation'
-import { locales } from '@/lib/i18n'
+import { locales, type Locale } from '@/lib/i18n'
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }))
@@ -9,9 +9,10 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params
+  const normalizedLocale = locale as Locale
 
   // Validate locale
-  if (!locales.includes(locale as any)) {
+  if (!locales.includes(normalizedLocale)) {
     return {
       title: 'Page Not Found',
     }
@@ -22,7 +23,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   // Get current path (would be set dynamically in actual pages)
   // For layout, we set root alternates
-  const alternateLanguages: Record<string, string> = {}
+  const alternateLanguages: Record<string, string> = {
+    'x-default': baseUrl,
+  }
 
   locales.forEach((loc) => {
     if (loc === 'nl') {
@@ -34,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
   return {
     alternates: {
-      canonical: locale === 'nl' ? baseUrl : `${baseUrl}/${locale}`,
+      canonical: normalizedLocale === 'nl' ? baseUrl : `${baseUrl}/${normalizedLocale}`,
       languages: alternateLanguages,
     },
   }
@@ -48,17 +51,20 @@ export default async function LocaleLayout({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
+  const normalizedLocale = locale as Locale
 
   // Validate locale
-  if (!locales.includes(locale as any)) {
+  if (!locales.includes(normalizedLocale)) {
     notFound()
   }
 
+  setRequestLocale(normalizedLocale)
+
   // Get messages for the locale
-  const messages = await getMessages({ locale })
+  const messages = await getMessages({ locale: normalizedLocale })
 
   return (
-    <NextIntlClientProvider messages={messages} locale={locale}>
+    <NextIntlClientProvider messages={messages} locale={normalizedLocale}>
       {children}
     </NextIntlClientProvider>
   )

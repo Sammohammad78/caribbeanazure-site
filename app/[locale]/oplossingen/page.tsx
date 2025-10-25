@@ -34,6 +34,8 @@ export default async function OplossingenPage({ params }: { params: { locale: st
       priceLabel: locale === 'nl' ? 'vanaf' : 'from',
       href: `/${locale}/oplossingen/light`,
       color: 'from-amber-500 to-orange-500',
+      priceNote: t('light.priceNote'),
+      ctaLabel: t('light.homeCta'),
     },
     {
       id: 'manufacturing',
@@ -46,6 +48,8 @@ export default async function OplossingenPage({ params }: { params: { locale: st
       href: `/${locale}/oplossingen/maakindustrie`,
       color: 'from-blue-500 to-cyan-500',
       featured: true,
+      priceNote: t('manufacturing.priceNote'),
+      ctaLabel: t('manufacturing.homeCta'),
     },
     {
       id: 'configurators',
@@ -57,6 +61,8 @@ export default async function OplossingenPage({ params }: { params: { locale: st
       priceLabel: null,
       href: `/${locale}/oplossingen/configurators`,
       color: 'from-purple-500 to-pink-500',
+      priceNote: t('configurators.priceNote'),
+      ctaLabel: t('configurators.homeCta'),
     },
   ]
 
@@ -95,16 +101,16 @@ export default async function OplossingenPage({ params }: { params: { locale: st
                   return (
                     <Card
                       key={solution.id}
-                      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border p-8 transition-all duration-300 hover:shadow-2xl ${
-                        solution.featured
-                          ? 'border-[color:color-mix(in_oklab,var(--accent)_35%,transparent)] ring-2 ring-[color:var(--accent)]/20'
-                          : 'border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)]'
+                      className={`group relative flex h-full flex-col justify-between overflow-hidden p-8 transition-all duration-300 sm:p-10 ${
+                        solution.featured ? 'ring-2 ring-[color:var(--accent)]/30 shadow-[0_24px_60px_rgba(37,99,235,0.22)]' : ''
                       }`}
                     >
-                      {/* Gradient Background */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${solution.color} opacity-5 transition-opacity duration-300 group-hover:opacity-10`} />
+                      {/* Gradient Accent */}
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-br ${solution.color} opacity-10 transition-opacity duration-300 group-hover:opacity-20`}
+                      />
 
-                      <CardHeader className="relative space-y-4 p-0">
+                      <CardHeader className="relative space-y-4">
                         {/* Icon */}
                         <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${solution.color} text-white shadow-lg`}>
                           <Icon className="h-7 w-7" />
@@ -130,16 +136,19 @@ export default async function OplossingenPage({ params }: { params: { locale: st
                             {solution.priceLabel && <span className="text-lg font-medium">{solution.priceLabel} </span>}
                             {solution.price}
                           </div>
+                          {solution.priceNote && (
+                            <p className="mt-2 text-sm text-[color:var(--fg-muted)]">{solution.priceNote}</p>
+                          )}
                         </div>
                       </CardHeader>
 
-                      <CardContent className="relative mt-6 flex-1 p-0">
+                      <CardContent className="relative mt-4 flex-1">
                         <p className="text-sm leading-relaxed text-[color:var(--fg-muted)]">
                           {solution.description}
                         </p>
                       </CardContent>
 
-                      <CardFooter className="relative mt-8 p-0">
+                      <CardFooter className="relative">
                         <Button
                           asChild
                           className="w-full"
@@ -147,7 +156,7 @@ export default async function OplossingenPage({ params }: { params: { locale: st
                           size="lg"
                         >
                           <Link href={solution.href}>
-                            {locale === 'nl' ? 'Meer informatie' : 'Learn more'}
+                            {solution.ctaLabel}
                             <ArrowRight className="ml-2 h-4 w-4" />
                           </Link>
                         </Button>
