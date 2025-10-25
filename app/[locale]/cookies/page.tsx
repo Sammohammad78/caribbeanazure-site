@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { Card } from "@/components/ui/card";
+import { GlassCard } from "@/components/ui/GlassCard";
 import { BackgroundEngine } from "@/components/backgrounds/BackgroundEngine";
 import { backgroundThemes } from "@/lib/backgroundThemes";
 import type { Locale } from "@/lib/i18n";
@@ -46,13 +46,13 @@ export default async function CookiesPage({ params }: { params: { locale: string
         <section className="section-padding-y">
           <div className="container-custom mx-auto max-w-3xl space-y-6">
             {categories.map((category) => (
-              <Card
+              <GlassCard
                 key={category.title}
                 className="space-y-3 rounded-3xl border border-white/10 bg-white/12 p-6 shadow-[0_18px_44px_rgba(15,23,42,0.12)] backdrop-blur"
               >
                 <h2 className="text-lg font-semibold text-[color:var(--fg)]">{category.title}</h2>
                 <p className="text-sm text-[color:var(--fg-subtle)]">{category.description}</p>
-              </Card>
+              </GlassCard>
             ))}
           </div>
         </section>

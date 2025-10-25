@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { GlassCard } from '@/components/ui/GlassCard'
 import { Button } from '@/components/ui/button'
 import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
 import { backgroundThemes } from '@/lib/backgroundThemes'
@@ -47,8 +47,8 @@ export default async function SecurityPage({ params }: { params: { locale: strin
                 </p>
               </div>
 
-              <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                <CardContent className="space-y-6">
+              <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                <div className="space-y-6">
                   <div className="flex flex-col gap-4">
                     {[
                       {
@@ -99,8 +99,8 @@ export default async function SecurityPage({ params }: { params: { locale: strin
                       </div>
                     ))}
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </GlassCard>
             </div>
           </section>
 
@@ -155,19 +155,19 @@ export default async function SecurityPage({ params }: { params: { locale: strin
                     link: 'https://plausible.io/privacy',
                   },
                 ].map((processor) => (
-                  <Card
+                  <GlassCard
                     key={processor.name}
                     className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8"
                   >
-                    <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                    <div className="flex flex-row items-start gap-4 pb-6">
                       <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                         <processor.icon className="h-6 w-6" />
                       </div>
                       <div>
-                        <CardTitle className="text-2xl">{processor.name}</CardTitle>
+                        <h3 className="text-2xl">{processor.name}</h3>
                       </div>
-                    </CardHeader>
-                    <CardContent className="space-y-3 text-sm text-[color:var(--fg-subtle)]">
+                    </div>
+                    <div className="space-y-3 text-sm text-[color:var(--fg-subtle)]">
                       <p><strong className="text-body">Doel:</strong> {processor.purpose}</p>
                       <p><strong className="text-body">Verwerkte data:</strong> {processor.dataProcessed}</p>
                       <p><strong className="text-body">Locatie:</strong> {processor.location}</p>
@@ -182,8 +182,8 @@ export default async function SecurityPage({ params }: { params: { locale: strin
                           Privacy policy →
                         </a>
                       </p>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </GlassCard>
                 ))}
               </div>
             </div>
@@ -240,7 +240,7 @@ export default async function SecurityPage({ params }: { params: { locale: strin
                     ],
                   },
                 ].map((measure) => (
-                  <Card
+                  <GlassCard
                     key={measure.title}
                     className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-6"
                   >
@@ -256,7 +256,7 @@ export default async function SecurityPage({ params }: { params: { locale: strin
                         </li>
                       ))}
                     </ul>
-                  </Card>
+                  </GlassCard>
                 ))}
               </div>
             </div>
@@ -266,16 +266,16 @@ export default async function SecurityPage({ params }: { params: { locale: strin
           <section className="section-padding-y bg-[color:color-mix(in_oklab,var(--bg)_90%,transparent)]">
             <div className="container-custom">
               <div className="mx-auto max-w-4xl">
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <Clock className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Bewaarbeleid (retention policy)</CardTitle>
+                      <h3 className="text-2xl">Bewaarbeleid (retention policy)</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <div>
                       <p className="font-semibold text-body mb-2">Contactformulieren en leads:</p>
                       <ul className="list-disc list-inside space-y-1 ml-4">
@@ -300,8 +300,8 @@ export default async function SecurityPage({ params }: { params: { locale: strin
                     <p className="pt-4 border-t border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)]">
                       <strong>Automatische verwijdering:</strong> We hebben processen ingericht om data automatisch te verwijderen na de bewaartermijn. Je kunt ook altijd een verzoek indienen via privacy@caribbeanazure.nl.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
               </div>
             </div>
           </section>
@@ -310,16 +310,16 @@ export default async function SecurityPage({ params }: { params: { locale: strin
           <section className="section-padding-y">
             <div className="container-custom">
               <div className="mx-auto max-w-4xl">
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <FileText className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">DPA & DPIA beschikbaarheid</CardTitle>
+                      <h3 className="text-2xl">DPA & DPIA beschikbaarheid</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <div>
                       <p className="font-semibold text-body mb-2">Data Processing Agreement (DPA):</p>
                       <p>
@@ -348,8 +348,8 @@ export default async function SecurityPage({ params }: { params: { locale: strin
                     <p className="pt-4 border-t border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)]">
                       <strong>Aanvraag:</strong> Neem contact op via <a href="mailto:privacy@caribbeanazure.nl" className="text-[color:var(--brand)] hover:underline">privacy@caribbeanazure.nl</a> voor een DPA template of DPIA gesprek.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
               </div>
             </div>
           </section>

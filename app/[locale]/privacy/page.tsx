@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
-import { Card } from "@/components/ui/card";
+import { GlassCard } from "@/components/ui/GlassCard";
 import { BackgroundEngine } from "@/components/backgrounds/BackgroundEngine";
 import { backgroundThemes } from "@/lib/backgroundThemes";
 import type { Locale } from "@/lib/i18n";
@@ -45,7 +45,7 @@ export default async function PrivacyPage({ params }: { params: { locale: string
         <section className="section-padding-y">
           <div className="container-custom mx-auto max-w-4xl space-y-6">
             {sections.map((section) => (
-              <Card
+              <GlassCard
                 key={section.title}
                 className="space-y-4 rounded-3xl border border-white/10 bg-white/12 p-6 shadow-[0_20px_48px_rgba(15,23,42,0.12)] backdrop-blur"
               >
@@ -58,7 +58,7 @@ export default async function PrivacyPage({ params }: { params: { locale: string
                     </li>
                   ))}
                 </ul>
-              </Card>
+              </GlassCard>
             ))}
           </div>
         </section>

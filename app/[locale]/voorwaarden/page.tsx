@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
+import { GlassCard } from '@/components/ui/GlassCard'
 import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
 import { backgroundThemes } from '@/lib/backgroundThemes'
 import { FileText, CheckCircle2, AlertTriangle, Scale, Handshake, Shield } from 'lucide-react'
@@ -42,16 +42,16 @@ export default function TermsPage() {
             <div className="container-custom">
               <div className="mx-auto max-w-4xl space-y-8">
                 {/* Article 1 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <FileText className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 1 – Definities</CardTitle>
+                      <h3 className="text-2xl">Artikel 1 – Definities</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <ul className="list-disc list-inside space-y-2 ml-4">
                       <li><strong>Opdrachtnemer:</strong> Caribbean Azure, KvK 12345678, gevestigd te Nederland</li>
                       <li><strong>Opdrachtgever:</strong> De natuurlijke of rechtspersoon die met opdrachtnemer een overeenkomst aangaat</li>
@@ -59,20 +59,20 @@ export default function TermsPage() {
                       <li><strong>Deliverable:</strong> Een concreet opgeleverd product of resultaat zoals een workflow, dashboard, website of rapportage</li>
                       <li><strong>Blueprint:</strong> Een visueel plan met flowcharts, datastromen en technische specificaties</li>
                     </ul>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 2 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <Handshake className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 2 – Toepasselijkheid</CardTitle>
+                      <h3 className="text-2xl">Artikel 2 – Toepasselijkheid</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       2.1. Deze algemene voorwaarden zijn van toepassing op alle aanbiedingen, offertes en overeenkomsten tussen opdrachtnemer en opdrachtgever.
                     </p>
@@ -85,20 +85,20 @@ export default function TermsPage() {
                     <p>
                       2.4. Indien één of meerdere bepalingen in deze algemene voorwaarden nietig zijn, blijven de overige bepalingen volledig van kracht.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 3 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <CheckCircle2 className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 3 – Offerte en totstandkoming</CardTitle>
+                      <h3 className="text-2xl">Artikel 3 – Offerte en totstandkoming</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       3.1. Alle offertes zijn vrijblijvend en 30 dagen geldig, tenzij anders vermeld.
                     </p>
@@ -111,20 +111,20 @@ export default function TermsPage() {
                     <p>
                       3.4. Indien de opdrachtgever niet akkoord gaat met een offerte, vervalt deze automatisch na 30 dagen.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 4 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <FileText className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 4 – Uitvoering van de opdracht</CardTitle>
+                      <h3 className="text-2xl">Artikel 4 – Uitvoering van de opdracht</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       4.1. Opdrachtnemer voert de overeenkomst naar beste kunnen uit, conform de state-of-the-art in de branche.
                     </p>
@@ -140,20 +140,20 @@ export default function TermsPage() {
                     <p>
                       4.5. Genoemde doorlooptijden zijn indicatief en geen fatale termijnen, tenzij uitdrukkelijk schriftelijk anders overeengekomen.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 5 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <Scale className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 5 – Prijzen en betaling</CardTitle>
+                      <h3 className="text-2xl">Artikel 5 – Prijzen en betaling</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       5.1. Alle prijzen zijn exclusief BTW en exclusief kosten voor externe tools (zoals Zapier, Make, API-licenties).
                     </p>
@@ -169,20 +169,20 @@ export default function TermsPage() {
                     <p>
                       5.5. Alle kosten van incasso, zowel gerechtelijk als buitengerechtelijk, komen voor rekening van de opdrachtgever.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 6 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <Shield className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 6 – Intellectueel eigendom</CardTitle>
+                      <h3 className="text-2xl">Artikel 6 – Intellectueel eigendom</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       6.1. Alle intellectuele eigendomsrechten op door opdrachtnemer ontwikkelde of geleverde werken berusten bij opdrachtnemer, tenzij schriftelijk anders overeengekomen.
                     </p>
@@ -198,20 +198,20 @@ export default function TermsPage() {
                     <p>
                       6.5. Herbruikbare componenten, templates en frameworks die opdrachtnemer heeft ontwikkeld blijven eigendom van opdrachtnemer en mogen worden hergebruikt voor andere projecten.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 7 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <AlertTriangle className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 7 – Aansprakelijkheid</CardTitle>
+                      <h3 className="text-2xl">Artikel 7 – Aansprakelijkheid</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       7.1. Opdrachtnemer is uitsluitend aansprakelijk voor directe schade die het gevolg is van opzet of bewuste roekeloosheid van opdrachtnemer.
                     </p>
@@ -227,20 +227,20 @@ export default function TermsPage() {
                     <p>
                       7.5. Opdrachtnemer is niet aansprakelijk voor storingen, uitval of wijzigingen in externe systemen en API's van derden (zoals Zapier, Make, ClickUp, Google, Microsoft).
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 8 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <Shield className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 8 – Garantie en onderhoud</CardTitle>
+                      <h3 className="text-2xl">Artikel 8 – Garantie en onderhoud</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       8.1. Opdrachtnemer garandeert dat opgeleverde deliverables voldoen aan de in het blueprint beschreven specificaties.
                     </p>
@@ -253,20 +253,20 @@ export default function TermsPage() {
                     <p>
                       8.4. De garantie vervalt indien opdrachtgever of derden zonder toestemming wijzigingen hebben aangebracht in de opgeleverde systemen.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 9 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <FileText className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 9 – Geheimhouding</CardTitle>
+                      <h3 className="text-2xl">Artikel 9 – Geheimhouding</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       9.1. Beide partijen verplichten zich tot geheimhouding van alle vertrouwelijke informatie die zij in het kader van de overeenkomst van elkaar hebben verkregen.
                     </p>
@@ -276,20 +276,20 @@ export default function TermsPage() {
                     <p>
                       9.3. Op verzoek van opdrachtgever kan een aparte Non-Disclosure Agreement (NDA) worden afgesloten voorafgaand aan de offerte-fase.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 10 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <AlertTriangle className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 10 – Ontbinding en opzegging</CardTitle>
+                      <h3 className="text-2xl">Artikel 10 – Ontbinding en opzegging</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       10.1. Beide partijen kunnen de overeenkomst schriftelijk opzeggen met een opzegtermijn van 30 dagen, tenzij anders overeengekomen.
                     </p>
@@ -302,20 +302,20 @@ export default function TermsPage() {
                     <p>
                       10.4. Bij retainer-overeenkomsten geldt een opzegtermijn van 60 dagen tegen het einde van een kalendermaand.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
 
                 {/* Article 11 */}
-                <Card className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
-                  <CardHeader className="flex flex-row items-start gap-4 pb-6">
+                <GlassCard className="rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8">
+                  <div className="flex flex-row items-start gap-4 pb-6">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-[color:color-mix(in_oklab,var(--brand-soft)_65%,transparent)] text-[color:var(--brand)]">
                       <Scale className="h-6 w-6" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">Artikel 11 – Toepasselijk recht en geschillen</CardTitle>
+                      <h3 className="text-2xl">Artikel 11 – Toepasselijk recht en geschillen</h3>
                     </div>
-                  </CardHeader>
-                  <CardContent className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
+                  </div>
+                  <div className="space-y-4 text-sm text-[color:var(--fg-subtle)]">
                     <p>
                       11.1. Op alle overeenkomsten tussen opdrachtnemer en opdrachtgever is uitsluitend Nederlands recht van toepassing.
                     </p>
@@ -325,8 +325,8 @@ export default function TermsPage() {
                     <p>
                       11.3. Partijen zullen eerst trachten een geschil in onderling overleg op te lossen alvorens een beroep te doen op de rechter.
                     </p>
-                  </CardContent>
-                </Card>
+                  </div>
+                </GlassCard>
               </div>
             </div>
           </section>

@@ -1,6 +1,6 @@
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
+import { GlassCard } from '@/components/ui/GlassCard'
 import { Button } from '@/components/ui/button'
 import { getTranslations } from 'next-intl/server'
 import Link from 'next/link'
@@ -31,25 +31,25 @@ export default async function InsightsPage({ params }: { params: { locale: strin
         <section className="section-padding-y">
           <div className="container-custom grid gap-8 md:grid-cols-2">
             {posts.map((post) => (
-              <Card
+              <GlassCard
                 key={post.slug}
                 className="card flex h-full flex-col gap-4 rounded-3xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-8"
               >
-                <CardHeader className="space-y-3 pb-0">
-                  <CardTitle className="text-xl font-semibold text-body">{post.title}</CardTitle>
-                  <CardDescription className="text-sm text-[color:var(--fg-subtle)]">
+                <div className="space-y-3 pb-0">
+                  <h3 className="text-xl font-semibold text-body">{post.title}</h3>
+                  <p className="text-sm text-[color:var(--fg-subtle)]">
                     {post.summary}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="mt-auto flex justify-start p-0">
+                  </p>
+                </div>
+                <div className="mt-auto flex justify-start p-0">
                   <Button asChild variant="outline" size="sm">
                     <Link href={`/${params.locale}/insights/${post.slug}`}>
                       {post.cta}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
-                </CardContent>
-              </Card>
+                </div>
+              </GlassCard>
             ))}
           </div>
         </section>
