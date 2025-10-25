@@ -9,6 +9,7 @@
 @import "@radix-ui/colors/amber.css";
 @import "@radix-ui/colors/ruby.css";
 @import "./tokens.css";
+@import "../styles/glass.css";
 
 :root {
   color-scheme: light;

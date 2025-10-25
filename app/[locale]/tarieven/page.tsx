@@ -4,13 +4,15 @@ import { Header } from "@/components/layout/header"
 import { Footer } from "@/components/layout/footer"
 import { TrustStrip } from "@/components/sections/trust-strip"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Check } from "lucide-react"
+import { ArrowRight, Check, Zap, Factory, Settings } from "lucide-react"
 import { BackgroundEngine } from "@/components/backgrounds/BackgroundEngine"
 import { backgroundThemes } from "@/lib/backgroundThemes"
 import { ROICalculator } from "@/components/sections/roi-calculator"
 import { buildLocalizedPath } from "@/lib/slugMap"
 import { getPriceLabel, type PriceKey } from "@/lib/pricing"
 import type { Locale } from "@/lib/i18n"
+import { PricingCard } from "@/components/ui/GlassCard"
+import { TextBox } from "@/components/ui/TextBox"
 
 interface TierCard {
   id: string
@@ -66,6 +68,30 @@ export default async function PricingPage({ params }: { params: { locale: string
   const configTier = enrichedTiers.find((tier) => tier.id === "configurators")
   const primaryTiers = enrichedTiers.filter((tier) => tier.id !== "configurators")
 
+  // Icon and gradient mapping for tiers
+  const tierConfig: Record<string, { icon: any; gradient: string; tier: string }> = {
+    micro: {
+      icon: <Zap className="h-6 w-6" />,
+      gradient: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+      tier: 'Tier 0'
+    },
+    light: {
+      icon: <Zap className="h-6 w-6" />,
+      gradient: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+      tier: 'Tier 1'
+    },
+    manufacturing: {
+      icon: <Factory className="h-6 w-6" />,
+      gradient: 'linear-gradient(135deg, #4BA3F7 0%, #0F5E9C 100%)',
+      tier: 'Tier 2'
+    },
+    configurators: {
+      icon: <Settings className="h-6 w-6" />,
+      gradient: 'linear-gradient(135deg, #A855F7 0%, #7C3AED 100%)',
+      tier: 'Tier 3'
+    }
+  }
+
   return (
     <div className="relative">
       <div className="fixed inset-0 -z-10">
@@ -89,41 +115,29 @@ export default async function PricingPage({ params }: { params: { locale: string
         <TrustStrip className="pb-12" />
 
         <section className="section-padding-y">
-          <div className="container-custom grid gap-6 lg:grid-cols-2">
+          <div className="container-custom grid gap-6 md:gap-8 lg:grid-cols-2">
             {primaryTiers.map((tier) => {
-              const tierLabel = tier.id === "micro" ? "Tier 0" : tier.id === "light" ? "Tier 1" : "Tier 2"
+              const config = tierConfig[tier.id]
               return (
-                <article
+                <PricingCard
                   key={tier.id}
-                  className="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl border border-white/10 bg-white/12 p-8 shadow-[0_24px_60px_rgba(15,23,42,0.16)] backdrop-blur-xl"
-                >
-                  <header className="space-y-4">
-                    <span className="text-xs font-semibold uppercase tracking-[0.26em] text-[color:var(--accent)]">
-                      {tierLabel}
-                    </span>
-                    <h2 className="text-2xl font-semibold text-[color:var(--fg)]">{tier.title}</h2>
-                    <p className="text-sm text-[color:var(--fg-subtle)]">{tier.description}</p>
-                    <p className="text-lg font-semibold text-[color:var(--brand)]">{tier.priceLabel}</p>
-                  </header>
-                  <ul className="mt-6 space-y-3 text-sm text-[color:var(--fg-subtle)]">
-                    {tier.inclusions.map((item) => (
-                      <li key={item} className="flex items-start gap-3">
-                        <span className="mt-1 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[color:color-mix(in_oklab,var(--accent)_20%,transparent)] text-[color:var(--accent)]">
-                          <Check className="h-3 w-3" />
-                        </span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <footer className="mt-8">
+                  tier={config?.tier || ''}
+                  tierBadge={config?.icon}
+                  title={tier.title}
+                  subtitle={tier.description}
+                  price={tier.priceLabel}
+                  features={tier.inclusions}
+                  iconBg={config?.gradient}
+                  popular={tier.id === 'manufacturing'}
+                  cta={
                     <Button asChild size="lg" className="w-full">
                       <Link href={buildLocalizedPath("contact", locale)}>
                         {tier.ctaLabel}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
-                  </footer>
-                </article>
+                  }
+                />
               )
             })}
           </div>
@@ -131,51 +145,79 @@ export default async function PricingPage({ params }: { params: { locale: string
 
         {configTier && (
           <section className="section-padding-y">
-            <div className="container-custom mx-auto max-w-3xl rounded-3xl border border-white/10 bg-white/10 p-10 text-center shadow-[0_24px_60px_rgba(15,23,42,0.15)] backdrop-blur-xl">
-              <h2 className="text-2xl font-semibold text-[color:var(--fg)] md:text-3xl">{configTier.title}</h2>
-              <p className="mt-4 text-base text-[color:var(--fg-subtle)]">{configTier.description}</p>
-              <p className="mt-6 text-lg font-semibold text-[color:var(--accent)]">{configTier.priceLabel}</p>
-              <Button asChild size="lg" className="mt-8">
-                <Link href={buildLocalizedPath("contact", locale)}>
-                  {configTier.ctaLabel}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+            <div className="container-custom mx-auto max-w-4xl">
+              <PricingCard
+                tier={tierConfig.configurators.tier}
+                tierBadge={tierConfig.configurators.icon}
+                title={configTier.title}
+                subtitle={configTier.description}
+                price={configTier.priceLabel}
+                features={configTier.inclusions}
+                iconBg={tierConfig.configurators.gradient}
+                cta={
+                  <Button asChild size="lg" className="w-full">
+                    <Link href={buildLocalizedPath("contact", locale)}>
+                      {configTier.ctaLabel}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                }
+                className="mx-auto"
+              />
             </div>
           </section>
         )}
 
-        <section className="section-padding-y bg-[color:color-mix(in_oklab,var(--panel)_30%,transparent)]">
-          <div className="container-custom grid gap-8 lg:grid-cols-2">
-            <div className="space-y-4">
+        <section className="section-padding-y">
+          <div className="container-custom grid gap-6 md:gap-8 lg:grid-cols-2">
+            <div className="space-y-6">
               <h3 className="text-lg font-semibold text-[color:var(--fg)]">{pricing("addOnsTitle", { fallback: "Add-ons" })}</h3>
-              <div className="rounded-2xl border border-white/10 bg-white/8 p-6">
-                <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Light</h4>
-                <ul className="mt-4 space-y-2 text-sm text-[color:var(--fg-subtle)]">
+              <TextBox
+                title="Light"
+                variant="accent"
+                size="sm"
+              >
+                <ul className="space-y-2 text-sm text-[color:var(--fg-subtle)]">
                   {addOns?.light?.map((item: string) => (
-                    <li key={item}>{item}</li>
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[color:var(--accent)] flex-shrink-0" />
+                      {item}
+                    </li>
                   ))}
                 </ul>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-white/8 p-6">
-                <h4 className="text-sm font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Manufacturing</h4>
-                <ul className="mt-4 space-y-2 text-sm text-[color:var(--fg-subtle)]">
+              </TextBox>
+              <TextBox
+                title="Manufacturing"
+                variant="info"
+                size="sm"
+              >
+                <ul className="space-y-2 text-sm text-[color:var(--fg-subtle)]">
                   {addOns?.manufacturing?.map((item: string) => (
-                    <li key={item}>{item}</li>
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[color:var(--brand)] flex-shrink-0" />
+                      {item}
+                    </li>
                   ))}
                 </ul>
-              </div>
+              </TextBox>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-6">
               <h3 className="text-lg font-semibold text-[color:var(--fg)]">{pricing("retainersTitle", { fallback: "Retainers" })}</h3>
-              <div className="rounded-2xl border border-white/10 bg-white/8 p-6 text-sm text-[color:var(--fg-subtle)]">
-                <ul className="space-y-2">
+              <TextBox
+                title="Maandelijkse retainers"
+                subtitle={pricing("retainersNote", { fallback: "Beschikbaar na oplevering." })}
+                variant="neutral"
+                size="sm"
+              >
+                <ul className="space-y-2 text-sm text-[color:var(--fg-subtle)]">
                   {addOns?.retainers?.map((item: string) => (
-                    <li key={item}>{item}</li>
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-[color:var(--fg-muted)] flex-shrink-0" />
+                      {item}
+                    </li>
                   ))}
                 </ul>
-                <p className="mt-4 text-xs text-[color:var(--fg-muted)]">{pricing("retainersNote", { fallback: "Beschikbaar na oplevering." })}</p>
-              </div>
+              </TextBox>
             </div>
           </div>
         </section>

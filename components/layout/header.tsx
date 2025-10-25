@@ -38,7 +38,7 @@ export function Header() {
   const intakeHref = buildLocalizedPath('contact', locale as Locale)
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] bg-[color:color-mix(in_oklab,var(--bg)_82%,transparent)]/90 backdrop-blur-xl supports-[backdrop-filter]:bg-[color:color-mix(in_oklab,var(--bg)_75%,transparent)]/85">
+    <header className="glass-header w-full">
       <div className="container-custom">
         <div className="flex h-20 items-center justify-between gap-4">
           {/* Logo */}
@@ -89,7 +89,7 @@ export function Header() {
 
             {/* Mobile menu button */}
             <button
-              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] text-[color:var(--fg)] transition-all duration-200 md:hidden"
+              className="glass-btn inline-flex h-10 w-10 items-center justify-center p-0 text-[color:var(--fg)] md:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle menu"
             >
@@ -106,7 +106,7 @@ export function Header() {
       {/* Mobile menu */}
       <div
         className={cn(
-          'overflow-hidden border-b border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-[color:color-mix(in_oklab,var(--bg)_88%,transparent)]/95 transition-[max-height,opacity] duration-300 ease-out md:hidden',
+          'overflow-hidden border-b border-[color:var(--glass-border-color)] glass-header transition-[max-height,opacity] duration-300 ease-out md:hidden',
           mobileMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         )}
       >
@@ -120,7 +120,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="rounded-2xl border border-white/20 bg-white/40 px-4 py-2 text-sm font-medium text-[color:var(--fg-muted)] backdrop-blur transition-all duration-200 hover:border-white/40 hover:text-[color:var(--fg)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70"
+              className="glass glass--sm px-4 py-2 text-sm font-medium text-[color:var(--fg-muted)] glass--interactive hover:text-[color:var(--fg)] focus:outline-none"
               onClick={() => setMobileMenuOpen(false)}
             >
               {item.label}

@@ -1,0 +1,468 @@
+/**
+ * Liquid Glass Design System
+ * Caribbean Azure - Premium glassmorphism inspired by Apple design language
+ *
+ * Based on reference: public/design/style-reference.jpg
+ * Integrated with: styles/brand-tokens.css
+ */
+
+:root {
+  /* ========================================
+     GLASS BASE COLORS (from brand-tokens)
+     ======================================== */
+
+  /* Light mode glass - very subtle, clean white base */
+  --glass-bg-rgb: 255, 255, 255;
+  --glass-alpha: 0.12;                    /* Increased from 0.08-0.10 for better visibility */
+  --glass-alpha-hover: 0.18;              /* Slightly more opaque on hover */
+  --glass-alpha-active: 0.22;             /* Even more opaque when active */
+
+  /* ========================================
+     GLASS VISUAL EFFECTS
+     ======================================== */
+
+  /* Backdrop filters */
+  --glass-blur: 24px;                     /* Apple-like blur (20-28px range) */
+  --glass-sat: 140%;                      /* Saturation boost for vibrancy */
+
+  /* Border and outline */
+  --glass-border-width: 1px;
+  --glass-border-color: rgba(255, 255, 255, 0.28);
+  --glass-border-hover: rgba(99, 179, 237, 0.5);  /* Brand blue on hover */
+
+  /* Shadows - layered for depth */
+  --glass-shadow:
+    0 10px 28px rgba(15, 23, 42, 0.15),
+    0 2px 8px rgba(15, 23, 42, 0.08);
+
+  --glass-shadow-hover:
+    0 20px 48px rgba(15, 23, 42, 0.22),
+    0 4px 12px rgba(15, 23, 42, 0.12);
+
+  --glass-shadow-sm:
+    0 4px 12px rgba(15, 23, 42, 0.10),
+    0 1px 4px rgba(15, 23, 42, 0.06);
+
+  /* Inner highlight (subtle top shine) */
+  --glass-inner-shine: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+
+  /* Gradient overlay for depth */
+  --glass-gradient: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 35%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+
+  /* ========================================
+     GLASS RADIUS TOKENS
+     ======================================== */
+
+  --glass-radius-lg: 24px;                /* Large cards (pricing, features) */
+  --glass-radius-md: 20px;                /* Medium cards */
+  --glass-radius-sm: 16px;                /* Small elements (badges, chips) */
+  --glass-radius-xs: 12px;                /* Extra small (buttons, inputs) */
+
+  /* ========================================
+     GLASS FOCUS STATES (WCAG AA)
+     ======================================== */
+
+  --glass-focus-ring:
+    0 0 0 3px rgba(75, 163, 247, 0.15),
+    0 0 0 1px rgba(75, 163, 247, 0.5),
+    0 4px 12px rgba(75, 163, 247, 0.25);
+
+  /* ========================================
+     GLASS ANIMATION TOKENS
+     ======================================== */
+
+  --glass-transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-transition-fast: 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   DARK MODE OVERRIDES
+   ======================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root,
+  :root.dark {
+    --glass-bg-rgb: 10, 12, 16;           /* Very dark base */
+    --glass-alpha: 0.22;                   /* Less transparent in dark mode */
+    --glass-alpha-hover: 0.28;
+    --glass-alpha-active: 0.32;
+
+    --glass-border-color: rgba(255, 255, 255, 0.18);
+    --glass-border-hover: rgba(123, 190, 255, 0.5);
+
+    --glass-shadow:
+      0 10px 32px rgba(0, 0, 0, 0.5),
+      0 2px 8px rgba(0, 0, 0, 0.3);
+
+    --glass-shadow-hover:
+      0 20px 52px rgba(0, 0, 0, 0.6),
+      0 4px 14px rgba(0, 0, 0, 0.4);
+
+    --glass-shadow-sm:
+      0 4px 14px rgba(0, 0, 0, 0.4),
+      0 1px 6px rgba(0, 0, 0, 0.25);
+
+    --glass-inner-shine: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
+    --glass-gradient: linear-gradient(
+      160deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.02) 35%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  }
+}
+
+/* ========================================
+   BASE GLASS CLASS
+   ======================================== */
+
+.glass {
+  position: relative;
+  background: rgba(var(--glass-bg-rgb), var(--glass-alpha));
+  backdrop-filter: saturate(var(--glass-sat)) blur(var(--glass-blur));
+  -webkit-backdrop-filter: saturate(var(--glass-sat)) blur(var(--glass-blur));
+  border: var(--glass-border-width) solid var(--glass-border-color);
+  border-radius: var(--glass-radius-lg);
+  box-shadow: var(--glass-shadow);
+  transition: all var(--glass-transition-base);
+}
+
+/* Inner shine pseudo-element */
+.glass::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--glass-inner-shine);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content wrapper to sit above pseudo-elements */
+.glass > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ========================================
+   GLASS SIZE VARIANTS
+   ======================================== */
+
+.glass--sm {
+  border-radius: var(--glass-radius-sm);
+  box-shadow: var(--glass-shadow-sm);
+  backdrop-filter: saturate(var(--glass-sat)) blur(20px);
+  -webkit-backdrop-filter: saturate(var(--glass-sat)) blur(20px);
+}
+
+.glass--md {
+  border-radius: var(--glass-radius-md);
+}
+
+.glass--lg {
+  border-radius: var(--glass-radius-lg);
+}
+
+.glass--xs {
+  border-radius: var(--glass-radius-xs);
+  box-shadow: var(--glass-shadow-sm);
+  backdrop-filter: saturate(var(--glass-sat)) blur(16px);
+  -webkit-backdrop-filter: saturate(var(--glass-sat)) blur(16px);
+}
+
+/* ========================================
+   GLASS INTERACTION STATES
+   ======================================== */
+
+.glass--interactive {
+  cursor: pointer;
+  transition: all var(--glass-transition-fast);
+}
+
+.glass--interactive:hover {
+  background: rgba(var(--glass-bg-rgb), var(--glass-alpha-hover));
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-4px);
+}
+
+.glass--interactive:active {
+  background: rgba(var(--glass-bg-rgb), var(--glass-alpha-active));
+  transform: translateY(-2px);
+}
+
+.glass--interactive:focus-visible {
+  outline: none;
+  box-shadow: var(--glass-focus-ring);
+}
+
+/* ========================================
+   GLASS CARD VARIANTS
+   ======================================== */
+
+.glass-card {
+  composes: glass;
+  padding: var(--space-8);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .glass-card {
+    padding: clamp(var(--space-8), 3vw, var(--space-12));
+  }
+}
+
+.glass-card--compact {
+  composes: glass-card;
+  padding: var(--space-6);
+}
+
+.glass-card--spacious {
+  composes: glass-card;
+  padding: var(--space-12);
+}
+
+/* Gradient overlay variant for premium cards */
+.glass-card--gradient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--glass-gradient);
+  border-radius: inherit;
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity var(--glass-transition-base);
+}
+
+.glass-card--gradient:hover::before {
+  opacity: 1;
+}
+
+/* ========================================
+   GLASS PANEL (for forms, sections)
+   ======================================== */
+
+.glass-panel {
+  composes: glass;
+  padding: var(--space-6);
+  border-radius: var(--glass-radius-md);
+}
+
+@media (min-width: 768px) {
+  .glass-panel {
+    padding: var(--space-8);
+  }
+}
+
+.glass-panel--form {
+  composes: glass-panel;
+  background: rgba(var(--glass-bg-rgb), 0.15);  /* Slightly more opaque for form backgrounds */
+}
+
+/* ========================================
+   GLASS BADGE / CHIP
+   ======================================== */
+
+.glass-badge {
+  composes: glass glass--xs;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--size-copy-13);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.glass-badge--sm {
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--size-copy-12);
+}
+
+/* ========================================
+   GLASS BUTTON
+   ======================================== */
+
+.glass-btn {
+  composes: glass glass--xs;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--size-copy-16);
+  font-weight: 500;
+  color: var(--fg);
+  border: 1px solid var(--glass-border-color);
+  background: rgba(var(--glass-bg-rgb), 0.08);
+  cursor: pointer;
+  transition: all var(--glass-transition-fast);
+}
+
+.glass-btn:hover {
+  background: rgba(var(--glass-bg-rgb), 0.14);
+  border-color: var(--glass-border-hover);
+  transform: translateY(-1px);
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.12),
+    0 2px 6px rgba(15, 23, 42, 0.08);
+}
+
+.glass-btn:active {
+  transform: translateY(0);
+}
+
+.glass-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--glass-focus-ring);
+}
+
+/* Primary variant with brand gradient */
+.glass-btn--primary {
+  background: linear-gradient(135deg, var(--brand-600, #0F5E9C) 0%, var(--brand-400, #4BA3F7) 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.glass-btn--primary:hover {
+  background: linear-gradient(135deg, var(--brand-600, #0F5E9C) 0%, var(--brand-400, #4BA3F7) 100%);
+  box-shadow:
+    0 8px 24px rgba(75, 163, 247, 0.35),
+    0 2px 8px rgba(15, 94, 156, 0.25);
+  transform: translateY(-2px);
+}
+
+/* ========================================
+   GLASS HEADER / NAVIGATION
+   ======================================== */
+
+.glass-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header, 50);
+  background: rgba(var(--glass-bg-rgb), 0.08);  /* Very transparent header */
+  backdrop-filter: saturate(var(--glass-sat)) blur(28px);
+  -webkit-backdrop-filter: saturate(var(--glass-sat)) blur(28px);
+  border-bottom: 1px solid var(--glass-border-color);
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.06),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+  transition: all var(--glass-transition-fast);
+}
+
+.glass-header--scrolled {
+  background: rgba(var(--glass-bg-rgb), 0.12);
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.10),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* ========================================
+   GLASS FOOTER
+   ======================================== */
+
+.glass-footer {
+  background: rgba(var(--glass-bg-rgb), 0.06);
+  backdrop-filter: saturate(var(--glass-sat)) blur(20px);
+  -webkit-backdrop-filter: saturate(var(--glass-sat)) blur(20px);
+  border-top: 1px solid var(--glass-border-color);
+}
+
+.glass-footer-section {
+  composes: glass glass--sm;
+  padding: var(--space-6);
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+/* Add noise texture for premium feel */
+.glass-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('/noise.png');
+  background-repeat: repeat;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: overlay;
+}
+
+/* Remove glass effect on reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .glass,
+  .glass-card,
+  .glass-panel,
+  .glass-badge,
+  .glass-btn,
+  .glass-header,
+  .glass-footer {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: none;
+  }
+
+  .glass--interactive:hover {
+    transform: none;
+  }
+}
+
+/* Ensure sufficient contrast for text */
+.glass--high-contrast {
+  background: rgba(var(--glass-bg-rgb), 0.18);
+}
+
+/* For content over busy backgrounds */
+.glass--elevated {
+  background: rgba(var(--glass-bg-rgb), 0.25);
+  box-shadow:
+    var(--glass-shadow-hover),
+    var(--glass-inner-shine);
+}
+
+/* ========================================
+   INTEGRATION WITH TAILWIND (if needed)
+   ======================================== */
+
+/*
+ * These classes can be used alongside Tailwind utilities:
+ * Example: <div class="glass p-6 rounded-2xl">
+ */
+
+/* Override Tailwind rounded utilities to match glass tokens */
+.glass.rounded-sm { border-radius: var(--glass-radius-xs); }
+.glass.rounded-md { border-radius: var(--glass-radius-sm); }
+.glass.rounded-lg { border-radius: var(--glass-radius-md); }
+.glass.rounded-xl { border-radius: var(--glass-radius-lg); }
+.glass.rounded-2xl { border-radius: var(--glass-radius-lg); }
+.glass.rounded-3xl { border-radius: 28px; }
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+
+@media print {
+  .glass,
+  .glass-card,
+  .glass-panel,
+  .glass-badge,
+  .glass-btn,
+  .glass-header,
+  .glass-footer {
+    background: white;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+  }
+}
