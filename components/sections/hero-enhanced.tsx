@@ -14,8 +14,20 @@ import type { Locale } from '@/lib/i18n'
 
 export function HeroEnhanced() {
   const locale = useLocale() as Locale
-  const t = useTranslations('hero')
+  const hero = useTranslations('home.hero')
+  const globalT = useTranslations()
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+
+  const resolveLabel = (value: string) => {
+    if (value.includes('.')) {
+      try {
+        return globalT(value as any)
+      } catch {
+        return value
+      }
+    }
+    return value
+  }
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -57,7 +69,7 @@ export function HeroEnhanced() {
                 }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
-              {t('badge')}
+              {hero('badge')}
             </motion.div>
 
             <motion.h1
@@ -69,7 +81,7 @@ export function HeroEnhanced() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              {t('title')}
+              {hero('title')}
             </motion.h1>
 
             <motion.p
@@ -78,7 +90,7 @@ export function HeroEnhanced() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              {t('subtitle')}
+              {hero('subtitle')}
             </motion.p>
 
             <motion.div
@@ -89,7 +101,7 @@ export function HeroEnhanced() {
             >
               <Link href={buildLocalizedPath('contact', locale)}>
                 <MagneticButton className="w-full min-w-[220px] sm:w-auto">
-                  {t('cta.primary')}
+                  {resolveLabel(hero('primaryCta'))}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </MagneticButton>
               </Link>
@@ -100,8 +112,8 @@ export function HeroEnhanced() {
                 className="w-full min-w-[220px] sm:w-auto"
                 asChild
               >
-                <Link href={buildLocalizedPath('services', locale)}>
-                  {t('secondaryCta')}
+                <Link href={buildLocalizedPath('solutions', locale)}>
+                  {resolveLabel(hero('secondaryCta'))}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>

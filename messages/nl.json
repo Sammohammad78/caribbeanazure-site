@@ -2,735 +2,552 @@
   "nav": {
     "home": "Home",
     "solutions": "Oplossingen",
-    "services": "Diensten",
-    "cases": "Cases",
     "pricing": "Tarieven",
+    "cases": "Cases",
     "about": "Over ons",
-    "industries": "Sectoren",
-    "integrations": "Integraties",
-    "security": "Security",
-    "insights": "Insights",
-    "contact": "Contact",
-    "blueprint": "Blueprint",
-    "roi": "ROI-calculator",
-    "privacy": "Privacy",
-    "cookies": "Cookies",
-    "terms": "Voorwaarden"
-  },
-  "hero": {
-    "title": "Van aanvraag tot productie—geautomatiseerd voor MKB-makers",
-    "qualifier": "",
-    "subtitle": "Snel resultaat voor het MKB. GDPR-veilig. n8n self-host kan.",
-    "cta": {
-      "primary": "Plan een intake",
-      "secondary": "Bereken jouw ROI"
-    },
-    "trustedBy": "Bewijst zich bij Nederlandse maakbedrijven"
-  },
-  "outcomes": {
-    "label": "Typische uitkomsten",
-    "speed": {
-      "title": "Snellere responstijd",
-      "value": "-60%",
-      "footnote": "Gemiddeld binnen 6 weken live."
-    },
-    "deals": {
-      "title": "Meer deals",
-      "value": "+25-40%",
-      "footnote": "Sales pipeline sneller naar won deals."
-    },
-    "work": {
-      "title": "Minder repetitief werk",
-      "value": "-30-50%",
-      "footnote": "Teams focussen op hoogwaardig werk."
-    }
-  },
-  "services": {
-    "title": "Diensten",
-    "subtitle": "Wat we voor je doen",
-    "items": [
-      {
-        "title": "Workflow-automatisering",
-        "description": "We nemen terugkerende taken uit handen. E-mails, boekhouding, klantopvolging — het loopt gewoon. Jij focust op het werk dat telt."
-      },
-      {
-        "title": "AI-assistenten & chatbots",
-        "description": "We bouwen bots die klanten verder helpen, afspraken plannen of offertes voorbereiden. Via je website of WhatsApp, klaar voor productie."
-      },
-      {
-        "title": "Dashboards & rapportage",
-        "description": "Inzicht zonder ruis. Je ziet wat er goed gaat, waar tijd weglekt en waar je het beste kunt bijsturen."
-      },
-      {
-        "title": "Webdesign met impact",
-        "description": "Snel, helder en prettig in gebruik. Je site is mooi, maar vooral effectief — gekoppeld aan je automatisering en klaar om te groeien."
-      }
-    ]
-  },
-  "whyUs": {
-    "title": "Waarom wij",
-    "description": "We houden het menselijk. Geen vakjargon. Geen omwegen. We luisteren, bouwen en verbeteren tot het echt werkt in jouw praktijk."
-  },
-  "process": {
-    "title": "Hoe we werken",
-    "subtitle": "Van intake tot livegang in drie heldere stappen.",
-    "step1": {
-      "title": "1. Intake & proces-scan",
-      "description": "30 minuten om je snelste winst te identificeren. We scannen je huidige processen en tools."
-    },
-    "step2": {
-      "title": "2. Prototype in 72 uur",
-      "description": "Binnen 3 werkdagen een werkend prototype van je eerste workflow. Geen weken plannen, direct resultaat zien."
-    },
-    "step3": {
-      "title": "3. Livegang & monitoring",
-      "description": "Training voor je team + live dashboards met real-time SLA's. Je houdt altijd zicht op doorlooptijd en bottlenecks."
-    }
-  },
-  "useCases": {
-    "title": "Concrete use-cases",
-    "subtitle": "Drie scenario's die direct waarde leveren.",
-    "items": [
-      {
-        "title": "Inbox-to-Action Automatisering",
-        "problem": "E-mails verdwijnen in de inbox. Follow-ups sneuvelen. Offerteaanvragen duren dagen.",
-        "solution": "Inkomende e-mails worden automatisch naar ClickUp, Teams of WhatsApp gestuurd met urgentie en categorie.",
-        "example": "Alle mails met 'offerte' in onderwerp → task met prio high + tag Sales binnen 30 seconden.",
-        "outcome": "30-60% minder doorlooptijd van e-mail tot actie."
-      },
-      {
-        "title": "Offerte-Generator met Goedkeuringsflow",
-        "problem": "Salesteam verliest tijd met handmatig offertes kopieren, plakken en mailen.",
-        "solution": "Template-based offertes met klantgegevens uit CRM + automatische goedkeuringsflow voor directeur.",
-        "example": "Salesteam vult simpel formulier → PDF offerte binnen 5 min in klant inbox.",
-        "outcome": "85%+ foutreductie, 4x sneller van aanvraag naar verzending."
-      },
-      {
-        "title": "Website-Chat → CRM-Lead met Validatie",
-        "problem": "Website bezoekers stellen vragen, maar leads verdwijnen in inbox of worden niet gekwalificeerd.",
-        "solution": "AI-chatbot beantwoordt FAQ's + kwalificeert leads + maakt automatisch CRM-record aan met hot/warm/cold label.",
-        "example": "Bezoeker vraagt 'Werkt dit met Exact?' → Bot antwoordt + maakt hot lead aan + stuurt kalenderlink.",
-        "outcome": "62% van vragen direct beantwoord, 18% meer gekwalificeerde leads in CRM."
-      }
-    ],
-    "cta": "Plan een intake—ontdek je snelste winst",
-    "labels": {
-      "problem": "Probleem",
-      "solution": "Onze oplossing",
-      "example": "Voorbeeld"
-    }
-  },
-  "cases": {
-    "title": "Bewijs, geen beloftes",
-    "subtitle": "Een selectie van recente trajecten en de gemeten impact.",
-    "cta": "Bekijk case",
-    "items": [
-      {
-        "slug": "randstad-inhouse",
-        "client": "Randstad Inhouse",
-        "sector": "Recruitment",
-        "headline": "Intake van 3 dagen naar 3 uur",
-        "summary": "WhatsApp intake-assistent koppelt direct met ATS en prioriteert kandidaten.",
-        "kpis": [
-          "-60% time-to-first-call",
-          "2,4x meer gekwalificeerde kandidaten",
-          "100% GDPR logging automatisch"
-        ],
-        "ctaLabel": "Lees case"
-      },
-      {
-        "slug": "abn-amro-ventures",
-        "client": "ABN AMRO Ventures",
-        "sector": "Investering",
-        "headline": "Dealflow scoring in realtime dashboards",
-        "summary": "AI scorecards zetten intake direct klaar voor partners met Power BI overzichten.",
-        "kpis": [
-          "-280 uur Excel-werk per kwartaal",
-          "87% match tussen score en won deal",
-          "Alerts bij pipeline-afwijkingen"
-        ],
-        "ctaLabel": "Lees case"
-      },
-      {
-        "slug": "cm-com-support",
-        "client": "CM.com Support",
-        "sector": "Support",
-        "headline": "24/7 support met hybride AI-agent",
-        "summary": "RAG agent lost 62% tickets op, Zendesk krijgt context en voorstel voor de rest.",
-        "kpis": [
-          "-47% ticket backlog in 6 weken",
-          "+0,5 stijging in CSAT",
-          "-32% gemiddelde afhandeltijd"
-        ],
-        "ctaLabel": "Lees case"
-      }
-    ],
-    "highlights": [
-      {
-        "title": "Sprints van twee weken",
-        "body": "Elk project leveren we in blokken van twee weken met dashboards, changelog en videotour."
-      },
-      {
-        "title": "Stakeholders in controle",
-        "body": "C-level of team leads volgen live de KPI-impact, krijgen alerts en kunnen bijsturen."
-      },
-      {
-        "title": "ROI transparant",
-        "body": "Voor elke case tonen we baseline, target en gerealiseerde impact zodat je weet wat je krijgt."
-      }
-    ],
-    "detail": {
-      "randstad-inhouse": {
-        "title": "Randstad Inhouse — intake van 3 dagen naar 3 uur",
-        "quote": {
-          "text": "Recruiters hebben eindelijk zicht op welke kandidaten klaar zijn voor een call. Alles staat al in het ATS met de juiste context.",
-          "author": "Teamlead Recruitment",
-          "role": "Randstad Inhouse"
-        },
-        "kpis": [
-          {
-            "label": "Time-to-first-call",
-            "before": "3 dagen",
-            "after": "3 uur"
-          },
-          {
-            "label": "Handmatige administratie",
-            "before": "5 uur/dag",
-            "after": "1,5 uur/dag"
-          },
-          {
-            "label": "Kwaliteit intake",
-            "before": "Onvolledig profiel",
-            "after": "100% volledigheid"
-          }
-        ],
-        "problem": "Recruiters ontvingen honderden mails en WhatsApp-berichten per week. Kandidateninformatie stond verspreid over inboxen en spreadsheets waardoor intakegesprekken dagen duurden.",
-        "build": [
-          "WhatsApp intake-assistent die profielvragen stelt en ontbrekende info aanvult.",
-          "Airtable scorecard met automatische prioritering en toewijzing aan recruiters.",
-          "Power BI overzicht voor daily stand-ups met pipeline status."
-        ],
-        "result": [
-          "Recruiters werken enkel nog met voor-gekwalificeerde profielen.",
-          "Managers zien realtime bottlenecks en kunnen capaciteit bijsturen.",
-          "Volledige GDPR logging in SharePoint zonder extra werk."
-        ],
-        "flow": [
-          "Inbox → WhatsApp intake",
-          "Agent verwerkt intake + scorecard",
-          "Taak in ATS + Slack notificatie naar recruiter"
-        ]
-      },
-      "abn-amro-ventures": {
-        "title": "ABN AMRO Ventures — dealflow scoring in realtime dashboards",
-        "quote": {
-          "text": "Elke ochtend starten we met een geprioriteerde lijst. Het team ziet exact waarom deals scoren, zonder spreadsheets.",
-          "author": "Investment Manager",
-          "role": "ABN AMRO Ventures"
-        },
-        "kpis": [
-          {
-            "label": "Handmatig Excel-werk",
-            "before": "280 uur/kwartaal",
-            "after": "40 uur/kwartaal"
-          },
-          {
-            "label": "Deal scoring nauwkeurigheid",
-            "before": "intepretatie per partner",
-            "after": "87% match met won deal"
-          },
-          {
-            "label": "Signalering van pipeline-issues",
-            "before": "Ad hoc",
-            "after": "Automatische alerts"
-          }
-        ],
-        "problem": "Dealflow kwam binnen via e-mail en formulieren maar verdween in losse Excel-sheets. Partners misten overzicht en prioriteit.",
-        "build": [
-          "Parser die e-mail en Formsort leads in Airtable centraliseert.",
-          "AI scoring model op historische deals en teamnotities.",
-          "Power BI dashboard met status, alerts en investeringsargumenten."
-        ],
-        "result": [
-          "Partners zien dagelijks topkansen met volledige context.",
-          "Scoring is transparant waardoor beslissingen sneller vallen.",
-          "Operations-team hoeft geen spreadsheets meer bij te werken."
-        ],
-        "flow": [
-          "Inbox/Formsort → Airtable intake",
-          "AI score + teamreview",
-          "Power BI + Slack daily digest"
-        ]
-      },
-      "cm-com-support": {
-        "title": "CM.com Support — hybride AI-agent vangt 62% tickets af",
-        "quote": {
-          "text": "Klanten krijgen direct antwoord en agents krijgen context, transcript en oplossing. Ons team focust op uitzonderingen.",
-          "author": "Head of Support",
-          "role": "CM.com"
-        },
-        "kpis": [
-          {
-            "label": "Ticket backlog",
-            "before": "100%",
-            "after": "53%"
-          },
-          {
-            "label": "CSAT",
-            "before": "4,1",
-            "after": "4,6"
-          },
-          {
-            "label": "Gemiddelde afhandeltijd",
-            "before": "12 min",
-            "after": "8 min"
-          }
-        ],
-        "problem": "Support werkte met meerdere kanalen en switchte continu tussen systemen. Veel vragen waren repetitief maar vereisten een medewerker.",
-        "build": [
-          "RAG agent op productdocumentatie en historische tickets.",
-          "Zendesk macro's met volledige context en voorgestelde oplossing.",
-          "WhatsApp follow-up die statusupdates automatisch verstuurt."
-        ],
-        "result": [
-          "62% van alle vragen opgelost zonder menselijk ingrijpen.",
-          "Supportmedewerkers besteden tijd aan edge cases.",
-          "Volledige audittrail voor compliance en kwaliteitsbewaking."
-        ],
-        "flow": [
-          "Inbox → AI triage",
-          "Agent antwoordt of zendesk ticket met context",
-          "WhatsApp update naar klant"
-        ]
-      }
-    },
-    "structure": {
-      "problem": "Probleem",
-      "build": "Wat we hebben gebouwd",
-      "result": "Resultaat",
-      "flow": "Zo werkt het",
-      "next": "Volgende stap",
-      "cta": "Wil je hetzelfde voor jouw team? Plan een gratis intake."
-    }
-  },
-  "pricing": {
-    "title": "Transparante tarieven voor elke schaal",
-    "subtitle": "Van snelle micro-automaties tot volledige configurators.",
-    "tiers": {
-      "light": {
-        "tagline": "Snelle automaties met direct effect",
-        "priceDisplay": "Vanaf € 999 excl. btw",
-        "priceNote": "Alle prijzen exclusief btw; exacte prijs na intake.",
-        "cta": "Bekijk Light automatisaties"
-      },
-      "manufacturing": {
-        "tagline": "Productie-klare Sales→BOM & tekenpakketten",
-        "priceDisplay": "Vanaf € 1.999 excl. btw",
-        "priceNote": "Vanaf-prijs; exacte scope bepalen we in de intake.",
-        "cta": "Bekijk maakindustrie oplossingen"
-      },
-      "configurators": {
-        "tagline": "CPQ & Configure-to-Production voor complexe producten",
-        "priceDisplay": "Prijs op aanvraag",
-        "priceNote": "Plan een intake om je use-case te beoordelen.",
-        "cta": "Plan intake voor configurators"
-      }
-    },
-    "disclaimer": "Alle prijzen zijn vanaf-prijzen en exclusief btw. De definitieve prijs is afhankelijk van scope, aantal integraties, en maatwerk-vereisten.",
-    "cta": "Plan een intake",
-    "ctaSecondary": "Bereken jouw ROI",
-    "finePrint": "Prijzen zijn \"vanaf\" en exclusief btw. De scope en integraties bepalen de totaalprijs.",
-    "micro": {
-      "title": "Micro-automatie",
-      "priceDisplay": "Vanaf € 799 excl. btw",
-      "note": "Kleine stap. Snel resultaat."
-    },
-    "roiCta": "Bereken jouw ROI"
-  },
-  "industries": {
-    "title": "Sectoren waar we dagelijks in bouwen",
-    "intro": "Kies je sector voor concrete use-cases en KPI's.",
-    "sectors": [
-      {
-        "slug": "diensten",
-        "name": "Diensten",
-        "problem": "Teams verdrinken in mails en losse WhatsApp-gesprekken.",
-        "usecases": [
-          "Inbox-triage van offerte naar taak",
-          "WhatsApp-afspraken & herinneringen"
-        ],
-        "kpi": "+30% meer afgeronde opdrachten binnen 6 weken"
-      },
-      {
-        "slug": "retail-ecommerce",
-        "name": "Retail & e-commerce",
-        "problem": "Support en sales lopen door elkaar waardoor follow-ups sneuvelen.",
-        "usecases": [
-          "Lead-to-chat → order automatiseren",
-          "Support-triage + RMA updates"
-        ],
-        "kpi": "-45% afhandeltijd tickets, +18% herhaalbestellingen"
-      },
-      {
-        "slug": "bouw",
-        "name": "Bouw",
-        "problem": "Planning en materialen gaan via spreadsheets en losse telefoontjes.",
-        "usecases": [
-          "Inmeet-afspraken via WhatsApp plannen",
-          "Materiaalbestellingen automatisch bundelen"
-        ],
-        "kpi": "-4 uur planning per project, +12% marge"
-      }
-    ],
-    "cta": "Meer weten? Plan een gratis intake."
-  },
-  "security": {
-    "title": "Security & compliance",
-    "sections": [
-      {
-        "title": "Data-locatie & verwerking",
-        "copy": "We hosten primair binnen de EU en documenteren alle datastromen."
-      },
-      {
-        "title": "Toestemming & logging",
-        "copy": "Consent flows en logging ingebouwd; audit-trails beschikbaar binnen 24 uur."
-      },
-      {
-        "title": "DPA per tool",
-        "copy": "We leveren DPA's per vendor en borgen contractueel gebruik."
-      },
-      {
-        "title": "Toegang & retentie",
-        "copy": "Least-privilege toegang, automatische revoke, retentie per proces."
-      }
-    ],
-    "cta": "Vraag ons security-overzicht (PDF) op."
-  },
-  "integrations": {
-    "title": "Integraties die we dagelijks koppelen",
-    "subtitle": "We verbinden waar jullie al werken.",
-    "items": [
-      "Gmail / Outlook",
-      "ClickUp",
-      "Trello",
-      "WhatsApp Cloud API",
-      "Make",
-      "Zapier",
-      "n8n"
-    ]
-  },
-  "insights": {
-    "title": "Insights",
-    "subtitle": "Korte playbooks met direct toepasbare flows en meetplan.",
-    "posts": [
-      {
-        "slug": "whatsapp-first-funnels",
-        "title": "WhatsApp-first funnels in 5 dagen live",
-        "summary": "Gebruik intake-scripts, opvolgflows en KPI-dashboard om sales te versnellen.",
-        "cta": "Lees het playbook"
-      },
-      {
-        "slug": "inbox-to-action",
-        "title": "Inbox-to-Action blueprint",
-        "summary": "Zo bouw je een intake die taken in ClickUp of Trello automatisch aanmaakt.",
-        "cta": "Lees het playbook"
-      },
-      {
-        "slug": "support-bots",
-        "title": "Support bots met menselijke hand-off",
-        "summary": "Combineer RAG, Zendesk macro's en WhatsApp-updates voor tevreden klanten.",
-        "cta": "Lees het playbook"
-      }
-    ],
-    "detailPlaceholder": "Deze insight is work-in-progress. We verzamelen nu de nieuwste resultaten en screenshots zodat je precies ziet hoe onboarding, automatisering en KPI-tracking werken. Laat je e-mail achter via de intake en we sturen je als eerste de definitieve versie.",
-    "detailInvite": "Wil je ondertussen sparren over hoe deze flow in jouw organisatie past? Plan een intake zodat we je stack en processen kunnen doornemen."
-  },
-  "blueprint": {
-    "title": "Inbox-to-Action Blueprint",
-    "subtitle": "Download de PDF met checklists voor intake, bouw en adoptie.",
-    "description": "Alles wat je nodig hebt om e-mails en WhatsApp-berichten automatisch naar actie om te zetten.",
-    "bullets": [
-      "Intake checklist voor interviews en systeem-audit",
-      "Blueprint template voor flows, triggers en KPIs",
-      "Adoptieplan + training checklist voor je team"
-    ],
-    "cta": "Ontvang de blueprint"
-  },
-  "roi": {
-    "title": "ROI-calculator",
-    "subtitle": "Bereken binnen 2 minuten het effect van automatisering op je team.",
-    "steps": [
-      "Voer volumes en huidige afhandeltijd in",
-      "Kies de processen die we automatiseren",
-      "Zie direct besparing en extra omzetpotentieel"
-    ],
-    "cta": "Start de calculator",
-    "section": {
-      "title": "ROI-calculator",
-      "subtitle": "Rendement en terugverdientijd in minuten."
-    }
-  },
-  "faq": {
-    "title": "Veelgestelde vragen",
-    "subtitle": "Antwoorden op de belangrijkste vragen.",
-    "questions": [
-      {
-        "q": "Hoe lang duurt een gemiddeld project?",
-        "a": "De meeste trajecten gaan live binnen 2-6 weken, afhankelijk van de scope. We werken in sprints van twee weken met wekelijkse demos."
-      },
-      {
-        "q": "Welke systemen koppelen jullie?",
-        "a": "We werken dagelijks met Zapier, Make, n8n, WhatsApp Cloud API, ClickUp, Trello, Airtable en custom APIs. Staat jullie stack er niet tussen? Grote kans dat we het alsnog kunnen verbinden."
-      },
-      {
-        "q": "Hoe zit het met beheer na livegang?",
-        "a": "Je krijgt documentatie, logging en monitoring. We trainen je team en bieden optioneel een retainer voor optimalisaties of nieuwe flows."
-      },
-      {
-        "q": "Hoe waarborgen jullie security?",
-        "a": "We documenteren datastromen, leveren DPA's per vendor en bouwen automatische logging en toegangsbeheer. Meer details staan in het security-overzicht."
-      },
-      {
-        "q": "Wat als we al een intern team hebben?",
-        "a": "We werken vaak samen met interne teams. Onze blueprint en flows zijn opgezet zodat jullie ze zelf kunnen beheren of uitbreiden."
-      }
-    ]
-  },
-  "testimonials": {
-    "title": "Wat klanten zeggen",
-    "subtitle": "Concrete resultaten van bedrijven die al live zijn.",
-    "items": [
-      {
-        "quote": "Recruiters hebben eindelijk zicht op welke kandidaten klaar zijn voor een call. Alles staat al in het ATS met de juiste context.",
-        "author": "Teamlead Recruitment",
-        "company": "Randstad Inhouse",
-        "result": "Van 3 dagen intake naar 3 uur"
-      },
-      {
-        "quote": "Elke ochtend starten we met een geprioriteerde lijst. Het team ziet exact waarom deals scoren, zonder spreadsheets.",
-        "author": "Investment Manager",
-        "company": "ABN AMRO Ventures",
-        "result": "280 uur Excel-werk → 40 uur/kwartaal"
-      },
-      {
-        "quote": "Klanten krijgen direct antwoord en agents krijgen context, transcript en oplossing. Ons team focust op uitzonderingen.",
-        "author": "Head of Support",
-        "company": "CM.com",
-        "result": "62% tickets opgelost zonder mens"
-      }
-    ]
+    "contact": "Contact"
   },
   "cta": {
-    "title": "Klaar om te starten?",
-    "subtitle": "Plan een gratis intake en ontdek hoe AI-automatisering jouw team versnelt.",
-    "button": "Plan een intake"
-  },
-  "contact": {
-    "title": "Klaar om slimmer te werken?",
-    "subtitle": "Mail ons op info@caribbeanazure.com of bel +31 6 87879092.",
-    "formTitle": "Stuur ons een bericht",
-    "formIntro": "Deel je vraag en we nemen snel contact op.",
-    "form": {
-      "name": "Naam",
-      "email": "E-mailadres",
-      "phone": "Telefoonnummer (optioneel)",
-      "message": "Bericht",
-      "submit": "Verstuur",
-      "success": "Bedankt! We nemen snel contact op.",
-      "error": "Er ging iets mis. Probeer het opnieuw of mail ons direct."
-    }
+    "intake": "Plan een intake",
+    "roi": "Bereken jouw ROI",
+    "watchDemo": "Bekijken",
+    "contact": "Neem contact op"
   },
   "footer": {
-    "tagline": "Slimme automatisering voor Nederlandse mkb's.",
-    "rights": "Alle rechten voorbehouden",
-    "company": "Organisatie",
-    "services": "Diensten",
-    "resources": "Resources",
+    "company": "Bedrijf",
+    "solutions": "Oplossingen",
     "legal": "Juridisch",
-    "security": "Security-overzicht",
-    "privacy": "Privacy",
-    "terms": "Voorwaarden"
-  },
-  "whatsapp": {
-    "label": "Vraag iets via WhatsApp"
-  },
-  "language": {
-    "switcher": "Taal",
-    "nl": "Nederlands",
-    "en": "English"
-  },
-  "demo": {
-    "title": "Bekijk de 90-seconden demo",
-    "subtitle": "We laten zien hoe inbox, AI-agent en WhatsApp follow-up samenwerken in één flow.",
-    "cta": "Plan een intake"
-  },
-  "cookie": {
-    "message": "We gebruiken cookies om uw ervaring te verbeteren. U kunt uw voorkeuren beheren.",
-    "accept": "Accepteren",
-    "reject": "Afwijzen",
-    "settings": "Instellingen"
+    "privacy": "Privacyverklaring",
+    "cookies": "Cookiebeleid",
+    "rights": "Alle rechten voorbehouden",
+    "tagline": "Automatisering zonder ruis.",
+    "anonymised": "Cases zijn geanonimiseerd. KPI's zijn vastgesteld en controleerbaar.",
+    "contact": "Contact"
   },
   "trust": {
-    "title": "Onze waarborgen",
     "items": [
       "EU-hosting",
       "DPA beschikbaar",
       "n8n self-host optie"
     ]
   },
+  "meta": {
+    "home": {
+      "title": "Caribbean Azure | Automatiseer van aanvraag tot productie",
+      "description": "Premium automatisering voor het MKB. Snelle implementatie, GDPR-veilig en self-host mogelijkheden met n8n."
+    },
+    "solutions": {
+      "title": "Oplossingen | Caribbean Azure",
+      "description": "Drie pakketten voor automatisering: Light, Maakindustrie en Configurators. Altijd transparante opleveringen."
+    },
+    "solutionsLight": {
+      "title": "Light Automaties | Caribbean Azure",
+      "description": "Snelle automatisaties met directe impact. Ideaal om processen razendsnel te automatiseren zonder risico."
+    },
+    "solutionsManufacturing": {
+      "title": "Maakindustrie Automatisering | Caribbean Azure",
+      "description": "Van offerte naar stuklijst zonder omweg. Koppelingen met ERP, CAD en productie in \u00e9\u00e9n traject."
+    },
+    "solutionsConfigurators": {
+      "title": "CPQ & C2P Configurators | Caribbean Azure",
+      "description": "Configureer. Prijs. Produceer. Van verkoop tot productie klaar in \u00e9\u00e9n flow."
+    },
+    "pricing": {
+      "title": "Tarieven | Caribbean Azure",
+      "description": "Transparante tarieven voor automatisering. Van Micro-automatie tot volledige configuratortrajecten."
+    },
+    "cases": {
+      "title": "Cases | Caribbean Azure",
+      "description": "Anonieme cases met harde KPI's. Zie hoe MKB-makers sneller, foutloos en schaalbaar werken."
+    },
+    "about": {
+      "title": "Over Caribbean Azure",
+      "description": "Nederlandse automatisatie-experts die processen stroomlijnen. Klein team, directe lijnen, meetbaar resultaat."
+    },
+    "contact": {
+      "title": "Contact | Caribbean Azure",
+      "description": "Plan een intake of stel je vraag. Korte lijnen, snelle opvolging en een duidelijk voorstel."
+    },
+    "privacy": {
+      "title": "Privacyverklaring | Caribbean Azure",
+      "description": "Inzicht in hoe Caribbean Azure persoonsgegevens verwerkt en beveiligt."
+    },
+    "cookies": {
+      "title": "Cookiebeleid | Caribbean Azure",
+      "description": "Lees welke cookies we gebruiken, waarom en hoe je voorkeuren beheert."
+    },
+    "notFound": {
+      "title": "Pagina niet gevonden | Caribbean Azure",
+      "description": "De gevraagde pagina bestaat niet meer. Terug naar de hoofdnavigatie."
+    },
+    "serverError": {
+      "title": "Serverfout | Caribbean Azure",
+      "description": "Er ging iets mis. Onze monitoring is op de hoogte."
+    }
+  },
+  "home": {
+    "hero": {
+      "badge": "Premium NL-automatisering",
+      "title": "Automatiseer van aanvraag tot productie",
+      "subtitle": "Snel resultaat voor het MKB. GDPR-veilig. n8n self-host kan.",
+      "primaryCta": "cta.intake",
+      "secondaryCta": "cta.roi"
+    },
+    "tiers": {
+      "title": "Kies je versnelling",
+      "items": [
+        {
+          "id": "light",
+          "label": "Light",
+          "title": "Snelle automaties",
+          "description": "Voor teams die meteen handwerk willen schrappen. Inclusief dashboard en overdracht.",
+          "cta": "Bekijk snelle automatisaties",
+          "routeKey": "solutionsLight"
+        },
+        {
+          "id": "manufacturing",
+          "label": "Maakindustrie",
+          "title": "Van offerte naar stuklijst",
+          "description": "Van aanvraag tot BOM zonder dubbele invoer. Koppelt sales, engineering en ERP.",
+          "cta": "Van offerte naar stuklijst",
+          "routeKey": "solutionsManufacturing"
+        },
+        {
+          "id": "configurators",
+          "label": "Configurators",
+          "title": "CPQ & C2P mogelijkheden",
+          "description": "Configureren, prijzen en produceren vanuit \u00e9\u00e9n interface. Klaar voor schaal.",
+          "cta": "CPQ & C2P mogelijkheden",
+          "routeKey": "solutionsConfigurators"
+        }
+      ]
+    },
+    "proof": {
+      "title": "Meetbare verbeteringen",
+      "items": [
+        {
+          "label": "Offerteduur",
+          "value": "\u221268 %",
+          "detail": "Van intake tot voorstel in uren."
+        },
+        {
+          "label": "BOM-fouten",
+          "value": "\u221240 %",
+          "detail": "Validatie bij elke configuratie."
+        },
+        {
+          "label": "ROI",
+          "value": "3,4x",
+          "detail": "Gemiddeld na 9 maanden."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Minder handwerk. Meer output.",
+      "subtitle": "Plan een intake en ontvang binnen 48 uur een concreet voorstel met scope, planning en indicatie.",
+      "button": "cta.intake"
+    },
+    "faq": {
+      "title": "Veelgestelde vragen",
+      "subtitle": "Antwoorden op intakevragen in heldere taal.",
+      "items": [
+        {
+          "question": "Hoe snel staat de eerste automatisatie live?",
+          "answer": "Binnen drie werkdagen na de intake leveren we een micro-automatie. Zo zie je direct effect en valt er weinig stil te staan."
+        },
+        {
+          "question": "Werkt dit met onze bestaande tools?",
+          "answer": "Ja. We koppelen met ERP, CRM, CAD, SQL en maatwerk via API's of RPA wanneer nodig."
+        },
+        {
+          "question": "Hoe borgen jullie GDPR?",
+          "answer": "Data blijft binnen de EU. We leveren een DPA, versleutelen alle verbindingen en bieden self-hosted n8n als optie."
+        },
+        {
+          "question": "Kunnen we klein starten?",
+          "answer": "Begin met Micro-automatie of Light. Zodra de eerste flow draait, breiden we gecontroleerd uit."
+        }
+      ]
+    }
+  },
   "solutions": {
-    "title": "Oplossingen voor elke schaal",
-    "subtitle": "Van micro-automaties tot volledige configurators.",
-    "cta": "Niet zeker? Plan een intake.",
+    "overview": {
+      "title": "Drie niveaus. Altijd een meetbare oplevering.",
+      "description": "Elk pakket heeft vaste deliverables, KPI-review en toezicht op adoptie. Kies het niveau dat past bij jouw team.",
+      "microLabel": "Instap",
+      "cta": "cta.intake",
+      "microTitle": "Start klein, schaal slim",
+      "microDescription": "Begin met een micro-automatie en verschuif daarna naar Light of Maakindustrie.",
+      "microCta": "Bekijk Light"
+    },
     "light": {
       "title": "Snelle automaties met direct effect",
-      "subtitle": "Minder handwerk. Minder fouten. Meer tijd voor klanten.",
-      "description": "Kleine automatiseringen die binnen dagen live staan en direct tijd vrijmaken voor je team.",
-      "homeCta": "Bekijk snelle automatisaties",
-      "priceNote": "Vanaf € 999 excl. btw",
-      "bullets": [
-        "Minder handwerk",
-        "Minder fouten",
-        "Meer tijd voor klanten"
+      "subtitle": "Voor teams die workflows willen digitaliseren zonder zware trajecten.",
+      "priceLine": "Vanaf \u20ac 999 excl. btw",
+      "benefits": [
+        "Minder handwerk.",
+        "Minder fouten.",
+        "Meer tijd voor klanten."
       ],
-      "micro": {
-        "title": "Micro-automatie",
-        "subtitle": "Eén flow. Eén integratie. Binnen drie werkdagen.",
-        "priceNote": "Vanaf € 799 excl. btw",
-        "note": "Kleine stap. Snel resultaat.",
-        "ctaPrimary": "Plan een intake",
-        "ctaSecondary": "Bekijk alle tarieven"
-      },
-      "badge": "Tier 1",
-      "pricePrefix": "Vanaf",
-      "priceHeroNote": "excl. btw · exacte prijs afhankelijk van scope",
-      "useCasesTitle": "Concrete use-cases",
-      "includesTitle": "Inbegrepen bij elke Light Automation",
+      "deliverables": [
+        "3 kernflows live binnen vier weken",
+        "Dashboard met doorlooptijd en teambelasting",
+        "Workshop en overdracht naar het team",
+        "Support van 30 dagen na livegang"
+      ],
+      "cta": "cta.intake",
+      "deliverablesLabel": "Inbegrepen",
       "roiTitle": "Bereken jouw ROI",
-      "roiSubtitle": "Ontdek hoeveel je kunt besparen met Light Automations",
-      "upgrade": {
-        "title": "Klaar voor meer?",
-        "description": "Complexere processen nodig? Bekijk onze Manufacturing en Configurator oplossingen.",
-        "buttons": {
-          "manufacturing": "Manufacturing oplossingen",
-          "configurators": "Configurator oplossingen"
-        }
-      }
+      "roiSubtitle": "Zie direct de besparing met Light.",
+      "ctaTitle": "Snel aan de slag",
+      "ctaSubtitle": "Plan een intake en ontvang een uitgewerkt light-plan binnen 48 uur.",
+      "seePricing": "Bekijk tarieven"
+    },
+    "micro": {
+      "title": "Micro-automatie",
+      "subtitle": "E\u00e9n flow. E\u00e9n integratie. Binnen drie werkdagen.",
+      "priceLine": "Vanaf \u20ac 799 excl. btw",
+      "note": "Kleine stap. Snel resultaat."
     },
     "manufacturing": {
       "title": "Van offerte naar stuklijst zonder omweg",
-      "subtitle": "Productie-klare oplossingen voor maakbedrijven.",
-      "description": "Vertaal sales-configuraties direct naar BOM's, tekenpakketten en ERP-integraties.",
-      "homeCta": "Van offerte naar stuklijst",
-      "priceNote": "Vanaf € 1.999 excl. btw",
+      "subtitle": "Combineer sales, engineering en productie in \u00e9\u00e9n flow.",
+      "priceLine": "Vanaf \u20ac 1.999 excl. btw",
       "modules": [
-        "Sales→BOM Bridge",
+        "Sales\u2192BOM Bridge",
         "Drawing Pack Generator",
         "ERP-connectors",
         "Configuratie-validatie",
         "Productie-klare output"
       ],
-      "badge": "Tier 2 · Aanbevolen voor maakbedrijven",
-      "pricePrefix": "Vanaf",
-      "priceHeroNote": "excl. btw · vanaf-prijs, exacte scope bepaald in intake",
-      "modulesTitle": "Wat we bouwen voor je",
-      "modulesIntro": "Productie-klare oplossingen die sales direct koppelen aan manufacturing",
+      "deliverables": [
+        "Digitale intake met validaties",
+        "Automatische stuklijsten en tekenpakket",
+        "Sync met ERP en planning",
+        "Training voor sales en werkvoorbereiding"
+      ],
+      "cta": "cta.intake",
+      "deliverablesTitle": "Opleverpakket",
       "roiTitle": "Bereken jouw ROI",
-      "roiSubtitle": "Typisch bespaart Manufacturing Automation 60% engineering tijd",
-      "upgrade": {
-        "title": "Volledige product configuratie nodig?",
-        "description": "Bekijk onze CPQ & Configure-to-Production oplossingen voor complexe producten met duizenden varianten.",
-        "buttons": {
-          "configurators": "Configurator oplossingen"
-        }
-      }
+      "roiSubtitle": "Van sales intake tot productie in \\u00e9\\u00e9n keten.",
+      "ctaTitle": "Versnel sales naar productie",
+      "ctaSubtitle": "Plan een intake en ontvang een blueprint met modules en planning.",
+      "seePricing": "Bekijk tarieven",
+      "seeConfigurators": "Bekijk configurators"
     },
     "configurators": {
       "title": "Configureer. Prijs. Produceer.",
-      "subtitle": "Volledige configurators voor complexe producten.",
-      "description": "Automatiseer CPQ en Configure-to-Production voor varianten met complexe regels.",
-      "homeCta": "CPQ & C2P mogelijkheden",
-      "priceNote": "Prijs op aanvraag",
-      "services": {
-        "cpq": {
-          "title": "CPQ (standard)",
+      "subtitle": "Voor maatwerkproducten met complexe varianten.",
+      "priceLine": "Prijs op aanvraag",
+      "services": [
+        {
+          "label": "CPQ (standard)",
           "benefits": [
-            "Visualiseer opties en prijzen direct",
-            "Automatische offertes met goedkeuring",
-            "CRM-integratie met logging"
+            "Realtime pricing met kostendragers",
+            "Offertes in je eigen huisstijl",
+            "Scenario's voor upsell en bundels"
           ]
         },
-        "c2p": {
-          "title": "C2P (Configure-to-Production)",
+        {
+          "label": "C2P (Configure-to-Production)",
           "benefits": [
-            "Multi-level BOM output",
-            "Tekenpakketten en CNC-bestanden",
-            "Integraties met ERP/PLM/MES"
+            "Valide stuklijsten per configuratie",
+            "Automatische overdracht naar productie",
+            "Directe aansturing van tekenpakketten"
           ]
         }
-      },
-      "badge": "Tier 3 · Maatwerk",
-      "pricePrefix": "Prijs",
-      "priceHeroNote": "Prijs op aanvraag",
-      "servicesTitle": "Twee niveaus van configuratie",
+      ],
+      "cta": "cta.intake",
       "roiTitle": "Bereken jouw ROI",
-      "roiSubtitle": "Configurators besparen typisch 60-80% engineering tijd en elimineren productiefouten",
-      "upgrade": {
-        "title": "Klaar voor een configurator?",
-        "description": "Plan een intake om jouw product, varianten en productieproces door te nemen. We beoordelen samen of een configurator de beste oplossing is.",
-        "buttons": {
-          "contact": "Plan intake",
-          "cases": "Bekijk cases"
-        }
+      "roiSubtitle": "Vergelijk scenario's voor CPQ en C2P.",
+      "ctaTitle": "Ga van configuratie naar productie",
+      "ctaSubtitle": "We leveren blueprint, governance en integratieplan.",
+      "seeManufacturing": "Bekijk maakindustrie"
+    }
+  },
+  "pricing": {
+    "title": "Transparante tarieven",
+    "subtitle": "Kies het traject dat past. Alle bedragen zijn exclusief btw en gebaseerd op vaste deliverables.",
+    "finePrint": "Prijzen zijn \u201cvanaf\u201d en exclusief btw. De scope en integraties bepalen de totaalprijs.",
+    "tiers": [
+      {
+        "id": "micro",
+        "title": "Micro-automatie",
+        "description": "Instap met \u00e9\u00e9n flow en snelle impact.",
+        "priceKey": "micro",
+        "inclusions": [
+          "Scope-call van 45 minuten",
+          "Flowdesign en mapping",
+          "Implementatie en test",
+          "Oplevervideo en documentatie"
+        ],
+        "cta": "cta.intake"
+      },
+      {
+        "id": "light",
+        "title": "Light",
+        "description": "Snelle automaties met direct effect.",
+        "priceKey": "tier1",
+        "inclusions": [
+          "Max. drie automatisaties live",
+          "Dashboard met prestaties",
+          "Training voor key-users",
+          "30 dagen support"
+        ],
+        "cta": "cta.intake"
+      },
+      {
+        "id": "manufacturing",
+        "title": "Maakindustrie",
+        "description": "Sales naar productie zonder dubbele invoer.",
+        "priceKey": "tier2",
+        "inclusions": [
+          "Sales intake + validaties",
+          "Automatische stuklijst en tekenpakket",
+          "ERP-integratie",
+          "90 dagen hypercare"
+        ],
+        "cta": "cta.intake"
+      },
+      {
+        "id": "configurators",
+        "title": "Configurators",
+        "description": "CPQ & C2P traject op maat.",
+        "priceKey": "tier3",
+        "inclusions": [
+          "Blueprint van processen",
+          "Proof-of-concept configurator",
+          "Integratieplan met productie",
+          "Adoptie- en governanceplan"
+        ],
+        "cta": "cta.intake"
+      }
+    ],
+    "addOns": {
+      "light": [
+        "Extra flow",
+        "Extra integratie",
+        "60/90 dagen support"
+      ],
+      "manufacturing": [
+        "Extra ERP-koppeling",
+        "Sjablonen voor tekenpakketten",
+        "90 dagen support",
+        "Procesaudit"
+      ],
+      "retainers": [
+        "S \u20ac 450 p/m",
+        "M \u20ac 850 p/m",
+        "L \u20ac 1.250 p/m"
+      ]
+    }
+  },
+  "cases": {
+    "title": "Bewijs met KPI's",
+    "subtitle": "Sectorcases zonder namen maar m\u00e9t harde cijfers.",
+    "items": [
+      {
+        "sector": "Metalen deuren producent",
+        "headline": "Offerteduur \u221268 %",
+        "kpis": [
+          "Voor: 5 dagen",
+          "Na: 1,6 dag",
+          "Offerteflow geautomatiseerd"
+        ],
+        "id": "metal-doors"
+      },
+      {
+        "sector": "Bouwtoeleverancier",
+        "headline": "BOM-fouten \u221240 %",
+        "kpis": [
+          "Voor: 25 foutmeldingen/maand",
+          "Na: 10 foutmeldingen/maand",
+          "Validatie in configurator"
+        ],
+        "id": "building-supplier"
+      },
+      {
+        "sector": "Prefab installateur",
+        "headline": "Lead-to-order +32 %",
+        "kpis": [
+          "Voor: 18% conversie",
+          "Na: 50% conversie",
+          "Automatische calculaties"
+        ],
+        "id": "prefab-installer"
+      },
+      {
+        "sector": "Machinale houtbewerking",
+        "headline": "Productieplanning \u221245 %",
+        "kpis": [
+          "Voor: 9 uur planning/week",
+          "Na: 5 uur planning/week",
+          "Integratie met ERP"
+        ],
+        "id": "precision-wood"
+      },
+      {
+        "sector": "Modulaire bouw",
+        "headline": "Projectoverdracht +2,8x",
+        "kpis": [
+          "Voor: 6 weken engineering",
+          "Na: 2 weken engineering",
+          "C2P workflow live"
+        ],
+        "id": "modular-construction"
+      },
+      {
+        "sector": "High-tech assemblage",
+        "headline": "Herwerk \u221252 %",
+        "kpis": [
+          "Voor: 14% herwerk",
+          "Na: 6,7% herwerk",
+          "Realtime kwaliteitsfeedback"
+        ],
+        "id": "high-tech-assembly"
+      }
+    ],
+    "cta": "cta.intake",
+    "videoLabel": "Bekijk de 90s demo",
+    "ctaHeadline": "Klaar voor dezelfde resultaten?",
+    "ctaSubtitle": "Plan een intake en ontvang binnen 48 uur een stappenplan."
+  },
+  "contact": {
+    "title": "Plan je intake",
+    "subtitle": "Korte lijnen, duidelijk plan. We reageren binnen \u00e9\u00e9n werkdag.",
+    "privacyNote": "We gebruiken je gegevens alleen om contact op te nemen. Geen nieuwsbrieven.",
+    "success": {
+      "title": "Bedankt. Je intake staat klaar.",
+      "body": "We sturen binnen \u00e9\u00e9n werkdag opvolging met voorstel. Bereken intussen jouw ROI.",
+      "cta": "cta.roi"
+    },
+    "badge": "Plan een intake",
+    "formTitle": "Stuur ons een bericht",
+    "formSubtitle": "Deel kort je uitdaging. We reageren binnen \u00e9\u00e9n werkdag.",
+    "channel": {
+      "whatsapp": {
+        "label": "WhatsApp",
+        "description": "Snelste antwoord binnen kantooruren."
+      },
+      "email": {
+        "label": "E-mail",
+        "description": "We reageren binnen \u00e9\u00e9n werkdag."
+      },
+      "phone": {
+        "label": "Telefoon",
+        "description": "Werkdagen 09:00-17:00."
       }
     }
   },
-  "roiCalculator": {
-    "title": "ROI Calculator",
-    "subtitle": "Bereken de impact van automatisering op jouw team",
-    "presets": {
-      "light": "Light Automation",
-      "manufacturing": "Manufacturing",
-      "c2p": "Configure-to-Production"
+  "form": {
+    "name": "Naam",
+    "company": "Bedrijf",
+    "email": "E-mail",
+    "phone": "Telefoon (optioneel)",
+    "useCase": "Use case",
+    "useCases": {
+      "manufacturing": "Tier 2 Sales\u2192BOM",
+      "configurator": "Tier 3 CPQ/C2P",
+      "other": "Overig"
     },
-    "inputs": {
-      "teamSize": "Teamgrootte (personen)",
-      "hourlyRate": "Uurtarief (€)",
-      "hoursSavedPerWeek": "Uren bespaard per week",
-      "adoption": "Adoptie (%)"
-    },
-    "outputs": {
-      "weeklySavings": "Wekelijkse besparing",
-      "monthlySavings": "Maandelijkse besparing",
-      "annualSavings": "Jaarlijkse besparing",
-      "hoursSavedAnnually": "Uren bespaard per jaar"
-    },
-    "cta": {
-      "primary": "Plan een intake",
-      "secondary": "Exporteer als CSV",
-      "email": "E-mail me mijn berekening"
-    },
-    "hints": {
-      "teamSize": "Aantal mensen dat met het proces werkt",
-      "hourlyRate": "Gemiddeld uurtarief van het team",
-      "hoursSavedPerWeek": "Hoeveel uur per week bespaar je per persoon",
-      "adoption": "Welk percentage van het team gebruikt de oplossing"
-    },
-    "methodology": {
-      "title": "Hoe berekenen we ROI?",
-      "description": "Onze calculator gebruikt een conservatieve formule gebaseerd op 100+ projecten.",
-      "formula": "Wekelijkse besparing = Teamgrootte × Uurtarief × Uren bespaard × Adoptie"
-    },
-    "validation": {
-      "teamSize": "Teamgrootte moet tussen 1 en 1000 zijn",
-      "hourlyRate": "Uurtarief moet tussen €10 en €500 zijn",
-      "hoursSavedPerWeek": "Bespaarde uren moet tussen 0,5 en 40 zijn",
-      "adoption": "Adoptie moet tussen 10% en 100% zijn"
-    },
+    "message": "Bericht",
+    "consent": "Ja, ik ga akkoord met het verwerken van mijn gegevens voor deze intake.",
+    "submit": "Versturen",
+    "sendCalculation": "Stuur mij deze berekening",
+    "success": "Je bericht is verzonden.",
+    "submitting": "Versturen...",
+    "consentError": "Geef toestemming voor het verwerken van je gegevens.",
     "error": {
-      "submit": "Er ging iets mis. Probeer het opnieuw."
+      "generic": "Er ging iets mis. Probeer het opnieuw.",
+      "name": "Vul je naam in.",
+      "company": "Vul je bedrijfsnaam in.",
+      "email": "Controleer je e-mailadres.",
+      "message": "Beschrijf kort je vraag.",
+      "useCase": "Kies de use case die het best aansluit."
+    }
+  },
+  "privacy": {
+    "intro": "We verwerken alleen persoonsgegevens die nodig zijn voor intake, projectuitvoering en support.",
+    "sections": [
+      {
+        "title": "Welke gegevens",
+        "items": [
+          "Contactgegevens voor intake en projectcommunicatie",
+          "Projectdata en KPI's in beveiligde EU-omgevingen",
+          "Auditlogs voor naleving van afspraken"
+        ]
+      },
+      {
+        "title": "Verwerking",
+        "items": [
+          "EU-datacenters met ISO 27001 partners",
+          "DPA op verzoek beschikbaar",
+          "Bewaartermijn: maximaal 24 maanden na laatste projectactiviteit"
+        ]
+      },
+      {
+        "title": "Rechten",
+        "items": [
+          "Inzage, wijziging en verwijdering op verzoek",
+          "Data-portabiliteit van projectbestanden",
+          "Contact: privacy@caribbeanazure.com"
+        ]
+      }
+    ]
+  },
+  "cookies": {
+    "intro": "We gebruiken alleen essenti\u00eble cookies en optionele analytics na toestemming.",
+    "categories": [
+      {
+        "title": "Essentieel",
+        "description": "Nodig om de site te laten werken. Deze cookies zijn altijd actief."
+      },
+      {
+        "title": "Analytics (optioneel)",
+        "description": "Plausible, gehost in de EU. Anonieme statistieken zonder PII."
+      }
+    ],
+    "preferences": "Pas je voorkeuren aan in de cookie-instellingen."
+  },
+  "errors": {
+    "notFound": {
+      "title": "Pagina niet gevonden",
+      "description": "De pagina bestaat niet meer of is verplaatst.",
+      "cta": "Terug naar home"
     },
-    "privacy": "We delen uw gegevens niet. Zie ons privacybeleid.",
-    "emailConsent": "Ik wil mijn berekening per e-mail ontvangen"
+    "server": {
+      "title": "Er ging iets mis",
+      "description": "Onze monitoring heeft het incident geregistreerd.",
+      "cta": "Plan een intake"
+    }
+  },
+  "roi": {
+    "section": {
+      "badge": "ROI-calculator",
+      "title": "Rendement en terugverdientijd in minuten",
+      "subtitle": "Vul vier velden in en zie direct je maandelijkse en jaarlijkse besparing.",
+      "disclaimerStrong": "Voorbeeldberekening.",
+      "disclaimer": "Geen garantie. We berekenen op basis van aannames die je zelf beheert."
+    },
+    "form": {
+      "teamSize": "Teamgrootte",
+      "manualHours": "Uren handwerk per week",
+      "hourlyRate": "Gemiddeld uurtarief",
+      "adoption": "Adoptiepercentage",
+      "calculate": "Bereken",
+      "reset": "Reset",
+      "submit": "Verzend berekening"
+    },
+    "result": {
+      "monthly": "Maandbesparing",
+      "annual": "Jaarbesparing",
+      "payback": "Terugverdientijd (maanden)",
+      "roi": "ROI %"
+    },
+    "presets": {
+      "light": "Light preset",
+      "manufacturing": "Maakindustrie preset",
+      "configurators": "Configurators preset"
+    }
   }
 }

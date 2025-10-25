@@ -6,8 +6,12 @@ import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
 
 export function CTASection() {
-  const t = useTranslations('cta')
+  const t = useTranslations('home.cta')
+  const globalT = useTranslations()
   const locale = useLocale()
+
+  const buttonValue = t('button')
+  const buttonLabel = buttonValue.includes('.') ? globalT(buttonValue as any) : buttonValue
 
   return (
     <section className="section-padding-y">
@@ -28,7 +32,7 @@ export function CTASection() {
               <Button asChild size="lg" className="w-full sm:w-auto">
                 <Link href={`/${locale}/contact`}>
                   <Calendar className="mr-2 h-5 w-5" />
-                  {t('button')}
+              {buttonLabel}
                 </Link>
               </Button>
             </div>

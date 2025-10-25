@@ -1,9 +1,14 @@
 import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
 import { Mail, Phone, MessageCircle } from 'lucide-react'
+import type { Locale } from '@/lib/i18n'
 import { siteConfig } from '@/config/site'
 import { buildLocalizedPath, type RouteKey } from '@/lib/slugMap'
-import type { Locale } from '@/lib/i18n'
+
+type FooterLink = {
+  key: RouteKey
+  label: string
+}
 
 export function Footer() {
   const t = useTranslations()
@@ -12,127 +17,105 @@ export function Footer() {
 
   const pathFor = (routeKey: RouteKey) => buildLocalizedPath(routeKey, locale)
 
-  const localizedSlugs = {
-    services: locale === 'nl' ? 'diensten' : 'services',
-    industries: locale === 'nl' ? 'sectoren' : 'industries',
-    integrations: locale === 'nl' ? 'integraties' : 'integrations',
-    security: 'security',
-    insights: 'insights',
-    blueprint: 'blueprint',
-    roi: 'roi',
-  }
-
-  const routeKeyMap: Record<string, RouteKey> = {
-    cases: 'cases',
-    pricing: 'pricing',
-    contact: 'contact',
-    privacy: 'privacy',
-    cookies: 'cookies',
-    about: 'about',
-    solutions: 'solutions',
-    home: 'home',
-  }
-
-  const withLocale = (slug: string) => {
-    if (!slug) {
-      return pathFor('home')
-    }
-    const routeKey = routeKeyMap[slug]
-    if (routeKey) {
-      return pathFor(routeKey)
-    }
-    return locale === 'nl' ? `/${slug}` : `/en/${slug}`
-  }
-
-  const footerLinks = {
-    company: [
-      { href: pathFor('about'), label: t('nav.about') },
-      { href: pathFor('cases'), label: t('nav.cases') },
-      { href: pathFor('contact'), label: t('nav.contact') },
-    ],
-    services: [
-      { href: withLocale(localizedSlugs.services), label: t('nav.services') },
-      { href: withLocale(localizedSlugs.industries), label: t('nav.industries') },
-      { href: withLocale(localizedSlugs.integrations), label: t('nav.integrations') },
-      { href: withLocale(localizedSlugs.security), label: t('nav.security') },
-    ],
-    resources: [
-      { href: withLocale(localizedSlugs.insights), label: t('nav.insights') },
-      { href: withLocale(localizedSlugs.blueprint), label: t('nav.blueprint') },
-      { href: withLocale(localizedSlugs.roi), label: t('nav.roi') },
-    ],
-    legal: [
-      { href: pathFor('privacy'), label: t('footer.privacy') },
-      { href: pathFor('cookies'), label: t('footer.cookies') },
-    ],
-  }
+  const sections: Array<{
+    label: string
+    links: FooterLink[]
+  }> = [
+    {
+      label: t('footer.company'),
+      links: [
+        { key: 'about', label: t('nav.about') },
+        { key: 'cases', label: t('nav.cases') },
+        { key: 'pricing', label: t('nav.pricing') },
+        { key: 'contact', label: t('nav.contact') },
+      ],
+    },
+    {
+      label: t('footer.solutions'),
+      links: [
+        { key: 'solutions', label: t('nav.solutions') },
+        { key: 'solutionsLight', label: t('solutions.light.title') },
+        { key: 'solutionsManufacturing', label: t('solutions.manufacturing.title') },
+        { key: 'solutionsConfigurators', label: t('solutions.configurators.title') },
+      ],
+    },
+    {
+      label: t('footer.legal'),
+      links: [
+        { key: 'privacy', label: t('footer.privacy') },
+        { key: 'cookies', label: t('footer.cookies') },
+      ],
+    },
+  ]
 
   return (
     <footer className="border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] bg-[color:color-mix(in_oklab,var(--bg)_92%,transparent)]/90 backdrop-blur-xl">
       <div className="container-custom py-16">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
-          <FooterColumn label={t('footer.company')} links={footerLinks.company} />
-          <FooterColumn label={t('footer.services')} links={footerLinks.services} />
-          <FooterColumn label={t('footer.resources')} links={footerLinks.resources} />
-          <FooterColumn label={t('footer.legal')} links={footerLinks.legal} />
+          {sections.map((section) => (
+            <FooterColumn
+              key={section.label}
+              label={section.label}
+              links={section.links.map((link) => ({
+                href: pathFor(link.key),
+                label: link.label,
+              }))}
+            />
+          ))}
 
-          {/* Contact Column */}
-          <div className="col-span-2 md:col-span-1 space-y-4">
+          <div className="col-span-2 space-y-4 md:col-span-1">
             <h3 className="text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">
-              Contact
+              {t('footer.contact')}
             </h3>
             <div className="space-y-3 text-sm">
               <a
                 href={`mailto:${siteConfig.contact.email}`}
-                className="flex items-center gap-2 text-[color:var(--fg-subtle)] hover:text-[color:var(--fg)] transition-colors"
+                className="flex items-center gap-2 text-[color:var(--fg-subtle)] transition-colors hover:text-[color:var(--fg)]"
               >
-                <Mail className="h-4 w-4" />
+                <Mail className="h-4 w-4" aria-hidden="true" />
                 {siteConfig.contact.email}
               </a>
               <a
                 href={`tel:${siteConfig.contact.phone}`}
-                className="flex items-center gap-2 text-[color:var(--fg-subtle)] hover:text-[color:var(--fg)] transition-colors"
+                className="flex items-center gap-2 text-[color:var(--fg-subtle)] transition-colors hover:text-[color:var(--fg)]"
               >
-                <Phone className="h-4 w-4" />
+                <Phone className="h-4 w-4" aria-hidden="true" />
                 {siteConfig.contact.phone}
               </a>
               <a
                 href={siteConfig.links.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-[color:var(--fg-subtle)] hover:text-[color:var(--fg)] transition-colors"
+                className="flex items-center gap-2 text-[color:var(--fg-subtle)] transition-colors hover:text-[color:var(--fg)]"
               >
-                <MessageCircle className="h-4 w-4" />
+                <MessageCircle className="h-4 w-4" aria-hidden="true" />
                 WhatsApp
               </a>
             </div>
           </div>
         </div>
 
-        <div className="mt-14 border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] pt-8 space-y-6">
+        <div className="mt-14 space-y-6 border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] pt-8">
           <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex items-center gap-3 text-sm text-[color:var(--fg-subtle)]">
-              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[color:var(--brand)] text-white font-semibold shadow-[0_12px_32px_color-mix(in_oklab,var(--brand)_35%,transparent)]">
+              <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[color:var(--brand)] text-white shadow-[0_12px_32px_color-mix(in_oklab,var(--brand)_35%,transparent)]">
                 CA
               </div>
               <p>
-                (c) {currentYear} Caribbean Azure. {t('footer.rights')}.
+                © {currentYear} Caribbean Azure. {t('footer.rights')}.
               </p>
             </div>
             <p className="text-sm text-[color:var(--fg-muted)]">{t('footer.tagline')}</p>
           </div>
 
-          <div className="text-xs text-[color:var(--fg-muted)] max-w-3xl">
-            {locale === 'nl'
-              ? 'Caribbean Azure werkt onafhankelijk en noemt geen klant- of werkgeversnamen. We communiceren alleen resultaten die we feitelijk kunnen aantonen.'
-              : 'Caribbean Azure operates independently and does not mention client or employer names. We only communicate results we can factually demonstrate.'}
-          </div>
+          <p className="max-w-3xl text-xs text-[color:var(--fg-muted)]">
+            {t('footer.anonymised')}
+          </p>
 
-          {/* KvK and BTW */}
-          <div className="text-xs text-[color:var(--fg-muted)] flex flex-wrap gap-x-4 gap-y-2">
+          <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs text-[color:var(--fg-muted)]">
             <span>KvK: 12345678</span>
             <span>BTW: NL123456789B01</span>
-            <span>© {currentYear} Caribbean Azure</span>
+            <span>Ac {currentYear} Caribbean Azure</span>
           </div>
         </div>
       </div>

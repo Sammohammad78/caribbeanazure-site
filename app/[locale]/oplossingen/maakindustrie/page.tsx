@@ -1,270 +1,146 @@
-import { getTranslations } from 'next-intl/server'
-import { Header } from '@/components/layout/header'
-import { Footer } from '@/components/layout/footer'
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Check, ArrowRight, GitBranch, FileImage, Database, TrendingUp, Sparkles } from 'lucide-react'
-import Link from 'next/link'
-import { BackgroundEngine } from '@/components/backgrounds/BackgroundEngine'
-import { backgroundThemes } from '@/lib/backgroundThemes'
-import { TrustStrip } from '@/components/sections/trust-strip'
-import { RoiCalculator } from '@/components/roi/RoiCalculator'
-import { formatCurrency } from '@/lib/format'
+import { getTranslations } from "next-intl/server"
+import Link from "next/link"
+import { Header } from "@/components/layout/header"
+import { Footer } from "@/components/layout/footer"
+import { TrustStrip } from "@/components/sections/trust-strip"
+import { Button } from "@/components/ui/button"
+import { Check, ArrowRight } from "lucide-react"
+import { BackgroundEngine } from "@/components/backgrounds/BackgroundEngine"
+import { backgroundThemes } from "@/lib/backgroundThemes"
+import { ROICalculator } from "@/components/sections/roi-calculator"
+import { buildLocalizedPath } from "@/lib/slugMap"
+import { getPriceLabel } from "@/lib/pricing"
+import { resolveMaybeKey } from "@/lib/i18n-helpers"
+import type { Locale } from "@/lib/i18n"
 
 export async function generateMetadata({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'solutions.manufacturing' })
-
+  const meta = await getTranslations({ locale: params.locale, namespace: "meta" })
   return {
-    title: `${t('title')} · Caribbean Azure`,
-    description: t('subtitle'),
+    title: meta("solutionsManufacturing.title"),
+    description: meta("solutionsManufacturing.description"),
   }
 }
 
 export default async function ManufacturingPage({ params }: { params: { locale: string } }) {
-  const t = await getTranslations({ locale: params.locale, namespace: 'solutions.manufacturing' })
-  const locale = params.locale as 'nl' | 'en'
-
-  const useCases = [
-    {
-      icon: GitBranch,
-      name: t('useCases.0.name'),
-      description: t('useCases.0.description'),
-      example: t('useCases.0.example'),
-    },
-    {
-      icon: FileImage,
-      name: t('useCases.1.name'),
-      description: t('useCases.1.description'),
-      example: t('useCases.1.example'),
-    },
-    {
-      icon: Database,
-      name: t('useCases.2.name'),
-      description: t('useCases.2.description'),
-      example: t('useCases.2.example'),
-    },
-  ]
-
-  const features = [
-    t('features.0'),
-    t('features.1'),
-    t('features.2'),
-    t('features.3'),
-    t('features.4'),
-    t('features.5'),
-  ]
-
-  const kpis = [
-    t('kpis.items.0'),
-    t('kpis.items.1'),
-    t('kpis.items.2'),
-  ]
+  const locale = params.locale as Locale
+  const manufacturing = await getTranslations({ locale, namespace: "solutions.manufacturing" })
+  const modules = (manufacturing.raw("modules") as string[]) ?? []
+  const deliverables = (manufacturing.raw("deliverables") as string[]) ?? []
+  const ctaLabel = await resolveMaybeKey(locale, manufacturing("cta"))
 
   return (
-    <>
-      <div className="relative">
-        {/* 3D Background */}
-        <div className="fixed inset-0 -z-10">
-          <BackgroundEngine theme={backgroundThemes.services} />
-        </div>
+    <div className="relative">
+      <div className="fixed inset-0 -z-10">
+        <BackgroundEngine theme={backgroundThemes.services} />
+      </div>
 
-        <Header />
+      <Header />
 
-        <main id="main-content">
-          {/* Hero Section */}
-          <section className="section-padding-y hero-glow">
-            <div className="container-custom">
-              <div className="mx-auto max-w-3xl text-center">
-                <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-500/10 to-cyan-500/10 px-4 py-2 text-sm font-medium text-[color:var(--brand)]">
-                  <Sparkles className="h-4 w-4" />
-                  {locale === 'nl' ? 'Tier 2 · Aanbevolen voor maakbedrijven' : 'Tier 2 · Recommended for manufacturing'}
-                </div>
-                <h1 className="text-balance text-fluid-h1 font-bold">
-                  {t('title')}
-                </h1>
-                <p className="mx-auto mt-6 max-w-2xl text-fluid-body text-[color:var(--fg-subtle)]">
-                  {t('subtitle')}
-                </p>
-
-                {/* Pricing */}
-                <div className="mt-8 inline-flex flex-col items-center gap-4 rounded-2xl border-2 border-[color:color-mix(in_oklab,var(--accent)_35%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_70%,transparent)] p-6 shadow-[0_28px_90px_rgb(45_43_99/20%)]">
-                  <div className="text-4xl font-bold text-[color:var(--brand)]">
-                    {locale === 'nl' ? 'vanaf ' : 'from '}
-                    {formatCurrency(1999, locale)}
-                  </div>
-                  <p className="text-sm text-[color:var(--fg-muted)]">
-                    {locale === 'nl' ? 'excl. btw · vanaf-prijs, exacte scope bepaald in intake' : 'excl. VAT · from-price, exact scope determined in intake'}
-                  </p>
-                  <div className="flex gap-3">
-                    <Button asChild size="lg">
-                      <Link href={`/${locale}/contact`}>
-                        {t('cta')}
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Link>
-                    </Button>
-                    <Button asChild size="lg" variant="outline">
-                      <Link href={`/${locale}/tarieven`}>
-                        {locale === 'nl' ? 'Bekijk alle tarieven' : 'View all pricing'}
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Trust Strip */}
-          <TrustStrip variant="compact" className="pb-12" />
-
-          {/* Description */}
-          <section className="section-padding-y">
-            <div className="container-custom">
-              <div className="mx-auto max-w-3xl text-center">
-                <p className="text-lg leading-relaxed text-[color:var(--fg-subtle)]">
-                  {t('description')}
-                </p>
-              </div>
-            </div>
-          </section>
-
-          {/* KPIs */}
-          <section className="section-padding-y bg-gradient-to-br from-[color:var(--brand-600)] to-[color:var(--brand-400)] text-white">
-            <div className="container-custom">
-              <div className="text-center">
-                <h2 className="text-3xl font-bold md:text-4xl">{t('kpis.title')}</h2>
-                <div className="mt-12 grid gap-8 md:grid-cols-3">
-                  {kpis.map((kpi, idx) => (
-                    <div key={idx} className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
-                      <div className="text-4xl font-bold">{kpi.split(' ')[0]}</div>
-                      <div className="mt-2 text-lg opacity-90">{kpi.substring(kpi.indexOf(' ') + 1)}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Use Cases */}
-          <section className="section-padding-y">
-            <div className="container-custom">
-              <div className="mb-12 text-center">
-                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                  {locale === 'nl' ? 'Wat we bouwen voor je' : 'What we build for you'}
-                </h2>
-                <p className="mt-4 text-lg text-[color:var(--fg-subtle)]">
-                  {locale === 'nl'
-                    ? 'Productie-klare oplossingen die sales direct koppelen aan manufacturing'
-                    : 'Production-ready solutions that directly connect sales to manufacturing'}
-                </p>
-              </div>
-
-              <div className="grid gap-8 lg:grid-cols-3">
-                {useCases.map((useCase, idx) => {
-                  const Icon = useCase.icon
-                  return (
-                    <Card key={idx} className="rounded-2xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] p-6">
-                      <CardHeader className="p-0">
-                        <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 text-white">
-                          <Icon className="h-6 w-6" />
-                        </div>
-                        <CardTitle className="text-xl">{useCase.name}</CardTitle>
-                        <CardDescription className="mt-2 text-base leading-relaxed">
-                          {useCase.description}
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="mt-4 p-0">
-                        <div className="rounded-lg bg-[color:color-mix(in_oklab,var(--fg)_5%,transparent)] p-4">
-                          <p className="text-sm font-medium text-[color:var(--fg-muted)]">
-                            {locale === 'nl' ? 'Voorbeeld:' : 'Example:'}
-                          </p>
-                          <p className="mt-1 text-sm text-[color:var(--fg-subtle)]">
-                            {useCase.example}
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  )
-                })}
-              </div>
-            </div>
-          </section>
-
-          {/* Features */}
-          <section className="section-padding-y bg-[color:color-mix(in_oklab,var(--panel)_30%,transparent)]">
-            <div className="container-custom">
-              <div className="mx-auto max-w-3xl">
-                <Card className="rounded-2xl border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] p-8">
-                  <CardHeader className="p-0">
-                    <CardTitle className="text-2xl">
-                      {locale === 'nl' ? 'Functionaliteit & mogelijkheden' : 'Features & capabilities'}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="mt-6 grid gap-4 p-0 sm:grid-cols-2">
-                    {features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <span className="mt-0.5 inline-flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[color:color-mix(in_oklab,var(--brand-soft)_68%,transparent)] text-[color:var(--brand)]">
-                          <Check className="h-3 w-3" />
-                        </span>
-                        <span className="text-sm text-[color:var(--fg-subtle)]">{feature}</span>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
-          </section>
-
-          {/* ROI Calculator */}
-          <section className="section-padding-y">
-            <div className="container-custom">
-              <div className="mx-auto max-w-4xl text-center mb-12">
-                <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-                  {locale === 'nl' ? 'Bereken jouw ROI' : 'Calculate your ROI'}
-                </h2>
-                <p className="mt-4 text-lg text-[color:var(--fg-subtle)]">
-                  {locale === 'nl'
-                    ? 'Typisch bespaart Manufacturing Automation 60% engineering tijd'
-                    : 'Typically Manufacturing Automation saves 60% engineering time'}
-                </p>
-              </div>
-              <div className="mx-auto max-w-4xl">
-                <RoiCalculator
-                  variant="card"
-                  preset="manufacturing"
-                  showExport
-                  showMethodNote
-                />
-              </div>
-            </div>
-          </section>
-
-          {/* Upgrade CTA */}
-          <section className="section-padding-y bg-[color:color-mix(in_oklab,var(--panel)_30%,transparent)]">
-            <div className="container-custom">
-              <div className="rounded-3xl border border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-gradient-to-br from-[color:var(--panel)] to-[color:color-mix(in_oklab,var(--brand)_5%,transparent)] p-12 text-center">
-                <h2 className="text-2xl font-bold md:text-3xl">
-                  {locale === 'nl' ? 'Volledige product configuratie nodig?' : 'Need full product configuration?'}
-                </h2>
-                <p className="mx-auto mt-4 max-w-2xl text-lg text-[color:var(--fg-subtle)]">
-                  {locale === 'nl'
-                    ? 'Bekijk onze CPQ & Configure-to-Production oplossingen voor complexe producten met duizenden varianten.'
-                    : 'Check out our CPQ & Configure-to-Production solutions for complex products with thousands of variants.'}
-                </p>
-                <div className="mt-8">
+      <main id="main-content">
+        <section className="section-padding-y">
+          <div className="container-custom">
+            <div className="mx-auto max-w-3xl space-y-6 text-center">
+              <span className="inline-flex items-center justify-center rounded-full bg-[color:color-mix(in_oklab,var(--brand)_18%,transparent)] px-4 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-[color:var(--brand)]">
+                Tier 2
+              </span>
+              <h1 className="text-balance text-4xl font-bold tracking-tight md:text-5xl">
+                {manufacturing("title")}
+              </h1>
+              <p className="text-lg text-[color:var(--fg-subtle)]">
+                {manufacturing("subtitle")}
+              </p>
+              <div className="inline-flex flex-col items-center gap-2 rounded-2xl border border-[color:color-mix(in_oklab,var(--brand)_30%,transparent)] bg-white/10 px-8 py-6 text-[color:var(--brand)] shadow-[0_18px_50px_rgba(15,23,42,0.16)] backdrop-blur-xl">
+                <span className="text-3xl font-semibold">{getPriceLabel("tier2", locale)}</span>
+                <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <Button asChild size="lg">
-                    <Link href={`/${locale}/oplossingen/configurators`}>
-                      {locale === 'nl' ? 'Configurator oplossingen' : 'Configurator solutions'}
+                    <Link href={buildLocalizedPath("contact", locale)}>
+                      {ctaLabel}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                  <Button asChild size="lg" variant="outline">
+                    <Link href={buildLocalizedPath("pricing", locale)}>
+                      {manufacturing("seePricing", { fallback: "Bekijk tarieven" })}
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
               </div>
             </div>
-          </section>
-        </main>
+          </div>
+        </section>
 
-        <Footer />
-      </div>
-    </>
+        <TrustStrip variant="compact" className="pb-12" />
+
+        <section className="section-padding-y">
+          <div className="container-custom grid gap-10 lg:grid-cols-2">
+            <div className="space-y-6">
+              <h2 className="text-2xl font-semibold text-[color:var(--fg)]">{manufacturing("modulesTitle", { fallback: "Modules" })}</h2>
+              <ul className="space-y-3 text-sm text-[color:var(--fg-subtle)]">
+                {modules.map((module) => (
+                  <li key={module} className="flex items-center gap-3">
+                    <span className="inline-flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[color:color-mix(in_oklab,var(--brand)_20%,transparent)] text-[color:var(--brand)]">
+                      <Check className="h-3.5 w-3.5" />
+                    </span>
+                    <span>{module}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="space-y-4 rounded-3xl border border-white/10 bg-white/10 p-8 shadow-[0_18px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
+              <h3 className="text-lg font-semibold text-[color:var(--fg)]">
+                {manufacturing("deliverablesTitle", { fallback: "Deliverables" })}
+              </h3>
+              <ul className="space-y-3 text-sm text-[color:var(--fg-subtle)]">
+                {deliverables.map((item) => (
+                  <li key={item} className="flex items-start gap-3">
+                    <span className="mt-1 h-2 w-2 rounded-full bg-[color:var(--accent)]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section className="section-padding-y bg-[color:color-mix(in_oklab,var(--panel)_30%,transparent)]">
+          <div className="container-custom">
+            <div className="mx-auto max-w-4xl text-center">
+              <h2 className="text-3xl font-bold text-[color:var(--fg)] md:text-4xl">{manufacturing("roiTitle", { fallback: "Bereken jouw ROI" })}</h2>
+              <p className="mt-4 text-base text-[color:var(--fg-subtle)]">{manufacturing("roiSubtitle", { fallback: "Zie het effect op sales tot productie." })}</p>
+            </div>
+            <div className="mx-auto mt-10 max-w-4xl">
+              <ROICalculator preset="manufacturing" variant="card" />
+            </div>
+          </div>
+        </section>
+
+        <section className="section-padding-y">
+          <div className="container-custom text-center">
+            <div className="mx-auto max-w-3xl space-y-6">
+              <h2 className="text-3xl font-semibold text-[color:var(--fg)] md:text-4xl">{manufacturing("ctaTitle", { fallback: manufacturing("title") })}</h2>
+              <p className="text-base text-[color:var(--fg-subtle)]">{manufacturing("ctaSubtitle", { fallback: manufacturing("subtitle") })}</p>
+              <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+                <Button asChild size="lg">
+                  <Link href={buildLocalizedPath("contact", locale)}>
+                    {ctaLabel}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href={buildLocalizedPath("solutionsConfigurators", locale)}>
+                    {manufacturing("seeConfigurators", { fallback: "Bekijk configurators" })}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
   )
 }
+

@@ -83,7 +83,7 @@ export function Header() {
 
             <Button asChild size="sm" className="hidden md:inline-flex">
               <Link href={intakeHref}>
-                {t('cta.button')}
+                {t('cta.intake')}
               </Link>
             </Button>
 

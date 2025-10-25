@@ -1,179 +1,238 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { z } from 'zod'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import { Card } from '@/components/ui/card'
-import { Loader2, CheckCircle2, AlertCircle } from 'lucide-react'
+import { useState } from "react";
+import Link from "next/link";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useLocale, useTranslations } from "next-intl";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Card } from "@/components/ui/card";
+import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
+import { buildLocalizedPath } from "@/lib/slugMap";
+import type { Locale } from "@/lib/i18n";
 
 const contactSchema = z.object({
-  name: z.string().min(2, 'Naam moet minimaal 2 karakters zijn'),
-  email: z.string().email('Ongeldig emailadres'),
+  name: z.string().min(2),
+  company: z.string().min(2),
+  email: z.string().email(),
   phone: z.string().optional(),
-  useCase: z.string().optional(),
-  message: z.string().min(10, 'Bericht moet minimaal 10 karakters zijn'),
-})
+  useCase: z.enum(["manufacturing", "configurator", "other"]),
+  message: z.string().min(10),
+  consent: z.literal(true),
+});
 
-type ContactFormData = z.infer<typeof contactSchema>
+type ContactFormData = z.infer<typeof contactSchema>;
 
 export function ContactForm() {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const t = useTranslations("form");
+  const success = useTranslations("contact.success");
+  const locale = useLocale() as Locale;
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<ContactFormData>({
+  const defaultValues: ContactFormData = {
+    name: "",
+    company: "",
+    email: "",
+    phone: "",
+    useCase: "other",
+    message: "",
+    consent: false,
+  };
+
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-  })
+    defaultValues,
+  });
 
   const onSubmit = async (data: ContactFormData) => {
-    setStatus('loading')
+    setStatus("loading");
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
-      })
+      });
 
-      if (!response.ok) throw new Error('Failed to send message')
+      if (!response.ok) {
+        throw new Error("Request failed");
+      }
 
-      setStatus('success')
-      reset()
-
-      // Reset success message after 5 seconds
-      setTimeout(() => setStatus('idle'), 5000)
-    } catch {
-      setStatus('error')
-      setTimeout(() => setStatus('idle'), 5000)
+      setStatus("success");
+      reset(defaultValues);
+      setTimeout(() => setStatus("idle"), 8000);
+    } catch (error) {
+      console.error(error);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
     }
-  }
+  };
+
+  const roiHref = buildLocalizedPath("roi", locale);
+  const useCaseOptions = [
+    { value: "manufacturing" as const, label: t("useCases.manufacturing") },
+    { value: "configurator" as const, label: t("useCases.configurator") },
+    { value: "other" as const, label: t("useCases.other") },
+  ];
 
   return (
-    <Card className="p-6">
+    <Card className="space-y-6 p-6">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        {/* Name */}
-        <div className="space-y-2">
-          <label htmlFor="name" className="text-sm font-medium">
-            Naam *
-          </label>
-          <Input
+        <div className="grid gap-4 md:grid-cols-2">
+          <FormField
             id="name"
-            {...register('name')}
-            placeholder="Uw naam"
-            disabled={status === 'loading'}
-          />
-          {errors.name && (
-            <p className="text-sm text-destructive">{errors.name.message}</p>
-          )}
+            label={t("name")}
+            required
+            error={errors.name ? t("error.name") : undefined}
+          >
+            <Input id="name" {...register("name")} disabled={status === "loading"} />
+          </FormField>
+
+          <FormField
+            id="company"
+            label={t("company")}
+            required
+            error={errors.company ? t("error.company") : undefined}
+          >
+            <Input id="company" {...register("company")} disabled={status === "loading"} />
+          </FormField>
         </div>
 
-        {/* Email */}
-        <div className="space-y-2">
-          <label htmlFor="email" className="text-sm font-medium">
-            Email *
-          </label>
-          <Input
+        <div className="grid gap-4 md:grid-cols-2">
+          <FormField
             id="email"
-            type="email"
-            {...register('email')}
-            placeholder="uw.email@voorbeeld.nl"
-            disabled={status === 'loading'}
-          />
-          {errors.email && (
-            <p className="text-sm text-destructive">{errors.email.message}</p>
-          )}
+            label={t("email")}
+            required
+            error={errors.email ? t("error.email") : undefined}
+          >
+            <Input
+              id="email"
+              type="email"
+              autoComplete="email"
+              {...register("email")}
+              disabled={status === "loading"}
+            />
+          </FormField>
+
+          <FormField id="phone" label={t("phone")}> 
+            <Input
+              id="phone"
+              type="tel"
+              autoComplete="tel"
+              {...register("phone")}
+              disabled={status === "loading"}
+            />
+          </FormField>
         </div>
 
-        {/* Phone */}
-        <div className="space-y-2">
-          <label htmlFor="phone" className="text-sm font-medium">
-            Telefoon (optioneel)
-          </label>
-          <Input
-            id="phone"
-            type="tel"
-            {...register('phone')}
-            placeholder="+31 6 1234 5678"
-            disabled={status === 'loading'}
-          />
-        </div>
-
-        {/* Use Case */}
-        <div className="space-y-2">
-          <label htmlFor="useCase" className="text-sm font-medium">
-            Interesse in (optioneel)
-          </label>
+        <FormField
+          id="useCase"
+          label={t("useCase")}
+          required
+          error={errors.useCase ? t("error.useCase") : undefined}
+        >
           <select
             id="useCase"
-            {...register('useCase')}
-            disabled={status === 'loading'}
-            className="flex h-11 w-full rounded-xl border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            {...register("useCase")}
+            disabled={status === "loading"}
+            className="flex h-11 w-full rounded-xl border border-[color:color-mix(in_oklab,var(--fg)_12%,transparent)] bg-white/5 px-3 text-sm text-[color:var(--fg)] shadow-sm backdrop-blur focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
           >
-            <option value="">Maak een keuze...</option>
-            <option value="light">Tier 1: Light Automations (vanaf €999)</option>
-            <option value="manufacturing">Tier 2: Maakindustrie / Sales→BOM (vanaf €1.999)</option>
-            <option value="configurators">Tier 3: CPQ & Configure-to-Produce (maatwerk)</option>
-            <option value="other">Overig / Algemene vraag</option>
+            {useCaseOptions.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
           </select>
-        </div>
+        </FormField>
 
-        {/* Message */}
-        <div className="space-y-2">
-          <label htmlFor="message" className="text-sm font-medium">
-            Bericht *
-          </label>
+        <FormField
+          id="message"
+          label={t("message")}
+          required
+          error={errors.message ? t("error.message") : undefined}
+        >
           <Textarea
             id="message"
-            {...register('message')}
-            placeholder="Vertel ons waar we u mee kunnen helpen..."
             rows={6}
-            disabled={status === 'loading'}
+            {...register("message")}
+            disabled={status === "loading"}
           />
-          {errors.message && (
-            <p className="text-sm text-destructive">{errors.message.message}</p>
+        </FormField>
+
+        <div className="space-y-3">
+          <label className="flex items-start gap-3">
+            <input
+              type="checkbox"
+              className="mt-1 h-4 w-4 flex-shrink-0 rounded border border-[color:color-mix(in_oklab,var(--fg)_35%,transparent)] bg-white text-[color:var(--accent)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]"
+              {...register("consent")}
+              disabled={status === "loading"}
+            />
+            <span className="text-sm text-[color:var(--fg-subtle)]">{t("consent")}</span>
+          </label>
+          {errors.consent && (
+            <p className="text-sm text-destructive">{t("consentError")}</p>
           )}
         </div>
 
-        {/* Status messages */}
-        {status === 'success' && (
-          <div className="flex items-center space-x-2 rounded-lg bg-accent/10 p-4 text-accent">
-            <CheckCircle2 className="h-5 w-5" />
-            <p className="text-sm font-medium">
-              Bedankt! We nemen spoedig contact op.
-            </p>
+        {status === "success" && (
+          <div className="space-y-3 rounded-2xl border border-[color:color-mix(in_oklab,var(--accent)_35%,transparent)] bg-[color:color-mix(in_oklab,var(--accent)_12%,transparent)] p-4 text-[color:var(--accent)]">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="h-5 w-5" />
+              <p className="text-sm font-semibold">{success("title")}</p>
+            </div>
+            <p className="text-sm text-[color:var(--fg)]/70">{success("body")}</p>
+            <Link
+              href={roiHref}
+              className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.24em] text-[color:var(--accent)] hover:underline"
+            >
+              {success("cta")}
+            </Link>
           </div>
         )}
 
-        {status === 'error' && (
-          <div className="flex items-center space-x-2 rounded-lg bg-destructive/10 p-4 text-destructive">
+        {status === "error" && (
+          <div className="flex items-center gap-2 rounded-2xl border border-red-200 bg-red-50/80 p-4 text-red-600">
             <AlertCircle className="h-5 w-5" />
-            <p className="text-sm font-medium">
-              Er ging iets mis. Probeer het opnieuw.
-            </p>
+            <p className="text-sm font-semibold">{t("error.generic")}</p>
           </div>
         )}
 
-        {/* Submit button */}
-        <Button type="submit" className="w-full" disabled={status === 'loading'}>
-          {status === 'loading' ? (
+        <Button type="submit" className="w-full" disabled={status === "loading"}>
+          {status === "loading" ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Verzenden...
+              {t("submitting")}
             </>
           ) : (
-            'Verstuur'
+            t("submit")
           )}
         </Button>
       </form>
     </Card>
-  )
+  );
 }
+
+interface FormFieldProps {
+  id: string;
+  label: string;
+  required?: boolean;
+  error?: string;
+  children: React.ReactNode;
+}
+
+function FormField({ id, label, required, error, children }: FormFieldProps) {
+  return (
+    <div className="space-y-2">
+      <label htmlFor={id} className="text-sm font-medium text-[color:var(--fg)]">
+        {label}
+        {required ? " *" : ""}
+      </label>
+      {children}
+      {error && <p className="text-sm text-destructive">{error}</p>}
+    </div>
+  );
+}
+

@@ -5,9 +5,14 @@ import { useTranslations } from 'next-intl'
 import { ChevronDown } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+interface FAQItem {
+  question: string
+  answer: string
+}
+
 export function FAQSection() {
-  const t = useTranslations('faq')
-  const questions = t.raw('questions') as Array<{ q: string; a: string }>
+  const t = useTranslations('home.faq')
+  const questions = t.raw('items') as FAQItem[]
 
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
@@ -36,7 +41,7 @@ export function FAQSection() {
                   onClick={() => setOpenIndex(isOpen ? null : index)}
                   className="flex w-full items-center justify-between gap-6 px-6 py-5 text-left transition-colors duration-200 hover:bg-[color:color-mix(in_oklab,var(--brand-soft)_22%,transparent)]"
                 >
-                  <span className="pr-8 text-base font-semibold text-body">{item.q}</span>
+                  <span className="pr-8 text-base font-semibold text-body">{item.question}</span>
                   <ChevronDown
                     className={cn(
                       'h-5 w-5 flex-shrink-0 text-[color:var(--fg-muted)] transition-transform duration-300',
@@ -52,7 +57,7 @@ export function FAQSection() {
                   )}
                 >
                   <div className="px-6 pb-6 text-sm leading-relaxed text-[color:var(--fg-subtle)]">
-                    {item.a}
+                    {item.answer}
                   </div>
                 </div>
               </div>

@@ -11,21 +11,13 @@ interface TrustStripProps {
 
 export function TrustStrip({ className, variant = 'default' }: TrustStripProps) {
   const t = useTranslations('trust')
+  const labels = (t.raw('items') as string[]) ?? []
+  const icons = [Server, Shield, Wrench]
 
-  const items = [
-    {
-      icon: Server,
-      label: t('items.0'), // EU-hosting
-    },
-    {
-      icon: Shield,
-      label: t('items.1'), // DPA beschikbaar
-    },
-    {
-      icon: Wrench,
-      label: t('items.2'), // n8n self-host optie
-    },
-  ]
+  const items = labels.map((label, index) => ({
+    icon: icons[index % icons.length],
+    label,
+  }))
 
   if (variant === 'compact') {
     return (
@@ -50,9 +42,6 @@ export function TrustStrip({ className, variant = 'default' }: TrustStripProps) 
     <section className={cn('border-y border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] bg-[color:color-mix(in_oklab,var(--panel)_50%,transparent)] py-8', className)}>
       <div className="container-custom">
         <div className="flex flex-col items-center gap-6">
-          <h2 className="text-sm font-medium uppercase tracking-wider text-[color:var(--fg-muted)]">
-            {t('title')}
-          </h2>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
             {items.map((item, index) => {
               const Icon = item.icon
