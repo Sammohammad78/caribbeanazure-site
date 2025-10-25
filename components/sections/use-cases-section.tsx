@@ -131,7 +131,7 @@ export function UseCasesSection() {
           transition={{ duration: 0.5, delay: 0.3 }}
         >
           <Button asChild size="lg">
-            <Link href={//contact}>
+            <Link href={`/${locale}/contact`}>
               {t('cta')}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
