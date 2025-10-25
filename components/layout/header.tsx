@@ -83,7 +83,7 @@ export function Header() {
 
             <Button asChild size="sm" className="hidden md:inline-flex">
               <Link href={intakeHref}>
-                {locale === 'nl' ? 'Plan een intake' : 'Book an intake'}
+                {t('cta.button')}
               </Link>
             </Button>
 

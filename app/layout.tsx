@@ -1,8 +1,8 @@
-import type { Metadata } from "next"
+import type { Metadata } from 'next'
 import Script from 'next/script'
-import "./globals.css"
-import { ThemeProvider } from "@/components/providers/theme-provider"
-import { SkipToContent } from "@/components/layout/skip-to-content"
+import './globals.css'
+import { ThemeProvider } from '@/components/providers/theme-provider'
+import { SkipToContent } from '@/components/layout/skip-to-content'
 import { headers } from 'next/headers'
 import { defaultLocale, type Locale } from '@/lib/i18n'
 
@@ -36,12 +36,12 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
   }>) {
-  const requestHeaders = headers()
+  const requestHeaders = await headers()
   const requestLocale = requestHeaders.get('x-next-intl-locale') as Locale | null
   const locale = requestLocale ?? defaultLocale
 

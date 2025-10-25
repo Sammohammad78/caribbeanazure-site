@@ -2,11 +2,15 @@ import Link from 'next/link'
 import { useTranslations, useLocale } from 'next-intl'
 import { Mail, Phone, MessageCircle } from 'lucide-react'
 import { siteConfig } from '@/config/site'
+import { buildLocalizedPath, type RouteKey } from '@/lib/slugMap'
+import type { Locale } from '@/lib/i18n'
 
 export function Footer() {
   const t = useTranslations()
-  const locale = useLocale()
+  const locale = useLocale() as Locale
   const currentYear = new Date().getFullYear()
+
+  const pathFor = (routeKey: RouteKey) => buildLocalizedPath(routeKey, locale)
 
   const localizedSlugs = {
     services: locale === 'nl' ? 'diensten' : 'services',
@@ -16,25 +20,35 @@ export function Footer() {
     insights: 'insights',
     blueprint: 'blueprint',
     roi: 'roi',
+  }
+
+  const routeKeyMap: Record<string, RouteKey> = {
     cases: 'cases',
-    pricing: locale === 'nl' ? 'tarieven' : 'pricing',
-    about: locale === 'nl' ? 'over-ons' : 'about',
+    pricing: 'pricing',
     contact: 'contact',
-    terms: locale === 'nl' ? 'voorwaarden' : 'terms',
+    privacy: 'privacy',
+    cookies: 'cookies',
+    about: 'about',
+    solutions: 'solutions',
+    home: 'home',
   }
 
   const withLocale = (slug: string) => {
     if (!slug) {
-      return locale === 'nl' ? '/' : '/en'
+      return pathFor('home')
+    }
+    const routeKey = routeKeyMap[slug]
+    if (routeKey) {
+      return pathFor(routeKey)
     }
     return locale === 'nl' ? `/${slug}` : `/en/${slug}`
   }
 
   const footerLinks = {
     company: [
-      { href: withLocale(localizedSlugs.about), label: t('nav.about') },
-      { href: withLocale(localizedSlugs.cases), label: t('nav.cases') },
-      { href: withLocale(localizedSlugs.contact), label: t('nav.contact') },
+      { href: pathFor('about'), label: t('nav.about') },
+      { href: pathFor('cases'), label: t('nav.cases') },
+      { href: pathFor('contact'), label: t('nav.contact') },
     ],
     services: [
       { href: withLocale(localizedSlugs.services), label: t('nav.services') },
@@ -48,8 +62,8 @@ export function Footer() {
       { href: withLocale(localizedSlugs.roi), label: t('nav.roi') },
     ],
     legal: [
-      { href: withLocale('privacy'), label: t('footer.privacy') },
-      { href: withLocale(localizedSlugs.terms), label: t('footer.terms') },
+      { href: pathFor('privacy'), label: t('footer.privacy') },
+      { href: pathFor('cookies'), label: t('footer.cookies') },
     ],
   }
 
