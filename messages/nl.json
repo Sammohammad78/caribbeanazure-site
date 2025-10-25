@@ -549,5 +549,38 @@
       "manufacturing": "Maakindustrie preset",
       "configurators": "Configurators preset"
     }
+  },
+  "about": {
+    "title": "Over Caribbean Azure",
+    "subtitle": "Klein team. Senior makers. Geen ruis. Wij bouwen automatisaties die blijven draaien.",
+    "pillars": [
+      {
+        "title": "Senior expertise",
+        "body": "Elke intake, blueprint en oplevering gebeurt door consultants met 10+ jaar ervaring in automatisering."
+      },
+      {
+        "title": "Meetbaar resultaat",
+        "body": "We koppelen elke oplevering aan een KPI. Geen deck, wel dashboards."
+      },
+      {
+        "title": "Transparante overdracht",
+        "body": "Alles is gedocumenteerd en overdraagbaar. Jouw team kan het beheren."
+      }
+    ],
+    "timeline": [
+      {
+        "label": "Week 0",
+        "detail": "Intake en proces-scan. We prikken de eerste scope."
+      },
+      {
+        "label": "Week 2",
+        "detail": "Prototype live met KPI-benchmark."
+      },
+      {
+        "label": "Week 6",
+        "detail": "Volledige implementatie, training en overdracht."
+      }
+    ],
+    "cta": "cta.intake"
   }
 }

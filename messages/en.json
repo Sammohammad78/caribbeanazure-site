@@ -549,5 +549,38 @@
       "manufacturing": "Manufacturing preset",
       "configurators": "Configurators preset"
     }
+  },
+  "about": {
+    "title": "About Caribbean Azure",
+    "subtitle": "Compact team. Senior makers. No fluff. We ship automations that keep running.",
+    "pillars": [
+      {
+        "title": "Senior expertise",
+        "body": "Every intake, blueprint and delivery is handled by consultants with 10+ years in automation."
+      },
+      {
+        "title": "Measured outcomes",
+        "body": "Each delivery ties to a KPI. No slide deck, just dashboards."
+      },
+      {
+        "title": "Clear handover",
+        "body": "Documentation and playbooks are included. Your team stays in control."
+      }
+    ],
+    "timeline": [
+      {
+        "label": "Week 0",
+        "detail": "Intake and process scan. Scope locked."
+      },
+      {
+        "label": "Week 2",
+        "detail": "Prototype live with KPI baseline."
+      },
+      {
+        "label": "Week 6",
+        "detail": "Full rollout, training and handover."
+      }
+    ],
+    "cta": "cta.intake"
   }
 }
