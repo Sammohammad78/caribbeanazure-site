@@ -4,6 +4,7 @@ import { Mail, Phone, MessageCircle } from 'lucide-react'
 import type { Locale } from '@/lib/i18n'
 import { siteConfig } from '@/config/site'
 import { buildLocalizedPath, type RouteKey } from '@/lib/slugMap'
+import { TextBox } from '@/components/ui/TextBox'
 
 type FooterLink = {
   key: RouteKey
@@ -49,7 +50,7 @@ export function Footer() {
   ]
 
   return (
-    <footer className="border-t border-[color:color-mix(in_oklab,var(--fg)_10%,transparent)] bg-[color:color-mix(in_oklab,var(--bg)_92%,transparent)]/90 backdrop-blur-xl">
+    <footer className="glass-footer">
       <div className="container-custom py-16">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
           {sections.map((section) => (

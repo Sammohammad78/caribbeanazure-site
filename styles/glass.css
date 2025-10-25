@@ -11,47 +11,47 @@
      GLASS BASE COLORS (from brand-tokens)
      ======================================== */
 
-  /* Light mode glass - very subtle, clean white base */
+  /* Light mode glass - VERY transparent like reference image */
   --glass-bg-rgb: 255, 255, 255;
-  --glass-alpha: 0.12;                    /* Increased from 0.08-0.10 for better visibility */
-  --glass-alpha-hover: 0.18;              /* Slightly more opaque on hover */
-  --glass-alpha-active: 0.22;             /* Even more opaque when active */
+  --glass-alpha: 0.08;                    /* Much more transparent - you should see through it! */
+  --glass-alpha-hover: 0.12;              /* Slightly more opaque on hover */
+  --glass-alpha-active: 0.16;             /* More opaque when active */
 
   /* ========================================
      GLASS VISUAL EFFECTS
      ======================================== */
 
   /* Backdrop filters */
-  --glass-blur: 24px;                     /* Apple-like blur (20-28px range) */
-  --glass-sat: 140%;                      /* Saturation boost for vibrancy */
+  --glass-blur: 20px;                     /* Lighter blur for more clarity */
+  --glass-sat: 130%;                      /* Subtle saturation boost */
 
   /* Border and outline */
   --glass-border-width: 1px;
-  --glass-border-color: rgba(255, 255, 255, 0.28);
-  --glass-border-hover: rgba(99, 179, 237, 0.5);  /* Brand blue on hover */
+  --glass-border-color: rgba(255, 255, 255, 0.5);  /* More visible white border */
+  --glass-border-hover: rgba(99, 179, 237, 0.6);   /* Brand blue on hover */
 
-  /* Shadows - layered for depth */
+  /* Shadows - lighter and more subtle */
   --glass-shadow:
-    0 10px 28px rgba(15, 23, 42, 0.15),
-    0 2px 8px rgba(15, 23, 42, 0.08);
+    0 8px 24px rgba(15, 23, 42, 0.10),
+    0 2px 6px rgba(15, 23, 42, 0.06);
 
   --glass-shadow-hover:
-    0 20px 48px rgba(15, 23, 42, 0.22),
-    0 4px 12px rgba(15, 23, 42, 0.12);
+    0 16px 40px rgba(15, 23, 42, 0.14),
+    0 4px 10px rgba(15, 23, 42, 0.08);
 
   --glass-shadow-sm:
-    0 4px 12px rgba(15, 23, 42, 0.10),
-    0 1px 4px rgba(15, 23, 42, 0.06);
+    0 4px 10px rgba(15, 23, 42, 0.08),
+    0 1px 3px rgba(15, 23, 42, 0.04);
 
   /* Inner highlight (subtle top shine) */
-  --glass-inner-shine: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  --glass-inner-shine: inset 0 1px 0 rgba(255, 255, 255, 0.25);
 
   /* Gradient overlay for depth */
   --glass-gradient: linear-gradient(
     160deg,
-    rgba(255, 255, 255, 0.3) 0%,
-    rgba(255, 255, 255, 0.1) 35%,
-    rgba(255, 255, 255, 0.05) 100%
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.06) 35%,
+    rgba(255, 255, 255, 0.02) 100%
   );
 
   /* ========================================
@@ -348,13 +348,13 @@
   position: sticky;
   top: 0;
   z-index: var(--z-header, 50);
-  background: rgba(var(--glass-bg-rgb), 0.08);  /* Very transparent header */
-  backdrop-filter: saturate(var(--glass-sat)) blur(28px);
-  -webkit-backdrop-filter: saturate(var(--glass-sat)) blur(28px);
+  background: rgba(var(--glass-bg-rgb), 0.05);  /* SUPER transparent header - barely visible */
+  backdrop-filter: saturate(var(--glass-sat)) blur(var(--glass-blur));
+  -webkit-backdrop-filter: saturate(var(--glass-sat)) blur(var(--glass-blur));
   border-bottom: 1px solid var(--glass-border-color);
   box-shadow:
-    0 4px 12px rgba(15, 23, 42, 0.06),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.1);
+    0 2px 8px rgba(15, 23, 42, 0.04),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
   transition: all var(--glass-transition-fast);
 }
 
