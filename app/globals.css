@@ -568,46 +568,80 @@ a {
 
 /* Liquid Glass Utility Classes */
 .glass-card {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  box-shadow: var(--glass-shadow);
   position: relative;
   overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.55) 35%, rgba(255, 255, 255, 0.25) 100%);
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.16);
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .glass-card::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--glass-highlight);
+  border-radius: inherit;
+  background:
+    radial-gradient(140% 120% at 0% 0%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 60%),
+    linear-gradient(130deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.75;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
-  opacity: 0.5;
+  z-index: 0;
+}
+
+.glass-card::after {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(110deg, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .glass-card:hover {
-  background: var(--glass-hover-bg);
-  border-color: rgba(75, 163, 247, 0.3);
-  box-shadow: var(--glass-shadow), 0 0 20px rgba(75, 163, 247, 0.15);
+  transform: translateY(-6px);
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.22);
+  border-color: rgba(99, 179, 237, 0.5);
 }
 
-.glass-card:active {
-  background: var(--glass-active-bg);
+.glass-card:hover::before {
+  opacity: 0.95;
+  transform: scale(1.03);
+}
+
+.glass-card:hover::after {
+  opacity: 1;
+}
+
+.glass-card:focus-within {
+  box-shadow: 0 0 0 3px rgba(99, 179, 237, 0.35), 0 26px 55px rgba(15, 23, 42, 0.2);
+}
+
+.glass-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .glass-button {
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  background: linear-gradient(150deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.35));
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 16px;
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
   transition: all 0.2s ease-out;
 }
 
 .glass-button:hover {
-  background: var(--glass-hover-bg);
+  background: rgba(255, 255, 255, 0.92);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(75, 163, 247, 0.2);
+  box-shadow: 0 8px 20px rgba(99, 179, 237, 0.25);
 }
 
 .glass-button:focus-visible {

@@ -4,7 +4,8 @@ import { useLocale } from 'next-intl'
 import { usePathname, useRouter } from 'next/navigation'
 import { Globe } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { locales, localeNames } from '@/lib/i18n'
+import { locales, localeNames, type Locale } from '@/lib/i18n'
+import { translatePath } from '@/lib/slugMap'
 
 interface LanguageSwitcherProps {
   className?: string
@@ -15,17 +16,9 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const router = useRouter()
   const pathname = usePathname()
 
-  const switchLocale = (newLocale: string) => {
-    // Remove current locale prefix from pathname
-    const pathWithoutLocale = pathname.replace(`/${locale}`, '') || ''
-
-    // Build new path with new locale
-    const newPath = newLocale === 'nl'
-      ? pathWithoutLocale || '/'
-      : `/en${pathWithoutLocale}`
-
-    router.push(newPath)
-    router.refresh() // Force refresh to load new locale content
+  const switchLocale = (newLocale: Locale) => {
+    const targetPath = translatePath(pathname, locale as Locale, newLocale)
+    router.push(targetPath)
   }
 
   return (
@@ -40,14 +33,16 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             key={loc}
             onClick={() => switchLocale(loc)}
             className={cn(
-              'rounded-lg px-2.5 py-1.5 text-xs font-medium transition-all duration-200',
-              'focus:outline-none focus:ring-2 focus:ring-[color:var(--accent)] focus:ring-offset-2',
+              'relative rounded-xl px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.16em] transition-all duration-200',
+              'text-[color:var(--fg-muted)] hover:text-[color:var(--fg)]',
+              'focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 focus-visible:ring-offset-0',
+              'before:absolute before:inset-0 before:rounded-xl before:border before:border-white/45 before:bg-white/35 before:backdrop-blur before:shadow-[inset_0_0_0_1px_rgba(255,255,255,.3),0_6px_18px_-8px_rgba(0,0,0,.25)] before:opacity-0 before:transition-opacity before:duration-200',
               locale === loc
-                ? 'bg-[color:var(--accent)] text-white shadow-sm'
-                : 'text-[color:var(--fg-muted)] hover:bg-[color:color-mix(in_oklab,var(--fg)_8%,transparent)] hover:text-[color:var(--fg)]'
+                ? 'text-[color:var(--fg)] before:opacity-100'
+                : 'hover:before:opacity-100 focus-visible:before:opacity-100'
             )}
             aria-label={`Switch to ${localeNames[loc]}`}
-            aria-current={locale === loc ? 'true' : 'false'}
+            aria-current={locale === loc ? 'page' : undefined}
           >
             {loc.toUpperCase()}
           </button>

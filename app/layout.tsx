@@ -1,8 +1,10 @@
-import type { Metadata } from "next"
+import type { Metadata } from 'next'
 import Script from 'next/script'
-import "./globals.css"
-import { ThemeProvider } from "@/components/providers/theme-provider"
-import { SkipToContent } from "@/components/layout/skip-to-content"
+import './globals.css'
+import { ThemeProvider } from '@/components/providers/theme-provider'
+import { SkipToContent } from '@/components/layout/skip-to-content'
+import { headers } from 'next/headers'
+import { defaultLocale, type Locale } from '@/lib/i18n'
 
 export const metadata: Metadata = {
   title: "Caribbean Azure | Slimme AI Automatisering",
@@ -34,13 +36,17 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
   }>) {
+  const requestHeaders = await headers()
+  const requestLocale = requestHeaders.get('x-next-intl-locale') as Locale | null
+  const locale = requestLocale ?? defaultLocale
+
   return (
-    <html lang="nl" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <head>
         {/* Plausible Analytics - EU-hosted, GDPR-compliant */}
         <Script
